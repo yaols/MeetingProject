@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meeting.Web.Api", "Meeting.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meeting.Common", "Meeting.Common\Meeting.Common.csproj", "{4BB968DC-E12A-42C6-BFC1-22F88C02B6E1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meeting.BLL", "Meeting.BLL\Meeting.BLL.csproj", "{E1E8A2BA-252C-4EC4-B478-01466B74FB18}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Meeting.Dao", "Meeting.Dao\Meeting.Dao.csproj", "{53E4A9F1-87BD-44C9-88FB-07F51DC16434}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{4BB968DC-E12A-42C6-BFC1-22F88C02B6E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BB968DC-E12A-42C6-BFC1-22F88C02B6E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4BB968DC-E12A-42C6-BFC1-22F88C02B6E1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1E8A2BA-252C-4EC4-B478-01466B74FB18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1E8A2BA-252C-4EC4-B478-01466B74FB18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1E8A2BA-252C-4EC4-B478-01466B74FB18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1E8A2BA-252C-4EC4-B478-01466B74FB18}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53E4A9F1-87BD-44C9-88FB-07F51DC16434}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53E4A9F1-87BD-44C9-88FB-07F51DC16434}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53E4A9F1-87BD-44C9-88FB-07F51DC16434}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53E4A9F1-87BD-44C9-88FB-07F51DC16434}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
