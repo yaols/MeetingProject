@@ -1,45 +1,165 @@
-﻿<div id="body">
-    <section class="featured">
-        <div class="content-wrapper">
-            <hgroup class="title">
-                <h1>Welcome to ASP.NET Web API!</h1>
-                <h2>Modify the code in this template to jump-start your ASP.NET Web API development.</h2>
-            </hgroup>
-            <p>
-                ASP.NET Web API allows you to expose your applications, data and services to the
-                web directly over HTTP.
-            </p>
-            <p>
-                To learn more about ASP.NET Web API visit the
-                <a href="http://go.microsoft.com/fwlink/?LinkID=238195" title="ASP.NET Web API Website">ASP.NET Web API Website</a>.
-                The page features <mark>videos, tutorials, and samples</mark> to help you get the most from ASP.NET Web API.
-                If you have any questions about ASP.NET Web API, visit
-                <a href="http://go.microsoft.com/fwlink/?LinkID=238196" title="ASP.NET Web API Forum">our forums</a>.
-            </p>
-        </div>
-    </section>
-    <section class="content-wrapper main-content clear-fix">
-        <h3>We suggest the following steps:</h3>
-        <ol class="round">
-            <li class="one">
-                <h5>Getting Started</h5>
-                ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-                a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-                is an ideal platform for building RESTful applications on the .NET Framework.
-                <a href="http://go.microsoft.com/fwlink/?LinkId=245160">Learn more…</a>
-            </li>
+﻿<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>主界面</title>
+    <style type="text/css">
+    </style>
+    <link href="~/bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="~/bootstrap/css/bootstrap.css" rel="stylesheet">
+    <link href="~/css/main.css" rel="stylesheet" />
+</head>
 
-            <li class="two">
-                <h5>Add NuGet packages and jump-start your coding</h5>
-                NuGet makes it easy to install and update free libraries and tools.
-                <a href="http://go.microsoft.com/fwlink/?LinkId=245161">Learn more…</a>
-            </li>
-            <li class="three">
-                <h5>Find Web Hosting</h5>
-                You can easily find a web hosting company that offers the right mix of features
-                and price for your applications.
-                <a href="http://go.microsoft.com/fwlink/?LinkId=245164">Learn more…</a>
-            </li>
-        </ol>
-    </section>
-</div>
+<body>
+    @*<div class="container">
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Please sign in</h2>
+                <input type="text" class="input-block-level" placeholder="Email address">
+                <input type="password" class="input-block-level" placeholder="Password">
+                <label class="checkbox">
+                    <input type="checkbox" value="remember-me"> Remember me
+                </label>
+                <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+            </form>
+        </div>*@
+
+    <div class="home">
+        <!--home-top-->
+        <div class="home-top">
+
+            <div class="home-top-lan">
+                <ul>
+                    <li class="home-li-font">
+                        检委会会议系统  (终端版)
+                    </li>
+                    <li class="home-ul-li">
+                        <div class="home-li-button">退出登录</div>
+                    </li>
+                    <li class="home-ul-li">
+                        <div class="home-li-button">个人信息</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="home-top-bottom">
+                <div class="home-bottom-buttondef">已安排会议</div>
+                <div class="home-bottom-button">已结束会议</div>
+                <div class="home-bottom-button">+创建会议</div>
+            </div>
+        </div>
+        <!--/home-top-->
+
+        <div class="home-main">
+
+            <div class="home-main-content">
+                <ul class="home-content-ul">
+                    <li class="content-li-lefttitle">1. 检委会2013年 第五次 总第10次会议(未开始)</li>
+                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
+                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
+                    <li class="content-li-right">
+                        <div class="home-content-button">进 入</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="home-main-contentstyle">
+                <ul class="home-content-ul">
+                    <li class="content-li-lefttitle">2. 检委会2013年 第五次 总第10次会议(未开始)</li>
+                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
+                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
+                    <li class="content-li-right">
+                        <div class="home-content-button">进 入</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="home-main-contentstyle">
+                <ul class="home-content-ul">
+                    <li class="content-li-lefttitle">3. 检委会2013年 第五次 总第10次会议(未开始)</li>
+                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
+                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
+                    <li class="content-li-right">
+                        <div class="home-content-button">进 入</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="home-main-contentstyle">
+                <ul class="home-content-ul">
+                    <li class="content-li-lefttitle">4. 检委会2013年 第五次 总第10次会议(未开始)</li>
+                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
+                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
+                    <li class="content-li-right">
+                        <div class="home-content-button">进 入</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="home-main-contentstyle">
+                <ul class="home-content-ul">
+                    <li class="content-li-lefttitle">5. 检委会2013年 第五次 总第10次会议(未开始)</li>
+                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
+                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
+                    <li class="content-li-right">
+                        <div class="home-content-button">进 入</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="home-main-contentstyle">
+                <ul class="home-content-ul">
+                    <li class="content-li-lefttitle">6. 检委会2013年 第五次 总第10次会议(未开始)</li>
+                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
+                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
+                    <li class="content-li-right">
+                        <div class="home-content-button">进 入</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="home-main-contentstyle">
+                <ul class="home-content-ul">
+                    <li class="content-li-lefttitle">7. 检委会2013年 第五次 总第10次会议(未开始)</li>
+                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
+                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
+                    <li class="content-li-right">
+                        <div class="home-content-button">进 入</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="home-main-contentstyle">
+                <ul class="home-content-ul">
+                    <li class="content-li-lefttitle">8. 检委会2013年 第五次 总第10次会议(未开始)</li>
+                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
+                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
+                    <li class="content-li-right">
+                        <div class="home-content-button">进 入</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="home-main-contentstyle">
+                <ul class="home-content-ul">
+                    <li class="content-li-lefttitle">9. 检委会2013年 第五次 总第10次会议(未开始)</li>
+                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
+                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
+                    <li class="content-li-right">
+                        <div class="home-content-button">进 入</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="home-main-contentstyle">
+                <ul class="home-content-ul">
+                    <li class="content-li-lefttitle">10. 检委会2013年 第五次 总第10次会议(未开始)</li>
+                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
+                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
+                    <li class="content-li-right">
+                        <div class="home-content-button">进 入</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

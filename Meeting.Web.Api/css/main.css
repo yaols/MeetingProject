@@ -1,0 +1,163 @@
+﻿body {
+
+}
+
+.home {
+    border:1px solid #e5e5e5;
+    width:1024px;
+    height:500px;
+    margin:30px auto;
+}
+
+.home-top {
+    width:1024px;
+    height:80px;
+    background-color:#0073e5;
+    /*border-bottom:1px solid #e5e5e5;*/
+}
+
+
+.home-top-lan {
+    height:50px;
+}
+
+.home-top-lan ul {
+    margin:0;
+    padding:0;
+}
+
+.home-top-lan ul li {
+    display:inline-block;
+}
+
+.home-li-font {
+    padding-left:10px;
+    margin-top:8px;
+    font-size:16px;
+    font-family:"宋体";
+    color:#87bef3;
+    font-weight:bold;
+    float:left;
+}
+
+.home-ul-li {
+       float:right;
+       margin-right:15px;
+       margin-top:10px;
+}
+
+input {
+    border:0;
+}
+
+.home-li-button {
+    border-radius:10px;
+    background-color:#ffffff;
+    width:80px;
+    height:20px;
+    font-size:10px;
+    text-align:center;
+}
+
+.home-bottom-button {
+    width:80px;
+    height:29px;
+    background-color:#ffffff;
+    float:left;
+    border-top:1px solid #e5e5e5;
+    border-right:1px solid #e5e5e5;
+    text-align:center;
+    font-family:"宋体";
+    font-weight:bold;
+    font-size:13px;
+    color:#7d7d7d;
+     line-height: 29px;
+}
+
+.home-bottom-buttondef {
+    width:80px;
+    height:29px;
+    background-color:#ffcc66;
+    float:left;
+    border-top:1px solid #e5e5e5;
+    border-right:1px solid #e5e5e5;
+    text-align:center;
+    font-family:"宋体";
+    font-weight:bold;
+    font-size:13px;
+    color:black;
+     line-height: 29px;
+}
+
+ .home-bottom-button:hover {
+        background-color:#ffcc66;
+        color:black;
+    }
+
+
+.home-main {
+    /*width:1024px;*/
+    height:420px;
+   overflow-y: auto; 
+   overflow-x:hidden;
+}
+
+.home-main-content {
+    width:1024px;
+    height:60px;
+    line-height: 60px;
+    border:1px solid #e5e5e5;
+}
+
+.home-main-content ul {
+    margin:0;
+    padding:0;
+}
+
+.home-main-content ul li {
+      display:inline-block;
+      
+}
+
+.content-li-lefttitle {
+    margin-left:18px;
+    width:380px;
+}
+
+.content-li-leftdate {
+    margin-left:18px;
+    width:220px;
+}
+
+.content-li-right {
+     margin-left:10px;
+}
+
+.home-content-button {
+    border-radius:8px;
+    background-color:#0797ff;
+    width:80px;
+    height:28px;
+    font-size:10px;
+    text-align:center;
+    line-height:28px;
+    font-weight:bold;
+    color:#ffffff;
+}
+
+.home-main-contentstyle {
+    width:1024px;
+    height:60px;
+    line-height: 60px;
+    border:1px solid #e5e5e5;
+    margin-top:3px;
+}
+
+.home-main-contentstyle ul {
+    margin:0;
+    padding:0;
+}
+
+.home-main-contentstyle ul li {
+      display:inline-block;    
+}
