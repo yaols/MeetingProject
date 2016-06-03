@@ -2,6 +2,7 @@
 
 }
 
+/*主界面*/
 .home {
     border:1px solid #e5e5e5;
     width:1024px;
@@ -57,6 +58,7 @@ input {
     height:20px;
     font-size:10px;
     text-align:center;
+    line-height:20px;
 }
 
 .home-bottom-button {
@@ -105,13 +107,13 @@ input {
 .home-main-content {
     width:1024px;
     height:60px;
-    line-height: 60px;
     border:1px solid #e5e5e5;
 }
 
 .home-main-content ul {
     margin:0;
     padding:0;
+    line-height:60px;
 }
 
 .home-main-content ul li {
@@ -121,12 +123,12 @@ input {
 
 .content-li-lefttitle {
     margin-left:18px;
-    width:380px;
+    width:360px;
 }
 
 .content-li-leftdate {
-    margin-left:18px;
-    width:220px;
+    margin-left:8px;
+    width:250px;
 }
 
 .content-li-right {
@@ -160,4 +162,169 @@ input {
 
 .home-main-contentstyle ul li {
       display:inline-block;    
+}
+
+
+/*全局头部*/
+.layout-top {
+    width:1024px;
+    height:80px;
+    background-color:#0073e5;
+}
+
+.layout-top-ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    height:50px;
+}
+
+.layout-top-ul ul li {
+    display:inline-block;
+}
+
+.home-top-ulbtn {
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    height:50px;
+}
+
+.ulbtn-btn {
+    margin-left:10px;
+}
+
+
+/*会议详情*/
+.layou-main {
+    width:1024px;
+    height:220px;
+}
+
+.layou-info-top {
+    width:1000px;
+    height:20px;
+    background-color:#0073e5;
+    margin:20px 10px 0px 10px;
+}
+
+.layou-info-font {
+    padding-left:15px;
+    font-size:13px;
+    font-family:"宋体";
+    color:#ffffff;
+    line-height:20px;
+    font-weight:bold;
+}
+
+.layou-info-ul {
+    list-style-type:none;
+    height:auto;
+}
+
+.layou-info-li {
+    height:auto;
+    margin-top:8px;
+    font-size:14px;
+    font-family:"微软雅黑";
+}
+
+
+.layou-div-title {
+    margin:0px 10px 0 10px;
+    height:25px;
+}
+
+.layou-div-ul {
+    list-style-type:none;
+    padding:0;
+    margin:0;
+}
+
+.layou-ul-li1 {
+    font-size:12px;
+    font-weight:bold;
+    width:40px;
+    text-align:center;
+    float:left;
+    line-height:25px;
+}
+.layou-ul-li2 {
+    font-size:12px;
+    font-weight:bold;
+    width:300px;
+    text-align:center;
+    float:left;
+    line-height:25px;
+}
+.layou-ul-li3 {
+    font-size:12px;
+    font-weight:bold;
+    width:120px;
+    text-align:center;
+    float:left;
+    line-height:25px;
+}
+.layou-ul-li4 {
+    font-size:12px;
+    font-weight:bold;
+    width:100px;
+    text-align:center;
+    float:left;
+    line-height:25px;
+}
+.layou-ul-li5 {
+    font-size:12px;
+    font-weight:bold;
+    width:440px;
+    text-align:center;
+    float:left;
+    line-height:25px;
+}
+
+.layou-div-content {
+    border:1px solid #8396ef;
+    margin:5px 10px 0 10px;
+    height:25px;
+}
+
+
+.table-button1 {
+    border-radius:10px;
+    background-color:#ffffff;
+    width:80px;
+    height:20px;
+   border:1px solid #8396ef;
+   color:#8396ef;
+   line-height:20px;
+   float:left;
+   margin-left:50px;
+   margin-top:2px;
+}
+
+.table-button2 {
+    border-radius:10px;
+    background-color:#ffffff;
+    width:80px;
+    height:20px;
+   border:1px solid #8396ef;
+   color:#8396ef;
+   line-height:20px;
+   float:left;
+   margin-left:50px;
+   margin-right:50px;
+   margin-top:2px;
+}
+
+
+.table-button3 {
+    border-radius:10px;
+    background-color:#ffffff;
+    width:80px;
+    height:20px;
+   border:1px solid #8396ef;
+   color:#8396ef;
+   line-height:20px;
+   float:left;
+   margin-top:2px;
 }
