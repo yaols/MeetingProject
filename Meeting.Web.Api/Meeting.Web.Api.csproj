@@ -301,7 +301,7 @@
     <Content Include="Views\MeetingInfo\Index.cshtml" />
     <Content Include="Views\Shared\_Top.cshtml" />
     <Content Include="Views\MeetingInfo\GetMaterial.cshtml" />
-    <Content Include="Views\MeetingInfo\GetMaterialImage.cshtml" />
+    <Content Include="Views\MeetingInfo\OpenMaterial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

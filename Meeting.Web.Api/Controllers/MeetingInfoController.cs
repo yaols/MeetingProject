@@ -32,8 +32,11 @@ namespace Meeting.Web.Api.Controllers
             return View(model);
         }
 
-
-        public ActionResult GetMaterialImage() 
+        /// <summary>
+        /// 打开材料图片或者打开视频
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult OpenMaterial() 
         {
             TitleViewModel model = new TitleViewModel();
             model.Title = "材料: b20160305b0098";
