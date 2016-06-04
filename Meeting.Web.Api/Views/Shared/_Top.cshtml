@@ -1,3 +1,25 @@
-﻿<div class="home-top">
+﻿@model Meeting.Web.Api.Models.TitleViewModel
+@{
+
+}
+<!--layout-top-->
+<div class="layout-top">
+
+    <ul class="layout-top-ul">
+        <li class="home-li-font">@Model.TopTitle</li>
+        @if (Model.Type == 0)
+        {
+            <li class="home-ul-li">
+                <div class="home-li-button">返回首页</div>
+            </li>
+        }
+    </ul>
+
+    <ul class="home-top-ulbtn">
+        <li class="ulbtn-btn">
+            <div class="home-li-button">返回</div>
+        </li>
+    </ul>
 
 </div>
+<!--/layout-top-->

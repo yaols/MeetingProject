@@ -6,7 +6,7 @@
 .home {
     border:1px solid #e5e5e5;
     width:1024px;
-    height:500px;
+    height:600px;
     margin:30px auto;
 }
 
@@ -54,7 +54,7 @@ input {
 .home-li-button {
     border-radius:10px;
     background-color:#ffffff;
-    width:80px;
+    width:60px;
     height:20px;
     font-size:10px;
     text-align:center;
@@ -327,4 +327,43 @@ input {
    line-height:20px;
    float:left;
    margin-top:2px;
+}
+
+/*材料详情*/
+.material-ul {
+    padding:0;
+    margin:0;
+    list-style-type:none;
+    height:180px;
+}
+
+.material-ul-li {
+    float:left;
+    width:160px;
+    height:70px;
+    font-size:12px;
+    font-weight:bold;
+    text-align:center;
+    margin-top:10px;
+}
+
+.material-ul-li img {
+    width:60px;
+    height:60px
+}
+
+.material-li-img {
+    width:160px;
+}
+
+/*材料*/
+.image-div {
+    margin:50px auto;
+    width:600px;
+    height:420px;
+}
+
+.image-div-img {
+    width:600px;
+    height:420px;
 }

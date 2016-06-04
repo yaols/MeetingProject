@@ -1,4 +1,7 @@
-﻿<html lang="en">
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>会议详情</title>
@@ -27,79 +30,81 @@
 
         </div>
         <!--/layout-top-->
-
-        <div class="layou-info-top">
-            <font class="layou-info-font">会议信息</font>
-        </div>
-
-        <ul class="layou-info-ul">
-            <li class="layou-info-li">会议名称: 检委会2013年 第15次 总第10次会议</li>
-            <li class="layou-info-li">计划开始时间: 2016-05-05 09:00   <span style="margin-left:40px"></span>   计划结束时间: 2016-05-05  11:00</li>
-            <li class="layou-info-li">会议地点:主楼第一会议室</li>
-            <li class="layou-info-li">
-                参会委员:张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲
-                张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲
-                张小菲 张小菲 张小菲 张小菲 张小菲
-            </li>
-            <li class="layou-info-li">主持人:李琳</li>
-            <li class="layou-info-li">秘书:王小宁</li>
-        </ul>
-
-        <div class="layou-info-top">
-            <font class="layou-info-font">会议议题</font>
-        </div>
-
-        <div class="layou-div-title">
-            <ul class="layou-div-ul">
-                <li class="layou-ul-li1">序号</li>
-                <li class="layou-ul-li2">议题名称</li>
-                <li class="layou-ul-li3">申请部门</li>
-                <li class="layou-ul-li4">汇报处</li>
-                <li class="layou-ul-li5">操作</li>
-            </ul>
-        </div>
-
-        <div class="layou-div-content">
-            <ul class="layou-div-ul">
-                <li class="layou-ul-li1">1</li>
-                <li class="layou-ul-li2">关于如何提高办案率的方法讨论</li>
-                <li class="layou-ul-li3">机关处</li>
-                <li class="layou-ul-li4">潘大魏</li>
-                <li class="layou-ul-li5">
-                    <div class="table-button1">查看材料</div>
-                    <div class="table-button2">会议记录</div>
-                    <div class="table-button3">检委会决定</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="layou-div-content">
-            <ul class="layou-div-ul">
-                <li class="layou-ul-li1">1</li>
-                <li class="layou-ul-li2">关于如何提高办案率的方法讨论</li>
-                <li class="layou-ul-li3">机关处</li>
-                <li class="layou-ul-li4">潘大魏</li>
-                <li class="layou-ul-li5">
-                    <div class="table-button1">查看材料</div>
-                    <div class="table-button2">会议记录</div>
-                    <div class="table-button3">检委会决定</div>
-                </li>
-            </ul>
-        </div>
-
-        <div class="layou-div-content">
-            <ul class="layou-div-ul">
-                <li class="layou-ul-li1">1</li>
-                <li class="layou-ul-li2">关于如何提高办案率的方法讨论</li>
-                <li class="layou-ul-li3">机关处</li>
-                <li class="layou-ul-li4">潘大魏</li>
-                <li class="layou-ul-li5">
-                    <div class="table-button1">查看材料</div>
-                    <div class="table-button2">会议记录</div>
-                    <div class="table-button3">检委会决定</div>
-                </li>
-            </ul>
-        </div>
     </div>
 </body>
-</html>
+</html>*@
+
+
+
+<div class="layou-info-top">
+    <font class="layou-info-font">会议信息</font>
+</div>
+
+<ul class="layou-info-ul">
+    <li class="layou-info-li">会议名称: 检委会2013年 第15次 总第10次会议</li>
+    <li class="layou-info-li">计划开始时间: 2016-05-05 09:00   <span style="margin-left:40px"></span>   计划结束时间: 2016-05-05  11:00</li>
+    <li class="layou-info-li">会议地点:主楼第一会议室</li>
+    <li class="layou-info-li">
+        参会委员:张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲
+        张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲
+        张小菲 张小菲 张小菲 张小菲 张小菲
+    </li>
+    <li class="layou-info-li">主持人:李琳</li>
+    <li class="layou-info-li">秘书:王小宁</li>
+</ul>
+
+<div class="layou-info-top">
+    <font class="layou-info-font">会议议题</font>
+</div>
+
+<div class="layou-div-title">
+    <ul class="layou-div-ul">
+        <li class="layou-ul-li1">序号</li>
+        <li class="layou-ul-li2">议题名称</li>
+        <li class="layou-ul-li3">申请部门</li>
+        <li class="layou-ul-li4">汇报处</li>
+        <li class="layou-ul-li5">操作</li>
+    </ul>
+</div>
+
+<div class="layou-div-content">
+    <ul class="layou-div-ul">
+        <li class="layou-ul-li1">1</li>
+        <li class="layou-ul-li2">关于如何提高办案率的方法讨论</li>
+        <li class="layou-ul-li3">机关处</li>
+        <li class="layou-ul-li4">潘大魏</li>
+        <li class="layou-ul-li5">
+            <div class="table-button1">查看材料</div>
+            <div class="table-button2">会议记录</div>
+            <div class="table-button3">检委会决定</div>
+        </li>
+    </ul>
+</div>
+
+<div class="layou-div-content">
+    <ul class="layou-div-ul">
+        <li class="layou-ul-li1">1</li>
+        <li class="layou-ul-li2">关于如何提高办案率的方法讨论</li>
+        <li class="layou-ul-li3">机关处</li>
+        <li class="layou-ul-li4">潘大魏</li>
+        <li class="layou-ul-li5">
+            <div class="table-button1">查看材料</div>
+            <div class="table-button2">会议记录</div>
+            <div class="table-button3">检委会决定</div>
+        </li>
+    </ul>
+</div>
+
+<div class="layou-div-content">
+    <ul class="layou-div-ul">
+        <li class="layou-ul-li1">1</li>
+        <li class="layou-ul-li2">关于如何提高办案率的方法讨论</li>
+        <li class="layou-ul-li3">机关处</li>
+        <li class="layou-ul-li4">潘大魏</li>
+        <li class="layou-ul-li5">
+            <div class="table-button1">查看材料</div>
+            <div class="table-button2">会议记录</div>
+            <div class="table-button3">检委会决定</div>
+        </li>
+    </ul>
+</div>

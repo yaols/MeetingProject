@@ -1,1 +1,21 @@
-﻿
+﻿@model Meeting.Web.Api.Models.TitleViewModel
+@{
+
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@Model.Title</title>
+    <style type="text/css">
+    </style>
+    <link href="~/css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="home">
+        @Html.Partial("~/Views/Shared/_Top.cshtml")
+
+        @RenderBody()
+
+    </div>
+</body>
+</html>
