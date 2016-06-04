@@ -58,7 +58,7 @@ namespace Meeting.Web.Api.Controllers
         }
 
         /// <summary>
-        /// 检委会决定
+        /// 检委会决定  签字
         /// </summary>
         /// <returns></returns>
         public ActionResult MeetingSign() 
