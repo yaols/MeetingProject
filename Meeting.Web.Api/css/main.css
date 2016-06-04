@@ -59,6 +59,8 @@ input {
     font-size:10px;
     text-align:center;
     line-height:20px;
+    float:left;
+    margin:0 5px 0 5px;
 }
 
 .home-bottom-button {
@@ -205,7 +207,7 @@ input {
     width:1000px;
     height:20px;
     background-color:#0073e5;
-    margin:20px 10px 0px 10px;
+    margin:10px 10px 0px 10px;
 }
 
 .layou-info-font {
@@ -220,11 +222,13 @@ input {
 .layou-info-ul {
     list-style-type:none;
     height:auto;
+    padding:0;
+    margin:0;
 }
 
 .layou-info-li {
     height:auto;
-    margin-top:8px;
+    margin:8px 0 0 20px;
     font-size:14px;
     font-family:"微软雅黑";
 }
@@ -366,4 +370,12 @@ input {
 .image-div-img {
     width:600px;
     height:420px;
+}
+
+/*会议记录*/
+.layou-div-word {
+    width:998px;
+    margin:0px 10px 0px 10px;
+    border:1px solid #e5e5e5;
+    height:270px;
 }

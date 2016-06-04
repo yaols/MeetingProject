@@ -300,8 +300,9 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\MeetingInfo\Index.cshtml" />
     <Content Include="Views\Shared\_Top.cshtml" />
-    <Content Include="Views\MeetingInfo\GetMaterial.cshtml" />
-    <Content Include="Views\MeetingInfo\OpenMaterial.cshtml" />
+    <Content Include="Views\MeetingInfo\MaterialInfo.cshtml" />
+    <Content Include="Views\MeetingInfo\MaterialVide.cshtml" />
+    <Content Include="Views\MeetingInfo\MeetingRecord.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

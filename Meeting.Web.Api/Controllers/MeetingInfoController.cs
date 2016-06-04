@@ -24,7 +24,7 @@ namespace Meeting.Web.Api.Controllers
         /// 获取材料详情
         /// </summary>
         /// <returns></returns>
-        public ActionResult GetMaterial() 
+        public ActionResult MaterialInfo() 
         {
             TitleViewModel model = new TitleViewModel();
             model.Title = "材料详情";
@@ -36,7 +36,7 @@ namespace Meeting.Web.Api.Controllers
         /// 打开材料图片或者打开视频
         /// </summary>
         /// <returns></returns>
-        public ActionResult OpenMaterial() 
+        public ActionResult MaterialVide() 
         {
             TitleViewModel model = new TitleViewModel();
             model.Title = "材料: b20160305b0098";
@@ -45,6 +45,25 @@ namespace Meeting.Web.Api.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// 获取会议记录
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult MeetingRecord() 
+        {
+            TitleViewModel model = new TitleViewModel();
+            model.Title = "材料: b20160305b0098";
+            model.TopTitle = "材料: b20160305b0098";
+            return View(model);
+        }
 
+        /// <summary>
+        /// 检委会决定
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult MeetingSign() 
+        {
+            return View();
+        }
     }
 }

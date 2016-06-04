@@ -1,0 +1,65 @@
+﻿@model Meeting.Web.Api.Models.TitleViewModel
+@{
+
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>会议记录</title>
+    <style type="text/css">
+    </style>
+    <link href="~/css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="home">
+
+        <!--layout-top-->
+        <div class="layout-top">
+
+            <ul class="layout-top-ul">
+                <li class="home-li-font">@Model.TopTitle</li>
+            </ul>
+
+            <ul class="home-top-ulbtn">
+                <li class="ulbtn-btn">
+                    <div class="home-li-button">返回</div>
+                </li>
+                <li class="ulbtn-btn">
+                    <div class="home-li-button">创建word</div>
+                </li>
+                <li class="ulbtn-btn">
+                    <div class="home-li-button">保存</div>
+                </li>
+            </ul>
+
+        </div>
+        <!--/layout-top-->
+
+        <div class="layou-info-top">
+            <font class="layou-info-font">会议信息</font>
+        </div>
+
+        <ul class="layou-info-ul">
+            <li class="layou-info-li">会议名称: 检委会2013年 第15次 总第10次会议</li>
+            <li class="layou-info-li">计划开始时间: 2016-05-05 09:00   <span style="margin-left:40px"></span>   计划结束时间: 2016-05-05  11:00</li>
+            <li class="layou-info-li">会议地点:主楼第一会议室</li>
+            <li class="layou-info-li">
+                参会委员:张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲
+                张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲
+                张小菲 张小菲 张小菲 张小菲 张小菲
+            </li>
+            <li class="layou-info-li">主持人:李琳</li>
+            <li class="layou-info-li">秘书:王小宁</li>
+        </ul>
+
+        <div class="layou-info-top">
+            <font class="layou-info-font">会议议题</font>
+        </div>
+
+        <div class="layou-div-word">
+            富文本编辑器
+        </div>
+
+    </div>
+</body>
+</html>
