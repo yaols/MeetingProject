@@ -1,0 +1,41 @@
+﻿@model Meeting.Web.Api.Models.TitleViewModel
+@{
+
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@Model.Title</title>
+    <style type="text/css">
+    </style>
+    <link href="~/css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="home">
+
+        <!--layout-top-->
+        <div class="layout-top">
+
+            <ul class="layout-top-ul">
+                <li class="home-li-font">@Model.TopTitle</li>
+            </ul>
+
+            <ul class="home-top-ulbtn">
+                <li class="ulbtn-btn">
+                    <div class="home-li-button">返回</div>
+                </li>
+                <li class="ulbtn-btn">
+                    <div class="home-li-button">提交审批</div>
+                </li>
+            </ul>
+
+        </div>
+        <!--/layout-top-->
+
+        <div class="sign-word">
+            富文本编辑器
+        </div>
+
+    </div>
+</body>
+</html>

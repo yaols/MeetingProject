@@ -379,3 +379,10 @@ input {
     border:1px solid #e5e5e5;
     height:270px;
 }
+
+
+/*检委会决定  签字*/
+.sign-word {
+    height:500px;
+    margin-top:10px;
+}

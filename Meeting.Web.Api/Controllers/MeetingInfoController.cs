@@ -63,7 +63,10 @@ namespace Meeting.Web.Api.Controllers
         /// <returns></returns>
         public ActionResult MeetingSign() 
         {
-            return View();
+            TitleViewModel model = new TitleViewModel();
+            model.Title = "检委会决定";
+            model.TopTitle = "材料: 议题详情b2016";
+            return View(model);
         }
     }
 }
