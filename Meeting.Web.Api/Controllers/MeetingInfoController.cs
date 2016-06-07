@@ -68,5 +68,17 @@ namespace Meeting.Web.Api.Controllers
             model.TopTitle = "材料: 议题详情b2016";
             return View(model);
         }
+
+        /// <summary>
+        /// 会议创建
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult MeetingCreate()
+        {
+            TitleViewModel model = new TitleViewModel();
+            model.Title = "会议创建";
+            model.TopTitle = "+会议创建";
+            return View(model);
+        }
     }
 }

@@ -165,6 +165,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MeetingInfoController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -238,6 +239,10 @@
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="css\main.css" />
+    <Content Include="db\MeetingProject.mdf" />
+    <Content Include="db\MeetingProject_log.ldf">
+      <DependentUpon>MeetingProject.mdf</DependentUpon>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Areas\HelpPage\Views\Web.config" />
@@ -305,6 +310,8 @@
     <Content Include="Views\MeetingInfo\MaterialVide.cshtml" />
     <Content Include="Views\MeetingInfo\MeetingRecord.cshtml" />
     <Content Include="Views\MeetingInfo\MeetingSign.cshtml" />
+    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\MeetingInfo\MeetingCreate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

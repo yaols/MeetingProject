@@ -1,0 +1,193 @@
+﻿@model Meeting.Web.Api.Models.TitleViewModel
+@{
+
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>@Model.Title</title>
+    <style type="text/css">
+    </style>
+    <link href="~/css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="home">
+
+        <!--layout-top-->
+        <div class="layout-top">
+
+            <ul class="layout-top-ul">
+                <li class="home-li-font">@Model.TopTitle</li>
+            </ul>
+
+            <ul class="home-top-ulbtn">
+                <li class="ulbtn-btn">
+                    <div class="home-li-button">返回</div>
+                </li>
+                <li class="ulbtn-btn">
+                    <div class="home-li-button">保存</div>
+                </li>
+            </ul>
+
+        </div>
+        <!--/layout-top-->
+
+        <div class="layou-info-top">
+            <font class="layou-info-font">会议信息</font>
+        </div>
+
+        <ul class="create-meeting-ul">
+            <li class="create-meeting-li">
+                会议名称:
+                检委会<input type="text" class="create-meeting-text" />年
+                第<input type="text" class="create-meeting-text" />次
+                总第<input type="text" class="create-meeting-text" />次会议
+            </li>
+            <li class="create-meeting-li">
+                计划开始时间  <input type="text" class="create-meeting-date" />
+                <span style="margin-left:40px;"></span>
+                计划结束时间  <input type="text" class="create-meeting-date" />
+            </li>
+        </ul>
+        <ul class="create-meeting-ul">
+            <li class="create-meeting-li">
+                会议地点:
+                <input type="text" class="create-meeting-address" />
+            </li>
+            <li class="create-meeting-li">
+                主持人 <input type="text" class="create-meeting-com" />
+                <span style="margin-left:40px;"></span>
+                文书  <input type="text" class="create-meeting-com" />
+            </li>
+        </ul>
+        <ul class="create-meeting-ul">
+            <li class="create-meeting-li">
+                参会委员:
+                <input type="text" class="create-meeting-people" />
+            </li>
+        </ul>
+
+
+        <div class="layou-info-top">
+            <font class="layou-info-font">会议议题</font>
+            <div class="create-li-button">新增议题</div>
+        </div>
+
+
+        <div class="layou-div-title">
+            <ul class="layou-div-ul">
+                <li class="layou-ul-li1">序号</li>
+                <li class="create-ul-li2">议题名称</li>
+                <li class="layou-ul-li3">申请部门</li>
+                <li class="layou-ul-li4">汇报人</li>
+                <li class="create-ul-li5">操作</li>
+            </ul>
+        </div>
+
+        <div class="create-div-content">
+            <ul class="layou-div-ul">
+                <li class="layou-ul-li1">
+                    <input class="create-li-text1" value="1" />
+                </li>
+                <li class="create-ul-li2">
+                    <input class="create-li-text2" value="关于如何提高办案率的方法讨论" />            
+                </li>
+                <li class="layou-ul-li3">
+                    <input class="create-li-text3" value="机关处" />
+                </li>
+                <li class="layou-ul-li4">
+                    <input class="create-li-text3" value="潘大魏" />
+                </li>
+                <li class="create-ul-li5">
+                    <div class="create-button1">文本材料</div>
+                    <div class="create-button2">多媒体材料</div>
+                </li>
+            </ul>
+            <div class="create-div">
+                <ul class="layou-div-ul">
+                    <li class="create-ul-li">
+                        <div class="create-li-img">
+                            <img src="~/Images/word-icon.png" />
+                        </div>
+                        材料: 议题详情b2016
+                    </li>
+
+                    <li class="create-ul-li">
+                        <div class="create-li-img">
+                            <img src="~/Images/jpg-icon.gif" />
+                        </div>
+                        材料: b20160305b0098
+                    </li>
+
+                    <li class="create-ul-li">
+                        <div class="create-li-img">
+                            <img src="~/Images/word-icon.png" />
+                        </div>
+                        材料: 议题详情b2016
+                    </li>
+
+                    <li class="create-ul-li">
+                        <div class="create-li-img">
+                            <img src="~/Images/jpg-icon.gif" />
+                        </div>
+                        材料: b20160305b0098
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="create-div-content">
+            <ul class="layou-div-ul">
+                <li class="layou-ul-li1">
+                    <input class="create-li-text1" value="1" />
+                </li>
+                <li class="create-ul-li2">
+                    <input class="create-li-text2" value="关于如何提高办案率的方法讨论" />
+                </li>
+                <li class="layou-ul-li3">
+                    <input class="create-li-text3" value="机关处" />
+                </li>
+                <li class="layou-ul-li4">
+                    <input class="create-li-text3" value="潘大魏" />
+                </li>
+                <li class="create-ul-li5">
+                    <div class="create-button1">文本材料</div>
+                    <div class="create-button2">多媒体材料</div>
+                </li>
+            </ul>
+
+            <div class="create-div">
+                <ul class="layou-div-ul">
+                    <li class="create-ul-li">
+                        <div class="create-li-img">
+                            <img src="~/Images/word-icon.png" />
+                        </div>
+                        材料: 议题详情b2016
+                    </li>
+
+                    <li class="create-ul-li">
+                        <div class="create-li-img">
+                            <img src="~/Images/jpg-icon.gif" />
+                        </div>
+                        材料: b20160305b0098
+                    </li>
+
+                    <li class="create-ul-li">
+                        <div class="create-li-img">
+                            <img src="~/Images/word-icon.png" />
+                        </div>
+                        材料: 议题详情b2016
+                    </li>
+
+                    <li class="create-ul-li">
+                        <div class="create-li-img">
+                            <img src="~/Images/jpg-icon.gif" />
+                        </div>
+                        材料: b20160305b0098
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
