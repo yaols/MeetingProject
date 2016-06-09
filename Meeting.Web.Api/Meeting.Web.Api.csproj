@@ -321,6 +321,7 @@
     <Content Include="Views\MeetingInfo\MeetingSign.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\MeetingInfo\MeetingCreate.cshtml" />
+    <Content Include="Views\Shared\_Pager.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

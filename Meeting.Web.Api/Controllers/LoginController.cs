@@ -41,6 +41,7 @@ namespace Meeting.Web.Api.Controllers
 
                 if (umodel.PassWord == model.UserPass && umodel.UserName == model.UserName)
                 {
+                    HttpContext.Session["LoginUser"] = umodel;
                     result.Msg = "登陆成功";
                     result.Result = ResultCode.Ok;
                 }
@@ -49,8 +50,6 @@ namespace Meeting.Web.Api.Controllers
                     result.Msg = "用户名和密码错误";
                     result.Result = ResultCode.ClientError;
                 }
-
-
             }
             catch (Exception ex)
             {

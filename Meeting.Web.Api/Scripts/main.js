@@ -22,6 +22,6 @@
         function (data) {
             alert(data.Msg);
             if (data.Result == 0)
-                location.href = "/home/index";
+                location.href = "/home/index?pageindex="+1;
         });
 }

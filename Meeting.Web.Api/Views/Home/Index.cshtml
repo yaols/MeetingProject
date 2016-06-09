@@ -1,4 +1,9 @@
-﻿<html lang="en">
+﻿@using Meeting.Entity.Pager
+@model PageOption
+    @{
+        PageOption pageOption = ViewBag.pageOption;
+    }
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <title>主界面</title>
@@ -113,39 +118,10 @@
                 </ul>
             </div>
 
-            <div class="home-main-contentstyle">
-                <ul class="home-content-ul">
-                    <li class="content-li-lefttitle">8. 检委会2013年 第五次 总第10次会议(未开始)</li>
-                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
-                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
-                    <li class="content-li-right">
-                        <div class="home-content-button">进 入</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="home-main-contentstyle">
-                <ul class="home-content-ul">
-                    <li class="content-li-lefttitle">9. 检委会2013年 第五次 总第10次会议(未开始)</li>
-                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
-                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
-                    <li class="content-li-right">
-                        <div class="home-content-button">进 入</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="home-main-contentstyle">
-                <ul class="home-content-ul">
-                    <li class="content-li-lefttitle">10. 检委会2013年 第五次 总第10次会议(未开始)</li>
-                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
-                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
-                    <li class="content-li-right">
-                        <div class="home-content-button">进 入</div>
-                    </li>
-                </ul>
-            </div>
         </div>
+
+        @Html.Partial("~/Views/Shared/_Pager.cshtml", pageOption)
+
     </div>
 </body>
 </html>

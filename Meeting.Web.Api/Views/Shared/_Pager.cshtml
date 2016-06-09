@@ -1,0 +1,22 @@
+﻿@using Meeting.Entity.Pager
+@model PageOption
+<div class="list_pager qc_pager">
+
+    <input type="hidden" id="hidPageSize" value="@this.Model.PageSize" name="Pager.PageSize" />
+    <input type="hidden" id="hidPageIndex" value="@this.Model.PageIndex" name="Pager.PageIndex" />
+    <input type="hidden" id="hidPageCount" value="@this.Model.PageCount" />
+    <input type="button" id="btnPageFirst" onclick="firstClick();" value="<<首页" class="qp_prev" />
+    <input type="button" id="btnPagePrev" onclick="lastClick();" value="<上一页" class="qp_prev" />
+    <input type="button" id="btnPageNext" onclick="nextClick();" value="下一页>" class="qp_next" />
+    <input type="button" id="btnPageLast" onclick="endClick();" value="尾页>>" class="qp_next" />
+
+    <span id="spanPagerMessage">
+        页数：
+        <span class="qp_counter">
+            <span class="qp_pagenumber">@(this.Model.PageIndex)</span>
+            /
+            <span class="qp_totalnumber">@this.Model.PageSize</span>
+        </span>
+        总记录条数：@this.Model.PageCount
+    </span>
+</div>
