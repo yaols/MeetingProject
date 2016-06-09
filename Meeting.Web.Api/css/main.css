@@ -99,7 +99,15 @@ input {
     font-size:20px;
     color:white;
     font-weight:bold;
+    cursor:pointer;
 }
+
+
+.li-button-div:hover {
+    background-color:#0088cc;
+}
+
+
 
 /*主界面*/
 .home {

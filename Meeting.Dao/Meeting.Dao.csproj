@@ -33,7 +33,6 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -41,6 +40,16 @@
   <ItemGroup>
     <Compile Include="LoginDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Meeting.Common\Meeting.Common.csproj">
+      <Project>{4bb968dc-e12a-42c6-bfc1-22f88c02b6e1}</Project>
+      <Name>Meeting.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Meeting.Entity\Meeting.Entity.csproj">
+      <Project>{8b7b0953-ee7a-4469-a58d-7983714f3032}</Project>
+      <Name>Meeting.Entity</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

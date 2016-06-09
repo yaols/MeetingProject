@@ -39,6 +39,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -164,6 +167,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MeetingInfoController.cs" />
@@ -172,6 +176,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\TitleViewModel.cs" />
+    <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -256,6 +261,8 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="log4net_config.xml" />
+    <Content Include="Scripts\main.js" />
     <Content Include="界面链接.txt" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\1-imge.jpg" />
@@ -276,7 +283,9 @@
     <Content Include="Scripts\knockout-2.2.0.debug.js" />
     <Content Include="Scripts\knockout-2.2.0.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -318,6 +327,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Meeting.BLL\Meeting.BLL.csproj">
+      <Project>{e1e8a2ba-252c-4ec4-b478-01466b74fb18}</Project>
+      <Name>Meeting.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Meeting.Common\Meeting.Common.csproj">
+      <Project>{4bb968dc-e12a-42c6-bfc1-22f88c02b6e1}</Project>
+      <Name>Meeting.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Meeting.Entity\Meeting.Entity.csproj">
+      <Project>{8b7b0953-ee7a-4469-a58d-7983714f3032}</Project>
+      <Name>Meeting.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Meeting.Interface\Meeting.Interface.csproj">
+      <Project>{e03e48a4-f737-490f-b8f3-7388847b1724}</Project>
+      <Name>Meeting.Interface</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -42,6 +42,20 @@
     <Compile Include="LoginService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Meeting.Dao\Meeting.Dao.csproj">
+      <Project>{53e4a9f1-87bd-44c9-88fb-07f51dc16434}</Project>
+      <Name>Meeting.Dao</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Meeting.Entity\Meeting.Entity.csproj">
+      <Project>{8b7b0953-ee7a-4469-a58d-7983714f3032}</Project>
+      <Name>Meeting.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Meeting.Interface\Meeting.Interface.csproj">
+      <Project>{e03e48a4-f737-490f-b8f3-7388847b1724}</Project>
+      <Name>Meeting.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
