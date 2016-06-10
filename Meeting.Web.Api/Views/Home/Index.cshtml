@@ -1,18 +1,21 @@
 ﻿@using Meeting.Entity.Pager
-@model PageOption
-    @{
-        PageOption pageOption = ViewBag.pageOption;
-    }
+@using Meeting.Entity
+@model List<mMeeting>
+@{
+    
+}
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <title>主界面</title>
     <style type="text/css">
     </style>
-    <link href="~/css/main.css" rel="stylesheet" />
+
 </head>
 
 <body>
+    @Html.Partial("~/Views/Shared/_Style.cshtml")
+
     <div class="home">
         <!--home-top-->
         <div class="home-top">
@@ -32,96 +35,25 @@
             </div>
 
             <div class="home-top-bottom">
-                <div class="home-bottom-buttondef">已安排会议</div>
-                <div class="home-bottom-button">已结束会议</div>
-                <div class="home-bottom-button">+创建会议</div>
+                <div class="home-bottom-buttondef" onclick="startMeeting()" id="startMeeting"  onmouseover="mouseoverMeeting(1)">已安排会议</div>
+                <div class="home-bottom-button" onclick="endMeeting()" id="endMeeting" onmouseover="mouseoverMeeting(2)">已结束会议</div>
+                <div class="home-bottom-button" onclick="createMeeting()" id="createMeeting"  onmouseover="mouseoverMeeting(3)">+创建会议</div>
             </div>
         </div>
         <!--/home-top-->
-
-        <div class="home-main">
-
-            <div class="home-main-content">
-                <ul class="home-content-ul">
-                    <li class="content-li-lefttitle">1. 检委会2013年 第五次 总第10次会议(未开始)</li>
-                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
-                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
-                    <li class="content-li-right">
-                        <div class="home-content-button">进 入</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="home-main-contentstyle">
-                <ul class="home-content-ul">
-                    <li class="content-li-lefttitle">2. 检委会2013年 第五次 总第10次会议(未开始)</li>
-                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
-                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
-                    <li class="content-li-right">
-                        <div class="home-content-button">进 入</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="home-main-contentstyle">
-                <ul class="home-content-ul">
-                    <li class="content-li-lefttitle">3. 检委会2013年 第五次 总第10次会议(未开始)</li>
-                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
-                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
-                    <li class="content-li-right">
-                        <div class="home-content-button">进 入</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="home-main-contentstyle">
-                <ul class="home-content-ul">
-                    <li class="content-li-lefttitle">4. 检委会2013年 第五次 总第10次会议(未开始)</li>
-                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
-                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
-                    <li class="content-li-right">
-                        <div class="home-content-button">进 入</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="home-main-contentstyle">
-                <ul class="home-content-ul">
-                    <li class="content-li-lefttitle">5. 检委会2013年 第五次 总第10次会议(未开始)</li>
-                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
-                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
-                    <li class="content-li-right">
-                        <div class="home-content-button">进 入</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="home-main-contentstyle">
-                <ul class="home-content-ul">
-                    <li class="content-li-lefttitle">6. 检委会2013年 第五次 总第10次会议(未开始)</li>
-                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
-                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
-                    <li class="content-li-right">
-                        <div class="home-content-button">进 入</div>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="home-main-contentstyle">
-                <ul class="home-content-ul">
-                    <li class="content-li-lefttitle">7. 检委会2013年 第五次 总第10次会议(未开始)</li>
-                    <li class="content-li-leftdate">计划开始时间: 2016-05-05 09：00</li>
-                    <li class="content-li-leftdate">计划结束时间: 2016-05-05 11：00</li>
-                    <li class="content-li-right">
-                        <div class="home-content-button">进 入</div>
-                    </li>
-                </ul>
-            </div>
-
+        <div id="home-main">
+            @Html.Partial("~/Views/Home/Table.cshtml", Model)
         </div>
 
-        @Html.Partial("~/Views/Shared/_Pager.cshtml", pageOption)
+            
+        </div>
 
-    </div>
+    <script type="text/javascript">
+        var ClickPageUrl = '@Url.Action("Index", "Home", new { PageType  = "1" })';
+        $(document).ready(function () {
+            mouseoverMeeting(1);
+        })
+    </script>
+
 </body>
 </html>

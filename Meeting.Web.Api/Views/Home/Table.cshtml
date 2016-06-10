@@ -1,0 +1,51 @@
+﻿@using Meeting.Entity
+@using Meeting.Entity.Pager
+@model List<mMeeting>
+@{
+    PageOption pageOption = ViewBag.pageOption;
+}
+<div class="home-main">
+    @Html.Hidden("PageType", pageOption.PageType)
+
+    @if (Model != null&&Model.Count>0)
+    {
+        for (int i = 0; i < Model.Count; i++)
+        {
+            string typename = Model[i].MeetingType == 0 ? "(未开始)" : "(已开始)";
+            if (i == 0)
+            {
+                <div class="home-main-content">
+                    <ul class="home-content-ul">
+                        <li class="content-li-lefttitle">@Model[i].RowId . @Model[i].MeetingName @typename </li>
+                        <li class="content-li-leftdate">计划开始时间: @Model[i].StartDate</li>
+                        <li class="content-li-leftdate">计划结束时间: @Model[i].EendDate</li>
+                        <li class="content-li-right">
+                            <div class="home-content-button">进 入</div>
+                        </li>
+                    </ul>
+                </div>
+            }
+            else
+            {
+                <div class="home-main-contentstyle">
+                    <ul class="home-content-ul">
+                        <li class="content-li-lefttitle">@Model[i].RowId . @Model[i].MeetingName @typename </li>
+                        <li class="content-li-leftdate">计划开始时间: @Model[i].StartDate</li>
+                        <li class="content-li-leftdate">计划结束时间: @Model[i].EendDate</li>
+                        <li class="content-li-right">
+                            <div class="home-content-button">进 入</div>
+                        </li>
+                    </ul>
+                </div>
+            }
+
+        }
+    }
+    else
+    {
+        <div class="home-main-content">
+            暂无数据
+        </div>
+    }
+</div>
+@Html.Partial("~/Views/Shared/_Pager.cshtml", pageOption)
