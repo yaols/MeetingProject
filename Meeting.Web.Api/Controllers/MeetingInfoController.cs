@@ -111,6 +111,8 @@ namespace Meeting.Web.Api.Controllers
         }
 
 
+
+
         public JsonResult GetUserJurisdiction(int roleId) 
         {
             ResultBase result = new ResultBase();

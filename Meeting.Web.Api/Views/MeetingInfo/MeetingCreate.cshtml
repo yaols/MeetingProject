@@ -9,8 +9,11 @@
     <style type="text/css">
     </style>
     <link href="~/css/main.css" rel="stylesheet" />
+    <link href="~/Scripts/datetimepicker/jquery.datetimepicker.css" rel="stylesheet" />
 </head>
 <body>
+
+
     <div class="home">
 
         <!--layout-top-->
@@ -44,9 +47,9 @@
                 总第<input type="text" class="create-meeting-text" />次会议
             </li>
             <li class="create-meeting-li">
-                计划开始时间  <input type="text" class="create-meeting-date" />
+                计划开始时间  <input type="text" class="create-meeting-date" id="datetimepicker1" />
                 <span style="margin-left:40px;"></span>
-                计划结束时间  <input type="text" class="create-meeting-date" />
+                计划结束时间  <input type="text" class="create-meeting-date" id="datetimepicker2" />
             </li>
         </ul>
         <ul class="create-meeting-ul">
@@ -55,10 +58,18 @@
                 <input type="text" class="create-meeting-address" />
             </li>
             <li class="create-meeting-li">
-                主持人 <input type="text" class="create-meeting-com" />
-                <span style="margin-left:40px;"></span>
-                文书  <input type="text" class="create-meeting-com" />
-            </li>
+                主持人
+                <select class="create-meeting-com">
+                    <option>张三</option>
+                    <option>李四</option>
+                </select>
+                    <span style="margin-left:40px;"></span>
+                    文书
+                <select class="create-meeting-com">
+                    <option>文书一</option>
+                    <option>文书二</option>
+                </select>
+</li>
         </ul>
         <ul class="create-meeting-ul">
             <li class="create-meeting-li">
@@ -84,19 +95,27 @@
             </ul>
         </div>
 
+
         <div class="create-div-content">
             <ul class="layou-div-ul">
                 <li class="layou-ul-li1">
                     <input class="create-li-text1" value="1" />
+
                 </li>
                 <li class="create-ul-li2">
-                    <input class="create-li-text2" value="关于如何提高办案率的方法讨论" />            
+                    <input class="create-li-text2" value="关于如何提高办案率的方法讨论" />
                 </li>
                 <li class="layou-ul-li3">
-                    <input class="create-li-text3" value="机关处" />
+                    <select class="create-li-text3">
+                        <option>机关处</option>
+                        <option>政务处</option>
+                    </select>
                 </li>
                 <li class="layou-ul-li4">
-                    <input class="create-li-text3" value="潘大魏" />
+                    <select class="create-li-text3">
+                        <option>潘大魏</option>
+                        <option>潘大海</option>
+                    </select>
                 </li>
                 <li class="create-ul-li5">
                     <div class="create-button1">文本材料</div>
@@ -136,6 +155,7 @@
             </div>
         </div>
 
+
         <div class="create-div-content">
             <ul class="layou-div-ul">
                 <li class="layou-ul-li1">
@@ -145,10 +165,16 @@
                     <input class="create-li-text2" value="关于如何提高办案率的方法讨论" />
                 </li>
                 <li class="layou-ul-li3">
-                    <input class="create-li-text3" value="机关处" />
+                    <select class="create-li-text3">
+                        <option>机关处</option>
+                        <option>政务处</option>
+                    </select>
                 </li>
                 <li class="layou-ul-li4">
-                    <input class="create-li-text3" value="潘大魏" />
+                    <select class="create-li-text3">
+                        <option>潘大魏</option>
+                        <option>潘大海</option>
+                    </select>
                 </li>
                 <li class="create-ul-li5">
                     <div class="create-button1">文本材料</div>
@@ -189,5 +215,30 @@
             </div>
         </div>
     </div>
+
+    <script src="~/Scripts/datetimepicker/jquery.js"></script>
+    <script src="~/Scripts/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var myDate = new Date();
+
+            $('#datetimepicker1').datetimepicker({
+                dayOfWeekStart: 1,
+                lang: 'en',
+                disabledDates: ['1986/01/08', '1986/01/09', '1986/01/10'],
+                startDate: '2016/01/05'
+            });
+
+            $('#datetimepicker2').datetimepicker({
+                dayOfWeekStart: 1,
+                lang: 'en',
+                disabledDates: ['1986/01/08', '1986/01/09', '1986/01/10'],
+                startDate: '2016/01/05'
+            });
+
+            $('#datetimepicker1').datetimepicker({ value: myDate.toLocaleTimeString(), step: 10 });
+            $('#datetimepicker2').datetimepicker({ value: myDate.toLocaleTimeString(), step: 10 });
+        })
+    </script>
 </body>
 </html>

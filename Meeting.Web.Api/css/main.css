@@ -355,7 +355,7 @@ input {
 
 .layou-div-title {
     margin: 0px 10px 0 10px;
-    height: 25px;
+    height: 30px;
 }
 
 .layou-div-ul {
@@ -536,6 +536,8 @@ input {
     width: 140px;
     height: 30px;
     border: 1px solid #8396ef;
+     background: url(/Images/icon.png) no-repeat;
+     background-position:120px 8px;
 }
 
 .create-meeting-address {
@@ -547,7 +549,6 @@ input {
 .create-meeting-com {
     width: 120px;
     height: 30px;
-    border: 1px solid #8396ef;
 }
 
 .create-meeting-people {
@@ -575,7 +576,7 @@ input {
     width: 400px;
     text-align: center;
     float: left;
-    line-height: 25px;
+    line-height: 35px;
 }
 
 .create-ul-li5 {
@@ -584,7 +585,7 @@ input {
     width: 250px;
     text-align: center;
     float: left;
-    line-height: 25px;
+    line-height: 35px;
 }
 
 .create-button1 {
@@ -661,7 +662,6 @@ input {
 .create-li-text3 {
     width: 100px;
     height: 20px;
-    border: 1px solid #8396ef;
     margin-top: 4px;
 }
 

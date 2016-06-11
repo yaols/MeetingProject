@@ -262,7 +262,12 @@
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\HelpPageApiModel.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\DisplayTemplates\ApiGroup.cshtml" />
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
+    <Content Include="Images\icon.png" />
     <Content Include="log4net_config.xml" />
+    <Content Include="Scripts\datetimepicker\jquery.datetimepicker.css" />
+    <Content Include="Scripts\datetimepicker\jquery.datetimepicker.full.min.js" />
+    <Content Include="Scripts\datetimepicker\jquery.datetimepicker.min.js" />
+    <Content Include="Scripts\datetimepicker\jquery.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\pager.js" />
     <Content Include="界面链接.txt" />
