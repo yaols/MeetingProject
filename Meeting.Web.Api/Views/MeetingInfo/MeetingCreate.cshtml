@@ -59,9 +59,9 @@
             </li>
             <li class="create-meeting-li">
                 主持人
-                <select class="create-meeting-com">
-                    <option>张三</option>
-                    <option>李四</option>
+                <select class="create-meeting-com" id="hoseUser">
+                    <option id="10010">张三</option>
+                    <option id="10011">李四</option>
                 </select>
                     <span style="margin-left:40px;"></span>
                     文书
@@ -238,6 +238,11 @@
 
             $('#datetimepicker1').datetimepicker({ value: myDate.toLocaleTimeString(), step: 10 });
             $('#datetimepicker2').datetimepicker({ value: myDate.toLocaleTimeString(), step: 10 });
+
+            /*获取主持人*/
+            $("#hoseUser").change(function () {
+                alert($(this).find("option:selected").attr("id"));
+            })
         })
     </script>
 </body>
