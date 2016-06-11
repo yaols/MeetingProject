@@ -16,5 +16,11 @@ namespace Meeting.BLL
         {
             return MeetingDao.GetMeetingList(meetingType, pageindex, pagesize);
         }
+
+
+        public mMeeting GetMeetingModel(int meetingId)
+        {
+            return MeetingDao.GetMeetingModel(meetingId);
+        }
     }
 }

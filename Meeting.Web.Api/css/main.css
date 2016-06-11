@@ -168,6 +168,7 @@ input {
     line-height: 20px;
     float: left;
     margin: 0 5px 0 5px;
+     cursor: pointer;
 }
 
 .home-bottom-button {
@@ -259,7 +260,13 @@ input {
     line-height: 28px;
     font-weight: bold;
     color: #ffffff;
+    cursor: pointer;
 }
+
+    .home-content-button:hover {
+           background-color: #0088cc;
+    }
+
 
 .home-main-contentstyle {
     width: 1024px;
@@ -363,7 +370,7 @@ input {
     width: 40px;
     text-align: center;
     float: left;
-    line-height: 25px;
+    line-height: 35px;
 }
 
 .layou-ul-li2 {
@@ -372,7 +379,7 @@ input {
     width: 300px;
     text-align: center;
     float: left;
-    line-height: 25px;
+    line-height: 35px;
 }
 
 .layou-ul-li3 {
@@ -381,7 +388,7 @@ input {
     width: 120px;
     text-align: center;
     float: left;
-    line-height: 25px;
+    line-height: 35px;
 }
 
 .layou-ul-li4 {
@@ -390,7 +397,7 @@ input {
     width: 100px;
     text-align: center;
     float: left;
-    line-height: 25px;
+    line-height: 35px;
 }
 
 .layou-ul-li5 {
@@ -399,13 +406,13 @@ input {
     width: 440px;
     text-align: center;
     float: left;
-    line-height: 25px;
+    line-height: 35px;
 }
 
 .layou-div-content {
     border: 1px solid #8396ef;
     margin: 5px 10px 0 10px;
-    height: 25px;
+    height: 35px;
 }
 
 
@@ -419,7 +426,8 @@ input {
     line-height: 20px;
     float: left;
     margin-left: 50px;
-    margin-top: 2px;
+    margin-top: 4px;
+     cursor: pointer;
 }
 
 .table-button2 {
@@ -433,7 +441,8 @@ input {
     float: left;
     margin-left: 50px;
     margin-right: 50px;
-    margin-top: 2px;
+    margin-top: 4px;
+     cursor: pointer;
 }
 
 
@@ -446,7 +455,8 @@ input {
     color: #8396ef;
     line-height: 20px;
     float: left;
-    margin-top: 2px;
+    margin-top: 4px;
+     cursor: pointer;
 }
 
 /*材料详情*/

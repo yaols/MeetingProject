@@ -11,5 +11,8 @@ namespace Meeting.Entity.Pager
         public int PageSize { get; set; }
 
         public int PageCount { get; set; }
+
+
+        public int PageType { get; set; }
     }
 }

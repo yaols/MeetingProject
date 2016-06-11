@@ -1,56 +1,22 @@
-﻿@{
+﻿@using Meeting.Entity
+@model mMeeting
+@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@*<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>会议详情</title>
-    <style type="text/css">
-    </style>
-    <link href="~/css/main.css" rel="stylesheet" />
-</head>
-<body>
-    <div class="home">
-
-        <!--layout-top-->
-        <div class="layout-top">
-
-            <ul class="layout-top-ul">
-                <li class="home-li-font">会议详情</li>
-                <li class="home-ul-li">
-                    <div class="home-li-button">返回首页</div>
-                </li>
-            </ul>
-
-            <ul class="home-top-ulbtn">
-                <li class="ulbtn-btn">
-                    <div class="home-li-button">返回</div>
-                </li>
-            </ul>
-
-        </div>
-        <!--/layout-top-->
-    </div>
-</body>
-</html>*@
-
-
-
+@Html.Partial("~/Views/Shared/_Style.cshtml")
 <div class="layou-info-top">
     <font class="layou-info-font">会议信息</font>
 </div>
 
 <ul class="layou-info-ul">
-    <li class="layou-info-li">会议名称: 检委会2013年 第15次 总第10次会议</li>
-    <li class="layou-info-li">计划开始时间: 2016-05-05 09:00   <span style="margin-left:40px"></span>   计划结束时间: 2016-05-05  11:00</li>
-    <li class="layou-info-li">会议地点:主楼第一会议室</li>
+    <li class="layou-info-li">会议名称: @Model.MeetingName</li>
+    <li class="layou-info-li">计划开始时间: @Model.StartDate   <span style="margin-left:40px"></span>   计划结束时间: @Model.EendDate</li>
+    <li class="layou-info-li">会议地点:@Model.MeetingAddress</li>
     <li class="layou-info-li">
-        参会委员:张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲
-        张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲
-        张小菲 张小菲 张小菲 张小菲 张小菲
+        参会委员:@Model.PeopleName
     </li>
-    <li class="layou-info-li">主持人:李琳</li>
-    <li class="layou-info-li">秘书:王小宁</li>
+    <li class="layou-info-li">主持人:@Model.MeetingHost</li>
+    <li class="layou-info-li">秘书:@Model.SecretaryName</li>
 </ul>
 
 <div class="layou-info-top">
@@ -67,44 +33,50 @@
     </ul>
 </div>
 
-<div class="layou-div-content">
-    <ul class="layou-div-ul">
-        <li class="layou-ul-li1">1</li>
-        <li class="layou-ul-li2">关于如何提高办案率的方法讨论</li>
-        <li class="layou-ul-li3">机关处</li>
-        <li class="layou-ul-li4">潘大魏</li>
-        <li class="layou-ul-li5">
-            <div class="table-button1">查看材料</div>
-            <div class="table-button2">会议记录</div>
-            <div class="table-button3">检委会决定</div>
-        </li>
-    </ul>
-</div>
+@if (Model.IssueList != null && Model.IssueList.Count > 0)
+{
+    for (int i = 0; i < Model.IssueList.Count; i++)
+    {
+        string materialinfo = "JumpButton('" + "/MeetingInfo/MaterialInfo?MeetingId=" + Model.MeetingId + "','" + 0 + "')";
+        string meetingRecord = "JumpButton('" + "/MeetingInfo/MeetingRecord?MeetingId=" + Model.MeetingId + "','"+1+"')";
+        string meetingsign = "JumpButton('" + "/MeetingInfo/MeetingSign?MeetingId=" + Model.MeetingId + "','" + 2 + "')";
 
-<div class="layou-div-content">
-    <ul class="layou-div-ul">
-        <li class="layou-ul-li1">1</li>
-        <li class="layou-ul-li2">关于如何提高办案率的方法讨论</li>
-        <li class="layou-ul-li3">机关处</li>
-        <li class="layou-ul-li4">潘大魏</li>
-        <li class="layou-ul-li5">
-            <div class="table-button1">查看材料</div>
-            <div class="table-button2">会议记录</div>
-            <div class="table-button3">检委会决定</div>
-        </li>
-    </ul>
-</div>
+        <div class="layou-div-content">
+            <ul class="layou-div-ul">
+                <li class="layou-ul-li1">@(i + 1)</li>
+                <li class="layou-ul-li2">@Model.IssueList[i].IssueName</li>
+                <li class="layou-ul-li3">@Model.IssueList[i].DepartName</li>
+                <li class="layou-ul-li4">@Model.IssueList[i].RepostUser</li>
+                <li class="layou-ul-li5">
+                    <div class="table-button1" onclick="@materialinfo">查看材料</div>
+                    <div class="table-button2" onclick="@meetingRecord">会议记录</div>
+                    <div class="table-button3" onclick="@meetingsign">检委会决定</div>
+                </li>
+            </ul>
+        </div>
+    }
+}
+else
+{
+    <div class="layou-div-content">
+        暂无数据
+    </div>
+}
 
-<div class="layou-div-content">
-    <ul class="layou-div-ul">
-        <li class="layou-ul-li1">1</li>
-        <li class="layou-ul-li2">关于如何提高办案率的方法讨论</li>
-        <li class="layou-ul-li3">机关处</li>
-        <li class="layou-ul-li4">潘大魏</li>
-        <li class="layou-ul-li5">
-            <div class="table-button1">查看材料</div>
-            <div class="table-button2">会议记录</div>
-            <div class="table-button3">检委会决定</div>
-        </li>
-    </ul>
-</div>
+<script type="text/javascript">
+    function JumpButton(url, role) {
+        if (role == 0) {
+            location.href = url;
+        } else {
+            $.get("/MeetingInfo/GetUserJurisdiction?roleId="+role, function (data) {
+                if (data.Result == 0) {
+                    location.href = url;
+                } else if (data.Result == 1) {
+                    location.href = "/Login/Index";
+                }
+                alert(data.Msg);
+            })
+        }
+
+    }
+</script>

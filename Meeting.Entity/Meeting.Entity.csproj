@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="mMeeting.cs" />
+    <Compile Include="mMeetingIssue.cs" />
     <Compile Include="mUser.cs" />
     <Compile Include="Pager\PageOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

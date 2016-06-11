@@ -19,7 +19,6 @@ namespace Meeting.Web.Api.Controllers
         IMeetingInterface imeeting = new MeetingService();
         ILog log = LogHelper.GetLog("HomeController");
 
-
         public ActionResult Index(MeetingSearch search)
         {
             var dataSet = imeeting.GetMeetingList(search.MeetingType, search.PageIndex??1, PageSize);
@@ -54,7 +53,6 @@ namespace Meeting.Web.Api.Controllers
             return View(modeList);
         }
 
-
         public int GetDataSetCount(DataTable dataTable)
         {
             if (dataTable != null && dataTable.Rows.Count > 0)
@@ -82,5 +80,6 @@ namespace Meeting.Web.Api.Controllers
             }
             return modeList;
         }
+        
     }
 }

@@ -1,6 +1,7 @@
 ﻿@model Meeting.Web.Api.Models.TitleViewModel
 @{
-
+    string returnButton = "ReturnButton('"+Model.RerurnButton+"')";
+    string returnHomeButton = "ReturnButton('" + Model.RerurnHomeButton + "')";
 }
 <!--layout-top-->
 <div class="layout-top">
@@ -10,16 +11,22 @@
         @if (Model.Type == 0)
         {
             <li class="home-ul-li">
-                <div class="home-li-button">返回首页</div>
+                <div class="home-li-button" onclick="@returnHomeButton">返回首页</div>
             </li>
         }
     </ul>
 
     <ul class="home-top-ulbtn">
         <li class="ulbtn-btn">
-            <div class="home-li-button">返回</div>
+            <div class="home-li-button" onclick="@returnButton">返回</div>
         </li>
     </ul>
 
 </div>
 <!--/layout-top-->
+<script type="text/javascript">
+    /*返回和返回首页*/
+    function ReturnButton(url) {
+        location.href = url;
+    }
+</script>

@@ -12,6 +12,7 @@
         for (int i = 0; i < Model.Count; i++)
         {
             string typename = Model[i].MeetingType == 0 ? "(未开始)" : "(已开始)";
+            string join = "jumpMeeting("+Model[i].MeetingId+")";
             if (i == 0)
             {
                 <div class="home-main-content">
@@ -20,7 +21,7 @@
                         <li class="content-li-leftdate">计划开始时间: @Model[i].StartDate</li>
                         <li class="content-li-leftdate">计划结束时间: @Model[i].EendDate</li>
                         <li class="content-li-right">
-                            <div class="home-content-button">进 入</div>
+                            <div class="home-content-button" onclick="@join">进 入</div>
                         </li>
                     </ul>
                 </div>
@@ -33,7 +34,7 @@
                         <li class="content-li-leftdate">计划开始时间: @Model[i].StartDate</li>
                         <li class="content-li-leftdate">计划结束时间: @Model[i].EendDate</li>
                         <li class="content-li-right">
-                            <div class="home-content-button">进 入</div>
+                            <div class="home-content-button" onclick="@join">进 入</div>
                         </li>
                     </ul>
                 </div>
@@ -49,3 +50,10 @@
     }
 </div>
 @Html.Partial("~/Views/Shared/_Pager.cshtml", pageOption)
+
+<script type="text/javascript">
+    /*进入会议*/
+    function jumpMeeting(meetingId) {
+        location.href = "/MeetingInfo/Index?MeetingId=" + meetingId;
+    }
+</script>

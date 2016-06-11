@@ -28,5 +28,13 @@ namespace Meeting.Entity
         public DateTime MeetingCreateDate { get; set; }
 
         public int MeetingType { get; set; }
+
+        public int MeetingSecretary { get; set; }
+
+        public string SecretaryName { get; set; }
+
+        public List<mMeetingIssue> IssueList {get;set; }
+
+        public string PeopleName { get; set; }
     }
 }

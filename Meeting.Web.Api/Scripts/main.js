@@ -21,18 +21,14 @@ function Login() {
             UserPass: userpass.val()
         },
         function (data) {
-            alert(data.Msg);
             if (data.Result == 0)
-                location.href = "/home/index?pageindex="+1;
+                location.href = "/Home/Index?pageindex="+1;
         });
 }
 
 
 /*开始会议*/
 function startMeeting() {
-    $("#startMeeting").css("background-color", "#ffcc66");
-    $("#endMeeting").css("background-color", "#ffffff");
-    $("#createMeeting").css("background-color", "#ffffff");
     clickMeeting(1,0);
 }
 
@@ -97,5 +93,12 @@ function clickMeeting(pageIndex,meetingType) {
     $.post("/Home/Index", { PageIndex: "" + pageIndex + "", pageType: 1, MeetingType: meetingType }, function (data) {
         $('#home-main').empty();
         $('#home-main').append(data);
+    });
+}
+
+
+function JumpMeeting(meetingId, url) {
+    $.get(url, { MeetingId: "" + meetingId + "" }, function () {
+        
     });
 }

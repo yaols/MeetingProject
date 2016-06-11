@@ -7,12 +7,14 @@ namespace Meeting.Web.Api.Models
 {
     public class TitleViewModel
     {
-
-
         public string Title { get; set; }
 
         public string TopTitle { get; set; }
 
         public int Type { get; set; }
+
+        public string RerurnButton { get; set; }
+
+        public string RerurnHomeButton { get; set; }
     }
 }

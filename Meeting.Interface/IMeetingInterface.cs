@@ -10,5 +10,7 @@ namespace Meeting.Interface
     public interface IMeetingInterface
     {
         DataSet GetMeetingList(int meetingType, int pageindex, int pagesize);
+
+        mMeeting GetMeetingModel(int meetingId);
     }
 }

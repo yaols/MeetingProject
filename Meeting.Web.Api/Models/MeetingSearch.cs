@@ -11,6 +11,7 @@ namespace Meeting.Web.Api.Models
 
         public int MeetingType { get; set; }
 
+        public int MeetingId { get; set; }
 
         public int PageType { get; set; }
     }
