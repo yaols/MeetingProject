@@ -10,6 +10,32 @@
     </style>
     <link href="~/css/main.css" rel="stylesheet" />
     <link href="~/Scripts/datetimepicker/jquery.datetimepicker.css" rel="stylesheet" />
+
+    <style type="text/css">
+        .list {
+            width: 200px;
+            height: 200px;
+            overflow: auto;
+            position: absolute;
+            border: 1px solid #617775;
+            display: none;
+            background: none repeat scroll 0 0 #F0F6E4;
+            margin-left:70px;
+            /*float: left;*/
+            /*z-index: 1000000;*/
+        }
+
+            .list ul li {
+                padding-left: 10px;
+                padding-top: 2px;
+                padding-bottom: 2px;
+                border-top: 1px solid black;
+            }
+
+            .list ul {
+                list-style: none outside none;
+            }
+    </style>
 </head>
 <body>
 
@@ -63,18 +89,47 @@
                     <option id="10010">张三</option>
                     <option id="10011">李四</option>
                 </select>
-                    <span style="margin-left:40px;"></span>
-                    文书
+                <span style="margin-left:40px;"></span>
+                文书
                 <select class="create-meeting-com">
                     <option>文书一</option>
                     <option>文书二</option>
                 </select>
-</li>
+            </li>
         </ul>
         <ul class="create-meeting-ul">
             <li class="create-meeting-li">
                 参会委员:
-                <input type="text" class="create-meeting-people" />
+                <input type="text" class="create-meeting-people" id="people" />
+                <div class="list">
+                <ul style="list-style-type:none;margin:0;">
+                    <li style="margin:0;padding-left: 10px;padding-top: 2px;padding-bottom: 2px;border-top: 1px solid black;">
+                    <input type="checkbox" class="selectAll" value="">
+                    <span>全部</span>
+                    </li>
+                    <li><input type="checkbox" value="1" name="chk" data-value="南京">
+                    <span>南京</span>
+                    </li>
+                    <li><input type="checkbox" value="2" name="chk" data-value="上海">
+                    <span>上海</span>
+                    </li>
+                    <li><input type="checkbox" value="3" name="chk" data-value="扬州">
+                    <span>扬州</span>
+                    </li>
+                    <li><input type="checkbox" value="4" name="chk" data-value="苏州">
+                    <span>苏州</span>
+                    </li>
+                    <li><input type="checkbox" value="5" name="chk" data-value="无锡">
+                    <span>无锡</span>
+                    </li>
+                    <li><input type="checkbox" value="6" name="chk" data-value="常州">
+                    <span>常州</span>
+                    </li>
+                    <li><input type="checkbox" value="7" name="chk" data-value="盐城">
+                    <span>盐城</span>
+                    </li>
+                    </ul>
+                </div>
             </li>
         </ul>
 
@@ -155,65 +210,6 @@
             </div>
         </div>
 
-
-        <div class="create-div-content">
-            <ul class="layou-div-ul">
-                <li class="layou-ul-li1">
-                    <input class="create-li-text1" value="1" />
-                </li>
-                <li class="create-ul-li2">
-                    <input class="create-li-text2" value="关于如何提高办案率的方法讨论" />
-                </li>
-                <li class="layou-ul-li3">
-                    <select class="create-li-text3">
-                        <option>机关处</option>
-                        <option>政务处</option>
-                    </select>
-                </li>
-                <li class="layou-ul-li4">
-                    <select class="create-li-text3">
-                        <option>潘大魏</option>
-                        <option>潘大海</option>
-                    </select>
-                </li>
-                <li class="create-ul-li5">
-                    <div class="create-button1">文本材料</div>
-                    <div class="create-button2">多媒体材料</div>
-                </li>
-            </ul>
-
-            <div class="create-div">
-                <ul class="layou-div-ul">
-                    <li class="create-ul-li">
-                        <div class="create-li-img">
-                            <img src="~/Images/word-icon.png" />
-                        </div>
-                        材料: 议题详情b2016
-                    </li>
-
-                    <li class="create-ul-li">
-                        <div class="create-li-img">
-                            <img src="~/Images/jpg-icon.gif" />
-                        </div>
-                        材料: b20160305b0098
-                    </li>
-
-                    <li class="create-ul-li">
-                        <div class="create-li-img">
-                            <img src="~/Images/word-icon.png" />
-                        </div>
-                        材料: 议题详情b2016
-                    </li>
-
-                    <li class="create-ul-li">
-                        <div class="create-li-img">
-                            <img src="~/Images/jpg-icon.gif" />
-                        </div>
-                        材料: b20160305b0098
-                    </li>
-                </ul>
-            </div>
-        </div>
     </div>
 
     <script src="~/Scripts/datetimepicker/jquery.js"></script>
@@ -243,7 +239,70 @@
             $("#hoseUser").change(function () {
                 alert($(this).find("option:selected").attr("id"));
             })
+
+            //控制弹出页面的显示与隐藏
+            $("#people").click(function (e) {
+                $(".list").toggle();
+                e.stopPropagation();
+            });
+
+            //全部选择或全不选
+            $(".selectAll").click(function () {
+                if ($(this).is(":checked")) {
+                    $("li input").prop("checked", "checked");
+                    GetCheckBoxVal();
+                    $("#people").attr("value", '');//清空内容 
+                    $("#people").attr("value", vakArr);//填充内容 
+                }
+                else {
+                    $("li input").removeAttr("checked");
+                    $("#people").attr("value", '');//清空内容 
+                }
+            });
+
+            //控制单选
+            $("input[name='chk']").click(function () {
+                if (GetCheckboxStatu()) {
+                    $(".selectAll").prop("checked", "checked");
+                }
+                else
+                    $(".selectAll").removeAttr("checked");
+
+                GetCheckBoxVal();
+                $("#people").attr("value", '');//清空内容 
+                $("#people").attr("value", vakArr);//填充内容 
+            })
+
+          
         })
+
+        function GetCheckboxStatu() {
+            var flag = true;
+            $("input[name='chk']").each(function (i) {
+                if ($(this).prop("checked") == false) {
+                    flag = false;
+                } 
+            });
+            return flag;
+        }
+
+        //先清空数组数据 
+        var valArrId = "";
+        var vakArr = "";
+
+        //获取选中chkItem行的val
+        function GetCheckBoxVal() {
+            //先清空数组数据 
+            valArrId = "";
+            vakArr = "";
+
+            $("input[name='chk']").each(function () {
+                if ($(this).prop("checked") == true) {
+                    valArrId = valArrId + $(this).val() + ",";
+                    vakArr = vakArr + $(this).attr("data-value") + ",";
+                    }
+                })       
+        }
     </script>
 </body>
 </html>
