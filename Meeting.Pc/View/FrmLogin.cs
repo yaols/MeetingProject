@@ -1,4 +1,9 @@
-﻿using Meeting.Pc.Properties;
+﻿using log4net;
+using Meeting.BLL;
+using Meeting.Common;
+using Meeting.Entity;
+using Meeting.Interface;
+using Meeting.Pc.Properties;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,7 +13,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Meeting.Pc
+namespace Meeting.Pc.View
 {
     public partial class FrmLogin : Form
     {
@@ -16,6 +21,9 @@ namespace Meeting.Pc
         {
             InitializeComponent();
         }
+
+        ILoginInterface ilogin = new LoginService();
+        ILog log = LogHelper.GetLog("LoginController");
 
         private void pbxClose_MouseEnter(object sender, EventArgs e)
         {
@@ -85,6 +93,70 @@ namespace Meeting.Pc
             Show();
             notifyIcon1.Visible = false;
             Text = "检委会会议系统";
+        }
+
+        private void pbxLogin_Click(object sender, EventArgs e)
+        {
+            //登陆
+            if (!IsNullJudge())
+            {
+                return;
+            }
+
+            string userName = wtbUsername.Text.Trim();
+            string userPass = wtbPassword.Text.Trim();
+
+            mUser umodel  = ilogin.LoginUserInfo(userName, userPass);
+            if (umodel.PassWord == userPass && umodel.UserName == userName)
+            {
+                FrmMain frmmain = new FrmMain();
+                frmmain.Show();
+                Hide();
+            }
+            else 
+            {
+                lblMessage.Text = "用户名或者密码错误!";
+            }
+        }
+
+        private void pbxLogin_MouseEnter(object sender, EventArgs e)
+        {
+            //登陆按钮进入可见部分
+
+        }
+
+        private void pbxLogin_MouseLeave(object sender, EventArgs e)
+        {
+            //登陆按钮离开可见部分
+
+        }
+
+
+        private bool IsNullJudge()
+        {
+            //非空验证
+            if (string.IsNullOrEmpty(wtbUsername.Text.Trim()))
+            {
+                wtbUsername.Focus();
+                lblMessage.Text = "请输入用户名";
+                SetMessageShow(true);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(wtbPassword.Text.Trim()))
+            {
+                wtbPassword.Focus();
+                lblMessage.Text = "请输入密码";
+                SetMessageShow(true);
+                return false;
+            }
+            return true;
+        }
+
+        private void SetMessageShow(bool isShow)
+        {
+            this.pbxPass.Visible = isShow;
+            this.lblMessage.Visible = isShow;
         }
     }
 }

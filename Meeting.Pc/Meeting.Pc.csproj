@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="log4net">
+      <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -47,15 +50,21 @@
     <Compile Include="Control\WatermarkTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="FrmLogin.cs">
+    <Compile Include="View\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmLogin.Designer.cs">
+    <Compile Include="View\FrmLogin.Designer.cs">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmLogin.resx">
+    <Compile Include="View\FrmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmMain.Designer.cs">
+      <DependentUpon>FrmMain.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -68,6 +77,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -79,13 +90,33 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="log4net_config.xml" />
     <Content Include="Resources\close_select.png" />
+    <None Include="Resources\error.png" />
     <Content Include="Resources\fullscreen.png" />
     <Content Include="Resources\fullscreen_press.png" />
     <None Include="Resources\minimality_press.png" />
     <None Include="Resources\minimality.png" />
     <None Include="Resources\close.png" />
     <Content Include="Resources\head-background.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Meeting.BLL\Meeting.BLL.csproj">
+      <Project>{e1e8a2ba-252c-4ec4-b478-01466b74fb18}</Project>
+      <Name>Meeting.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Meeting.Common\Meeting.Common.csproj">
+      <Project>{4bb968dc-e12a-42c6-bfc1-22f88c02b6e1}</Project>
+      <Name>Meeting.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Meeting.Entity\Meeting.Entity.csproj">
+      <Project>{8b7b0953-ee7a-4469-a58d-7983714f3032}</Project>
+      <Name>Meeting.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Meeting.Interface\Meeting.Interface.csproj">
+      <Project>{e03e48a4-f737-490f-b8f3-7388847b1724}</Project>
+      <Name>Meeting.Interface</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
