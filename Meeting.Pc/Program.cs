@@ -21,7 +21,7 @@ namespace Meeting.Pc
             string path = AppDomain.CurrentDomain.BaseDirectory + @"\log4net_config.xml";
             XmlConfigurator.ConfigureAndWatch(new FileInfo(path));
             log4net.Config.XmlConfigurator.Configure();
-            Application.Run(new FrmLogin());
+            Application.Run(new FrmMain());
         }
     }
 }
