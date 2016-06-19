@@ -35,18 +35,18 @@
             this.label3 = new System.Windows.Forms.Label();
             this.wtbPassword = new Meeting.Pc.WatermarkTextBox();
             this.wtbUsername = new Meeting.Pc.WatermarkTextBox();
+            this.lblMessage = new System.Windows.Forms.Label();
+            this.pbxLogin = new System.Windows.Forms.PictureBox();
             this.pbxPass = new System.Windows.Forms.PictureBox();
             this.plHead = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pbxMin = new System.Windows.Forms.PictureBox();
             this.pbxClose = new System.Windows.Forms.PictureBox();
-            this.lblMessage = new System.Windows.Forms.Label();
-            this.pbxLogin = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass)).BeginInit();
             this.plHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClose)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLogin)).BeginInit();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -102,6 +102,30 @@
             this.wtbUsername.TabIndex = 9;
             this.wtbUsername.WatermarkColor = System.Drawing.Color.DarkGray;
             this.wtbUsername.WatermarkTitle = " 请输入用户名";
+            // 
+            // lblMessage
+            // 
+            this.lblMessage.AutoSize = true;
+            this.lblMessage.ForeColor = System.Drawing.Color.Red;
+            this.lblMessage.Location = new System.Drawing.Point(222, 253);
+            this.lblMessage.Name = "lblMessage";
+            this.lblMessage.Size = new System.Drawing.Size(77, 12);
+            this.lblMessage.TabIndex = 12;
+            this.lblMessage.Text = "请输入用户名";
+            // 
+            // pbxLogin
+            // 
+            this.pbxLogin.BackColor = System.Drawing.Color.Transparent;
+            this.pbxLogin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pbxLogin.Image = global::Meeting.Pc.Properties.Resources.Login;
+            this.pbxLogin.Location = new System.Drawing.Point(202, 285);
+            this.pbxLogin.Name = "pbxLogin";
+            this.pbxLogin.Size = new System.Drawing.Size(219, 37);
+            this.pbxLogin.TabIndex = 13;
+            this.pbxLogin.TabStop = false;
+            this.pbxLogin.Click += new System.EventHandler(this.pbxLogin_Click);
+            this.pbxLogin.MouseEnter += new System.EventHandler(this.pbxLogin_MouseEnter);
+            this.pbxLogin.MouseLeave += new System.EventHandler(this.pbxLogin_MouseLeave);
             // 
             // pbxPass
             // 
@@ -172,29 +196,6 @@
             this.pbxClose.MouseEnter += new System.EventHandler(this.pbxClose_MouseEnter);
             this.pbxClose.MouseLeave += new System.EventHandler(this.pbxClose_MouseLeave);
             // 
-            // lblMessage
-            // 
-            this.lblMessage.AutoSize = true;
-            this.lblMessage.ForeColor = System.Drawing.Color.Red;
-            this.lblMessage.Location = new System.Drawing.Point(222, 253);
-            this.lblMessage.Name = "lblMessage";
-            this.lblMessage.Size = new System.Drawing.Size(77, 12);
-            this.lblMessage.TabIndex = 12;
-            this.lblMessage.Text = "请输入用户名";
-            // 
-            // pbxLogin
-            // 
-            this.pbxLogin.BackColor = System.Drawing.Color.DimGray;
-            this.pbxLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pbxLogin.Location = new System.Drawing.Point(202, 285);
-            this.pbxLogin.Name = "pbxLogin";
-            this.pbxLogin.Size = new System.Drawing.Size(219, 37);
-            this.pbxLogin.TabIndex = 13;
-            this.pbxLogin.TabStop = false;
-            this.pbxLogin.Click += new System.EventHandler(this.pbxLogin_Click);
-            this.pbxLogin.MouseEnter += new System.EventHandler(this.pbxLogin_MouseEnter);
-            this.pbxLogin.MouseLeave += new System.EventHandler(this.pbxLogin_MouseLeave);
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -216,12 +217,12 @@
             this.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmLogin_MouseDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmLogin_MouseMove);
             this.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmLogin_MouseUp);
+            ((System.ComponentModel.ISupportInitialize)(this.pbxLogin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass)).EndInit();
             this.plHead.ResumeLayout(false);
             this.plHead.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClose)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxLogin)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

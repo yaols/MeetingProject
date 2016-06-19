@@ -117,6 +117,7 @@
   <ItemGroup>
     <Content Include="log4net_config.xml" />
     <Content Include="Resources\close_select.png" />
+    <None Include="Resources\Login.png" />
     <None Include="Resources\error.png" />
     <Content Include="Resources\fullscreen.png" />
     <Content Include="Resources\fullscreen_press.png" />

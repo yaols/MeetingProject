@@ -20,16 +20,23 @@ namespace Meeting.Pc.View
     {
         IMeetingInterface imeeting = new MeetingService();
         ILog log = LogHelper.GetLog("FrmMain");
-        private int  _pageSize = Tool.ToInt(ConfigurationManager.AppSettings["pagesize"].ToString());
-      
+        private int _pageSize = Tool.ToInt(ConfigurationManager.AppSettings["pagesize"].ToString());
+        PageControl pager = new PageControl();
 
         public FrmMain()
         {
             InitializeComponent();
-            BingDataControl();
-            PageControl pager = new PageControl();
+
+            pelStartmeeting_Click(null,null);
             plPager.Controls.Add(pager);
             pager.Dock = DockStyle.Fill;
+            pager.PageEvent += new PageControl.PageEventHandler(pagingControl1_PageEvent);
+        }
+
+        private void pagingControl1_PageEvent(int pageIndex, int meetingtype) 
+        {
+            pager.PageSize = _pageSize;
+            GetMeetingList(pageIndex,meetingtype);
         }
 
         private void pelStartmeeting_MouseEnter(object sender, EventArgs e)
@@ -39,21 +46,21 @@ namespace Meeting.Pc.View
             label3.ForeColor = Color.Black;
         }
 
-        private void pelStartmeeting_MouseLeave(object sender, EventArgs e)
+        private void pelStartmeeting_MouseLeave()
         {
-            //已结束会议离开可见部分
+            //已安排会议离开可见部分
             pelStartmeeting.BackColor = Color.White;
             label3.ForeColor = Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
         }
 
         private void pelEndmeeting_MouseEnter(object sender, EventArgs e)
         {
-            //已安排的会议进入可见部分
+            //已结束的会议进入可见部分
             pelEndmeeting.BackColor = Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(204)))), ((int)(((byte)(102)))));
             label2.ForeColor = Color.Black;
         }
 
-        private void pelEndmeeting_MouseLeave(object sender, EventArgs e)
+        private void pelEndmeeting_MouseLeave()
         {
             //已结束会议离开可见部分
             pelEndmeeting.BackColor = Color.White;
@@ -67,7 +74,7 @@ namespace Meeting.Pc.View
             label4.ForeColor = Color.Black;
         }
 
-        private void pelCreatemeeting_MouseLeave(object sender, EventArgs e)
+        private void pelCreatemeeting_MouseLeave()
         {
             //创建会议系统离开部分
             pelCreatemeeting.BackColor = Color.White;
@@ -99,33 +106,35 @@ namespace Meeting.Pc.View
         }
         #endregion
 
-        private List<mMeeting> GetMeetingList(int pageIndex,int meetingType) 
+        private void GetMeetingList(int pageIndex, int meetingType)
         {
-            var dataSet = imeeting.GetMeetingList(meetingType,pageIndex,_pageSize);
-            List<mMeeting> modeList = null;
-
-            if (dataSet != null) 
+            //数据查询
+            var dataSet = imeeting.GetMeetingList(meetingType, pageIndex, _pageSize);
+            if (dataSet != null)
             {
- 
+                pager.PageIndex = pageIndex;
+                pager.PageCount = GetDataSetCount(dataSet.Tables[1]);
+                pager.PageSize = _pageSize;
+                pager.SetControlsPage();
+                GetDataSetList(dataSet.Tables[0]);
             }
-
-            return modeList;
         }
 
         private int GetDataSetCount(DataTable dataTable)
         {
+            //获取总条数
             if (dataTable != null && dataTable.Rows.Count > 0)
                 return Tool.ToInt(dataTable.Rows[0][0].ToString());
             return 0;
         }
 
-        private List<mMeeting> GetDataSetList(DataTable dataTable)
+        private void GetDataSetList(DataTable dataTable)
         {
-            List<mMeeting> modeList = new List<mMeeting>();
+            //获取数据集
             mMeeting model = null;
-
             if (dataTable != null && dataTable.Rows.Count > 0)
             {
+                int index = 0;
                 foreach (DataRow item in dataTable.Rows)
                 {
                     model = new mMeeting();
@@ -134,38 +143,90 @@ namespace Meeting.Pc.View
                     model.MeetingName = item["MeetingName"].ToString();
                     model.StartDate = Convert.ToDateTime(item["StartDate"]).ToString("yyyy-MM-dd HH:mm");
                     model.EendDate = Convert.ToDateTime(item["EendDate"]).ToString("yyyy-MM-dd HH:mm");
-                    modeList.Add(model);
+                    BingDataControl(model,index);
+                    index++;
                 }
             }
-            return modeList;
         }
 
-        private void BingDataControl() 
+        private void BingDataControl(mMeeting model,int index)
         {
-            for (int i = 0; i < 9; i++)
-            {
-                PanelEx pxMain = new PanelEx();
-                pxMain.Width = 898;
-                pxMain.Height = 55;
-                pxMain.BorderColor = Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-                pxMain.BackColor = Color.White;
-                pxMain.Location = new Point(0, i * 58);
-                plMain.Controls.Add(pxMain);
+            //画控件
+            PanelEx pxMain = new PanelEx();
+            pxMain.Width = 898;
+            pxMain.Height = 55;
+            pxMain.BorderColor = Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            pxMain.BackColor = Color.White;
+            pxMain.Location = new Point(0, index * 58);
+            plMain.Controls.Add(pxMain);
 
-                Label label = new Label();
-                label.Font = new System.Drawing.Font("宋体", 10F);
-                label.ForeColor = System.Drawing.Color.Black;
-                label.Location = new System.Drawing.Point(14, 18);
-                label.AutoSize = true;
-                label.Text = "1. 检委会2013年第五次总第十次会议(未开始)  计划开始时间:2016-05-05 09:00  计划结束时间:2016-05-05 11:00";
-                pxMain.Controls.Add(label);
+            Label label = new Label();
+            label.Font = new System.Drawing.Font("宋体", 10F);
+            label.ForeColor = System.Drawing.Color.Black;
+            label.Location = new System.Drawing.Point(14, 18);
+            label.AutoSize = true;
+            label.Text = (index+1)+". "+model.MeetingName+"  计划开始时间:"+model.StartDate+" 计划结束时间:"+model.EendDate;
+            pxMain.Controls.Add(label);
 
-                PanelEx pxBtn = new PanelEx();
-                pxBtn.BackColor = System.Drawing.Color.Gray;
-                pxBtn.Location = new System.Drawing.Point(811, 14);
-                pxBtn.Size = new System.Drawing.Size(75, 27);
-                pxMain.Controls.Add(pxBtn);
-            }
+            PanelEx pxBtn = new PanelEx();
+            pxBtn.BackColor = System.Drawing.Color.Gray;
+            pxBtn.Location = new System.Drawing.Point(811, 14);
+            pxBtn.Size = new System.Drawing.Size(75, 27);
+            pxMain.Controls.Add(pxBtn);
+
+        }
+
+        private void pelStartmeeting_Click(object sender, EventArgs e)
+        {
+            //会议开始单机事件
+            Startmeeting();
+            ClearControl();
+            GetMeetingList(1,0);
+        }
+
+
+        private void Startmeeting() 
+        {
+            //会议开始样式
+            pelStartmeeting_MouseEnter(null,null);
+            pelEndmeeting_MouseLeave();
+            pelCreatemeeting_MouseLeave();
+        }
+
+        private void Endmeeting() 
+        {
+            //会议结束
+            pelStartmeeting_MouseLeave();
+            pelEndmeeting_MouseEnter(null,null);
+            pelCreatemeeting_MouseLeave();
+        }
+
+        private void Createmeeting() 
+        {
+            //会议创建
+            pelStartmeeting_MouseLeave();
+            pelEndmeeting_MouseLeave();
+            pelCreatemeeting_MouseEnter(null,null);
+
+        }
+
+        private void pelEndmeeting_Click(object sender, EventArgs e)
+        {
+            //会议结束单机事件
+            Endmeeting();
+            ClearControl();
+        }
+
+        private void pelCreatemeeting_Click(object sender, EventArgs e)
+        {
+            //会议创建单机事件
+            Createmeeting();
+            ClearControl();
+        }
+
+        private void ClearControl() 
+        {
+            plMain.Controls.Clear();
         }
     }
 }

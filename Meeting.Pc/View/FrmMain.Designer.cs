@@ -100,8 +100,7 @@
             this.pelCreatemeeting.Name = "pelCreatemeeting";
             this.pelCreatemeeting.Size = new System.Drawing.Size(81, 29);
             this.pelCreatemeeting.TabIndex = 4;
-            this.pelCreatemeeting.MouseEnter += new System.EventHandler(this.pelCreatemeeting_MouseEnter);
-            this.pelCreatemeeting.MouseLeave += new System.EventHandler(this.pelCreatemeeting_MouseLeave);
+            this.pelCreatemeeting.Click += new System.EventHandler(this.pelCreatemeeting_Click);
             // 
             // label4
             // 
@@ -114,8 +113,7 @@
             this.label4.Size = new System.Drawing.Size(65, 17);
             this.label4.TabIndex = 1;
             this.label4.Text = "+创建会议";
-            this.label4.MouseEnter += new System.EventHandler(this.pelCreatemeeting_MouseEnter);
-            this.label4.MouseLeave += new System.EventHandler(this.pelCreatemeeting_MouseLeave);
+            this.label4.Click += new System.EventHandler(this.pelCreatemeeting_Click);
             // 
             // pelEndmeeting
             // 
@@ -127,8 +125,7 @@
             this.pelEndmeeting.Name = "pelEndmeeting";
             this.pelEndmeeting.Size = new System.Drawing.Size(81, 29);
             this.pelEndmeeting.TabIndex = 3;
-            this.pelEndmeeting.MouseEnter += new System.EventHandler(this.pelEndmeeting_MouseEnter);
-            this.pelEndmeeting.MouseLeave += new System.EventHandler(this.pelEndmeeting_MouseLeave);
+            this.pelEndmeeting.Click += new System.EventHandler(this.pelEndmeeting_Click);
             // 
             // label2
             // 
@@ -141,8 +138,7 @@
             this.label2.Size = new System.Drawing.Size(68, 17);
             this.label2.TabIndex = 1;
             this.label2.Text = "已结束会议";
-            this.label2.MouseEnter += new System.EventHandler(this.pelEndmeeting_MouseEnter);
-            this.label2.MouseLeave += new System.EventHandler(this.pelEndmeeting_MouseLeave);
+            this.label2.Click += new System.EventHandler(this.pelEndmeeting_Click);
             // 
             // pelStartmeeting
             // 
@@ -154,8 +150,7 @@
             this.pelStartmeeting.Name = "pelStartmeeting";
             this.pelStartmeeting.Size = new System.Drawing.Size(81, 29);
             this.pelStartmeeting.TabIndex = 2;
-            this.pelStartmeeting.MouseEnter += new System.EventHandler(this.pelStartmeeting_MouseEnter);
-            this.pelStartmeeting.MouseLeave += new System.EventHandler(this.pelStartmeeting_MouseLeave);
+            this.pelStartmeeting.Click += new System.EventHandler(this.pelStartmeeting_Click);
             // 
             // label3
             // 
@@ -167,8 +162,7 @@
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 1;
             this.label3.Text = "已安排会议";
-            this.label3.MouseEnter += new System.EventHandler(this.pelStartmeeting_MouseEnter);
-            this.label3.MouseLeave += new System.EventHandler(this.pelStartmeeting_MouseLeave);
+            this.label3.Click += new System.EventHandler(this.pelStartmeeting_Click);
             // 
             // FrmMain
             // 
