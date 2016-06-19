@@ -31,13 +31,15 @@
             this.plMain = new System.Windows.Forms.Panel();
             this.plPager = new System.Windows.Forms.Panel();
             this.plHead = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.peSignout = new Meeting.Pc.Control.PanelEx();
+            this.panelEx1 = new Meeting.Pc.Control.PanelEx();
             this.pelCreatemeeting = new Meeting.Pc.Control.PanelEx();
             this.label4 = new System.Windows.Forms.Label();
             this.pelEndmeeting = new Meeting.Pc.Control.PanelEx();
             this.label2 = new System.Windows.Forms.Label();
             this.pelStartmeeting = new Meeting.Pc.Control.PanelEx();
             this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.plHead.SuspendLayout();
             this.pelCreatemeeting.SuspendLayout();
             this.pelEndmeeting.SuspendLayout();
@@ -64,6 +66,8 @@
             // plHead
             // 
             this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head_background;
+            this.plHead.Controls.Add(this.peSignout);
+            this.plHead.Controls.Add(this.panelEx1);
             this.plHead.Controls.Add(this.pelCreatemeeting);
             this.plHead.Controls.Add(this.pelEndmeeting);
             this.plHead.Controls.Add(this.pelStartmeeting);
@@ -78,17 +82,28 @@
             this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
             this.plHead.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseUp);
             // 
-            // label1
+            // peSignout
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(180)))), ((int)(((byte)(241)))));
-            this.label1.Location = new System.Drawing.Point(12, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(164, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "检委会会议系统";
+            this.peSignout.BackColor = System.Drawing.Color.Transparent;
+            this.peSignout.BackgroundImage = global::Meeting.Pc.Properties.Resources.signout;
+            this.peSignout.BorderColor = System.Drawing.Color.Empty;
+            this.peSignout.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.peSignout.Location = new System.Drawing.Point(789, 13);
+            this.peSignout.Name = "peSignout";
+            this.peSignout.Size = new System.Drawing.Size(81, 24);
+            this.peSignout.TabIndex = 6;
+            this.peSignout.Click += new System.EventHandler(this.peSignout_Click);
+            // 
+            // panelEx1
+            // 
+            this.panelEx1.BackColor = System.Drawing.Color.Transparent;
+            this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.peopleInfo;
+            this.panelEx1.BorderColor = System.Drawing.Color.Empty;
+            this.panelEx1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelEx1.Location = new System.Drawing.Point(690, 13);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(81, 24);
+            this.panelEx1.TabIndex = 5;
             // 
             // pelCreatemeeting
             // 
@@ -164,6 +179,18 @@
             this.label3.Text = "已安排会议";
             this.label3.Click += new System.EventHandler(this.pelStartmeeting_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(180)))), ((int)(((byte)(241)))));
+            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(164, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "检委会会议系统";
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -201,5 +228,7 @@
         private Control.PanelEx pelCreatemeeting;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel plPager;
+        private Control.PanelEx panelEx1;
+        private Control.PanelEx peSignout;
     }
 }

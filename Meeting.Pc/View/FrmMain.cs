@@ -13,6 +13,7 @@ using System.Text;
 using System.Configuration;
 using System.Windows.Forms;
 using Meeting.Pc.Control;
+using Meeting.Pc.Properties;
 
 namespace Meeting.Pc.View
 {
@@ -108,6 +109,7 @@ namespace Meeting.Pc.View
 
         private void GetMeetingList(int pageIndex, int meetingType)
         {
+            ClearControl();
             //数据查询
             var dataSet = imeeting.GetMeetingList(meetingType, pageIndex, _pageSize);
             if (dataSet != null)
@@ -169,18 +171,26 @@ namespace Meeting.Pc.View
             pxMain.Controls.Add(label);
 
             PanelEx pxBtn = new PanelEx();
-            pxBtn.BackColor = System.Drawing.Color.Gray;
+            pxBtn.BackgroundImage = Resources.join;
+            pxBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            pxBtn.Click += new System.EventHandler(this.pbBtn_Click);
             pxBtn.Location = new System.Drawing.Point(811, 14);
-            pxBtn.Size = new System.Drawing.Size(75, 27);
+            pxBtn.Size = new System.Drawing.Size(65, 25);
+            pxBtn.Tag = model.MeetingId;
             pxMain.Controls.Add(pxBtn);
 
+        }
+
+        private void pbBtn_Click(object sender, EventArgs e)
+        {
+            PanelEx pxBtn = (PanelEx)sender;
+            MessageBox.Show(pxBtn.Tag.ToString());
         }
 
         private void pelStartmeeting_Click(object sender, EventArgs e)
         {
             //会议开始单机事件
             Startmeeting();
-            ClearControl();
             GetMeetingList(1,0);
         }
 
@@ -214,7 +224,7 @@ namespace Meeting.Pc.View
         {
             //会议结束单机事件
             Endmeeting();
-            ClearControl();
+            GetMeetingList(1, 1);
         }
 
         private void pelCreatemeeting_Click(object sender, EventArgs e)
@@ -227,6 +237,16 @@ namespace Meeting.Pc.View
         private void ClearControl() 
         {
             plMain.Controls.Clear();
+        }
+
+
+        private void peSignout_Click(object sender, EventArgs e)
+        {
+            //关闭单击事件
+            if (MessageBox.Show("确实要退出系统吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk) == DialogResult.OK)
+            {
+                Application.Exit();
+            }
         }
     }
 }
