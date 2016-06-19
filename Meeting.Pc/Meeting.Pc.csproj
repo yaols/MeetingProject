@@ -60,11 +60,11 @@
     <Compile Include="Control\WatermarkTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\Form1.cs">
+    <Compile Include="View\FrmCreateMeeting.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="View\FrmCreateMeeting.Designer.cs">
+      <DependentUpon>FrmCreateMeeting.cs</DependentUpon>
     </Compile>
     <Compile Include="View\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -83,8 +83,8 @@
     <EmbeddedResource Include="Control\PageControl.resx">
       <DependentUpon>PageControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="View\FrmCreateMeeting.resx">
+      <DependentUpon>FrmCreateMeeting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -117,6 +117,12 @@
   <ItemGroup>
     <Content Include="log4net_config.xml" />
     <Content Include="Resources\close_select.png" />
+    <None Include="Resources\vied.png" />
+    <None Include="Resources\text.png" />
+    <None Include="Resources\mp3.png" />
+    <None Include="Resources\imageName.png" />
+    <None Include="Resources\save.png" />
+    <None Include="Resources\return.png" />
     <None Include="Resources\join.png" />
     <None Include="Resources\signout.png" />
     <None Include="Resources\peopleInfo.png" />
