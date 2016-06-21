@@ -203,6 +203,16 @@ namespace Meeting.Pc.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap returnHome {
+            get {
+                object obj = ResourceManager.GetObject("returnHome", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap save {
             get {
                 object obj = ResourceManager.GetObject("save", resourceCulture);
@@ -236,6 +246,46 @@ namespace Meeting.Pc.Properties {
         internal static System.Drawing.Bitmap vied {
             get {
                 object obj = ResourceManager.GetObject("vied", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 会议表决 {
+            get {
+                object obj = ResourceManager.GetObject("会议表决", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 查看材料 {
+            get {
+                object obj = ResourceManager.GetObject("查看材料", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 检委会决定 {
+            get {
+                object obj = ResourceManager.GetObject("检委会决定", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap 表决 {
+            get {
+                object obj = ResourceManager.GetObject("表决", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

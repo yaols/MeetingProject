@@ -32,8 +32,32 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CNS">
+      <HintPath>DLL\CNS.dll</HintPath>
+    </Reference>
+    <Reference Include="Interop.DESSEALLib">
+      <HintPath>DLL\Interop.DESSEALLib.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.Office">
+      <HintPath>DLL\Interop.Office.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.VBIDE">
+      <HintPath>DLL\Interop.VBIDE.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Interop.Word">
+      <HintPath>DLL\Interop.Word.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Word, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>DLL\Microsoft.Office.Interop.Word.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
@@ -48,6 +72,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Control\CtrlWinWord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Control\PageControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -80,6 +107,21 @@
     <Compile Include="View\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmMeetingInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmMeetingInfo.Designer.cs">
+      <DependentUpon>FrmMeetingInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmSign.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmSign.Designer.cs">
+      <DependentUpon>FrmSign.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Control\CtrlWinWord.resx">
+      <DependentUpon>CtrlWinWord.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Control\PageControl.resx">
       <DependentUpon>PageControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -102,6 +144,12 @@
     <EmbeddedResource Include="View\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmMeetingInfo.resx">
+      <DependentUpon>FrmMeetingInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmSign.resx">
+      <DependentUpon>FrmSign.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -117,6 +165,11 @@
   <ItemGroup>
     <Content Include="log4net_config.xml" />
     <Content Include="Resources\close_select.png" />
+    <None Include="Resources\表决.png" />
+    <None Include="Resources\检委会决定.png" />
+    <None Include="Resources\会议表决.png" />
+    <None Include="Resources\查看材料.png" />
+    <None Include="Resources\returnHome.png" />
     <None Include="Resources\vied.png" />
     <None Include="Resources\text.png" />
     <None Include="Resources\mp3.png" />

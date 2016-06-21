@@ -181,10 +181,14 @@ namespace Meeting.Pc.View
 
         }
 
+
+
         private void pbBtn_Click(object sender, EventArgs e)
         {
             PanelEx pxBtn = (PanelEx)sender;
-            MessageBox.Show(pxBtn.Tag.ToString());
+            FrmMeetingInfo meeting = new FrmMeetingInfo();
+            meeting.Show();
+            Hide();
         }
 
         private void pelStartmeeting_Click(object sender, EventArgs e)
