@@ -12,5 +12,7 @@ namespace Meeting.Interface
         DataSet GetMeetingList(int meetingType, int pageindex, int pagesize);
 
         mMeeting GetMeetingModel(int meetingId);
+
+        DataSet GetCreateMeeting();
     }
 }

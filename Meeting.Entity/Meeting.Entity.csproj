@@ -44,11 +44,14 @@
   <ItemGroup>
     <Compile Include="mMeeting.cs" />
     <Compile Include="mMeetingIssue.cs" />
+    <Compile Include="mMeetingPeople.cs" />
+    <Compile Include="mMeetingResources.cs" />
     <Compile Include="mUser.cs" />
     <Compile Include="Pager\PageOption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ResultModel\ResultBase.cs" />
     <Compile Include="ResultModel\ResultCode.cs" />
+    <Compile Include="mAddress.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -62,6 +62,7 @@
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -113,6 +114,18 @@
     <Compile Include="View\FrmMeetingInfo.Designer.cs">
       <DependentUpon>FrmMeetingInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmRecord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmRecord.Designer.cs">
+      <DependentUpon>FrmRecord.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmResources.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmResources.Designer.cs">
+      <DependentUpon>FrmResources.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmSign.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +160,12 @@
     <EmbeddedResource Include="View\FrmMeetingInfo.resx">
       <DependentUpon>FrmMeetingInfo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmRecord.resx">
+      <DependentUpon>FrmRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmResources.resx">
+      <DependentUpon>FrmResources.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmSign.resx">
       <DependentUpon>FrmSign.cs</DependentUpon>
     </EmbeddedResource>
@@ -165,6 +184,7 @@
   <ItemGroup>
     <Content Include="log4net_config.xml" />
     <Content Include="Resources\close_select.png" />
+    <None Include="Resources\文本材料.png" />
     <None Include="Resources\表决.png" />
     <None Include="Resources\检委会决定.png" />
     <None Include="Resources\会议表决.png" />

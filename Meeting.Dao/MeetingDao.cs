@@ -42,8 +42,8 @@ namespace Meeting.Dao
         public static mMeeting GetMeetingModel(int meetingId) 
         {
             mMeeting model = new mMeeting();
-            model.IssueList=new List<mMeetingIssue>();
-            mMeetingIssue issue = null;
+            model.IssueList=new mMeetingIssue();
+            //mMeetingIssue issue = null;
 
             string sql = @"select m.MeetingId,MeetingName,StartDate,EendDate,MeetingAddress,
                                    HostName=(select UserName from m_User u where u.UserId=m.MeetingHost),
@@ -62,12 +62,12 @@ namespace Meeting.Dao
             SqlDataReader reader = SQLHelper.GetReader(sql,paras);
             while (reader.Read()) 
             {
-                issue = new mMeetingIssue();
-                issue.IssueName = reader["IssueName"].ToString();
-                issue.RepostUser = reader["RepostUser"].ToString();
-                issue.DepartName = reader["DepartName"].ToString();
-                issue.Id =Tool.ToInt(reader["Id"].ToString());
-                model.IssueList.Add(issue);
+
+                model.IssueList.IssueName = reader["IssueName"].ToString();
+                model.IssueList.RepostUser = reader["RepostUser"].ToString();
+                model.IssueList.DepartName = reader["DepartName"].ToString();
+                model.IssueList.Id = Tool.ToInt(reader["Id"].ToString());
+
 
                 model.MeetingId = Tool.ToInt(reader["MeetingId"].ToString());
                 model.MeetingName = reader["MeetingName"].ToString();
@@ -81,5 +81,20 @@ namespace Meeting.Dao
 
             return model;
         }
+
+
+        public static DataSet GetCreateMeeting() 
+        {
+            DataSet dataSet = new DataSet();
+
+            string usersql = "select UserId,UserName from [dbo].[m_User];";
+            string addresssql = "select Id,MeetingAddress from [dbo].[m_Address];";
+            string departsql="select Id,DepartName from [dbo].[m_Depart];";
+
+            usersql = usersql + addresssql + departsql;
+
+            dataSet = SQLHelper.GetDataSet(usersql);
+            return dataSet;
+        } 
     }
 }

@@ -17,10 +17,10 @@ namespace Meeting.Pc.View
             InitializeComponent();
         }
 
-        public string phath = "";
 
         private void FrmSign_Load(object sender, EventArgs e)
         {
+            string phath = System.Environment.CurrentDirectory;
             var word = new CtrlWinWord()
             {
                 Dock = System.Windows.Forms.DockStyle.Fill,
@@ -32,6 +32,20 @@ namespace Meeting.Pc.View
             word.LoadDocument(phath + @"\1.docx");
             word.Show();
             plMain.Controls.Add(word);
+        }
+
+        private void pxHome_Click(object sender, EventArgs e)
+        {
+            FrmMain main = new FrmMain();
+            main.Show();
+            Hide();
+        }
+
+        private void peRerurn_Click(object sender, EventArgs e)
+        {
+            FrmMeetingInfo info = new FrmMeetingInfo();
+            info.Show();
+            Hide();
         }
     }
 }

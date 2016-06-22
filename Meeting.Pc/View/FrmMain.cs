@@ -234,7 +234,9 @@ namespace Meeting.Pc.View
         private void pelCreatemeeting_Click(object sender, EventArgs e)
         {
             //会议创建单机事件
-            
+            FrmCreateMeeting meeting = new FrmCreateMeeting();
+            meeting.Show();
+            Hide();
         }
 
         private void ClearControl() 

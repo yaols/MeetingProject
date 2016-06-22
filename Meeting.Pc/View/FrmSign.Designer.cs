@@ -60,6 +60,7 @@
             this.pxHome.Name = "pxHome";
             this.pxHome.Size = new System.Drawing.Size(89, 27);
             this.pxHome.TabIndex = 5;
+            this.pxHome.Click += new System.EventHandler(this.pxHome_Click);
             // 
             // peRerurn
             // 
@@ -71,6 +72,7 @@
             this.peRerurn.Name = "peRerurn";
             this.peRerurn.Size = new System.Drawing.Size(63, 21);
             this.peRerurn.TabIndex = 6;
+            this.peRerurn.Click += new System.EventHandler(this.peRerurn_Click);
             // 
             // panelEx1
             // 

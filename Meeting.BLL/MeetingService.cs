@@ -22,5 +22,10 @@ namespace Meeting.BLL
         {
             return MeetingDao.GetMeetingModel(meetingId);
         }
+
+        public DataSet GetCreateMeeting() 
+        {
+            return MeetingDao.GetCreateMeeting();
+        }
     }
 }

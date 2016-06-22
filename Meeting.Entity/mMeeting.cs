@@ -33,7 +33,7 @@ namespace Meeting.Entity
 
         public string SecretaryName { get; set; }
 
-        public List<mMeetingIssue> IssueList {get;set; }
+        public mMeetingIssue IssueList {get;set; }
 
         public string PeopleName { get; set; }
     }

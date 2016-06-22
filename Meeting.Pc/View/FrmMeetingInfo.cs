@@ -52,21 +52,24 @@ namespace Meeting.Pc.View
         private void panelEx7_Click(object sender, EventArgs e)
         {
             //查看材料
-
+            FrmResources resources = new FrmResources();
+            resources.Show();
+            Hide();
         }
 
         private void panelEx3_Click(object sender, EventArgs e)
         {
             //会议记录
-
+            FrmRecord record = new FrmRecord();
+            record.Show();
+            Hide();
         }
 
         private void panelEx6_Click(object sender, EventArgs e)
         {
             //检委会决定
-            string phath = System.Environment.CurrentDirectory;
+           
             FrmSign sign = new FrmSign();
-            sign.phath = phath;
             Hide();
             sign.ShowDialog();
         }
