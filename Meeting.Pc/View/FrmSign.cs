@@ -12,9 +12,11 @@ namespace Meeting.Pc.View
 {
     public partial class FrmSign : Form
     {
-        public FrmSign()
+        private string _meetingId = "";
+        public FrmSign(string meetingId)
         {
             InitializeComponent();
+            _meetingId = meetingId;
         }
 
 
@@ -43,7 +45,7 @@ namespace Meeting.Pc.View
 
         private void peRerurn_Click(object sender, EventArgs e)
         {
-            FrmMeetingInfo info = new FrmMeetingInfo();
+            FrmMeetingInfo info = new FrmMeetingInfo(_meetingId);
             info.Show();
             Hide();
         }

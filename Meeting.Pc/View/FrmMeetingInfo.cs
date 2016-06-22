@@ -1,4 +1,7 @@
-﻿using Meeting.Pc.Control;
+﻿using Meeting.BLL;
+using Meeting.Entity;
+using Meeting.Interface;
+using Meeting.Pc.Control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,9 +15,15 @@ namespace Meeting.Pc.View
 {
     public partial class FrmMeetingInfo : Form
     {
-        public FrmMeetingInfo()
+
+        IMeetingInterface imeeting = new MeetingService();
+
+        private string _meetingId = "";
+        public FrmMeetingInfo(string meetingId)
         {
             InitializeComponent();
+            _meetingId = meetingId;
+            Initial(meetingId);
         }
 
         private void pxHome_Click(object sender, EventArgs e)
@@ -52,7 +61,7 @@ namespace Meeting.Pc.View
         private void panelEx7_Click(object sender, EventArgs e)
         {
             //查看材料
-            FrmResources resources = new FrmResources();
+            FrmResources resources = new FrmResources(_meetingId);
             resources.Show();
             Hide();
         }
@@ -60,7 +69,7 @@ namespace Meeting.Pc.View
         private void panelEx3_Click(object sender, EventArgs e)
         {
             //会议记录
-            FrmRecord record = new FrmRecord();
+            FrmRecord record = new FrmRecord(_meetingId);
             record.Show();
             Hide();
         }
@@ -69,9 +78,25 @@ namespace Meeting.Pc.View
         {
             //检委会决定
            
-            FrmSign sign = new FrmSign();
+            FrmSign sign = new FrmSign(_meetingId);
             Hide();
             sign.ShowDialog();
+        }
+
+
+        private void Initial(string meetingId) 
+        {
+            mMeeting model = imeeting.GetMeetingModel(Convert.ToInt32(meetingId));
+            label4.Text = model.MeetingName;
+            label5.Text = model.StartDate;
+            label6.Text = model.EendDate;
+            label11.Text = model.MeetingAddress;
+            label14.Text = model.MeetingHost;
+            label22.Text = model.SecretaryName;
+            label12.Text = model.PeopleName;
+            label24.Text = model.IssueList.IssueName;
+            label25.Text = model.IssueList.RepostUser;
+            label26.Text = model.IssueList.DepartName;
         }
     }
 }

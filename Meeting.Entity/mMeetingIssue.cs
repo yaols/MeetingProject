@@ -20,5 +20,6 @@ namespace Meeting.Entity
         public int MeetingId { get; set; }
 
         public string DepartName { get; set; }
+
     }
 }

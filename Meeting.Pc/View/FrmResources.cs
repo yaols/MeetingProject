@@ -11,9 +11,11 @@ namespace Meeting.Pc.View
 {
     public partial class FrmResources : Form
     {
-        public FrmResources()
+        private string _meetingId = "";
+        public FrmResources(string meetingId)
         {
             InitializeComponent();
+            _meetingId = meetingId;
         }
 
         private void pxHome_Click(object sender, EventArgs e)
@@ -25,7 +27,7 @@ namespace Meeting.Pc.View
 
         private void peRerurn_Click(object sender, EventArgs e)
         {
-            FrmMeetingInfo info = new FrmMeetingInfo();
+            FrmMeetingInfo info = new FrmMeetingInfo("1");
             info.Show();
             Hide();
         }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.plMain = new System.Windows.Forms.Panel();
+            this.panelEx3 = new Meeting.Pc.Control.PanelEx();
             this.panelEx2 = new Meeting.Pc.Control.PanelEx();
             this.label15 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
@@ -49,9 +50,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.plHead = new System.Windows.Forms.Panel();
             this.peRerurn = new Meeting.Pc.Control.PanelEx();
-            this.pxHome = new Meeting.Pc.Control.PanelEx();
             this.label1 = new System.Windows.Forms.Label();
-            this.panelEx3 = new Meeting.Pc.Control.PanelEx();
+            this.pxSave = new Meeting.Pc.Control.PanelEx();
             this.plMain.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx1.SuspendLayout();
@@ -83,6 +83,14 @@
             this.plMain.Name = "plMain";
             this.plMain.Size = new System.Drawing.Size(898, 569);
             this.plMain.TabIndex = 5;
+            // 
+            // panelEx3
+            // 
+            this.panelEx3.BorderColor = System.Drawing.Color.Empty;
+            this.panelEx3.Location = new System.Drawing.Point(12, 263);
+            this.panelEx3.Name = "panelEx3";
+            this.panelEx3.Size = new System.Drawing.Size(875, 294);
+            this.panelEx3.TabIndex = 38;
             // 
             // panelEx2
             // 
@@ -300,8 +308,8 @@
             // 
             this.plHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head_background;
+            this.plHead.Controls.Add(this.pxSave);
             this.plHead.Controls.Add(this.peRerurn);
-            this.plHead.Controls.Add(this.pxHome);
             this.plHead.Controls.Add(this.label1);
             this.plHead.Font = new System.Drawing.Font("华文中宋", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.plHead.Location = new System.Drawing.Point(0, 0);
@@ -322,19 +330,6 @@
             this.peRerurn.TabIndex = 6;
             this.peRerurn.Click += new System.EventHandler(this.peRerurn_Click);
             // 
-            // pxHome
-            // 
-            this.pxHome.BackColor = System.Drawing.Color.Transparent;
-            this.pxHome.BackgroundImage = global::Meeting.Pc.Properties.Resources.returnHome;
-            this.pxHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pxHome.BorderColor = System.Drawing.Color.Empty;
-            this.pxHome.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pxHome.Location = new System.Drawing.Point(799, 12);
-            this.pxHome.Name = "pxHome";
-            this.pxHome.Size = new System.Drawing.Size(89, 27);
-            this.pxHome.TabIndex = 5;
-            this.pxHome.Click += new System.EventHandler(this.pxHome_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -347,13 +342,17 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "材料:b201605";
             // 
-            // panelEx3
+            // pxSave
             // 
-            this.panelEx3.BorderColor = System.Drawing.Color.Empty;
-            this.panelEx3.Location = new System.Drawing.Point(12, 263);
-            this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(875, 294);
-            this.panelEx3.TabIndex = 38;
+            this.pxSave.BackColor = System.Drawing.Color.Transparent;
+            this.pxSave.BackgroundImage = global::Meeting.Pc.Properties.Resources.save;
+            this.pxSave.BorderColor = System.Drawing.Color.Empty;
+            this.pxSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pxSave.Location = new System.Drawing.Point(825, 54);
+            this.pxSave.Name = "pxSave";
+            this.pxSave.Size = new System.Drawing.Size(63, 21);
+            this.pxSave.TabIndex = 7;
+            this.pxSave.Click += new System.EventHandler(this.pxSave_Click);
             // 
             // FrmRecord
             // 
@@ -400,10 +399,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel plHead;
         private Control.PanelEx peRerurn;
-        private Control.PanelEx pxHome;
         private System.Windows.Forms.Label label1;
         private Control.PanelEx panelEx2;
         private System.Windows.Forms.Label label15;
         private Control.PanelEx panelEx3;
+        private Control.PanelEx pxSave;
     }
 }

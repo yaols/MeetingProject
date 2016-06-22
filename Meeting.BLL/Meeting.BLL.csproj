@@ -40,6 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="LoginService.cs" />
+    <Compile Include="MeetingIssue.cs" />
     <Compile Include="MeetingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

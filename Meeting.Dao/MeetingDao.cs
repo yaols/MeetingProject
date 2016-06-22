@@ -52,6 +52,7 @@ namespace Meeting.Dao
                                    RepostUser=(select UserName from m_User u where u.UserId=mi.RepostUser),
                                    DepartName=(select DepartName from m_Depart m where m.Id=mi.DepartId)
                                    from m_Meeting m  left join m_MeetingIssue mi on m.MeetingId=mi.MeetingId
+                                   left join m_Address a on m.AddressId=a.Id
                                    where m.MeetingId=@meetingId";
 
             SqlParameter[] paras = new SqlParameter[]
