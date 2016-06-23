@@ -306,6 +306,7 @@
             this.label3.Size = new System.Drawing.Size(83, 12);
             this.label3.TabIndex = 3;
             this.label3.Text = "议题详情不016";
+            this.label3.Click += new System.EventHandler(this.panelEx3_Click);
             // 
             // panelEx5
             // 
@@ -315,6 +316,7 @@
             this.panelEx5.Name = "panelEx5";
             this.panelEx5.Size = new System.Drawing.Size(50, 50);
             this.panelEx5.TabIndex = 2;
+            this.panelEx5.Click += new System.EventHandler(this.panelEx3_Click);
             // 
             // panelEx1
             // 
