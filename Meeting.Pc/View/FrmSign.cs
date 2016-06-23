@@ -23,21 +23,21 @@ namespace Meeting.Pc.View
 
 
 
-        CtrlWinWord word = new CtrlWinWord();
+        public  CtrlWinWord word = new CtrlWinWord();
         private void FrmSign_Load(object sender, EventArgs e)
         {
 
-            string phath = System.Environment.CurrentDirectory;
-           // var word = new CtrlWinWord()
-            //{
-                word.Dock = System.Windows.Forms.DockStyle.Fill;
-                word.Location = new System.Drawing.Point(0, 0);
-                word.Name = "文档";
-                word.TabIndex = 1;
-           // };
-            //加载word的完整路径  修改此处
-            word.LoadDocument(phath + @"\1.docx");
-            word.Show();
+           // string phath = System.Environment.CurrentDirectory;
+           //// var word = new CtrlWinWord()
+           // //{
+           //     word.Dock = System.Windows.Forms.DockStyle.Fill;
+           //     word.Location = new System.Drawing.Point(0, 0);
+           //     word.Name = "文档";
+           //     word.TabIndex = 1;
+           //// };
+           // //加载word的完整路径  修改此处
+           // word.LoadDocument(phath + @"\1.docx");
+           // word.Show();
             plMain.Controls.Add(word);
         }
 

@@ -31,5 +31,10 @@ namespace Meeting.Pc.View
             info.Show();
             Hide();
         }
+
+        private void panelEx3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

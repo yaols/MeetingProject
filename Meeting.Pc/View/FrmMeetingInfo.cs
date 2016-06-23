@@ -94,6 +94,19 @@ namespace Meeting.Pc.View
             //}
 
             FrmSign sign = new FrmSign(_meetingId);
+
+            string phath = System.Environment.CurrentDirectory;
+            // var word = new CtrlWinWord()
+            //{
+            sign.word.Dock = System.Windows.Forms.DockStyle.Fill;
+            sign.word.Location = new System.Drawing.Point(0, 0);
+            sign.word.Name = "文档";
+            sign.word.TabIndex = 1;
+            // };
+            //加载word的完整路径  修改此处
+            sign.word.LoadDocument(phath + @"\1.docx");
+            sign.word.Show();
+
             Hide();
             sign.ShowDialog();
         }

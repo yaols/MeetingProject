@@ -809,12 +809,12 @@ namespace Meeting.Pc.Control
             if (WordDoc != null) 
             {
                 WordDoc.SaveAs(path);
-                Process[] tProcess = Process.GetProcessesByName("WINWORD");
-                foreach (var pid in tProcess) 
-                {
-                    Process ps = Process.GetProcessById(pid.Id);
-                    ps.Kill();
-                }
+                //Process[] tProcess = Process.GetProcessesByName("WINWORD");
+                //foreach (var pid in tProcess) 
+                //{
+                //    Process ps = Process.GetProcessById(pid.Id);
+                //    ps.Kill();
+                //}
 
             }
         }
