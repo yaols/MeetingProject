@@ -46,7 +46,7 @@ namespace Meeting.Pc.View
             FrmMain main = new FrmMain();
             main.Show();
             Hide();
-            KillProcess();
+            Helper.KillProcess();
         }
 
         private void peRerurn_Click(object sender, EventArgs e)
@@ -54,7 +54,7 @@ namespace Meeting.Pc.View
             FrmMeetingInfo info = new FrmMeetingInfo(_meetingId);
             info.Show();
             Hide();
-            KillProcess();
+            Helper.KillProcess();
         }
 
 
@@ -83,16 +83,6 @@ namespace Meeting.Pc.View
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "1.docx";
             word.Save(path);
-        }
-
-        private void KillProcess() 
-        {
-            Process[] tProcess = Process.GetProcessesByName("WINWORD");
-            foreach (var pid in tProcess)
-            {
-                Process ps = Process.GetProcessById(pid.Id);
-                ps.Kill();
-            }
         }
     }
 }

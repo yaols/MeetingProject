@@ -291,6 +291,7 @@
             this.panelEx3.BorderColor = System.Drawing.Color.Empty;
             this.panelEx3.Controls.Add(this.label3);
             this.panelEx3.Controls.Add(this.panelEx5);
+            this.panelEx3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelEx3.Location = new System.Drawing.Point(10, 9);
             this.panelEx3.Name = "panelEx3";
             this.panelEx3.Size = new System.Drawing.Size(95, 113);

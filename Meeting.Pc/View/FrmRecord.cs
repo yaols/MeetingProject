@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -36,8 +37,11 @@ namespace Meeting.Pc.View
         {
             FrmMeetingInfo info = new FrmMeetingInfo(_meetingId);
             info.Show();
+            Helper.KillProcess();
             Hide();
         }
+
+
 
         private void FrmRecord_Load(object sender, EventArgs e)
         {
