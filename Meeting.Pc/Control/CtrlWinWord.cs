@@ -210,7 +210,6 @@ namespace Meeting.Pc.Control
             /*
             * this code is to reopen Word.
             */
-
             try
             {
                 deactivateevents = true;
@@ -802,6 +801,21 @@ namespace Meeting.Pc.Control
             {
                 object pw = password;
                 WordDoc.Protect(Word.WdProtectionType.wdAllowOnlyComments, ref MissingType.NoReset_False, ref pw);
+            }
+        }
+
+        public void Save(string path) 
+        {
+            if (WordDoc != null) 
+            {
+                WordDoc.SaveAs(path);
+                Process[] tProcess = Process.GetProcessesByName("WINWORD");
+                foreach (var pid in tProcess) 
+                {
+                    Process ps = Process.GetProcessById(pid.Id);
+                    ps.Kill();
+                }
+
             }
         }
 

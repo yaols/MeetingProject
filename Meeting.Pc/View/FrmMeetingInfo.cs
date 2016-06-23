@@ -8,6 +8,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
@@ -74,10 +75,24 @@ namespace Meeting.Pc.View
             Hide();
         }
 
+        //IntPtr m_pDll;
+        //private delegate bool m_GainPrivileges();
+
         private void panelEx6_Click(object sender, EventArgs e)
         {
             //检委会决定
-           
+            //m_pDll = Win32API.LoadLibrary(".\\InkAnnotations.dll");
+            //if (m_pDll != null)
+            //{
+            //    IntPtr pAddOfFunToCall = Win32API.GetProcAddress(m_pDll, "GainPrivileges");
+            //    m_GainPrivileges GainPrivileges = (m_GainPrivileges)Marshal.GetDelegateForFunctionPointer(
+            //                                                                                         pAddOfFunToCall,
+            //                                                                                       typeof(m_GainPrivileges));
+
+
+            //    bool flag = GainPrivileges();  //获取权限，打开Word前调用，只需执行一次
+            //}
+
             FrmSign sign = new FrmSign(_meetingId);
             Hide();
             sign.ShowDialog();
