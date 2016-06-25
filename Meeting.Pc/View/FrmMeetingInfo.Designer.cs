@@ -433,7 +433,7 @@
             // 
             // panelEx2
             // 
-            this.panelEx2.BackgroundImage = global::Meeting.Pc.Properties.Resources.head_background;
+            this.panelEx2.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
             this.panelEx2.BorderColor = System.Drawing.Color.Empty;
             this.panelEx2.Controls.Add(this.label15);
             this.panelEx2.Location = new System.Drawing.Point(12, 260);
@@ -455,7 +455,7 @@
             // 
             // panelEx1
             // 
-            this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.head_background;
+            this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
             this.panelEx1.BorderColor = System.Drawing.Color.Empty;
             this.panelEx1.Controls.Add(this.label2);
             this.panelEx1.Location = new System.Drawing.Point(12, 10);
@@ -478,7 +478,7 @@
             // plHead
             // 
             this.plHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head_background;
+            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
             this.plHead.Controls.Add(this.peRerurn);
             this.plHead.Controls.Add(this.pxHome);
             this.plHead.Controls.Add(this.label1);
@@ -495,7 +495,7 @@
             // peRerurn
             // 
             this.peRerurn.BackColor = System.Drawing.Color.Transparent;
-            this.peRerurn.BackgroundImage = global::Meeting.Pc.Properties.Resources._return;
+            this.peRerurn.BackgroundImage = global::Meeting.Pc.Properties.Resources.rbtn;
             this.peRerurn.BorderColor = System.Drawing.Color.Empty;
             this.peRerurn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.peRerurn.Location = new System.Drawing.Point(16, 54);

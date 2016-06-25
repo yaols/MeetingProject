@@ -70,7 +70,7 @@
             // plHead
             // 
             this.plHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head_background;
+            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
             this.plHead.Controls.Add(this.peRerurn);
             this.plHead.Controls.Add(this.pxHome);
             this.plHead.Controls.Add(this.label1);
@@ -84,7 +84,7 @@
             // peRerurn
             // 
             this.peRerurn.BackColor = System.Drawing.Color.Transparent;
-            this.peRerurn.BackgroundImage = global::Meeting.Pc.Properties.Resources._return;
+            this.peRerurn.BackgroundImage = global::Meeting.Pc.Properties.Resources.rbtn;
             this.peRerurn.BorderColor = System.Drawing.Color.Empty;
             this.peRerurn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.peRerurn.Location = new System.Drawing.Point(16, 54);
@@ -163,7 +163,7 @@
             // 
             // panelEx14
             // 
-            this.panelEx14.BackgroundImage = global::Meeting.Pc.Properties.Resources.imageName;
+            this.panelEx14.BackgroundImage = global::Meeting.Pc.Properties.Resources.图片资料;
             this.panelEx14.BorderColor = System.Drawing.Color.Empty;
             this.panelEx14.Location = new System.Drawing.Point(22, 7);
             this.panelEx14.Name = "panelEx14";
@@ -191,7 +191,7 @@
             // 
             // panelEx9
             // 
-            this.panelEx9.BackgroundImage = global::Meeting.Pc.Properties.Resources.vied;
+            this.panelEx9.BackgroundImage = global::Meeting.Pc.Properties.Resources.音频资料;
             this.panelEx9.BorderColor = System.Drawing.Color.Empty;
             this.panelEx9.Location = new System.Drawing.Point(22, 7);
             this.panelEx9.Name = "panelEx9";
@@ -219,7 +219,7 @@
             // 
             // panelEx11
             // 
-            this.panelEx11.BackgroundImage = global::Meeting.Pc.Properties.Resources.mp3;
+            this.panelEx11.BackgroundImage = global::Meeting.Pc.Properties.Resources.音频资料;
             this.panelEx11.BorderColor = System.Drawing.Color.Empty;
             this.panelEx11.Location = new System.Drawing.Point(22, 7);
             this.panelEx11.Name = "panelEx11";
@@ -228,7 +228,7 @@
             // 
             // panelEx12
             // 
-            this.panelEx12.BackgroundImage = global::Meeting.Pc.Properties.Resources.head_background;
+            this.panelEx12.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
             this.panelEx12.BorderColor = System.Drawing.Color.Empty;
             this.panelEx12.Controls.Add(this.label7);
             this.panelEx12.Location = new System.Drawing.Point(12, 244);
@@ -279,7 +279,7 @@
             // 
             // panelEx6
             // 
-            this.panelEx6.BackgroundImage = global::Meeting.Pc.Properties.Resources.text;
+            this.panelEx6.BackgroundImage = global::Meeting.Pc.Properties.Resources.文本资料;
             this.panelEx6.BorderColor = System.Drawing.Color.Empty;
             this.panelEx6.Location = new System.Drawing.Point(22, 7);
             this.panelEx6.Name = "panelEx6";
@@ -310,7 +310,7 @@
             // 
             // panelEx5
             // 
-            this.panelEx5.BackgroundImage = global::Meeting.Pc.Properties.Resources.text;
+            this.panelEx5.BackgroundImage = global::Meeting.Pc.Properties.Resources.文本资料;
             this.panelEx5.BorderColor = System.Drawing.Color.Empty;
             this.panelEx5.Location = new System.Drawing.Point(22, 7);
             this.panelEx5.Name = "panelEx5";
@@ -320,7 +320,7 @@
             // 
             // panelEx1
             // 
-            this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.head_background;
+            this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
             this.panelEx1.BorderColor = System.Drawing.Color.Empty;
             this.panelEx1.Controls.Add(this.label2);
             this.panelEx1.Location = new System.Drawing.Point(12, 10);

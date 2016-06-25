@@ -43,7 +43,7 @@
             // plHead
             // 
             this.plHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head_background;
+            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
             this.plHead.Controls.Add(this.pxSave);
             this.plHead.Controls.Add(this.peRerurn);
             this.plHead.Controls.Add(this.label1);
@@ -68,7 +68,7 @@
             // peRerurn
             // 
             this.peRerurn.BackColor = System.Drawing.Color.Transparent;
-            this.peRerurn.BackgroundImage = global::Meeting.Pc.Properties.Resources._return;
+            this.peRerurn.BackgroundImage = global::Meeting.Pc.Properties.Resources.rbtn;
             this.peRerurn.BorderColor = System.Drawing.Color.Empty;
             this.peRerurn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.peRerurn.Location = new System.Drawing.Point(16, 54);

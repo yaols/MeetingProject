@@ -65,7 +65,7 @@
             // 
             // plHead
             // 
-            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head_background;
+            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
             this.plHead.Controls.Add(this.peSignout);
             this.plHead.Controls.Add(this.panelEx1);
             this.plHead.Controls.Add(this.pelCreatemeeting);

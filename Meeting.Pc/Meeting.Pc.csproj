@@ -89,12 +89,6 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Helper.cs" />
-    <Compile Include="View\FrmCreateMeeting.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\FrmCreateMeeting.Designer.cs">
-      <DependentUpon>FrmCreateMeeting.cs</DependentUpon>
-    </Compile>
     <Compile Include="View\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,9 +146,6 @@
     <EmbeddedResource Include="Control\PageControl.resx">
       <DependentUpon>PageControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\FrmCreateMeeting.resx">
-      <DependentUpon>FrmCreateMeeting.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -204,19 +195,21 @@
   <ItemGroup>
     <Content Include="log4net_config.xml" />
     <Content Include="Resources\close_select.png" />
+    <None Include="Resources\音频资料.png" />
+    <None Include="Resources\文本资料.png" />
+    <None Include="Resources\图片资料.png" />
+    <None Include="Resources\head.png" />
+    <None Include="Resources\rbtn.png" />
     <Content Include="Resources\多媒体素材.png" />
-    <None Include="Resources\文本材料.png" />
+    <None Include="Resources\视频资料.png" />
+    <None Include="Resources\提交审批.png" />
+    <None Include="Resources\审批.png" />
     <None Include="Resources\表决.png" />
     <None Include="Resources\检委会决定.png" />
     <None Include="Resources\会议表决.png" />
     <None Include="Resources\查看材料.png" />
     <None Include="Resources\returnHome.png" />
-    <None Include="Resources\vied.png" />
-    <None Include="Resources\text.png" />
-    <None Include="Resources\mp3.png" />
-    <None Include="Resources\imageName.png" />
     <None Include="Resources\save.png" />
-    <None Include="Resources\return.png" />
     <None Include="Resources\join.png" />
     <None Include="Resources\signout.png" />
     <None Include="Resources\peopleInfo.png" />
@@ -227,7 +220,6 @@
     <None Include="Resources\minimality_press.png" />
     <None Include="Resources\minimality.png" />
     <None Include="Resources\close.png" />
-    <Content Include="Resources\head-background.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Meeting.BLL\Meeting.BLL.csproj">
