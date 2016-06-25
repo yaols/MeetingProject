@@ -62,7 +62,7 @@ namespace Meeting.Pc.View
         private void panelEx7_Click(object sender, EventArgs e)
         {
             //查看材料
-            FrmResources resources = new FrmResources(_meetingId);
+            FrmResources resources = new FrmResources(_issueid,_meetingId);
             resources.Show();
             Hide();
         }
@@ -111,7 +111,7 @@ namespace Meeting.Pc.View
             sign.ShowDialog();
         }
 
-
+        private int _issueid = 0;
         private void Initial(string meetingId) 
         {
             mMeeting model = imeeting.GetMeetingModel(Convert.ToInt32(meetingId));
@@ -125,6 +125,8 @@ namespace Meeting.Pc.View
             label24.Text = model.IssueList.IssueName;
             label25.Text = model.IssueList.RepostUser;
             label26.Text = model.IssueList.DepartName;
+
+            _issueid = model.IssueList.Id;
         }
     }
 }
