@@ -89,6 +89,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="View\FrmCreateMeeting.cs" />
+    <Compile Include="View\FrmCreateMeeting.Designer.cs">
+      <DependentUpon>FrmCreateMeeting.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -145,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Control\PageControl.resx">
       <DependentUpon>PageControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmCreateMeeting.resx">
+      <DependentUpon>FrmCreateMeeting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
