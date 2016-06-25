@@ -5,9 +5,11 @@ using Meeting.Pc.Control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -96,6 +98,13 @@ namespace Meeting.Pc.View
 
             //    bool flag = GainPrivileges();  //获取权限，打开Word前调用，只需执行一次
             //}
+            WebClient webclient = new WebClient();
+            string URLAddress = ConfigurationManager.AppSettings["downUrl"].ToString();
+
+            string receivePath = @"C:\";
+
+            webclient.DownloadFile(URLAddress, receivePath + System.IO.Path.GetFileName(URLAddress));
+
 
             FrmSign sign = new FrmSign(_meetingId);
 

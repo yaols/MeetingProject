@@ -2,10 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
@@ -83,6 +85,10 @@ namespace Meeting.Pc.View
         {
             string path = AppDomain.CurrentDomain.BaseDirectory + "1.docx";
             word.Save(path);
+
+            string url= ConfigurationManager.AppSettings["saveUrl"].ToString();
+            WebClient webclient = new WebClient();
+            webclient.UploadFile(url, "POST", path);
         }
     }
 }
