@@ -109,6 +109,12 @@
     <Compile Include="View\FrmMain.Designer.cs">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmMaxWord.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmMaxWord.designer.cs">
+      <DependentUpon>FrmMaxWord.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmMeetingInfo.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,12 @@
     </Compile>
     <Compile Include="View\FrmSign.Designer.cs">
       <DependentUpon>FrmSign.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\FrmVide.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmVide.designer.cs">
+      <DependentUpon>FrmVide.cs</DependentUpon>
     </Compile>
     <Compile Include="Win32API.cs" />
     <EmbeddedResource Include="Control\CtrlWinWord.resx">
@@ -159,6 +171,9 @@
     <EmbeddedResource Include="View\FrmMain.resx">
       <DependentUpon>FrmMain.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmMaxWord.resx">
+      <DependentUpon>FrmMaxWord.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmMeetingInfo.resx">
       <DependentUpon>FrmMeetingInfo.cs</DependentUpon>
     </EmbeddedResource>
@@ -170,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmSign.resx">
       <DependentUpon>FrmSign.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmVide.resx">
+      <DependentUpon>FrmVide.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
     <None Include="packages.config" />
@@ -186,6 +204,7 @@
   <ItemGroup>
     <Content Include="log4net_config.xml" />
     <Content Include="Resources\close_select.png" />
+    <Content Include="Resources\多媒体素材.png" />
     <None Include="Resources\文本材料.png" />
     <None Include="Resources\表决.png" />
     <None Include="Resources\检委会决定.png" />
@@ -227,6 +246,25 @@
       <Project>{e03e48a4-f737-490f-b8f3-7388847b1724}</Project>
       <Name>Meeting.Interface</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="AxWMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>aximp</WrapperTool>
+      <Isolated>False</Isolated>
+    </COMReference>
+    <COMReference Include="WMPLib">
+      <Guid>{6BF52A50-394A-11D3-B153-00C04F79FAA6}</Guid>
+      <VersionMajor>1</VersionMajor>
+      <VersionMinor>0</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>tlbimp</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
