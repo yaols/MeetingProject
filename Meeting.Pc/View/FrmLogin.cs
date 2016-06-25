@@ -109,6 +109,7 @@ namespace Meeting.Pc.View
             mUser umodel  = ilogin.LoginUserInfo(userName, userPass);
             if (umodel.PassWord == userPass && umodel.UserName == userName)
             {
+                UserInfo.RoleId = umodel.UserRoleId;
                 FrmMain frmmain = new FrmMain();
                 frmmain.Show();
                 Hide();

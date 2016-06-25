@@ -32,6 +32,12 @@ namespace Meeting.Pc.View
             plPager.Controls.Add(pager);
             pager.Dock = DockStyle.Fill;
             pager.PageEvent += new PageControl.PageEventHandler(pagingControl1_PageEvent);
+         
+
+            if (UserInfo.RoleId != 2) 
+            {
+                pelCreatemeeting.Visible = false;
+            }
         }
 
         private void pagingControl1_PageEvent(int pageIndex, int meetingtype) 

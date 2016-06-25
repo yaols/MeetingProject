@@ -19,12 +19,14 @@ namespace Meeting.Pc.View
 
         IMeetingInterface imeeting = new MeetingService();
 
+
         private string _meetingId = "";
         public FrmMeetingInfo(string meetingId)
         {
             InitializeComponent();
             _meetingId = meetingId;
             Initial(meetingId);
+
         }
 
         private void pxHome_Click(object sender, EventArgs e)
@@ -62,7 +64,7 @@ namespace Meeting.Pc.View
         private void panelEx7_Click(object sender, EventArgs e)
         {
             //查看材料
-            FrmResources resources = new FrmResources(_issueid,_meetingId);
+            FrmResources resources = new FrmResources(_issueid, _meetingId);
             resources.Show();
             Hide();
         }
@@ -70,9 +72,11 @@ namespace Meeting.Pc.View
         private void panelEx3_Click(object sender, EventArgs e)
         {
             //会议记录
+
             FrmRecord record = new FrmRecord(_meetingId);
             record.Show();
             Hide();
+
         }
 
         //IntPtr m_pDll;
@@ -112,7 +116,7 @@ namespace Meeting.Pc.View
         }
 
         private int _issueid = 0;
-        private void Initial(string meetingId) 
+        private void Initial(string meetingId)
         {
             mMeeting model = imeeting.GetMeetingModel(Convert.ToInt32(meetingId));
             label4.Text = model.MeetingName;

@@ -89,6 +89,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="UserInfo.cs" />
     <Compile Include="View\FrmCreateMeeting.cs">
       <SubType>Form</SubType>
     </Compile>
