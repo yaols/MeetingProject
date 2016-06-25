@@ -89,7 +89,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Helper.cs" />
-    <Compile Include="View\FrmCreateMeeting.cs" />
+    <Compile Include="View\FrmCreateMeeting.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="View\FrmCreateMeeting.Designer.cs">
       <DependentUpon>FrmCreateMeeting.cs</DependentUpon>
     </Compile>

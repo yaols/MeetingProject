@@ -58,8 +58,17 @@ namespace Meeting.Pc.View
             model.IssueList.DepartId = Convert.ToInt32(comboBox6.SelectedValue);
             model.IssueList.RepostUserId = Convert.ToInt32(comboBox5.SelectedValue);
 
+            //先上传资料到服务器        然后将数据存入到数据库
 
-            MessageBox.Show("保存成功");
+
+            if (imeeting.SaveMeeting(resources, modeList, model) > 0) 
+            {
+                MessageBox.Show("保存成功");
+                FrmMain main = new FrmMain();
+                main.Show();
+            }
+
+            resources.Clear();
         }
 
         private void peRerurn_Click(object sender, EventArgs e)
@@ -169,16 +178,18 @@ namespace Meeting.Pc.View
             {
                 string filename = openFileDialog1.FileName;
                 string safile = openFileDialog1.SafeFileName;
-                AddImageContro(safile);
+                AddImageContro(filename, safile);
             }
         }
 
-        private int labelX = 749;
-        private int panelX = 771;
+        private int labelX = 755;
+        private int panelX = 755;
         private int num = 0;
 
-        private void AddImageContro(string safile) 
+        private void AddImageContro(string fileUrl, string safile) 
         {
+            mMeetingResources model = new mMeetingResources();
+
             if (num > 0) 
             {
                 panelX = panelX - 135;
@@ -194,30 +205,39 @@ namespace Meeting.Pc.View
             label.Text = safile;
             label.Width = 120;
             label.Height = 12;
-            label.Location = new Point(labelX, 106);
+            label.Location = new Point(labelX, 146);
             if (safile.Contains(".doc") || safile.Contains(".docx")) 
             {
                 panel.BackgroundImage = Resources.文本资料;
+                model.ResourcesType = 1;
             }
 
             if (safile.Contains(".txt"))
             {
                 panel.BackgroundImage = Resources.文本资料;
+                model.ResourcesType = 1;
             }
 
             if (safile.Contains(".jpg") || safile.Contains(".png"))
             {
                 panel.BackgroundImage = Resources.图片资料;
+                model.ResourcesType = 2;
             }
 
             if (safile.Contains(".mp3") || safile.Contains(".mp4"))
             {
                 panel.BackgroundImage = Resources.音频资料;
+                model.ResourcesType = 3;
             }
 
             panelEx4.Controls.Add(panel);
             panelEx4.Controls.Add(label);
             num++;
+
+            model.ResourcesName = safile;
+            model.ResourcesUrl = fileUrl;
+
+            resources.Add(model);
         }
     }
 }
