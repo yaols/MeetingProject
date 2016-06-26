@@ -104,12 +104,10 @@ namespace Meeting.Pc.View
 
             string receivePath = ConfigurationManager.AppSettings["pcurl"].ToString();
 
-            webclient.DownloadFile(URLAddress + "20160626091504/会议系统配置清单.docx", phath + "会议系统配置清单.docx");
+            webclient.DownloadFile(URLAddress +_directory+"/会议系统配置清单.docx", phath + "会议系统配置清单.docx");
 
 
             FrmSign sign = new FrmSign(_meetingId);
-
-
             // var word = new CtrlWinWord()
             //{
             sign.word.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -126,6 +124,7 @@ namespace Meeting.Pc.View
         }
 
         private int _issueid = 0;
+        private string _directory = "";   //这次会议  上传材料的根目录
         private void Initial(string meetingId)
         {
             mMeeting model = imeeting.GetMeetingModel(Convert.ToInt32(meetingId));
@@ -139,6 +138,7 @@ namespace Meeting.Pc.View
             label24.Text = model.IssueList.IssueName;
             label25.Text = model.IssueList.RepostUser;
             label26.Text = model.IssueList.DepartName;
+            _directory = model.Directory;
 
             _issueid = model.IssueList.Id;
         }
