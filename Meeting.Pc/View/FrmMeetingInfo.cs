@@ -98,17 +98,19 @@ namespace Meeting.Pc.View
 
             //    bool flag = GainPrivileges();  //获取权限，打开Word前调用，只需执行一次
             //}
+
+            string phath = System.Environment.CurrentDirectory;
             WebClient webclient = new WebClient();
             string URLAddress = ConfigurationManager.AppSettings["downUrl"].ToString();
 
-            string receivePath = @"C:\";
+            string receivePath = ConfigurationManager.AppSettings["pcurl"].ToString();
 
-            webclient.DownloadFile(URLAddress, receivePath + System.IO.Path.GetFileName(URLAddress));
+            webclient.DownloadFile(URLAddress + "20160626091504/会议系统配置清单.docx", phath + "会议系统配置清单.docx");
 
 
             FrmSign sign = new FrmSign(_meetingId);
 
-            string phath = System.Environment.CurrentDirectory;
+           
             // var word = new CtrlWinWord()
             //{
             sign.word.Dock = System.Windows.Forms.DockStyle.Fill;

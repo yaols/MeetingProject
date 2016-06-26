@@ -14,5 +14,7 @@ namespace Meeting.Interface
         mMeeting GetMeetingModel(int meetingId);
 
         DataSet GetCreateMeeting();
+
+        int SaveMeeting(List<mMeetingResources> resources,List<mMeetingPeople> people,mMeeting meeting);
     }
 }

@@ -27,5 +27,11 @@ namespace Meeting.BLL
         {
             return MeetingDao.GetCreateMeeting();
         }
+
+
+       public int SaveMeeting(List<mMeetingResources> resources, List<mMeetingPeople> people,  mMeeting meeting) 
+        {
+            return MeetingDao.SaveMeeting(resources, people,meeting);
+        }
     }
 }

@@ -96,6 +96,50 @@ namespace Meeting.Dao
 
             dataSet = SQLHelper.GetDataSet(usersql);
             return dataSet;
-        } 
+        }
+
+
+        public static int SaveMeeting(List<mMeetingResources> resources, List<mMeetingPeople> people,mMeeting meeting)
+        {
+            int result = 0;
+
+            string meetingsql = string.Format(@"insert into [m_Meeting](MeetingName,StartDate,EendDate,AddressId,
+                                   MeetingHost,MeetingDocument,MeetingCreateDate,MeetingType,
+                                   MeetingSecretary) values('{0}','{1}',
+                                   '{2}','{3}','{4}','{5}','{6}','{7}','{8}');select @@identity", meeting.MeetingName, meeting.StartDate,
+                                    meeting.EendDate,meeting.MeetingAddress,meeting.MeetingHost,meeting.MeetingDocument,
+                                    DateTime.Now.ToString(),
+                                    0,meeting.MeetingSecretary);
+
+            int meetingid = SQLHelper.ExcuteScalarSQL(meetingsql);
+
+            if (meetingid > 0) 
+            {
+                string issuesql = string.Format(@"insert into [m_MeetingIssue](IssueName,RepostUser,DepartId,
+                                          MeetingId) values('{0}','{1}','{2}','{3}');select @@identity", meeting.IssueList.IssueName,
+                                          meeting.IssueList.RepostUserId, meeting.IssueList.DepartId, meetingid);
+                StringBuilder builder = new StringBuilder();
+                foreach (var item in people)
+                {
+                    builder.AppendFormat("insert into [m_MeetingPeople] (MeetingId,UserId,RoleId) values('{0}','{1}','{2}');",meetingid,item.UserId,item.RoleId);
+                }
+
+                int issueId = SQLHelper.ExcuteScalarSQL(builder.ToString()+issuesql);
+
+                if (issueId > 0) 
+                {
+                    builder.Clear();
+                    foreach (var item in resources)
+                    {
+                        builder.AppendFormat(@"insert into [m_MeetingResources] (ResourcesName,
+                        ResourcesType,MeetingIssueId) values ('{0}','{1}','{2}');",item.ResourcesName,item.ResourcesType,issueId);
+                    }
+
+                    result = SQLHelper.ExcuteSQL(builder.ToString());
+                }
+            }
+
+            return result;
+        }
     }
 }

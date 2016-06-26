@@ -45,6 +45,8 @@ namespace Meeting.Pc.View
 
         private void FrmRecord_Load(object sender, EventArgs e)
         {
+
+
             string phath = System.Environment.CurrentDirectory;
             var word = new CtrlWinWord()
             {

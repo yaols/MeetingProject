@@ -14,5 +14,11 @@ namespace Meeting.BLL
         {
             return MeetingIssueDao.GetMeetingInfo(meetingId);
         }
+
+
+        public List<mMeetingResources> GetMeetingResources(int issueid) 
+        {
+            return MeetingIssueDao.GetMeetingResources(issueid);
+        }
     }
 }

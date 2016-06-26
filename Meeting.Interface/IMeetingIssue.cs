@@ -9,5 +9,7 @@ namespace Meeting.Interface
     public interface IMeetingIssue
     {
         mMeeting GetMeetingInfo(int meetingId);
+
+        List<mMeetingResources> GetMeetingResources(int issueid);
     }
 }

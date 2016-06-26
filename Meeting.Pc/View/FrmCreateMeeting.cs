@@ -12,6 +12,8 @@ using Meeting.BLL;
 using Meeting.Pc.Control;
 using System.IO;
 using Meeting.Pc.Properties;
+using System.Net;
+using System.Configuration;
 
 
 namespace Meeting.Pc.View
@@ -59,6 +61,14 @@ namespace Meeting.Pc.View
             model.IssueList.RepostUserId = Convert.ToInt32(comboBox5.SelectedValue);
 
             //先上传资料到服务器        然后将数据存入到数据库
+            foreach (var item in resources)
+            {
+                string url = ConfigurationManager.AppSettings["saveUrl"].ToString();
+                WebClient webclient = new WebClient();
+                webclient.UploadFile(url, "POST", item.ResourcesUrl);
+            }
+
+
 
 
             if (imeeting.SaveMeeting(resources, modeList, model) > 0) 
@@ -66,6 +76,7 @@ namespace Meeting.Pc.View
                 MessageBox.Show("保存成功");
                 FrmMain main = new FrmMain();
                 main.Show();
+                Hide();
             }
 
             resources.Clear();
