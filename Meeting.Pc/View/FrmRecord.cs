@@ -47,10 +47,13 @@ namespace Meeting.Pc.View
 
         private void FrmRecord_Load(object sender, EventArgs e)
         {
+          
+
             //先下载word
-            string url = Helper.DownloadFile(_directory);
+            string path = System.Environment.CurrentDirectory;
+            string url = Helper.DownloadFile(_directory,path);
 
-
+            Helper.KillProcess();
             var word = new CtrlWinWord()
             {
                 Dock = System.Windows.Forms.DockStyle.Fill,
@@ -59,7 +62,8 @@ namespace Meeting.Pc.View
                 TabIndex = 1
             };
             //加载word的完整路径  修改此处
-            word.CreateWord(url);
+            word.LoadDocument(url);
+            //word.LoadDocument(phath + @"\1.docx");
             word.Show();
             panelEx3.Controls.Add(word);
         }

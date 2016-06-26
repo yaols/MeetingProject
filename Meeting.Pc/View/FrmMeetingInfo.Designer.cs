@@ -45,7 +45,12 @@
             this.label26 = new System.Windows.Forms.Label();
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
+            this.panelEx7 = new Meeting.Pc.Control.PanelEx();
+            this.panelEx6 = new Meeting.Pc.Control.PanelEx();
+            this.panelEx3 = new Meeting.Pc.Control.PanelEx();
             this.label23 = new System.Windows.Forms.Label();
+            this.panelEx2 = new Meeting.Pc.Control.PanelEx();
+            this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -54,11 +59,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.panelEx7 = new Meeting.Pc.Control.PanelEx();
-            this.panelEx6 = new Meeting.Pc.Control.PanelEx();
-            this.panelEx3 = new Meeting.Pc.Control.PanelEx();
-            this.panelEx2 = new Meeting.Pc.Control.PanelEx();
-            this.label15 = new System.Windows.Forms.Label();
             this.panelEx1 = new Meeting.Pc.Control.PanelEx();
             this.label2 = new System.Windows.Forms.Label();
             this.plHead = new System.Windows.Forms.Panel();
@@ -287,6 +287,45 @@
             this.label24.TabIndex = 29;
             this.label24.Text = "关于如何提高办事效率";
             // 
+            // panelEx7
+            // 
+            this.panelEx7.BackColor = System.Drawing.Color.Transparent;
+            this.panelEx7.BackgroundImage = global::Meeting.Pc.Properties.Resources.查看材料;
+            this.panelEx7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelEx7.BorderColor = System.Drawing.Color.Empty;
+            this.panelEx7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelEx7.Location = new System.Drawing.Point(585, 14);
+            this.panelEx7.Name = "panelEx7";
+            this.panelEx7.Size = new System.Drawing.Size(81, 24);
+            this.panelEx7.TabIndex = 31;
+            this.panelEx7.Click += new System.EventHandler(this.panelEx7_Click);
+            // 
+            // panelEx6
+            // 
+            this.panelEx6.BackColor = System.Drawing.Color.Transparent;
+            this.panelEx6.BackgroundImage = global::Meeting.Pc.Properties.Resources.检委会决定;
+            this.panelEx6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelEx6.BorderColor = System.Drawing.Color.Empty;
+            this.panelEx6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelEx6.Location = new System.Drawing.Point(777, 14);
+            this.panelEx6.Name = "panelEx6";
+            this.panelEx6.Size = new System.Drawing.Size(81, 24);
+            this.panelEx6.TabIndex = 30;
+            this.panelEx6.Click += new System.EventHandler(this.panelEx6_Click);
+            // 
+            // panelEx3
+            // 
+            this.panelEx3.BackColor = System.Drawing.Color.Transparent;
+            this.panelEx3.BackgroundImage = global::Meeting.Pc.Properties.Resources.会议表决;
+            this.panelEx3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.panelEx3.BorderColor = System.Drawing.Color.Empty;
+            this.panelEx3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.panelEx3.Location = new System.Drawing.Point(681, 14);
+            this.panelEx3.Name = "panelEx3";
+            this.panelEx3.Size = new System.Drawing.Size(81, 24);
+            this.panelEx3.TabIndex = 29;
+            this.panelEx3.Click += new System.EventHandler(this.panelEx3_Click);
+            // 
             // label23
             // 
             this.label23.AutoSize = true;
@@ -295,6 +334,28 @@
             this.label23.Size = new System.Drawing.Size(11, 12);
             this.label23.TabIndex = 28;
             this.label23.Text = "1";
+            // 
+            // panelEx2
+            // 
+            this.panelEx2.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
+            this.panelEx2.BorderColor = System.Drawing.Color.Empty;
+            this.panelEx2.Controls.Add(this.label15);
+            this.panelEx2.Location = new System.Drawing.Point(12, 260);
+            this.panelEx2.Name = "panelEx2";
+            this.panelEx2.Size = new System.Drawing.Size(875, 30);
+            this.panelEx2.TabIndex = 24;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.Transparent;
+            this.label15.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold);
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(180)))), ((int)(((byte)(241)))));
+            this.label15.Location = new System.Drawing.Point(13, 117);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(67, 14);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "会议议题";
             // 
             // label13
             // 
@@ -392,67 +453,6 @@
             this.label3.TabIndex = 2;
             this.label3.Text = "会议名称:";
             // 
-            // panelEx7
-            // 
-            this.panelEx7.BackColor = System.Drawing.Color.Transparent;
-            this.panelEx7.BackgroundImage = global::Meeting.Pc.Properties.Resources.查看材料;
-            this.panelEx7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelEx7.BorderColor = System.Drawing.Color.Empty;
-            this.panelEx7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx7.Location = new System.Drawing.Point(585, 14);
-            this.panelEx7.Name = "panelEx7";
-            this.panelEx7.Size = new System.Drawing.Size(81, 24);
-            this.panelEx7.TabIndex = 31;
-            this.panelEx7.Click += new System.EventHandler(this.panelEx7_Click);
-            // 
-            // panelEx6
-            // 
-            this.panelEx6.BackColor = System.Drawing.Color.Transparent;
-            this.panelEx6.BackgroundImage = global::Meeting.Pc.Properties.Resources.检委会决定;
-            this.panelEx6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelEx6.BorderColor = System.Drawing.Color.Empty;
-            this.panelEx6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx6.Location = new System.Drawing.Point(777, 14);
-            this.panelEx6.Name = "panelEx6";
-            this.panelEx6.Size = new System.Drawing.Size(81, 24);
-            this.panelEx6.TabIndex = 30;
-            this.panelEx6.Click += new System.EventHandler(this.panelEx6_Click);
-            // 
-            // panelEx3
-            // 
-            this.panelEx3.BackColor = System.Drawing.Color.Transparent;
-            this.panelEx3.BackgroundImage = global::Meeting.Pc.Properties.Resources.会议表决;
-            this.panelEx3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelEx3.BorderColor = System.Drawing.Color.Empty;
-            this.panelEx3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx3.Location = new System.Drawing.Point(681, 14);
-            this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(81, 24);
-            this.panelEx3.TabIndex = 29;
-            this.panelEx3.Click += new System.EventHandler(this.panelEx3_Click);
-            // 
-            // panelEx2
-            // 
-            this.panelEx2.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
-            this.panelEx2.BorderColor = System.Drawing.Color.Empty;
-            this.panelEx2.Controls.Add(this.label15);
-            this.panelEx2.Location = new System.Drawing.Point(12, 260);
-            this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(875, 30);
-            this.panelEx2.TabIndex = 24;
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.BackColor = System.Drawing.Color.Transparent;
-            this.label15.Font = new System.Drawing.Font("宋体", 10F, System.Drawing.FontStyle.Bold);
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(180)))), ((int)(((byte)(241)))));
-            this.label15.Location = new System.Drawing.Point(13, 117);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(67, 14);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "会议议题";
-            // 
             // panelEx1
             // 
             this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
@@ -527,7 +527,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(98, 21);
             this.label1.TabIndex = 0;
-            this.label1.Text = "材料详情";
+            this.label1.Text = "会议详情";
             // 
             // FrmMeetingInfo
             // 

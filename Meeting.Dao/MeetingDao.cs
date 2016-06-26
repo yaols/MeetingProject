@@ -50,7 +50,8 @@ namespace Meeting.Dao
                                    SecretaryName=(select UserName from m_User u where u.UserId=m.MeetingSecretary),
                                    peopleName=(select [dbo].[GetMeetingPeople](1)),mi.IssueName,mi.Id,
                                    RepostUser=(select UserName from m_User u where u.UserId=mi.RepostUser),
-                                   DepartName=(select DepartName from m_Depart m where m.Id=mi.DepartId)
+                                   DepartName=(select DepartName from m_Depart m where m.Id=mi.DepartId),
+                                   Directory=(select top 1 Directory from m_MeetingResources mr where mr.MeetingIssueId=mi.Id)
                                    from m_Meeting m  left join m_MeetingIssue mi on m.MeetingId=mi.MeetingId
                                    left join m_Address a on m.AddressId=a.Id
                                    where m.MeetingId=@meetingId";
@@ -78,6 +79,7 @@ namespace Meeting.Dao
                 model.MeetingHost = reader["HostName"].ToString();
                 model.SecretaryName = reader["SecretaryName"].ToString();
                 model.PeopleName = reader["PeopleName"].ToString();
+                model.Directory = reader["Directory"].ToString();
             }
 
             return model;

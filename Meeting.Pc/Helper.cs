@@ -28,7 +28,7 @@ namespace Meeting.Pc
         /// <param name="requesturl"></param>
         /// <param name="date"></param>
         /// <returns></returns>
-        public static string UploadFileHttpRequest(string fileName,string requesturl,string date)
+        public static string UploadFileHttpRequest(string fileName, string requesturl, string date)
         {
             string output = string.Empty;
             MemoryStream postStream = null;
@@ -107,33 +107,34 @@ namespace Meeting.Pc
         }
 
         static WebClient webclient = new WebClient();
-        public static string DownloadFile(string directory) 
+        public static string DownloadFile(string directory, string path)
         {
             string urladdress = "";
             string receivePath = "";
             string saveurl = "";
-            string filename = "\\会议记录.docx";
+            string filename = @"\1.docx";
 
             try
             {
                 urladdress = ConfigurationManager.AppSettings["downUrl"].ToString();
                 receivePath = ConfigurationManager.AppSettings["pcurl"].ToString();
-                saveurl = string.Format("{0}{1}", receivePath, directory);
-        
+                saveurl = string.Format("{0}{1}", path, directory);
+
 
                 CreateDirectory(saveurl);
-                webclient.DownloadFile(urladdress + directory + "/会议记录.docx", saveurl + filename);
+                webclient.DownloadFile(urladdress + directory + "/会议记录.doc", saveurl + filename);
                 return saveurl;
             }
             catch (Exception ex)
             {
-                File.Create(saveurl + filename);
+                if (!File.Exists(saveurl + filename))
+                    File.Create(saveurl + filename);
                 return saveurl + filename;
             }
         }
 
 
-        private static void CreateDirectory(string url) 
+        private static void CreateDirectory(string url)
         {
             if (!Directory.Exists(url))
             {
