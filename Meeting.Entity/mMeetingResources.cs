@@ -16,5 +16,7 @@ namespace Meeting.Entity
         public int MeetingIssueId { get; set; }
 
         public string ResourcesUrl { get; set; }
+
+        public string Directory { get; set; }
     }
 }

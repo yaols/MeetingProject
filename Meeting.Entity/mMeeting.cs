@@ -36,5 +36,7 @@ namespace Meeting.Entity
         public mMeetingIssue IssueList {get;set; }
 
         public string PeopleName { get; set; }
+
+        public string Directory { get; set; }
     }
 }
