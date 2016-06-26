@@ -74,7 +74,6 @@ namespace Meeting.Pc.View
         private void panelEx3_Click(object sender, EventArgs e)
         {
             //会议记录
-
             FrmRecord record = new FrmRecord(_meetingId);
             record.Show();
             Hide();
@@ -110,7 +109,7 @@ namespace Meeting.Pc.View
 
             FrmSign sign = new FrmSign(_meetingId);
 
-           
+
             // var word = new CtrlWinWord()
             //{
             sign.word.Dock = System.Windows.Forms.DockStyle.Fill;

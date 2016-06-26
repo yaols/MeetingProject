@@ -61,11 +61,14 @@ namespace Meeting.Pc.View
             model.IssueList.RepostUserId = Convert.ToInt32(comboBox5.SelectedValue);
 
             //先上传资料到服务器        然后将数据存入到数据库
+            string date = DateTime.Now.ToString("yyyyMMddHHmmsss");
             foreach (var item in resources)
             {
                 string url = ConfigurationManager.AppSettings["saveUrl"].ToString();
-                WebClient webclient = new WebClient();
-                webclient.UploadFile(url, "POST", item.ResourcesUrl);
+                item.ResourcesName =date  + "/" + item.ResourcesName;
+                //WebClient webclient = new WebClient();
+                //webclient.UploadFile(url, "POST", item.ResourcesUrl);
+                Helper.UploadFileHttpRequest(item.ResourcesUrl, url, date);
             }
 
 
