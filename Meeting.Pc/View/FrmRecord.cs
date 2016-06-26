@@ -5,10 +5,12 @@ using Meeting.Pc.Control;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -45,7 +47,10 @@ namespace Meeting.Pc.View
 
         private void FrmRecord_Load(object sender, EventArgs e)
         {
-            string phath = System.Environment.CurrentDirectory;
+            //先下载word
+            string url = Helper.DownloadFile(_directory);
+
+
             var word = new CtrlWinWord()
             {
                 Dock = System.Windows.Forms.DockStyle.Fill,
@@ -54,7 +59,7 @@ namespace Meeting.Pc.View
                 TabIndex = 1
             };
             //加载word的完整路径  修改此处
-            word.LoadDocument(phath + @"\1.docx");
+            word.CreateWord(url);
             word.Show();
             panelEx3.Controls.Add(word);
         }
@@ -66,6 +71,8 @@ namespace Meeting.Pc.View
 
         }
 
+
+        private string _directory = "";   //这次会议  上传材料的根目录
         private void Initial(string meetingId)
         {
             mMeeting model = imeeting.GetMeetingModel(Convert.ToInt32(meetingId));
@@ -76,6 +83,7 @@ namespace Meeting.Pc.View
             label14.Text = model.MeetingHost;
             label22.Text = model.SecretaryName;
             label12.Text = model.PeopleName;
+            _directory = model.Directory;
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -20,7 +21,13 @@ namespace Meeting.Pc
             }
         }
 
-
+        /// <summary>
+        /// 上传
+        /// </summary>
+        /// <param name="fileName"></param>
+        /// <param name="requesturl"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
         public static string UploadFileHttpRequest(string fileName,string requesturl,string date)
         {
             string output = string.Empty;
@@ -97,6 +104,41 @@ namespace Meeting.Pc
                 }
             }
             return output;
+        }
+
+        static WebClient webclient = new WebClient();
+        public static string DownloadFile(string directory) 
+        {
+            string urladdress = "";
+            string receivePath = "";
+            string saveurl = "";
+            string filename = "\\会议记录.docx";
+
+            try
+            {
+                urladdress = ConfigurationManager.AppSettings["downUrl"].ToString();
+                receivePath = ConfigurationManager.AppSettings["pcurl"].ToString();
+                saveurl = string.Format("{0}{1}", receivePath, directory);
+        
+
+                CreateDirectory(saveurl);
+                webclient.DownloadFile(urladdress + directory + "/会议记录.docx", saveurl + filename);
+                return saveurl;
+            }
+            catch (Exception ex)
+            {
+                File.Create(saveurl + filename);
+                return saveurl + filename;
+            }
+        }
+
+
+        private static void CreateDirectory(string url) 
+        {
+            if (!Directory.Exists(url))
+            {
+                Directory.CreateDirectory(url);
+            }
         }
     }
 }
