@@ -24,5 +24,7 @@ namespace Meeting.Interface
         int InsertCreateMeeting(CreateMeeting model,int userId);
 
         int EndMeeting(string meetingId);
+
+        int UpdateMeeting(string meetingId);
     }
 }

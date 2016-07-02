@@ -182,11 +182,11 @@
             $('#datetimepicker1').datetimepicker({ value: myDate.toLocaleTimeString(), step: 10 });
             $('#datetimepicker2').datetimepicker({ value: myDate.toLocaleTimeString(), step: 10 });
 
-
             $('#file_upload').uploadify({
                 'swf': '/Scripts/uploadify/uploadify.swf',
                 'uploader': '/Upload/Index',
                 'onUploadStart': function (file) {
+             
                     var htmlString = '<li class="create-ul-li"><div class="create-li-img">';
                     if (file.type == '.txt' || file.type == '.doc' || file.type == '.docx') {
                         htmlString += '<img src="/Images/文本资料.png" /></div>';

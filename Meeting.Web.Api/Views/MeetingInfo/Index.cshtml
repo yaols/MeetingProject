@@ -27,6 +27,9 @@
                     <div class="home-li-button" onclick="returnTop()">返回</div>
                 </li>
                 <li class="ulbtn-btn">
+                    <div class="home-li-button" onclick="returnTop()">@(Model.Type==0?"隐藏":"显示")</div>
+                </li>
+                <li class="ulbtn-btn">
                     @{var btn = "EndMeeting('" + Model.MeetingId + "')";}
                     <div class="home-li-button1" onclick="@btn">结束会议</div>
                 </li>
@@ -99,6 +102,14 @@
 
         function JumpButton(url) {
             location.href = url;
+        }
+
+        function DelBtn(meetingId) {
+            $.post('/MeetingInfo/DelMeeting', { meetingId: meetingId }, function (data) {
+                if (data.Result == 0)
+                    location.href = "/MeetingInfo/Index?meetingId=" + meetingId;
+                mh_dialogShow('mh_success', data.Msg, 500, true);
+            });
         }
     </script>
 

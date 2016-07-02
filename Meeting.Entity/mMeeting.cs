@@ -38,5 +38,7 @@ namespace Meeting.Entity
         public string PeopleName { get; set; }
 
         public string Directory { get; set; }
+
+        public int Type { get; set; }
     }
 }

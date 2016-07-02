@@ -20,7 +20,7 @@ namespace Meeting.Dao
             DataSet dataSet = new DataSet();
 
             string sql = @"select RowId,MeetingId,MeetingName,StartDate,EendDate,MeetingType
-                                  from ( select ROW_NUMBER() OVER (ORDER BY StartDate desc) RowId,MeetingId,
+                                  from ( select ROW_NUMBER() OVER (ORDER BY MeetingCreateDate desc) RowId,MeetingId,
                                   MeetingName,StartDate,EendDate,MeetingType from m_Meeting 
                                   where MeetingType=@meetingType ) a where a.RowId between @index and @size;
                                   select count(1) from m_Meeting where MeetingType=@meetingType";
@@ -52,9 +52,9 @@ namespace Meeting.Dao
                                    peopleName=(select [dbo].[GetMeetingPeople](@meetingId)),m.IssueName,
                                    RepostUser=(select UserName from m_User u where u.UserId=m.RepostUser),
                                    Directory=(select top 1 Directory from m_MeetingResources mr where mr.MeetingIssueId=m.MeetingId),
-                                   d.DepartName  from m_Meeting m 
+                                   d.DepartName,m.type  from m_Meeting m 
                                    left join m_Depart d on m.DepartId=d.Id
-                                   where m.MeetingId=@meetingId";
+                                   where m.MeetingId=@meetingId and Type=0";
 
             SqlParameter[] paras = new SqlParameter[]
            {
@@ -80,6 +80,7 @@ namespace Meeting.Dao
                 model.SecretaryName = reader["SecretaryName"].ToString();
                 model.PeopleName = reader["PeopleName"].ToString();
                 model.Directory = reader["Directory"].ToString();
+                model.Type = Tool.ToInt(reader["Type"].ToString());
             }
 
             return model;
@@ -166,9 +167,9 @@ namespace Meeting.Dao
 
             int result = 0;
             string sql = string.Format(@"insert into m_Meeting (MeetingName,StartDate,EendDate,AddressName,MeetingHost,
-            MeetingDocument,MeetingCreateUser,MeetingCreateDate,MeetingType,MeetingSecretary,IssueName,RepostUser,DepartId) values (
-            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}');select @@identity", model.year, model.datetimepicker1, model.datetimepicker2, model.address,
-             model.hoseUser, model.wenshu, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, model.depart);
+            MeetingDocument,MeetingCreateUser,MeetingCreateDate,MeetingType,MeetingSecretary,IssueName,RepostUser,DepartId,Type) values (
+            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}');select @@identity", model.year, model.datetimepicker1, model.datetimepicker2, model.address,
+             model.hoseUser, model.wenshu, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, model.depart,0);
 
             result = SQLHelper.ExcuteScalarSQL(sql);
             if (result > 0)
@@ -206,6 +207,11 @@ namespace Meeting.Dao
             string sql = "update m_Meeting set MeetingType=1 where MeetingId=" + meetingId;
 
             return SQLHelper.ExcuteSQL(sql);
+        }
+
+        public static int UpdateMeeting(string meetingId)
+        {
+            return SQLHelper.ExcuteProc("pro_Meeting");
         }
     }
 }

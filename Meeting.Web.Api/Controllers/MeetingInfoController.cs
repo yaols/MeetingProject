@@ -12,6 +12,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
+
 namespace Meeting.Web.Api.Controllers
 {
     public class MeetingInfoController : BaseController
@@ -235,7 +236,7 @@ namespace Meeting.Web.Api.Controllers
 
         public void ExportWord(string fileName) 
         {
-            string url = string.Format(@"{0}\{1}\{2}", Consts.SaveUrlPath,fileName, "1.docx");
+            string url = string.Format(@"{0}{1}\{2}", Consts.SaveUrlPath,fileName, fileName+".docx");
             //输出word
             System.IO.FileInfo file = new System.IO.FileInfo(url);
             System.Web.HttpContext.Current.Response.Clear();
@@ -254,6 +255,48 @@ namespace Meeting.Web.Api.Controllers
             // 停止页面的执行 
             //HttpContext.Current.ApplicationInstance.CompleteRequest
             System.Web.HttpContext.Current.ApplicationInstance.CompleteRequest();
+        }
+
+
+        public JsonResult DelMeeting(string meetingId) 
+        {
+            ResultBase result = new ResultBase();
+            if (imeeting.UpdateMeeting(meetingId) > 0)
+            {
+                result.Result = ResultCode.Ok;
+                result.Msg = "隐藏会议成功";
+            }
+            else
+            {
+                result.Result = ResultCode.ServerError;
+                result.Msg = "隐藏会议失败";
+            }
+
+            return Json(result);
+        }
+
+
+
+        public JsonResult DelResource(int Id, string Directory, string filename)
+        {
+            ResultBase result = new ResultBase();
+
+            if (iresources.DelResource(Id) > 0) 
+            {
+                string url = string.Format("{0}{1}\\{2}",Consts.SaveUrlPath,Directory,filename);
+                if (Helper.DelFileUrl(url) > 0)
+                {
+                    result.Result = ResultCode.Ok;
+                    result.Msg = "删除文件" + filename + "成功";
+                }
+                else 
+                {
+                    result.Result = ResultCode.Ok;
+                    result.Msg = "删除文件" + filename + "失败";
+                }
+            }
+
+            return Json(result);
         }
     }
 }

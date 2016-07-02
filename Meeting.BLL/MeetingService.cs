@@ -96,5 +96,11 @@ namespace Meeting.BLL
         {
             return MeetingDao.EndMeeting(meetingId);
         }
+
+
+        public int UpdateMeeting(string meetingId) 
+        {
+            return MeetingDao.UpdateMeeting(meetingId);
+        }
     }
 }
