@@ -11,17 +11,27 @@ namespace Meeting.Pc.View
 {
     public partial class FrmVide : Form
     {
-        public FrmVide()
+        private string _meetingId = "";
+        public FrmVide(string path,string meetingId,string filename)
         {
             InitializeComponent();
 
-            Initial("");
+            _meetingId = meetingId;
+            Initial(path);
+            Text = filename;
         }
 
         private void Initial(string path) 
         {
             axWindowsMediaPlayer1.URL = path;
            this.axWindowsMediaPlayer1.Ctlcontrols.play();
+        }
+
+        private void peRerurn_Click(object sender, EventArgs e)
+        {
+            FrmResources resoureces = new FrmResources(_meetingId);
+            resoureces.Show();
+            Hide();
         }
     }
 }

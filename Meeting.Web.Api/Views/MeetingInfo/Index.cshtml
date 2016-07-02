@@ -1,82 +1,111 @@
 ﻿@using Meeting.Entity
 @model mMeeting
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
-@Html.Partial("~/Views/Shared/_Style.cshtml")
-<div class="layou-info-top">
-    <font class="layou-info-font">会议信息</font>
-</div>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>会议详情</title>
+    <style type="text/css">
+    </style>
+    <link href="~/css/main.css" rel="stylesheet" />
+</head>
+<body>
+    @Html.Partial("~/Views/Shared/_Style.cshtml")
 
-<ul class="layou-info-ul">
-    <li class="layou-info-li">会议名称: @Model.MeetingName</li>
-    <li class="layou-info-li">计划开始时间: @Model.StartDate   <span style="margin-left:40px"></span>   计划结束时间: @Model.EendDate</li>
-    <li class="layou-info-li">会议地点:@Model.MeetingAddress</li>
-    <li class="layou-info-li">
-        参会委员:@Model.PeopleName
-    </li>
-    <li class="layou-info-li">主持人:@Model.MeetingHost</li>
-    <li class="layou-info-li">秘书:@Model.SecretaryName</li>
-</ul>
+    <div class="home">
 
-<div class="layou-info-top">
-    <font class="layou-info-font">会议议题</font>
-</div>
+        <div class="layout-top">
 
-<div class="layou-div-title">
-    <ul class="layou-div-ul">
-        <li class="layou-ul-li1">序号</li>
-        <li class="layou-ul-li2">议题名称</li>
-        <li class="layou-ul-li3">申请部门</li>
-        <li class="layou-ul-li4">汇报处</li>
-        <li class="layou-ul-li5">操作</li>
-    </ul>
-</div>
+            <ul class="layout-top-ul">
+                <li class="home-li-font">会议详情</li>
+            </ul>
 
-@if (Model.IssueList != null && Model.IssueList.Count > 0)
-{
-    for (int i = 0; i < Model.IssueList.Count; i++)
-    {
-        string materialinfo = "JumpButton('" + "/MeetingInfo/MaterialInfo?MeetingId=" + Model.MeetingId + "','" + 0 + "')";
-        string meetingRecord = "JumpButton('" + "/MeetingInfo/MeetingRecord?MeetingId=" + Model.MeetingId + "','"+1+"')";
-        string meetingsign = "JumpButton('" + "/MeetingInfo/MeetingSign?MeetingId=" + Model.MeetingId + "','" + 2 + "')";
+            <ul class="home-top-ulbtn">
+                <li class="ulbtn-btn">
+                    <div class="home-li-button" onclick="returnTop()">返回</div>
+                </li>
+                <li class="ulbtn-btn">
+                    @{var btn = "EndMeeting('" + Model.MeetingId + "')";}
+                    <div class="home-li-button1" onclick="@btn">结束会议</div>
+                </li>
+            </ul>
 
+        </div>
+
+
+        <div class="layou-info-top">
+            <font class="layou-info-font">会议信息</font>
+        </div>
+
+        <ul class="layou-info-ul">
+            <li class="layou-info-li">会议名称: @Model.MeetingName</li>
+            <li class="layou-info-li">计划开始时间: @Model.StartDate   <span style="margin-left:40px"></span>   计划结束时间: @Model.EendDate</li>
+            <li class="layou-info-li">会议地点:@Model.MeetingAddress</li>
+            <li class="layou-info-li">
+                参会委员:@Model.PeopleName
+            </li>
+            <li class="layou-info-li">主持人:@Model.MeetingHost</li>
+            <li class="layou-info-li">秘书:@Model.SecretaryName</li>
+        </ul>
+
+        <div class="layou-info-top">
+            <font class="layou-info-font">会议议题</font>
+        </div>
+
+        <div class="layou-div-title">
+            <ul class="layou-div-ul">
+                <li class="layou-ul-li1">序号</li>
+                <li class="layou-ul-li2">议题名称</li>
+                <li class="layou-ul-li3">申请部门</li>
+                <li class="layou-ul-li4">汇报处</li>
+                <li class="layou-ul-li5">操作</li>
+            </ul>
+        </div>
+
+        @{
+            string materialinfo = "JumpButton('" + "/MeetingInfo/MaterialInfo?MeetingId=" + Model.MeetingId + "&Directory=" + Model.Directory + "')";
+            string meetingRecord = "JumpButton('" + "/MeetingInfo/MeetingRecord?MeetingId=" + Model.MeetingId + "&Directory=" + Model.Directory + "')";
+        }
         <div class="layou-div-content">
             <ul class="layou-div-ul">
-                <li class="layou-ul-li1">@(i + 1)</li>
-                <li class="layou-ul-li2">@Model.IssueList[i].IssueName</li>
-                <li class="layou-ul-li3">@Model.IssueList[i].DepartName</li>
-                <li class="layou-ul-li4">@Model.IssueList[i].RepostUser</li>
+                <li class="layou-ul-li1">1</li>
+                <li class="layou-ul-li2">@Model.IssueList.IssueName</li>
+                <li class="layou-ul-li3">@Model.IssueList.DepartName</li>
+                <li class="layou-ul-li4">@Model.IssueList.RepostUser</li>
                 <li class="layou-ul-li5">
                     <div class="table-button1" onclick="@materialinfo">查看材料</div>
                     <div class="table-button2" onclick="@meetingRecord">会议记录</div>
-                    <div class="table-button3" onclick="@meetingsign">检委会决定</div>
                 </li>
             </ul>
         </div>
-    }
-}
-else
-{
-    <div class="layou-div-content">
-        暂无数据
-    </div>
-}
 
-<script type="text/javascript">
-    function JumpButton(url, role) {
-        if (role == 0) {
-            location.href = url;
-        } else {
-            $.get("/MeetingInfo/GetUserJurisdiction?roleId="+role, function (data) {
-                if (data.Result == 0) {
-                    location.href = url;
-                } else if (data.Result == 1) {
-                    location.href = "/Login/Index";
-                }
-                alert(data.Msg);
-            })
+    </div>
+
+
+    <script type="text/javascript">
+        function returnTop() {
+            location.href = "/Home/Index?pageindex=" + 1;
         }
 
-    }
-</script>
+        function EndMeeting(meetingId) {
+            $.post('/MeetingInfo/EndMeeting',{meetingId: meetingId}, function (data) {
+            if(data.Result==0)
+                location.href = "/Home/Index?pageindex=" + 1;
+            mh_dialogShow('mh_success', data.Msg, 500, true);
+            });
+        }
+
+        function JumpButton(url) {
+            location.href = url;
+        }
+    </script>
+
+</body>
+</html>
+
+
+
+
+

@@ -33,7 +33,6 @@
             this.pxSave = new Meeting.Pc.Control.PanelEx();
             this.panelEx1 = new Meeting.Pc.Control.PanelEx();
             this.peRerurn = new Meeting.Pc.Control.PanelEx();
-            this.pxHome = new Meeting.Pc.Control.PanelEx();
             this.label1 = new System.Windows.Forms.Label();
             this.plHead.SuspendLayout();
             this.SuspendLayout();
@@ -54,7 +53,6 @@
             this.plHead.Controls.Add(this.pxSave);
             this.plHead.Controls.Add(this.panelEx1);
             this.plHead.Controls.Add(this.peRerurn);
-            this.plHead.Controls.Add(this.pxHome);
             this.plHead.Controls.Add(this.label1);
             this.plHead.Font = new System.Drawing.Font("华文中宋", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.plHead.Location = new System.Drawing.Point(0, 0);
@@ -99,19 +97,6 @@
             this.peRerurn.TabIndex = 6;
             this.peRerurn.Click += new System.EventHandler(this.peRerurn_Click);
             // 
-            // pxHome
-            // 
-            this.pxHome.BackColor = System.Drawing.Color.Transparent;
-            this.pxHome.BackgroundImage = global::Meeting.Pc.Properties.Resources.returnHome;
-            this.pxHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pxHome.BorderColor = System.Drawing.Color.Empty;
-            this.pxHome.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pxHome.Location = new System.Drawing.Point(799, 12);
-            this.pxHome.Name = "pxHome";
-            this.pxHome.Size = new System.Drawing.Size(89, 27);
-            this.pxHome.TabIndex = 5;
-            this.pxHome.Click += new System.EventHandler(this.pxHome_Click);
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -145,7 +130,6 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private Control.PanelEx pxHome;
         private Control.PanelEx peRerurn;
         private Control.PanelEx panelEx1;
         private System.Windows.Forms.Panel plHead;

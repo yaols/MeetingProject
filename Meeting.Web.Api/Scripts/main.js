@@ -4,13 +4,13 @@ function Login() {
     var userpass = $("#userpass");
 
     if (username.val() == '') {
-        alert("用户名不能为空！");
+        $("#errorTitle").html("亲，用户名不能为空！");
         username.focus();
         return;
     }
 
     if (userpass.val() == '') {
-        alert("用户名不能为空！");
+        $("#errorTitle").html("亲，密码不能为空！");
         userpass.focus();
         return;
     }
@@ -22,7 +22,8 @@ function Login() {
         },
         function (data) {
             if (data.Result == 0)
-                location.href = "/Home/Index?pageindex="+1;
+                location.href = "/Home/Index?pageindex=" + 1;
+            $("#errorTitle").html("亲，" + data.Msg);
         });
 }
 
@@ -86,19 +87,12 @@ function endMeeting() {
 
 /*创建会议*/
 function createMeeting() {
-
+    location.href = "/MeetingInfo/MeetingCreate";
 }
 
 function clickMeeting(pageIndex,meetingType) {
     $.post("/Home/Index", { PageIndex: "" + pageIndex + "", pageType: 1, MeetingType: meetingType }, function (data) {
         $('#home-main').empty();
         $('#home-main').append(data);
-    });
-}
-
-
-function JumpMeeting(meetingId, url) {
-    $.get(url, { MeetingId: "" + meetingId + "" }, function () {
-        
     });
 }

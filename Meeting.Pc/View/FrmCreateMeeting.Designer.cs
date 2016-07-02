@@ -29,30 +29,12 @@
         private void InitializeComponent()
         {
             this.plMain = new System.Windows.Forms.Panel();
+            this.panelEx12 = new Meeting.Pc.Control.PanelEx();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.dateEnd = new System.Windows.Forms.DateTimePicker();
-            this.label9 = new System.Windows.Forms.Label();
-            this.dateStart = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.plHead = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.panelEx12 = new Meeting.Pc.Control.PanelEx();
             this.panelEx4 = new Meeting.Pc.Control.PanelEx();
             this.panelEx6 = new Meeting.Pc.Control.PanelEx();
             this.label21 = new System.Windows.Forms.Label();
@@ -61,23 +43,42 @@
             this.text4 = new Meeting.Pc.WatermarkTextBox();
             this.panelEx2 = new Meeting.Pc.Control.PanelEx();
             this.label15 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.dateEnd = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.dateStart = new System.Windows.Forms.DateTimePicker();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.text3 = new Meeting.Pc.WatermarkTextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.text2 = new Meeting.Pc.WatermarkTextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.text1 = new Meeting.Pc.WatermarkTextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.panelEx1 = new Meeting.Pc.Control.PanelEx();
             this.label2 = new System.Windows.Forms.Label();
+            this.plHead = new System.Windows.Forms.Panel();
             this.peRerurn = new Meeting.Pc.Control.PanelEx();
             this.pxSave = new Meeting.Pc.Control.PanelEx();
+            this.label1 = new System.Windows.Forms.Label();
+            this.watermarkTextBox1 = new Meeting.Pc.WatermarkTextBox();
             this.plMain.SuspendLayout();
-            this.plHead.SuspendLayout();
             this.panelEx4.SuspendLayout();
             this.panelEx2.SuspendLayout();
             this.panelEx1.SuspendLayout();
+            this.plHead.SuspendLayout();
             this.SuspendLayout();
             // 
             // plMain
             // 
             this.plMain.BackColor = System.Drawing.Color.White;
+            this.plMain.Controls.Add(this.watermarkTextBox1);
             this.plMain.Controls.Add(this.panelEx12);
             this.plMain.Controls.Add(this.label20);
             this.plMain.Controls.Add(this.label19);
@@ -91,7 +92,6 @@
             this.plMain.Controls.Add(this.label12);
             this.plMain.Controls.Add(this.comboBox2);
             this.plMain.Controls.Add(this.label11);
-            this.plMain.Controls.Add(this.comboBox1);
             this.plMain.Controls.Add(this.label10);
             this.plMain.Controls.Add(this.dateEnd);
             this.plMain.Controls.Add(this.label9);
@@ -111,6 +111,14 @@
             this.plMain.Name = "plMain";
             this.plMain.Size = new System.Drawing.Size(898, 569);
             this.plMain.TabIndex = 2;
+            // 
+            // panelEx12
+            // 
+            this.panelEx12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.panelEx12.Location = new System.Drawing.Point(76, 111);
+            this.panelEx12.Name = "panelEx12";
+            this.panelEx12.Size = new System.Drawing.Size(811, 117);
+            this.panelEx12.TabIndex = 31;
             // 
             // label20
             // 
@@ -171,217 +179,6 @@
             this.label16.Size = new System.Drawing.Size(31, 12);
             this.label16.TabIndex = 26;
             this.label16.Text = "序号";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.BackColor = System.Drawing.Color.Transparent;
-            this.label13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(13, 125);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(64, 12);
-            this.label13.TabIndex = 20;
-            this.label13.Text = "参会委员:";
-            // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(725, 84);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 20);
-            this.comboBox3.TabIndex = 19;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.BackColor = System.Drawing.Color.Transparent;
-            this.label12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label12.ForeColor = System.Drawing.Color.Black;
-            this.label12.Location = new System.Drawing.Point(668, 87);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(38, 12);
-            this.label12.TabIndex = 18;
-            this.label12.Text = "文书:";
-            // 
-            // comboBox2
-            // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(490, 83);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 20);
-            this.comboBox2.TabIndex = 17;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.BackColor = System.Drawing.Color.Transparent;
-            this.label11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(442, 87);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(51, 12);
-            this.label11.TabIndex = 16;
-            this.label11.Text = "主持人:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(76, 83);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(293, 20);
-            this.comboBox1.TabIndex = 15;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.BackColor = System.Drawing.Color.Transparent;
-            this.label10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(13, 87);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(64, 12);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "会议地点:";
-            // 
-            // dateEnd
-            // 
-            this.dateEnd.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateEnd.Location = new System.Drawing.Point(751, 48);
-            this.dateEnd.Name = "dateEnd";
-            this.dateEnd.Size = new System.Drawing.Size(136, 21);
-            this.dateEnd.TabIndex = 13;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.Transparent;
-            this.label9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(668, 52);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(83, 12);
-            this.label9.TabIndex = 12;
-            this.label9.Text = "计划结束时间";
-            // 
-            // dateStart
-            // 
-            this.dateStart.CustomFormat = "yyyy-MM-dd HH:mm";
-            this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateStart.Location = new System.Drawing.Point(526, 48);
-            this.dateStart.Name = "dateStart";
-            this.dateStart.Size = new System.Drawing.Size(136, 21);
-            this.dateStart.TabIndex = 11;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Transparent;
-            this.label8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(442, 52);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(83, 12);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "计划开始时间";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.BackColor = System.Drawing.Color.Transparent;
-            this.label7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(374, 52);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(44, 12);
-            this.label7.TabIndex = 9;
-            this.label7.Text = "次会议";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.BackColor = System.Drawing.Color.Transparent;
-            this.label6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(266, 52);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(51, 12);
-            this.label6.TabIndex = 7;
-            this.label6.Text = "次 总第";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(172, 52);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(38, 12);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "年 第";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.BackColor = System.Drawing.Color.Transparent;
-            this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(74, 52);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 12);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "检委会";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(12, 52);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "会议名称:";
-            // 
-            // plHead
-            // 
-            this.plHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
-            this.plHead.Controls.Add(this.peRerurn);
-            this.plHead.Controls.Add(this.pxSave);
-            this.plHead.Controls.Add(this.label1);
-            this.plHead.Font = new System.Drawing.Font("华文中宋", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.plHead.Location = new System.Drawing.Point(0, 0);
-            this.plHead.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
-            this.plHead.Name = "plHead";
-            this.plHead.Size = new System.Drawing.Size(900, 90);
-            this.plHead.TabIndex = 1;
-            this.plHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseDown);
-            this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
-            this.plHead.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseUp);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(180)))), ((int)(((byte)(241)))));
-            this.label1.Location = new System.Drawing.Point(12, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(110, 21);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "+创建会议";
-            // 
-            // panelEx12
-            // 
-            this.panelEx12.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
-            this.panelEx12.Location = new System.Drawing.Point(76, 111);
-            this.panelEx12.Name = "panelEx12";
-            this.panelEx12.Size = new System.Drawing.Size(811, 117);
-            this.panelEx12.TabIndex = 31;
             // 
             // panelEx4
             // 
@@ -468,6 +265,124 @@
             this.label15.TabIndex = 1;
             this.label15.Text = "会议议题";
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.BackColor = System.Drawing.Color.Transparent;
+            this.label13.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(13, 125);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(64, 12);
+            this.label13.TabIndex = 20;
+            this.label13.Text = "参会委员:";
+            // 
+            // comboBox3
+            // 
+            this.comboBox3.FormattingEnabled = true;
+            this.comboBox3.Location = new System.Drawing.Point(725, 84);
+            this.comboBox3.Name = "comboBox3";
+            this.comboBox3.Size = new System.Drawing.Size(121, 20);
+            this.comboBox3.TabIndex = 19;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.BackColor = System.Drawing.Color.Transparent;
+            this.label12.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label12.ForeColor = System.Drawing.Color.Black;
+            this.label12.Location = new System.Drawing.Point(668, 87);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(38, 12);
+            this.label12.TabIndex = 18;
+            this.label12.Text = "文书:";
+            // 
+            // comboBox2
+            // 
+            this.comboBox2.FormattingEnabled = true;
+            this.comboBox2.Location = new System.Drawing.Point(490, 83);
+            this.comboBox2.Name = "comboBox2";
+            this.comboBox2.Size = new System.Drawing.Size(121, 20);
+            this.comboBox2.TabIndex = 17;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.BackColor = System.Drawing.Color.Transparent;
+            this.label11.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(442, 87);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(51, 12);
+            this.label11.TabIndex = 16;
+            this.label11.Text = "主持人:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(13, 87);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(64, 12);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "会议地点:";
+            // 
+            // dateEnd
+            // 
+            this.dateEnd.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dateEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateEnd.Location = new System.Drawing.Point(751, 48);
+            this.dateEnd.Name = "dateEnd";
+            this.dateEnd.Size = new System.Drawing.Size(136, 21);
+            this.dateEnd.TabIndex = 13;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.Transparent;
+            this.label9.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(668, 52);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(83, 12);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "计划结束时间";
+            // 
+            // dateStart
+            // 
+            this.dateStart.CustomFormat = "yyyy-MM-dd HH:mm";
+            this.dateStart.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateStart.Location = new System.Drawing.Point(526, 48);
+            this.dateStart.Name = "dateStart";
+            this.dateStart.Size = new System.Drawing.Size(136, 21);
+            this.dateStart.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.BackColor = System.Drawing.Color.Transparent;
+            this.label8.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(442, 52);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(83, 12);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "计划开始时间";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.BackColor = System.Drawing.Color.Transparent;
+            this.label7.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(374, 52);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(44, 12);
+            this.label7.TabIndex = 9;
+            this.label7.Text = "次会议";
+            // 
             // text3
             // 
             this.text3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
@@ -480,6 +395,18 @@
             this.text3.TabIndex = 8;
             this.text3.WatermarkColor = System.Drawing.Color.DarkGray;
             this.text3.WatermarkTitle = null;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.Transparent;
+            this.label6.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label6.ForeColor = System.Drawing.Color.Black;
+            this.label6.Location = new System.Drawing.Point(266, 52);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(51, 12);
+            this.label6.TabIndex = 7;
+            this.label6.Text = "次 总第";
             // 
             // text2
             // 
@@ -494,6 +421,18 @@
             this.text2.WatermarkColor = System.Drawing.Color.DarkGray;
             this.text2.WatermarkTitle = null;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label5.ForeColor = System.Drawing.Color.Black;
+            this.label5.Location = new System.Drawing.Point(172, 52);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 12);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "年 第";
+            // 
             // text1
             // 
             this.text1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
@@ -506,6 +445,30 @@
             this.text1.TabIndex = 4;
             this.text1.WatermarkColor = System.Drawing.Color.DarkGray;
             this.text1.WatermarkTitle = null;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
+            this.label4.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label4.ForeColor = System.Drawing.Color.Black;
+            this.label4.Location = new System.Drawing.Point(74, 52);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(44, 12);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "检委会";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(12, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(64, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "会议名称:";
             // 
             // panelEx1
             // 
@@ -528,6 +491,23 @@
             this.label2.Size = new System.Drawing.Size(67, 14);
             this.label2.TabIndex = 1;
             this.label2.Text = "会议信息";
+            // 
+            // plHead
+            // 
+            this.plHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
+            this.plHead.Controls.Add(this.peRerurn);
+            this.plHead.Controls.Add(this.pxSave);
+            this.plHead.Controls.Add(this.label1);
+            this.plHead.Font = new System.Drawing.Font("华文中宋", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.plHead.Location = new System.Drawing.Point(0, 0);
+            this.plHead.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
+            this.plHead.Name = "plHead";
+            this.plHead.Size = new System.Drawing.Size(900, 90);
+            this.plHead.TabIndex = 1;
+            this.plHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseDown);
+            this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
+            this.plHead.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseUp);
             // 
             // peRerurn
             // 
@@ -553,6 +533,31 @@
             this.pxSave.TabIndex = 5;
             this.pxSave.Click += new System.EventHandler(this.pxSave_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("宋体", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(180)))), ((int)(((byte)(241)))));
+            this.label1.Location = new System.Drawing.Point(12, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(110, 21);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "+创建会议";
+            // 
+            // watermarkTextBox1
+            // 
+            this.watermarkTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.watermarkTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.watermarkTextBox1.Font = new System.Drawing.Font("宋体", 12F);
+            this.watermarkTextBox1.Location = new System.Drawing.Point(76, 77);
+            this.watermarkTextBox1.Multiline = true;
+            this.watermarkTextBox1.Name = "watermarkTextBox1";
+            this.watermarkTextBox1.Size = new System.Drawing.Size(342, 26);
+            this.watermarkTextBox1.TabIndex = 32;
+            this.watermarkTextBox1.WatermarkColor = System.Drawing.Color.DarkGray;
+            this.watermarkTextBox1.WatermarkTitle = null;
+            // 
             // FrmCreateMeeting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -567,14 +572,14 @@
             this.Text = "Form1";
             this.plMain.ResumeLayout(false);
             this.plMain.PerformLayout();
-            this.plHead.ResumeLayout(false);
-            this.plHead.PerformLayout();
             this.panelEx4.ResumeLayout(false);
             this.panelEx4.PerformLayout();
             this.panelEx2.ResumeLayout(false);
             this.panelEx2.PerformLayout();
             this.panelEx1.ResumeLayout(false);
             this.panelEx1.PerformLayout();
+            this.plHead.ResumeLayout(false);
+            this.plHead.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -601,7 +606,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.DateTimePicker dateEnd;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.ComboBox comboBox2;
         private System.Windows.Forms.ComboBox comboBox3;
@@ -621,6 +625,7 @@
         private Control.PanelEx panelEx6;
         private System.Windows.Forms.Label label21;
         private Control.PanelEx panelEx12;
+        private WatermarkTextBox watermarkTextBox1;
 
     }
 }

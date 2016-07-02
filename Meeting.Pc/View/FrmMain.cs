@@ -24,7 +24,9 @@ namespace Meeting.Pc.View
         private int _pageSize = Tool.ToInt(ConfigurationManager.AppSettings["pagesize"].ToString());
         PageControl pager = new PageControl();
 
-        public FrmMain()
+        private string _nickname = "";
+
+        public FrmMain(string nickname)
         {
             InitializeComponent();
 
@@ -32,7 +34,9 @@ namespace Meeting.Pc.View
             plPager.Controls.Add(pager);
             pager.Dock = DockStyle.Fill;
             pager.PageEvent += new PageControl.PageEventHandler(pagingControl1_PageEvent);
-         
+
+            label5.Text = "你好,"+nickname;
+            _nickname = nickname;
 
             if (UserInfo.RoleId != 2) 
             {
@@ -192,8 +196,8 @@ namespace Meeting.Pc.View
         private void pbBtn_Click(object sender, EventArgs e)
         {
             PanelEx pxBtn = (PanelEx)sender;
-
             FrmMeetingInfo meeting = new FrmMeetingInfo(pxBtn.Tag.ToString());
+            meeting.NickName = _nickname;
             meeting.Show();
             Hide();
         }
@@ -241,7 +245,7 @@ namespace Meeting.Pc.View
         private void pelCreatemeeting_Click(object sender, EventArgs e)
         {
             //会议创建单机事件
-            FrmCreateMeeting meeting = new FrmCreateMeeting();
+            FrmCreateMeeting meeting = new FrmCreateMeeting(_nickname);
             meeting.Show();
             Hide();
         }

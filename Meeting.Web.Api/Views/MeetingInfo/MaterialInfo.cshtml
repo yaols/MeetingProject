@@ -1,111 +1,50 @@
-﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
+﻿@using Meeting.Web.Api.Models
+@using Meeting.Common
+@model ResourcesView
+    @{
+        Layout = "~/Views/Shared/_Layout.cshtml";      
+    }
 
 
-<div class="layou-info-top">
-    <font class="layou-info-font">文本材料</font>
-</div>
+    <div class="layou-info-top">
+        <font class="layou-info-font">文本材料</font>
+    </div>
 
-<ul class="material-ul">
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/word-icon.png" />
-        </div>
-        材料: 议题详情b2016
-    </li>
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/word-icon.png" />
-        </div>
-        材料: 议题详情b2016
-    </li>
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/word-icon.png" />
-        </div>
-        材料: 议题详情b2016
-    </li>
-
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/word-icon.png" />
-        </div>
-        材料: 议题详情b2016
-    </li>
-
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/word-icon.png" />
-        </div>
-        材料: 议题详情b2016
-    </li>
-
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/word-icon.png" />
-        </div>
-        材料: 议题详情b2016
-    </li>
-
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/word-icon.png" />
-        </div>
-        材料: 议题详情b2016
-    </li>
-</ul>
+    <ul class="material-ul">
+        @foreach (var item in Model.Text)
+        {
+            string texturl = "/MeetingInfo/MaterialVide?ResourcesType=" + item.ResourcesType +
+                "&Directory=" + item.Directory + "&ResourceName=" + item.ResourcesName + "&MeetingId="+item.MeetingIssueId;
+            <li class="material-ul-li" onclick="clickUrl('@texturl')">
+                <div class="material-li-img">
+                    <img src="@Helper.GetImageUrl(item.ResourcesType)" />
+                </div>
+                材料: @(item.ResourcesName+item.ResourcesType)
+            </li>
+        }
+    </ul>
 
 
-<div class="layou-info-top">
-    <font class="layou-info-font">多媒体材料</font>
-</div>
+    <div class="layou-info-top">
+        <font class="layou-info-font">多媒体材料</font>
+    </div>
 
-<ul class="material-ul">
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/media-icon.jpg" />
-        </div>
-        材料: b20160305b0098
-    </li>
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/media-icon.jpg" />
-        </div>
-        材料: b20160305b0098
-    </li>
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/jpg-icon.gif" />
-        </div>
-        材料: b20160305b0098
-    </li>
+    <ul class="material-ul">
+        @foreach (var item in Model.Vide)
+        {
+            string videurl = "/MeetingInfo/MaterialVide?ResourcesType=" + item.ResourcesType +
+                "&Directory=" + item.Directory + "&ResourceName=" + item.ResourcesName + "&MeetingId=" + item.MeetingIssueId;
+            <li class="material-ul-li" onclick="clickUrl('@videurl')">
+                <div class="material-li-img">
+                    <img src="@Helper.GetImageUrl(item.ResourcesType)" />
+                </div>
+                材料: @(item.ResourcesName + item.ResourcesType)
+            </li>
+        }
+    </ul>
 
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/media-icon.jpg" />
-        </div>
-        材料: b20160305b0098
-    </li>
-
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/jpg-icon.gif" />
-        </div>
-        材料: b20160305b0098
-    </li>
-
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/media-icon.jpg" />
-        </div>
-        材料: b20160305b0098
-    </li>
-
-    <li class="material-ul-li">
-        <div class="material-li-img">
-            <img src="~/Images/media-icon.jpg" />
-        </div>
-        材料: b20160305b0098
-    </li>
-</ul>
+<script type="text/javascript">
+    function clickUrl(url) {
+        location.href = url;
+    }
+</script>

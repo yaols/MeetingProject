@@ -1,41 +1,20 @@
-﻿@model Meeting.Web.Api.Models.TitleViewModel
+﻿@model Meeting.Entity.CreateMeetingModel
 @{
 
 }
+<meta http-equiv="X-UA-Compatible" content="IE=10" />  
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>@Model.Title</title>
+    <title>创建会议</title>
     <style type="text/css">
     </style>
     <link href="~/css/main.css" rel="stylesheet" />
     <link href="~/Scripts/datetimepicker/jquery.datetimepicker.css" rel="stylesheet" />
 
-    <style type="text/css">
-        .list {
-            width: 200px;
-            height: 200px;
-            overflow: auto;
-            position: absolute;
-            border: 1px solid #617775;
-            display: none;
-            background: none repeat scroll 0 0 #F0F6E4;
-            margin-left:70px;
-            /*float: left;*/
-            /*z-index: 1000000;*/
-        }
-
-            .list ul li {
-                padding-left: 10px;
-                padding-top: 2px;
-                padding-bottom: 2px;
-                border-top: 1px solid black;
-            }
-
-            .list ul {
-                list-style: none outside none;
-            }
-    </style>
+    <link href="~/css/chosen.css" rel="stylesheet" />
+    <link href="~/Scripts/uploadify/uploadify.css" rel="stylesheet" />
+    <script src="~/mh_dialog/mh_dialog.js"></script>
 </head>
 <body>
 
@@ -46,15 +25,15 @@
         <div class="layout-top">
 
             <ul class="layout-top-ul">
-                <li class="home-li-font">@Model.TopTitle</li>
+                <li class="home-li-font"></li>
             </ul>
 
             <ul class="home-top-ulbtn">
                 <li class="ulbtn-btn">
-                    <div class="home-li-button">返回</div>
+                    <div class="home-li-button" onclick="returnTop()">返回</div>
                 </li>
                 <li class="ulbtn-btn">
-                    <div class="home-li-button">保存</div>
+                    <div class="home-li-button" onclick="PostCreateMeeting()">保存</div>
                 </li>
             </ul>
 
@@ -68,75 +47,61 @@
         <ul class="create-meeting-ul">
             <li class="create-meeting-li">
                 会议名称:
-                检委会<input type="text" class="create-meeting-text" />年
-                第<input type="text" class="create-meeting-text" />次
-                总第<input type="text" class="create-meeting-text" />次会议
+                检委会<input type="text" class="create-meeting-text" id="year"/>年
+                第<input type="text" class="create-meeting-text" id="count" />次
+                总第<input type="text" class="create-meeting-text"  id="numcount"/>次会议
             </li>
             <li class="create-meeting-li">
                 计划开始时间  <input type="text" class="create-meeting-date" id="datetimepicker1" />
-                <span style="margin-left:40px;"></span>
+                <span style="margin-left:62px;"></span>
                 计划结束时间  <input type="text" class="create-meeting-date" id="datetimepicker2" />
             </li>
         </ul>
         <ul class="create-meeting-ul">
             <li class="create-meeting-li">
                 会议地点:
-                <input type="text" class="create-meeting-address" />
+                <input type="text" class="create-meeting-address" id="address"/>
             </li>
             <li class="create-meeting-li">
                 主持人
                 <select class="create-meeting-com" id="hoseUser">
-                    <option id="10010">张三</option>
-                    <option id="10011">李四</option>
+                    @foreach (var item in Model.UserList)
+                    {
+                        <option id="@item.Id">@item.NickName</option>
+                    }                 
                 </select>
-                <span style="margin-left:40px;"></span>
+                <span style="margin-left:20px;"></span>
                 文书
-                <select class="create-meeting-com">
-                    <option>文书一</option>
-                    <option>文书二</option>
+                <select class="create-meeting-com" id="wenshu">
+                    @foreach (var item in Model.UserList)
+                    {
+                        <option id="@item.Id">@item.NickName</option>
+                    }  
+                </select>
+                <span style="margin-left:20px;"></span>
+                秘书
+                <select class="create-meeting-com" id="secretary">
+                    @foreach (var item in Model.UserList)
+                    {
+                        <option id="@item.Id">@item.NickName</option>
+                    }
                 </select>
             </li>
         </ul>
         <ul class="create-meeting-ul">
             <li class="create-meeting-li">
                 参会委员:
-                <input type="text" class="create-meeting-people" id="people" />
-                <div class="list">
-                <ul style="list-style-type:none;margin:0;">
-                    <li style="margin:0;padding-left: 10px;padding-top: 2px;padding-bottom: 2px;border-top: 1px solid black;">
-                    <input type="checkbox" class="selectAll" value="">
-                    <span>全部</span>
-                    </li>
-                    <li><input type="checkbox" value="1" name="chk" data-value="南京">
-                    <span>南京</span>
-                    </li>
-                    <li><input type="checkbox" value="2" name="chk" data-value="上海">
-                    <span>上海</span>
-                    </li>
-                    <li><input type="checkbox" value="3" name="chk" data-value="扬州">
-                    <span>扬州</span>
-                    </li>
-                    <li><input type="checkbox" value="4" name="chk" data-value="苏州">
-                    <span>苏州</span>
-                    </li>
-                    <li><input type="checkbox" value="5" name="chk" data-value="无锡">
-                    <span>无锡</span>
-                    </li>
-                    <li><input type="checkbox" value="6" name="chk" data-value="常州">
-                    <span>常州</span>
-                    </li>
-                    <li><input type="checkbox" value="7" name="chk" data-value="盐城">
-                    <span>盐城</span>
-                    </li>
-                    </ul>
-                </div>
+                <select data-placeholder="请选择..." class="chosen-select" multiple style="width:865px; height:30px;" tabindex="4">
+                    @foreach (var item in Model.UserList)
+                    {
+                        <option value="@item.Id">@item.NickName</option>
+                    }  
+                </select>
             </li>
         </ul>
 
-
         <div class="layou-info-top">
             <font class="layou-info-font">会议议题</font>
-            <div class="create-li-button">新增议题</div>
         </div>
 
 
@@ -158,54 +123,31 @@
 
                 </li>
                 <li class="create-ul-li2">
-                    <input class="create-li-text2" value="关于如何提高办案率的方法讨论" />
+                    <input class="create-li-text2" value="" id="issue"/>
                 </li>
                 <li class="layou-ul-li3">
-                    <select class="create-li-text3">
-                        <option>机关处</option>
-                        <option>政务处</option>
+                    <select class="create-li-text3" id="depart">
+                        @foreach (var item in Model.DepartList)
+                        {
+                            <option id="@item.Id">@item.DepartName</option>
+                        }  
                     </select>
                 </li>
                 <li class="layou-ul-li4">
-                    <select class="create-li-text3">
-                        <option>潘大魏</option>
-                        <option>潘大海</option>
+                    <select class="create-li-text3" id="report">
+                        @foreach (var item in Model.UserList)
+                        {
+                            <option id="@item.Id">@item.NickName</option>
+                        }  
                     </select>
                 </li>
                 <li class="create-ul-li5">
-                    <div class="create-button1">文本材料</div>
-                    <div class="create-button2">多媒体材料</div>
+                    <input type="file" name="file_upload" id="file_upload"/>
                 </li>
             </ul>
             <div class="create-div">
-                <ul class="layou-div-ul">
-                    <li class="create-ul-li">
-                        <div class="create-li-img">
-                            <img src="~/Images/word-icon.png" />
-                        </div>
-                        材料: 议题详情b2016
-                    </li>
+                <ul class="layou-div-ul" id="imgul" style="overflow: scroll; overflow-x: hidden; height: 150px;width:1000px;">
 
-                    <li class="create-ul-li">
-                        <div class="create-li-img">
-                            <img src="~/Images/jpg-icon.gif" />
-                        </div>
-                        材料: b20160305b0098
-                    </li>
-
-                    <li class="create-ul-li">
-                        <div class="create-li-img">
-                            <img src="~/Images/word-icon.png" />
-                        </div>
-                        材料: 议题详情b2016
-                    </li>
-
-                    <li class="create-ul-li">
-                        <div class="create-li-img">
-                            <img src="~/Images/jpg-icon.gif" />
-                        </div>
-                        材料: b20160305b0098
-                    </li>
                 </ul>
             </div>
         </div>
@@ -214,6 +156,11 @@
 
     <script src="~/Scripts/datetimepicker/jquery.js"></script>
     <script src="~/Scripts/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+
+    <script src="~/Scripts/chosen.jquery.js"></script>
+    <script src="~/Scripts/prism.js"></script>
+
+    <script src="~/Scripts/uploadify/jquery.uploadify.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var myDate = new Date();
@@ -235,73 +182,82 @@
             $('#datetimepicker1').datetimepicker({ value: myDate.toLocaleTimeString(), step: 10 });
             $('#datetimepicker2').datetimepicker({ value: myDate.toLocaleTimeString(), step: 10 });
 
-            /*获取主持人*/
-            $("#hoseUser").change(function () {
-                alert($(this).find("option:selected").attr("id"));
-            })
 
-            //控制弹出页面的显示与隐藏
-            $("#people").click(function (e) {
-                $(".list").toggle();
-                e.stopPropagation();
+            $('#file_upload').uploadify({
+                'swf': '/Scripts/uploadify/uploadify.swf',
+                'uploader': '/Upload/Index',
+                'onUploadStart': function (file) {
+                    var htmlString = '<li class="create-ul-li"><div class="create-li-img">';
+                    if (file.type == '.txt' || file.type == '.doc' || file.type == '.docx') {
+                        htmlString += '<img src="/Images/文本资料.png" /></div>';
+                    } else if (file.type == '.png' || file.type == '.jpg' || file.type == '.gif' || file.type == '.gif') {
+                        htmlString += '<img src="/Images/图片资料.png" /></div>';
+                    } else if (file.type == '.mp4' || file.type == '.wmv' || file.type == '.amv') {
+                        htmlString += '<img src="/Images/视频资料.png" /></div>';
+                    } else if (file.type == '.mp3') {
+                        htmlString += '<img src="/Images/音频资料.png" /></div>';
+                    } else {
+                        htmlString += '<img src="/Images/文本资料.png" /></div>';
+                    }
+                    
+                    htmlString += '材料:' + file.name + '</li>';
+      
+                    $("#imgul").append(htmlString);
+             }
             });
 
-            //全部选择或全不选
-            $(".selectAll").click(function () {
-                if ($(this).is(":checked")) {
-                    $("li input").prop("checked", "checked");
-                    GetCheckBoxVal();
-                    $("#people").attr("value", '');//清空内容 
-                    $("#people").attr("value", vakArr);//填充内容 
-                }
-                else {
-                    $("li input").removeAttr("checked");
-                    $("#people").attr("value", '');//清空内容 
-                }
-            });
-
-            //控制单选
-            $("input[name='chk']").click(function () {
-                if (GetCheckboxStatu()) {
-                    $(".selectAll").prop("checked", "checked");
-                }
-                else
-                    $(".selectAll").removeAttr("checked");
-
-                GetCheckBoxVal();
-                $("#people").attr("value", '');//清空内容 
-                $("#people").attr("value", vakArr);//填充内容 
-            })
-
-          
+            $('#file_upload-button').removeClass("uploadify-button");
+            $("#file_upload-button").removeAttr("style");
+            $('#file_upload-button').addClass("create-button2");
         })
 
-        function GetCheckboxStatu() {
-            var flag = true;
-            $("input[name='chk']").each(function (i) {
-                if ($(this).prop("checked") == false) {
-                    flag = false;
-                } 
-            });
-            return flag;
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': { allow_single_deselect: true },
+            '.chosen-select-no-single': { disable_search_threshold: 10 },
+            '.chosen-select-no-results': { no_results_text: 'Oops, nothing found!' },
+            '.chosen-select-width': { width: "95%" }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
         }
 
-        //先清空数组数据 
-        var valArrId = "";
-        var vakArr = "";
+        function returnTop() {
+            location.href = "/Home/Index?pageindex=" + 1;
+        }
 
-        //获取选中chkItem行的val
-        function GetCheckBoxVal() {
-            //先清空数组数据 
-            valArrId = "";
-            vakArr = "";
+        function PostCreateMeeting() {
+            var model = new Object();
+            model.year = $("#year").val();
+            model.count = $("#count").val();
+            model.numcount = $("#numcount").val();
+            model.datetimepicker1 = $("#datetimepicker1").val();
+            model.datetimepicker2 = $("#datetimepicker2").val();
+            model.address = $("#address").val();
+            model.hoseUser = $("#hoseUser").find("option:selected").attr("id");
+            model.wenshu = $("#wenshu").find("option:selected").attr("id");
+            model.secretary = $("#secretary").find("option:selected").attr("id");
 
-            $("input[name='chk']").each(function () {
-                if ($(this).prop("checked") == true) {
-                    valArrId = valArrId + $(this).val() + ",";
-                    vakArr = vakArr + $(this).attr("data-value") + ",";
-                    }
-                })       
+            model.people = "";
+            $('.search-choice').each(function (i, data) {
+                model.people = model.people + $(this).attr("data-value") + ",";
+
+            });
+
+            model.issue = $("#issue").val();
+            model.depart = $("#depart").find("option:selected").attr("id");
+            model.report = $("#report").find("option:selected").attr("id");
+
+            var s = console.log(JSON.stringify(model));
+
+            $.post('/MeetingInfo/MeetingCreate',
+                {
+                json: JSON.stringify(model)
+                }, function (data) {
+                    if(data.Result==0)
+                        location.href = "/Home/Index?pageindex=" + 1;
+                    mh_dialogShow('mh_success', data.Msg, 1, true);
+            });
         }
     </script>
 </body>

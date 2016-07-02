@@ -1,4 +1,6 @@
 ﻿using Meeting.Common;
+using Meeting.Entity;
+using Meeting.Web.Api.Filters;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -9,11 +11,19 @@ using System.Web.Providers.Entities;
 
 namespace Meeting.Web.Api.Controllers
 {
+    [MyAuthorization]
     public class BaseController : Controller
     {
         public BaseController() 
         {
             PageSize = Tool.ToInt(ConfigurationManager.AppSettings["pagesize"].ToString());
+
+            //if (UserSession == null) 
+            //{
+            //    HttpContext.Response.Write("<script>parent.window.location = '/login';</script>");
+            //    HttpContext.Response.End();
+            //}
+
         }
 
         public int PageSize { get; set; }
@@ -21,12 +31,12 @@ namespace Meeting.Web.Api.Controllers
         /// <summary>
         /// 获取当前登录用户的ID值。
         /// </summary>
-        public Session UserSession
+        public mUser UserSession
         {
             get
             {
                 if (HttpContext.Session != null)
-                    return (Session)HttpContext.Session["LoginUser"];
+                    return (mUser)HttpContext.Session["LoginUser"];
                 return null;
             }
             set

@@ -6,7 +6,7 @@ function firstClick() {
 //上一页分页点击事件
 function lastClick() {
     var pageIndex = $('#hidPageIndex').attr('value'); //当前索引
-    if (parseInt(pageIndex) - 1 < 0) return;
+    if (parseInt(pageIndex) - 1 <= 0) return;
     clickPage(parseInt(pageIndex) - 1);
 }
 

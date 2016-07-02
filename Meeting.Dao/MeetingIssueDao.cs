@@ -31,7 +31,7 @@ namespace Meeting.Dao
                 model = new mMeetingResources();
                 model.Id = Convert.ToInt32(reader["Id"]);
                 model.ResourcesName = reader["ResourcesName"].ToString();
-                model.ResourcesType = Convert.ToInt32(reader["ResourcesType"]);
+                model.ResourcesType = reader["ResourcesType"].ToString();
                 model.MeetingIssueId = Convert.ToInt32(reader["MeetingIssueId"]);
                 list.Add(model);
             }

@@ -1,4 +1,5 @@
 ﻿using Meeting.BLL;
+using Meeting.Common;
 using Meeting.Entity;
 using Meeting.Interface;
 using Meeting.Pc.Control;
@@ -16,24 +17,22 @@ namespace Meeting.Pc.View
 {
     public partial class FrmResources : Form
     {
-        private int _issueid = 0;
         private string _meetingId = "";
         IMeetingIssue issue = new MeetingIssue();
 
 
-        public FrmResources(int issueid, string meetingid)
+        public FrmResources(string meetingid)
         {
             InitializeComponent();
-            _issueid = issueid;
             _meetingId = meetingid;
             Initial();
         }
 
         private void pxHome_Click(object sender, EventArgs e)
         {
-            FrmMain main = new FrmMain();
-            main.Show();
-            Hide();
+            //FrmMain main = new FrmMain();
+            //main.Show();
+            //Hide();
         }
 
         private void peRerurn_Click(object sender, EventArgs e)
@@ -47,86 +46,134 @@ namespace Meeting.Pc.View
         {
             PanelEx pxBtn = (PanelEx)sender;
             mMeetingResources model = (mMeetingResources)pxBtn.Tag;
-
-            //FrmSign sign = new FrmSign(_meetingId);
-            //string phath = System.Environment.CurrentDirectory;
-            //sign.word.Dock = System.Windows.Forms.DockStyle.Fill;
-            //sign.word.Location = new System.Drawing.Point(0, 0);
-            //sign.word.Name = "文档";
-            //sign.word.TabIndex = 1;
-            ////加载word的完整路径  修改此处
-            //sign.word.LoadDocument(phath + @"\1.docx");
-            //sign.word.Show();
-            //Hide();
-            //sign.ShowDialog();
         }
 
 
         private void Initial()
         {
-            var model = issue.GetMeetingResources(_issueid);
+            var model = issue.GetMeetingResources(Convert.ToInt32(_meetingId));
 
-            int textx = 10;  //文本图片坐标计算
-            int videx = 10;  //多媒体图片坐标计算
-
-            int num = 0;  //多媒体图标个数标示
-            for (int i = 0; i < model.Count; i++)
+            int index = 0;
+            foreach (var item in model)
             {
-
-
-                PanelEx p = new PanelEx();
-                p.Width = 122;
-                p.Height = 127;
-
-
-                PanelEx main = new PanelEx();
-                main.Cursor = Cursors.Hand;
-                main.Location = new Point(16, 7);
-                main.Width = 91;
-                main.Height = 90;
-                main.Tag = model[i];
-                main.Click += new System.EventHandler(panelEx3_Click);
+                PanelEx pxMain = new PanelEx();
+                pxMain.Width = 876;
+                pxMain.Height = 55;
+                pxMain.BorderColor = Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+                pxMain.BackColor = Color.White;
+                pxMain.Location = new Point(0, index * 50);
+                panelEx2.Controls.Add(pxMain);
 
                 Label label = new Label();
-                label.Location = new Point(23, 105);
-                label.Width = 140;
-                label.Height = 12;
-                label.Text = model[i].ResourcesName;
+                label.Font = new System.Drawing.Font("宋体", 10F);
+                label.ForeColor = System.Drawing.Color.Black;
+                label.Location = new System.Drawing.Point(26, 15);
+                label.AutoSize = true;
+                label.Text = (index+1).ToString();
+                pxMain.Controls.Add(label);
 
 
-                p.Controls.Add(label);
-                p.Controls.Add(main);
+                label = new Label();
+                label.Font = new System.Drawing.Font("宋体", 10F);
+                label.ForeColor = System.Drawing.Color.Black;
+                label.Location = new System.Drawing.Point(161, 15);
+                label.AutoSize = true;
+                label.Text = item.ResourcesName;
+                pxMain.Controls.Add(label);
 
-                if (model[i].ResourcesType == 1)
+
+                label = new Label();
+                label.Font = new System.Drawing.Font("宋体", 10F);
+                label.ForeColor = System.Drawing.Color.Black;
+                label.Location = new System.Drawing.Point(492, 15);
+                label.AutoSize = true;
+                label.Text = item.ResourcesType;
+                pxMain.Controls.Add(label);
+
+
+                PanelEx pxBtn = new PanelEx();
+                pxBtn.BackgroundImage = Resources.join;
+                pxBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+                pxBtn.Click += new System.EventHandler(this.pbBtn_Click);
+                pxBtn.Location = new System.Drawing.Point(690, 15);
+                pxBtn.Size = new System.Drawing.Size(65, 25);
+                pxBtn.Tag = item;
+                pxMain.Controls.Add(pxBtn);
+                index++;
+            }
+        }
+
+        private void pbBtn_Click(object sender, EventArgs e)
+        {
+            PanelEx pxBtn = (PanelEx)sender;
+            mMeetingResources model = (mMeetingResources)pxBtn.Tag;
+            ShowForm(model.ResourcesType,model.ResourcesName+model.ResourcesType);
+        }
+
+
+        private void ShowForm(string type,string filename) 
+        {
+            if (type == ".txt" || type == ".doc" || type == ".docx")
+            {
+                string url = Helper.DownloadFile(_meetingId, Consts.PcUrlPath,filename);
+                if (!string.IsNullOrEmpty(url))
                 {
-                    if (i > 0)
-                        textx = textx + 160;
-                    p.Location = new Point(textx, 9);
-                    main.BackgroundImage = Resources.文本资料;
-                    panelEx2.Controls.Add(p);
+                    FrmSign sign = new FrmSign(_meetingId, url);
+                    sign.Show();
+                    Hide();
                 }
-
-
-                if (model[i].ResourcesType == 2)
+                else 
                 {
-                    if (num > 0)
-                        videx = videx + 160;
-                    p.Location = new Point(videx, 9);
-                    main.BackgroundImage = Resources.图片资料;
-                    panelEx7.Controls.Add(p);
-                    num++;
+                    MessageBox.Show("下载资源不存在!","系统消息提示");
                 }
-
-
-                if (model[i].ResourcesType == 3)
+            }
+            else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".gif")
+            {
+                string url = Helper.DownloadFile(_meetingId, Consts.PcUrlPath, filename);
+                if (!string.IsNullOrEmpty(url))
                 {
-                    if (num > 0)
-                        videx = videx + 160;
-
-                    p.Location = new Point(videx, 9);
-                    main.BackgroundImage = Resources.音频资料;
-                    panelEx7.Controls.Add(p);
-                    num++;
+                    FrmImage image = new FrmImage(url, _meetingId, filename);
+                    image.Show();
+                    Hide();
+                }
+                else 
+                {
+                    MessageBox.Show("下载资源不存在!", "系统消息提示");
+                }
+            }
+            else if (type == ".mp4" || type == ".wmv" || type == ".amv")
+            {
+                string url = string.Format("{0}{1}/{2}",Consts.DwonUrlPath,_meetingId,filename);
+                if (!string.IsNullOrEmpty(url)) 
+                {
+                    FrmVide vide = new FrmVide(url, _meetingId, filename);
+                    vide.Show();
+                    Hide();
+                }
+                else
+                {
+                    MessageBox.Show("下载资源不存在!", "系统消息提示");
+                }
+            }
+            else if (type == ".mp3")
+            {
+                string url = string.Format("{0}{1}\\{2}",Consts.DwonUrlPath,_meetingId,filename+type);
+                FrmVide vide = new FrmVide(url, _meetingId, filename);
+                vide.Show();
+                Hide();
+            }
+            else
+            {
+                string url = Helper.DownloadFile(_meetingId, Consts.PcUrlPath, filename);
+                if (!string.IsNullOrEmpty(url))
+                {
+                    FrmSign sign = new FrmSign(_meetingId, url);
+                    sign.Show();
+                    Hide();
+                }
+                else
+                {
+                    MessageBox.Show("下载资源不存在!", "系统消息提示");
                 }
             }
         }

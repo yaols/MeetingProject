@@ -1,4 +1,5 @@
 ﻿using Meeting.BLL;
+using Meeting.Common;
 using Meeting.Entity;
 using Meeting.Interface;
 using Meeting.Pc.Control;
@@ -21,7 +22,7 @@ namespace Meeting.Pc.View
 
         IMeetingInterface imeeting = new MeetingService();
 
-
+        public string NickName = "";
         private string _meetingId = "";
         public FrmMeetingInfo(string meetingId)
         {
@@ -33,7 +34,7 @@ namespace Meeting.Pc.View
 
         private void pxHome_Click(object sender, EventArgs e)
         {
-            FrmMain main = new FrmMain();
+            FrmMain main = new FrmMain(NickName);
             main.Show();
             Hide();
         }
@@ -66,7 +67,7 @@ namespace Meeting.Pc.View
         private void panelEx7_Click(object sender, EventArgs e)
         {
             //查看材料
-            FrmResources resources = new FrmResources(_issueid, _meetingId);
+            FrmResources resources = new FrmResources(_meetingId);
             resources.Show();
             Hide();
         }
@@ -74,53 +75,12 @@ namespace Meeting.Pc.View
         private void panelEx3_Click(object sender, EventArgs e)
         {
             //会议记录
-            FrmRecord record = new FrmRecord(_meetingId);
-            record.Show();
+            string url = Helper.DownloadFile(_meetingId, Consts.PcUrlPath,_meetingId+".docx");
+
+            FrmSign sign = new FrmSign(_meetingId,url);
+            sign.Show();
             Hide();
 
-        }
-
-        //IntPtr m_pDll;
-        //private delegate bool m_GainPrivileges();
-
-        private void panelEx6_Click(object sender, EventArgs e)
-        {
-            //检委会决定
-            //m_pDll = Win32API.LoadLibrary(".\\InkAnnotations.dll");
-            //if (m_pDll != null)
-            //{
-            //    IntPtr pAddOfFunToCall = Win32API.GetProcAddress(m_pDll, "GainPrivileges");
-            //    m_GainPrivileges GainPrivileges = (m_GainPrivileges)Marshal.GetDelegateForFunctionPointer(
-            //                                                                                         pAddOfFunToCall,
-            //                                                                                       typeof(m_GainPrivileges));
-
-
-            //    bool flag = GainPrivileges();  //获取权限，打开Word前调用，只需执行一次
-            //}
-
-            string phath = System.Environment.CurrentDirectory;
-            WebClient webclient = new WebClient();
-            string URLAddress = ConfigurationManager.AppSettings["downUrl"].ToString();
-
-            string receivePath = ConfigurationManager.AppSettings["pcurl"].ToString();
-
-            webclient.DownloadFile(URLAddress +_directory+"/会议系统配置清单.docx", phath + "会议系统配置清单.docx");
-
-
-            FrmSign sign = new FrmSign(_meetingId);
-            // var word = new CtrlWinWord()
-            //{
-            sign.word.Dock = System.Windows.Forms.DockStyle.Fill;
-            sign.word.Location = new System.Drawing.Point(0, 0);
-            sign.word.Name = "文档";
-            sign.word.TabIndex = 1;
-            // };
-            //加载word的完整路径  修改此处
-            sign.word.LoadDocument(phath + @"\1.docx");
-            sign.word.Show();
-
-            Hide();
-            sign.ShowDialog();
         }
 
         private int _issueid = 0;

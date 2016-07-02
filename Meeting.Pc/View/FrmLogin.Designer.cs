@@ -33,8 +33,6 @@
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.wtbPassword = new Meeting.Pc.WatermarkTextBox();
-            this.wtbUsername = new Meeting.Pc.WatermarkTextBox();
             this.lblMessage = new System.Windows.Forms.Label();
             this.pbxLogin = new System.Windows.Forms.PictureBox();
             this.pbxPass = new System.Windows.Forms.PictureBox();
@@ -42,6 +40,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pbxMin = new System.Windows.Forms.PictureBox();
             this.pbxClose = new System.Windows.Forms.PictureBox();
+            this.wtbPassword = new Meeting.Pc.WatermarkTextBox();
+            this.wtbUsername = new Meeting.Pc.WatermarkTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass)).BeginInit();
             this.plHead.SuspendLayout();
@@ -57,51 +57,24 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label2.Font = new System.Drawing.Font("宋体", 13F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(173)))), ((int)(((byte)(175)))));
             this.label2.Location = new System.Drawing.Point(117, 164);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 19);
+            this.label2.Size = new System.Drawing.Size(62, 18);
             this.label2.TabIndex = 7;
             this.label2.Text = "用户名";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("宋体", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Font = new System.Drawing.Font("宋体", 13F);
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(173)))), ((int)(((byte)(175)))));
             this.label3.Location = new System.Drawing.Point(117, 221);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 19);
+            this.label3.Size = new System.Drawing.Size(62, 18);
             this.label3.TabIndex = 8;
             this.label3.Text = "密  码";
-            // 
-            // wtbPassword
-            // 
-            this.wtbPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(173)))), ((int)(((byte)(175)))));
-            this.wtbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.wtbPassword.Font = new System.Drawing.Font("宋体", 12F);
-            this.wtbPassword.Location = new System.Drawing.Point(202, 213);
-            this.wtbPassword.Multiline = true;
-            this.wtbPassword.Name = "wtbPassword";
-            this.wtbPassword.PasswordChar = '*';
-            this.wtbPassword.Size = new System.Drawing.Size(219, 31);
-            this.wtbPassword.TabIndex = 10;
-            this.wtbPassword.WatermarkColor = System.Drawing.Color.DarkGray;
-            this.wtbPassword.WatermarkTitle = " 请输入密码";
-            // 
-            // wtbUsername
-            // 
-            this.wtbUsername.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(173)))), ((int)(((byte)(175)))));
-            this.wtbUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.wtbUsername.Font = new System.Drawing.Font("宋体", 12F);
-            this.wtbUsername.Location = new System.Drawing.Point(202, 155);
-            this.wtbUsername.Multiline = true;
-            this.wtbUsername.Name = "wtbUsername";
-            this.wtbUsername.Size = new System.Drawing.Size(219, 31);
-            this.wtbUsername.TabIndex = 9;
-            this.wtbUsername.WatermarkColor = System.Drawing.Color.DarkGray;
-            this.wtbUsername.WatermarkTitle = " 请输入用户名";
             // 
             // lblMessage
             // 
@@ -196,17 +169,44 @@
             this.pbxClose.MouseEnter += new System.EventHandler(this.pbxClose_MouseEnter);
             this.pbxClose.MouseLeave += new System.EventHandler(this.pbxClose_MouseLeave);
             // 
+            // wtbPassword
+            // 
+            this.wtbPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(173)))), ((int)(((byte)(175)))));
+            this.wtbPassword.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.wtbPassword.Font = new System.Drawing.Font("宋体", 12F);
+            this.wtbPassword.Location = new System.Drawing.Point(203, 209);
+            this.wtbPassword.Multiline = true;
+            this.wtbPassword.Name = "wtbPassword";
+            this.wtbPassword.PasswordChar = '*';
+            this.wtbPassword.Size = new System.Drawing.Size(219, 30);
+            this.wtbPassword.TabIndex = 15;
+            this.wtbPassword.WatermarkColor = System.Drawing.Color.DarkGray;
+            this.wtbPassword.WatermarkTitle = " 请输入密码";
+            // 
+            // wtbUsername
+            // 
+            this.wtbUsername.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(173)))), ((int)(((byte)(175)))));
+            this.wtbUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.wtbUsername.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
+            this.wtbUsername.Location = new System.Drawing.Point(203, 157);
+            this.wtbUsername.Multiline = true;
+            this.wtbUsername.Name = "wtbUsername";
+            this.wtbUsername.Size = new System.Drawing.Size(219, 30);
+            this.wtbUsername.TabIndex = 14;
+            this.wtbUsername.WatermarkColor = System.Drawing.Color.DarkGray;
+            this.wtbUsername.WatermarkTitle = " 请输入用户名";
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(584, 381);
+            this.Controls.Add(this.wtbPassword);
+            this.Controls.Add(this.wtbUsername);
             this.Controls.Add(this.pbxLogin);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.pbxPass);
-            this.Controls.Add(this.wtbPassword);
-            this.Controls.Add(this.wtbUsername);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.plHead);
@@ -237,11 +237,11 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private WatermarkTextBox wtbUsername;
-        private WatermarkTextBox wtbPassword;
         private System.Windows.Forms.PictureBox pbxPass;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.PictureBox pbxLogin;
+        private WatermarkTextBox wtbUsername;
+        private WatermarkTextBox wtbPassword;
     }
 }
 

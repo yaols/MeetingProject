@@ -2,7 +2,7 @@
 @using Meeting.Entity
 @model List<mMeeting>
 @{
-    
+    var User = (mUser)Session["LoginUser"];
 }
 <html lang="en">
 <head>
@@ -28,8 +28,11 @@
                     <li class="home-ul-li">
                         <div class="home-li-button">退出登录</div>
                     </li>
-                    <li class="home-ul-li">
-                        <div class="home-li-button">个人信息</div>
+                    <li class="home-ul-li" style="color:#ffffff">
+                        你好，@if (User!=null)
+                           {
+                               @User.UserName
+                        }                     
                     </li>
                 </ul>
             </div>

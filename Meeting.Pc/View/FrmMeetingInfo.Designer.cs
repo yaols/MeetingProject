@@ -46,7 +46,6 @@
             this.label25 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.panelEx7 = new Meeting.Pc.Control.PanelEx();
-            this.panelEx6 = new Meeting.Pc.Control.PanelEx();
             this.panelEx3 = new Meeting.Pc.Control.PanelEx();
             this.label23 = new System.Windows.Forms.Label();
             this.panelEx2 = new Meeting.Pc.Control.PanelEx();
@@ -63,7 +62,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.plHead = new System.Windows.Forms.Panel();
             this.peRerurn = new Meeting.Pc.Control.PanelEx();
-            this.pxHome = new Meeting.Pc.Control.PanelEx();
             this.label1 = new System.Windows.Forms.Label();
             this.plMain.SuspendLayout();
             this.panelEx4.SuspendLayout();
@@ -182,7 +180,7 @@
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(694, 297);
+            this.label20.Location = new System.Drawing.Point(701, 297);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(31, 12);
             this.label20.TabIndex = 30;
@@ -252,7 +250,6 @@
             this.panelEx5.Controls.Add(this.label25);
             this.panelEx5.Controls.Add(this.label24);
             this.panelEx5.Controls.Add(this.panelEx7);
-            this.panelEx5.Controls.Add(this.panelEx6);
             this.panelEx5.Controls.Add(this.panelEx3);
             this.panelEx5.Controls.Add(this.label23);
             this.panelEx5.Location = new System.Drawing.Point(3, 6);
@@ -294,24 +291,11 @@
             this.panelEx7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelEx7.BorderColor = System.Drawing.Color.Empty;
             this.panelEx7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx7.Location = new System.Drawing.Point(585, 14);
+            this.panelEx7.Location = new System.Drawing.Point(603, 14);
             this.panelEx7.Name = "panelEx7";
             this.panelEx7.Size = new System.Drawing.Size(81, 24);
             this.panelEx7.TabIndex = 31;
             this.panelEx7.Click += new System.EventHandler(this.panelEx7_Click);
-            // 
-            // panelEx6
-            // 
-            this.panelEx6.BackColor = System.Drawing.Color.Transparent;
-            this.panelEx6.BackgroundImage = global::Meeting.Pc.Properties.Resources.检委会决定;
-            this.panelEx6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.panelEx6.BorderColor = System.Drawing.Color.Empty;
-            this.panelEx6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx6.Location = new System.Drawing.Point(777, 14);
-            this.panelEx6.Name = "panelEx6";
-            this.panelEx6.Size = new System.Drawing.Size(81, 24);
-            this.panelEx6.TabIndex = 30;
-            this.panelEx6.Click += new System.EventHandler(this.panelEx6_Click);
             // 
             // panelEx3
             // 
@@ -320,7 +304,7 @@
             this.panelEx3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelEx3.BorderColor = System.Drawing.Color.Empty;
             this.panelEx3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx3.Location = new System.Drawing.Point(681, 14);
+            this.panelEx3.Location = new System.Drawing.Point(720, 14);
             this.panelEx3.Name = "panelEx3";
             this.panelEx3.Size = new System.Drawing.Size(81, 24);
             this.panelEx3.TabIndex = 29;
@@ -480,7 +464,6 @@
             this.plHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
             this.plHead.Controls.Add(this.peRerurn);
-            this.plHead.Controls.Add(this.pxHome);
             this.plHead.Controls.Add(this.label1);
             this.plHead.Font = new System.Drawing.Font("华文中宋", 8.999999F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.plHead.Location = new System.Drawing.Point(0, 0);
@@ -503,19 +486,6 @@
             this.peRerurn.Size = new System.Drawing.Size(63, 21);
             this.peRerurn.TabIndex = 6;
             this.peRerurn.Click += new System.EventHandler(this.pxHome_Click);
-            // 
-            // pxHome
-            // 
-            this.pxHome.BackColor = System.Drawing.Color.Transparent;
-            this.pxHome.BackgroundImage = global::Meeting.Pc.Properties.Resources.returnHome;
-            this.pxHome.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pxHome.BorderColor = System.Drawing.Color.Empty;
-            this.pxHome.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pxHome.Location = new System.Drawing.Point(799, 12);
-            this.pxHome.Name = "pxHome";
-            this.pxHome.Size = new System.Drawing.Size(89, 27);
-            this.pxHome.TabIndex = 5;
-            this.pxHome.Click += new System.EventHandler(this.pxHome_Click);
             // 
             // label1
             // 
@@ -559,7 +529,6 @@
 
         private System.Windows.Forms.Panel plHead;
         private Control.PanelEx peRerurn;
-        private Control.PanelEx pxHome;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel plMain;
         private System.Windows.Forms.Label label20;
@@ -589,7 +558,6 @@
         private Control.PanelEx panelEx5;
         private System.Windows.Forms.Label label23;
         private Control.PanelEx panelEx7;
-        private Control.PanelEx panelEx6;
         private Control.PanelEx panelEx3;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label25;

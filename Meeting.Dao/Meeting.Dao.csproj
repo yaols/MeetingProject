@@ -41,6 +41,7 @@
     <Compile Include="LoginDao.cs" />
     <Compile Include="MeetingDao.cs" />
     <Compile Include="MeetingIssueDao.cs" />
+    <Compile Include="MeetingResourcesDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -28,7 +28,7 @@ namespace Meeting.Pc
         /// <param name="requesturl"></param>
         /// <param name="date"></param>
         /// <returns></returns>
-        public static string UploadFileHttpRequest(string fileName, string requesturl, string date)
+        public static string UploadFileHttpRequest(string fileName, string requesturl, string directory)
         {
             string output = string.Empty;
             MemoryStream postStream = null;
@@ -51,8 +51,8 @@ namespace Meeting.Pc
                 //-- 参数
                 //param['startTime']
                 postWriter.Write(Encoding.GetEncoding("gb2312").GetBytes(CONTENT_BOUNDARY_PREFIX + CONTENT_BOUNDARY + "\r\n" +
-"Content-Disposition: form-data; name=\"startTime\" \r\n\r\n"));
-                postWriter.Write(Encoding.GetEncoding("gb2312").GetBytes(date));
+"Content-Disposition: form-data; name=\"Directory\" \r\n\r\n"));
+                postWriter.Write(Encoding.GetEncoding("gb2312").GetBytes(directory));
                 postWriter.Write(Encoding.GetEncoding("gb2312").GetBytes("\r\n"));
 
                 //uploadFiles
@@ -112,17 +112,17 @@ namespace Meeting.Pc
             string urladdress = "";
             string receivePath = "";
             string saveurl = "";
-            string filename = @"\1.docx";
+            string filename = @"\会议记录.docx";
 
             try
             {
                 urladdress = ConfigurationManager.AppSettings["downUrl"].ToString();
                 receivePath = ConfigurationManager.AppSettings["pcurl"].ToString();
-                saveurl = string.Format("{0}{1}", path, directory);
+                saveurl = string.Format("{0}{1}{2}", path, directory,filename);
 
 
                 CreateDirectory(saveurl);
-                webclient.DownloadFile(urladdress + directory + "/会议记录.doc", saveurl + filename);
+                webclient.DownloadFile(urladdress + directory + "//" + directory + ".docx", saveurl);
                 return saveurl;
             }
             catch (Exception ex)
@@ -130,6 +130,34 @@ namespace Meeting.Pc
                 if (!File.Exists(saveurl + filename))
                     File.Create(saveurl + filename);
                 return saveurl + filename;
+            }
+        }
+
+
+        public static string DownloadFile(string directory, string path, string filename)
+        {
+            string urladdress = "";
+            string receivePath = "";
+            string saveurl = "";
+
+            string filesaveurl = "";
+            try
+            {
+                urladdress = ConfigurationManager.AppSettings["downUrl"].ToString();
+                receivePath = ConfigurationManager.AppSettings["pcurl"].ToString();
+                saveurl = string.Format("{0}{1}", path, directory);
+                filesaveurl = saveurl +"\\"+ filename;
+                if (!File.Exists(filesaveurl)) 
+                {
+                    CreateDirectory(saveurl);
+                    webclient.DownloadFile(urladdress + directory + "//" + filename, filesaveurl);
+                }
+
+                return filesaveurl;
+            }
+            catch (Exception ex)
+            {
+                return "";
             }
         }
 

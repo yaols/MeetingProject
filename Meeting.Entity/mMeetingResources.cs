@@ -11,7 +11,7 @@ namespace Meeting.Entity
 
         public string ResourcesName { get; set; }
 
-        public int ResourcesType { get; set; }
+        public string ResourcesType { get; set; }
 
         public int MeetingIssueId { get; set; }
 

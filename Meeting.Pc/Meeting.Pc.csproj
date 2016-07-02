@@ -96,6 +96,12 @@
     <Compile Include="View\FrmCreateMeeting.Designer.cs">
       <DependentUpon>FrmCreateMeeting.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmImage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmImage.Designer.cs">
+      <DependentUpon>FrmImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +161,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmCreateMeeting.resx">
       <DependentUpon>FrmCreateMeeting.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmImage.resx">
+      <DependentUpon>FrmImage.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>

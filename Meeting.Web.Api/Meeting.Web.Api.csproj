@@ -39,6 +39,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Json, Version=1.0.0.0, Culture=neutral, PublicKeyToken=c6752e45808247c2, processorArchitecture=MSIL">
+      <HintPath>..\packages\JSON.1.0.1\lib\net40\Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
     </Reference>
@@ -173,10 +177,12 @@
     <Compile Include="Controllers\MeetingInfoController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Filters\MyAuthorization.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\MeetingSearch.cs" />
+    <Compile Include="Models\ResourcesView.cs" />
     <Compile Include="Models\TitleViewModel.cs" />
     <Compile Include="Models\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -191,6 +197,7 @@
     <Content Include="bootstrap\img\glyphicons-halflings.png" />
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\HtmlPage1.html" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -245,7 +252,11 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="css\chosen-sprite.png" />
+    <Content Include="css\chosen.css" />
     <Content Include="css\main.css" />
+    <Content Include="css\prism.css" />
+    <Content Include="css\style.css" />
     <Content Include="db\MeetingProject.mdf" />
     <Content Include="db\MeetingProject_log.ldf">
       <DependentUpon>MeetingProject.mdf</DependentUpon>
@@ -265,12 +276,26 @@
     <Content Include="Areas\HelpPage\Views\Help\Api.cshtml" />
     <Content Include="Images\icon.png" />
     <Content Include="log4net_config.xml" />
+    <Content Include="mh_dialog\images\error.png" />
+    <Content Include="mh_dialog\images\success.png" />
+    <Content Include="mh_dialog\mh_dialog.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
     <Content Include="Scripts\datetimepicker\jquery.datetimepicker.css" />
     <Content Include="Scripts\datetimepicker\jquery.datetimepicker.full.min.js" />
     <Content Include="Scripts\datetimepicker\jquery.datetimepicker.min.js" />
     <Content Include="Scripts\datetimepicker\jquery.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\pager.js" />
+    <Content Include="Scripts\prism.js" />
+    <Content Include="Scripts\uploadify\Change Log.txt" />
+    <Content Include="Scripts\uploadify\jquery.uploadify.js" />
+    <Content Include="Scripts\uploadify\jquery.uploadify.min.js" />
+    <Content Include="Scripts\uploadify\license.txt" />
+    <Content Include="Scripts\uploadify\uploadify-cancel.png" />
+    <Content Include="Scripts\uploadify\uploadify.css" />
+    <Content Include="Scripts\uploadify\uploadify.swf" />
+    <Content Include="Scripts\uploadify\__MACOSX\._Change Log.txt" />
+    <Content Include="Scripts\uploadify\__MACOSX\._uploadify.swf" />
     <Content Include="界面链接.txt" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\1-imge.jpg" />
@@ -332,6 +357,9 @@
     <Content Include="Views\Shared\_Pager.cshtml" />
     <Content Include="Views\Home\Table.cshtml" />
     <Content Include="Views\Shared\_Style.cshtml" />
+    <Content Include="Scripts\uploadify\check-exists.php" />
+    <Content Include="Scripts\uploadify\index.php" />
+    <Content Include="Scripts\uploadify\uploadify.php" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

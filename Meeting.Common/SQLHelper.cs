@@ -376,7 +376,7 @@ namespace Meeting.Common
         /// </summary>
         /// <param name="sourceDt">数据源表</param>
         /// <param name="targetTable">服务器上目标表</param>
-        public static void BulkToDB(DataTable sourceDt, string targetTable)
+        public static int BulkToDB(DataTable sourceDt, string targetTable)
         {
             SqlConnection conn = new SqlConnection(strConn);
             SqlBulkCopy bulkCopy = new SqlBulkCopy(conn);   //用其它源的数据有效批量加载sql server表中
@@ -388,10 +388,12 @@ namespace Meeting.Common
                 conn.Open();
                 if (sourceDt != null && sourceDt.Rows.Count != 0)
                     bulkCopy.WriteToServer(sourceDt);   //将提供的数据源中的所有行复制到目标表中
+
+                return 1;
             }
             catch (Exception ex)
             {
-                throw ex;
+                return 0;
             }
             finally
             {
@@ -404,6 +406,14 @@ namespace Meeting.Common
 
         #endregion
 
-
+        public static DataTable GetTableSchema()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[]{  
+                new DataColumn("Id",typeof(int)),  
+        new DataColumn("MeetingId",typeof(int)),  
+        new DataColumn("UserId",typeof(int))});
+            return dt;
+        }
     }
 }

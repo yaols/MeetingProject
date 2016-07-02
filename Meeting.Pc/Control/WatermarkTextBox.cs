@@ -7,14 +7,14 @@ using System.Windows.Forms;
 
 namespace Meeting.Pc
 {
-   [ToolboxBitmap(typeof(TextBox))]
-   public class WatermarkTextBox:TextBox
+    [ToolboxBitmap(typeof(TextBox))]
+    public class WatermarkTextBox : TextBox
     {
 
-       public WatermarkTextBox()
-       {
-           this.BorderStyle = BorderStyle.FixedSingle;
-       }
+        public WatermarkTextBox()
+        {
+            this.BorderStyle = BorderStyle.FixedSingle;
+        }
 
 
         private Color _borderColor = Color.Red;
@@ -62,7 +62,7 @@ namespace Meeting.Pc
 
         protected override void WndProc(ref Message m)
         {
-            
+
             base.WndProc(ref m);
             if (m.Msg == 0xf || m.Msg == 0x14 || m.Msg == 0x85)
             {

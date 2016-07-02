@@ -30,9 +30,9 @@ namespace Meeting.Pc.View
 
         private void pxHome_Click(object sender, EventArgs e)
         {
-            FrmMain main = new FrmMain();
-            main.Show();
-            Hide();
+            //FrmMain main = new FrmMain();
+            //main.Show();
+            //Hide();
         }
 
         private void peRerurn_Click(object sender, EventArgs e)

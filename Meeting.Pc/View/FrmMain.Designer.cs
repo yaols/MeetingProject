@@ -31,8 +31,8 @@
             this.plMain = new System.Windows.Forms.Panel();
             this.plPager = new System.Windows.Forms.Panel();
             this.plHead = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.peSignout = new Meeting.Pc.Control.PanelEx();
-            this.panelEx1 = new Meeting.Pc.Control.PanelEx();
             this.pelCreatemeeting = new Meeting.Pc.Control.PanelEx();
             this.label4 = new System.Windows.Forms.Label();
             this.pelEndmeeting = new Meeting.Pc.Control.PanelEx();
@@ -66,8 +66,8 @@
             // plHead
             // 
             this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
+            this.plHead.Controls.Add(this.label5);
             this.plHead.Controls.Add(this.peSignout);
-            this.plHead.Controls.Add(this.panelEx1);
             this.plHead.Controls.Add(this.pelCreatemeeting);
             this.plHead.Controls.Add(this.pelEndmeeting);
             this.plHead.Controls.Add(this.pelStartmeeting);
@@ -82,6 +82,18 @@
             this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
             this.plHead.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseUp);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
+            this.label5.Font = new System.Drawing.Font("宋体", 10F);
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(696, 18);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 14);
+            this.label5.TabIndex = 7;
+            this.label5.Text = "你好";
+            // 
             // peSignout
             // 
             this.peSignout.BackColor = System.Drawing.Color.Transparent;
@@ -94,17 +106,6 @@
             this.peSignout.TabIndex = 6;
             this.peSignout.Click += new System.EventHandler(this.peSignout_Click);
             // 
-            // panelEx1
-            // 
-            this.panelEx1.BackColor = System.Drawing.Color.Transparent;
-            this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.peopleInfo;
-            this.panelEx1.BorderColor = System.Drawing.Color.Empty;
-            this.panelEx1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx1.Location = new System.Drawing.Point(690, 13);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(81, 24);
-            this.panelEx1.TabIndex = 5;
-            // 
             // pelCreatemeeting
             // 
             this.pelCreatemeeting.BackColor = System.Drawing.Color.White;
@@ -115,6 +116,7 @@
             this.pelCreatemeeting.Name = "pelCreatemeeting";
             this.pelCreatemeeting.Size = new System.Drawing.Size(81, 29);
             this.pelCreatemeeting.TabIndex = 4;
+            this.pelCreatemeeting.Visible = false;
             this.pelCreatemeeting.Click += new System.EventHandler(this.pelCreatemeeting_Click);
             // 
             // label4
@@ -140,6 +142,7 @@
             this.pelEndmeeting.Name = "pelEndmeeting";
             this.pelEndmeeting.Size = new System.Drawing.Size(81, 29);
             this.pelEndmeeting.TabIndex = 3;
+            this.pelEndmeeting.Visible = false;
             this.pelEndmeeting.Click += new System.EventHandler(this.pelEndmeeting_Click);
             // 
             // label2
@@ -228,7 +231,7 @@
         private Control.PanelEx pelCreatemeeting;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel plPager;
-        private Control.PanelEx panelEx1;
         private Control.PanelEx peSignout;
+        private System.Windows.Forms.Label label5;
     }
 }

@@ -1,6 +1,9 @@
-﻿@model Meeting.Web.Api.Models.TitleViewModel
+﻿@using Meeting.Entity
+@using Meeting.Web.Api.Models
+@model mMeeting
 @{
-
+    TitleViewModel viewmodel = ViewBag.TitleViewModel;
+    Tuple<int, string> tuple = ViewBag.tuple;
 }
 <html lang="en">
 <head>
@@ -9,6 +12,8 @@
     <style type="text/css">
     </style>
     <link href="~/css/main.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+
 </head>
 <body>
     <div class="home">
@@ -17,54 +22,75 @@
         <div class="layout-top">
 
             <ul class="layout-top-ul">
-                <li class="home-li-font">@Model.TopTitle</li>
+                <li class="home-li-font">@viewmodel.TopTitle</li>
             </ul>
 
             <ul class="home-top-ulbtn">
                 <li class="ulbtn-btn">
-                    <div class="home-li-button">返回</div>
+                    <div class="home-li-button" onclick="retrunBtn('@viewmodel.RerurnButton')">返回</div>
                 </li>
                 <li class="ulbtn-btn">
-                    <div class="home-li-button">创建word</div>
+                    <div class="home-li-button" onclick="SaveWord()">保存</div>
                 </li>
                 <li class="ulbtn-btn">
-                    <div class="home-li-button">保存</div>
+                    <div class="home-li-button" onclick="ExportWord()">导出到桌面</div>
                 </li>
             </ul>
 
         </div>
         <!--/layout-top-->
 
-        <div class="layou-info-top">
+        @*<div class="layou-info-top">
             <font class="layou-info-font">会议信息</font>
         </div>
 
         <ul class="layou-info-ul">
-            <li class="layou-info-li">会议名称: 检委会2013年 第15次 总第10次会议</li>
-            <li class="layou-info-li">计划开始时间: 2016-05-05 09:00   <span style="margin-left:40px"></span>   计划结束时间: 2016-05-05  11:00</li>
-            <li class="layou-info-li">会议地点:主楼第一会议室</li>
+            <li class="layou-info-li">会议名称:@Model.MeetingName</li>
+            <li class="layou-info-li">计划开始时间: @Model.StartDate   <span style="margin-left:40px"></span>   计划结束时间: @Model.EendDate</li>
+            <li class="layou-info-li">会议地点: @Model.MeetingAddress</li>
             <li class="layou-info-li">
-                参会委员:张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲
-                张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲 张小菲
-                张小菲 张小菲 张小菲 张小菲 张小菲
+                参会委员: @Model.PeopleName
             </li>
-            <li class="layou-info-li">主持人:李琳</li>
-            <li class="layou-info-li">秘书:王小宁</li>
+            <li class="layou-info-li">主持人:@Model.MeetingHost</li>
+            <li class="layou-info-li">秘书:@Model.SecretaryName</li>
         </ul>
 
         <div class="layou-info-top">
             <font class="layou-info-font">会议议题</font>
-        </div>
+        </div>*@
 
-        <div class="layou-div-word">
-            <object id="DSOFramer" style="left: 0px; width: 100%;height: 270px" classid="clsid:00460182-9E5E-11D5-B7C8-B8269041DD57" codebase="DSOFramer.ocx#Version=2,3,0,1">
-                <param name="BorderStyle" value="1">
-                <param name="TitlebarColor" value="52479">
-                <param name="TitlebarTextColor" value="0">
-                <param name="Menubar" value="1">
-            </object>
-        </div>
+        @*<div class="layou-div-word">
 
+        </div>*@
+        <object id="DSOFramer" style="left: 0px; width: 100%;height: 500px" classid="clsid:00460182-9E5E-11D5-B7C8-B8269041DD57" codebase="DSOFramer.ocx#Version=2,3,0,1">
+            <param name="BorderStyle" value="1">
+            <param name="TitlebarColor" value="52479">
+            <param name="TitlebarTextColor" value="0">
+            <param name="Menubar" value="1">
+        </object>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            document.all.DSOFramer.Open("@Model.Directory",false, "Word.Document");     
+        });
+
+
+    function retrunBtn(url) {
+        location.href = url;
+    }
+
+
+    function SaveWord() {
+        document.all.DSOFramer.HttpInit();
+        document.all.DSOFramer.HttpAddPostCurrFile("FileData", "会议记录.docx");
+        document.all.DSOFramer.HttpPost('@viewmodel.RerurnHomeButton');
+    }
+
+
+        function ExportWord() {
+            location.href = "/MeetingInfo/ExportWord?fileName="+@Model.MeetingId;
+        }
+</script>
 </body>
 </html>

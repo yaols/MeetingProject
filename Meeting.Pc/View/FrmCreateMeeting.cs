@@ -22,10 +22,13 @@ namespace Meeting.Pc.View
     {
         IMeetingInterface imeeting = new MeetingService();
 
-        public FrmCreateMeeting()
+        private string _nickname = "";
+
+        public FrmCreateMeeting(string nickname)
         {
             InitializeComponent();
             Initial();
+            _nickname = nickname;
         }
 
         private void pxSave_Click(object sender, EventArgs e)
@@ -37,7 +40,7 @@ namespace Meeting.Pc.View
             model.MeetingName = "检委会" + text1.Text.Trim() + "年  第" + text2.Text.Trim() + "次  总第" + text3.Text.Trim() + "次会议";
             model.StartDate = dateStart.Value.ToString("yyyy-MM-dd HH:mm");
             model.EendDate = dateEnd.Value.ToString("yyyy-MM-dd HH:mm");
-            model.MeetingAddress = comboBox1.SelectedValue.ToString();
+            model.MeetingAddress = watermarkTextBox1.Text.Trim();
             model.MeetingHost = comboBox2.SelectedValue.ToString();
 
             foreach (var item in panelEx12.Controls)
@@ -77,7 +80,7 @@ namespace Meeting.Pc.View
             if (imeeting.SaveMeeting(resources, modeList, model) > 0) 
             {
                 MessageBox.Show("保存成功");
-                FrmMain main = new FrmMain();
+                FrmMain main = new FrmMain(_nickname);
                 main.Show();
                 Hide();
             }
@@ -87,9 +90,9 @@ namespace Meeting.Pc.View
 
         private void peRerurn_Click(object sender, EventArgs e)
         {
-            FrmMain frmMain = new FrmMain();
-            frmMain.Show();
-            Hide();
+            //FrmMain frmMain = new FrmMain();
+            //frmMain.Show();
+            //Hide();
         }
 
         #region  窗体随鼠标移动
@@ -164,13 +167,13 @@ namespace Meeting.Pc.View
                     }
                 }
 
-                if (dataSet.Tables[1] != null && dataSet.Tables[1].Rows.Count > 0)
-                {
-                    comboBox1.DataSource = dataSet.Tables[1];
-                    comboBox1.DisplayMember = "MeetingAddress";
-                    comboBox1.ValueMember = "Id";
-                    comboBox1.SelectedIndex = 0;
-                }
+                //if (dataSet.Tables[1] != null && dataSet.Tables[1].Rows.Count > 0)
+                //{
+                //    comboBox1.DataSource = dataSet.Tables[1];
+                //    comboBox1.DisplayMember = "MeetingAddress";
+                //    comboBox1.ValueMember = "Id";
+                //    comboBox1.SelectedIndex = 0;
+                //}
 
                 if (dataSet.Tables[2] != null && dataSet.Tables[2].Rows.Count > 0)
                 {
@@ -223,25 +226,25 @@ namespace Meeting.Pc.View
             if (safile.Contains(".doc") || safile.Contains(".docx")) 
             {
                 panel.BackgroundImage = Resources.文本资料;
-                model.ResourcesType = 1;
+                //model.ResourcesType = 1;
             }
 
             if (safile.Contains(".txt"))
             {
                 panel.BackgroundImage = Resources.文本资料;
-                model.ResourcesType = 1;
+                //model.ResourcesType = 1;
             }
 
             if (safile.Contains(".jpg") || safile.Contains(".png"))
             {
                 panel.BackgroundImage = Resources.图片资料;
-                model.ResourcesType = 2;
+                //model.ResourcesType = 2;
             }
 
             if (safile.Contains(".mp3") || safile.Contains(".mp4"))
             {
                 panel.BackgroundImage = Resources.音频资料;
-                model.ResourcesType = 3;
+                //model.ResourcesType = 3;
             }
 
             panelEx4.Controls.Add(panel);

@@ -110,7 +110,7 @@ namespace Meeting.Pc.View
             if (umodel.PassWord == userPass && umodel.UserName == userName)
             {
                 UserInfo.RoleId = umodel.UserRoleId;
-                FrmMain frmmain = new FrmMain();
+                FrmMain frmmain = new FrmMain(umodel.UserName);
                 frmmain.Show();
                 Hide();
             }
