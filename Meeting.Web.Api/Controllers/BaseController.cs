@@ -42,6 +42,7 @@ namespace Meeting.Web.Api.Controllers
             set
             {
                 HttpContext.Session["LoginUser"] = value;
+                
             }
         }
 

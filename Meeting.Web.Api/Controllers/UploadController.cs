@@ -77,14 +77,14 @@ namespace Meeting.Web.Api.Controllers
             var files = Request.Files[0];
             if (files != null) 
             {
-                string saveUrl = string.Format(@"{0}\{1}\{2}", Consts.SaveUrlPath, UserSession.UserId,directory);
+                string saveUrl = string.Format(@"{0}\{1}\{2}", Consts.SaveUrlPath,directory);
 
                 if (!Directory.Exists(saveUrl))
                 {
                     Directory.CreateDirectory(saveUrl);
                 }
 
-                files.SaveAs(saveUrl + "\\" +"1.docx");
+                files.SaveAs(saveUrl + "\\" +directory+".docx");
             }
 
             return Json("上传成功");

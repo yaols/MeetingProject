@@ -29,16 +29,16 @@
         private void InitializeComponent()
         {
             this.plHead = new System.Windows.Forms.Panel();
+            this.peRerurn = new Meeting.Pc.Control.PanelEx();
             this.label1 = new System.Windows.Forms.Label();
             this.plMain = new System.Windows.Forms.Panel();
+            this.panelEx2 = new Meeting.Pc.Control.PanelEx();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
-            this.panelEx2 = new Meeting.Pc.Control.PanelEx();
             this.panelEx1 = new Meeting.Pc.Control.PanelEx();
             this.label2 = new System.Windows.Forms.Label();
-            this.peRerurn = new Meeting.Pc.Control.PanelEx();
             this.plHead.SuspendLayout();
             this.plMain.SuspendLayout();
             this.panelEx1.SuspendLayout();
@@ -56,6 +56,21 @@
             this.plHead.Name = "plHead";
             this.plHead.Size = new System.Drawing.Size(900, 90);
             this.plHead.TabIndex = 3;
+            this.plHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseDown);
+            this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
+            this.plHead.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseUp);
+            // 
+            // peRerurn
+            // 
+            this.peRerurn.BackColor = System.Drawing.Color.Transparent;
+            this.peRerurn.BackgroundImage = global::Meeting.Pc.Properties.Resources.rbtn;
+            this.peRerurn.BorderColor = System.Drawing.Color.Empty;
+            this.peRerurn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.peRerurn.Location = new System.Drawing.Point(16, 54);
+            this.peRerurn.Name = "peRerurn";
+            this.peRerurn.Size = new System.Drawing.Size(63, 21);
+            this.peRerurn.TabIndex = 6;
+            this.peRerurn.Click += new System.EventHandler(this.peRerurn_Click);
             // 
             // label1
             // 
@@ -83,6 +98,14 @@
             this.plMain.Name = "plMain";
             this.plMain.Size = new System.Drawing.Size(898, 569);
             this.plMain.TabIndex = 4;
+            // 
+            // panelEx2
+            // 
+            this.panelEx2.BorderColor = System.Drawing.Color.Empty;
+            this.panelEx2.Location = new System.Drawing.Point(11, 72);
+            this.panelEx2.Name = "panelEx2";
+            this.panelEx2.Size = new System.Drawing.Size(876, 486);
+            this.panelEx2.TabIndex = 36;
             // 
             // label20
             // 
@@ -132,14 +155,6 @@
             this.label16.TabIndex = 31;
             this.label16.Text = "序号";
             // 
-            // panelEx2
-            // 
-            this.panelEx2.BorderColor = System.Drawing.Color.Empty;
-            this.panelEx2.Location = new System.Drawing.Point(11, 72);
-            this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(876, 486);
-            this.panelEx2.TabIndex = 36;
-            // 
             // panelEx1
             // 
             this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
@@ -161,18 +176,6 @@
             this.label2.Size = new System.Drawing.Size(67, 14);
             this.label2.TabIndex = 1;
             this.label2.Text = "文本材料";
-            // 
-            // peRerurn
-            // 
-            this.peRerurn.BackColor = System.Drawing.Color.Transparent;
-            this.peRerurn.BackgroundImage = global::Meeting.Pc.Properties.Resources.rbtn;
-            this.peRerurn.BorderColor = System.Drawing.Color.Empty;
-            this.peRerurn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.peRerurn.Location = new System.Drawing.Point(16, 54);
-            this.peRerurn.Name = "peRerurn";
-            this.peRerurn.Size = new System.Drawing.Size(63, 21);
-            this.peRerurn.TabIndex = 6;
-            this.peRerurn.Click += new System.EventHandler(this.peRerurn_Click);
             // 
             // FrmResources
             // 

@@ -137,14 +137,14 @@ namespace Meeting.Pc
         public static string DownloadFile(string directory, string path, string filename)
         {
             string urladdress = "";
-            string receivePath = "";
+            //string receivePath = "";
             string saveurl = "";
 
             string filesaveurl = "";
             try
             {
                 urladdress = ConfigurationManager.AppSettings["downUrl"].ToString();
-                receivePath = ConfigurationManager.AppSettings["pcurl"].ToString();
+                //receivePath = ConfigurationManager.AppSettings["pcurl"].ToString();
                 saveurl = string.Format("{0}{1}", path, directory);
                 filesaveurl = saveurl +"\\"+ filename;
                 if (!File.Exists(filesaveurl)) 

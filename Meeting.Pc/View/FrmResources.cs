@@ -177,5 +177,30 @@ namespace Meeting.Pc.View
                 }
             }
         }
+
+        #region  窗体随鼠标移动
+        private int _currentX;
+        private int _currentY;
+        private bool _canMove = false;
+        private void FrmMain_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (_canMove)
+            {
+                Location = new Point(MousePosition.X - _currentX, MousePosition.Y - _currentY);
+            }
+        }
+
+        private void FrmMain_MouseDown(object sender, MouseEventArgs e)
+        {
+            _currentX = e.X;
+            _currentY = e.Y;
+            _canMove = true;
+        }
+
+        private void FrmMain_MouseUp(object sender, MouseEventArgs e)
+        {
+            _canMove = false;
+        }
+        #endregion
     }
 }

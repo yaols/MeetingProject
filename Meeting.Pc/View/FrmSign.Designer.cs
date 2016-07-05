@@ -60,6 +60,9 @@
             this.plHead.Name = "plHead";
             this.plHead.Size = new System.Drawing.Size(900, 90);
             this.plHead.TabIndex = 4;
+            this.plHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseDown);
+            this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
+            this.plHead.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseUp);
             // 
             // pxSave
             // 

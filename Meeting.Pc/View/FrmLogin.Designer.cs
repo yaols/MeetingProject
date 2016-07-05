@@ -85,6 +85,7 @@
             this.lblMessage.Size = new System.Drawing.Size(77, 12);
             this.lblMessage.TabIndex = 12;
             this.lblMessage.Text = "请输入用户名";
+            this.lblMessage.Visible = false;
             // 
             // pbxLogin
             // 
@@ -109,6 +110,7 @@
             this.pbxPass.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pbxPass.TabIndex = 11;
             this.pbxPass.TabStop = false;
+            this.pbxPass.Visible = false;
             // 
             // plHead
             // 
