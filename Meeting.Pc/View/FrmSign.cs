@@ -12,6 +12,7 @@ using System.Linq;
 using System.Net;
 using System.Runtime.InteropServices;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Meeting.Pc.View
@@ -29,7 +30,7 @@ namespace Meeting.Pc.View
         }
 
 
-        Timer timer = new Timer();
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
         public CtrlWinWord word = new CtrlWinWord();
         private void FrmSign_Load(object sender, EventArgs e)
         {
@@ -38,12 +39,22 @@ namespace Meeting.Pc.View
             timer.Tick += new EventHandler(timer1_Tick);
         }
 
-
+        private void ExecWaitForm()
+        {
+            try
+            {
+                WaitFormService.Show();
+            }
+            catch (Exception ex)
+            {
+                WaitFormService.Close();
+            }
+        } 
 
         void timer1_Tick(object sender, EventArgs e)
         {
-            FrmLoad load = new FrmLoad();
-            load.Show();
+            Thread th = new Thread(new ThreadStart(this.ExecWaitForm));
+            th.Start();  
 
             string phath = System.Environment.CurrentDirectory;
             // var word = new CtrlWinWord()
@@ -58,8 +69,8 @@ namespace Meeting.Pc.View
             word.Show();
             plMain.Controls.Add(word);
 
-            load.Hide();
             timer.Enabled = false;
+            WaitFormService.Close();
         }
 
 

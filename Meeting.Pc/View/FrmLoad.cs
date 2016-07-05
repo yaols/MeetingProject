@@ -14,6 +14,7 @@ namespace Meeting.Pc.View
         public FrmLoad()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;  
         }
     }
 }
