@@ -161,6 +161,7 @@
     <Compile Include="View\FrmVide.designer.cs">
       <DependentUpon>FrmVide.cs</DependentUpon>
     </Compile>
+    <Compile Include="WaitFormService.cs" />
     <Compile Include="Win32API.cs" />
     <EmbeddedResource Include="Control\CtrlWinWord.resx">
       <DependentUpon>CtrlWinWord.cs</DependentUpon>
