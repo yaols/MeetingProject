@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCreateMeeting));
             this.plMain = new System.Windows.Forms.Panel();
+            this.watermarkTextBox1 = new Meeting.Pc.WatermarkTextBox();
             this.panelEx12 = new Meeting.Pc.Control.PanelEx();
             this.label20 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -67,7 +69,6 @@
             this.peRerurn = new Meeting.Pc.Control.PanelEx();
             this.pxSave = new Meeting.Pc.Control.PanelEx();
             this.label1 = new System.Windows.Forms.Label();
-            this.watermarkTextBox1 = new Meeting.Pc.WatermarkTextBox();
             this.plMain.SuspendLayout();
             this.panelEx4.SuspendLayout();
             this.panelEx2.SuspendLayout();
@@ -111,6 +112,19 @@
             this.plMain.Name = "plMain";
             this.plMain.Size = new System.Drawing.Size(898, 569);
             this.plMain.TabIndex = 2;
+            // 
+            // watermarkTextBox1
+            // 
+            this.watermarkTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
+            this.watermarkTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.watermarkTextBox1.Font = new System.Drawing.Font("宋体", 12F);
+            this.watermarkTextBox1.Location = new System.Drawing.Point(76, 77);
+            this.watermarkTextBox1.Multiline = true;
+            this.watermarkTextBox1.Name = "watermarkTextBox1";
+            this.watermarkTextBox1.Size = new System.Drawing.Size(342, 26);
+            this.watermarkTextBox1.TabIndex = 32;
+            this.watermarkTextBox1.WatermarkColor = System.Drawing.Color.DarkGray;
+            this.watermarkTextBox1.WatermarkTitle = null;
             // 
             // panelEx12
             // 
@@ -545,19 +559,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "+创建会议";
             // 
-            // watermarkTextBox1
-            // 
-            this.watermarkTextBox1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(219)))), ((int)(((byte)(220)))), ((int)(((byte)(221)))));
-            this.watermarkTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.watermarkTextBox1.Font = new System.Drawing.Font("宋体", 12F);
-            this.watermarkTextBox1.Location = new System.Drawing.Point(76, 77);
-            this.watermarkTextBox1.Multiline = true;
-            this.watermarkTextBox1.Name = "watermarkTextBox1";
-            this.watermarkTextBox1.Size = new System.Drawing.Size(342, 26);
-            this.watermarkTextBox1.TabIndex = 32;
-            this.watermarkTextBox1.WatermarkColor = System.Drawing.Color.DarkGray;
-            this.watermarkTextBox1.WatermarkTitle = null;
-            // 
             // FrmCreateMeeting
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -567,6 +568,7 @@
             this.Controls.Add(this.plMain);
             this.Controls.Add(this.plHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmCreateMeeting";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";

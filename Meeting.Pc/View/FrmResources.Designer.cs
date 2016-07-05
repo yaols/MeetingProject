@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmResources));
             this.plHead = new System.Windows.Forms.Panel();
             this.peRerurn = new Meeting.Pc.Control.PanelEx();
             this.label1 = new System.Windows.Forms.Label();
@@ -185,6 +186,7 @@
             this.Controls.Add(this.plMain);
             this.Controls.Add(this.plHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmResources";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmResources";

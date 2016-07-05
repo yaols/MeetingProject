@@ -184,6 +184,8 @@
             this.wtbPassword.TabIndex = 15;
             this.wtbPassword.WatermarkColor = System.Drawing.Color.DarkGray;
             this.wtbPassword.WatermarkTitle = " 请输入密码";
+            this.wtbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyDown);
+            this.wtbPassword.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wtbUsername_PreviewKeyDown);
             // 
             // wtbUsername
             // 
@@ -197,6 +199,7 @@
             this.wtbUsername.TabIndex = 14;
             this.wtbUsername.WatermarkColor = System.Drawing.Color.DarkGray;
             this.wtbUsername.WatermarkTitle = " 请输入用户名";
+            this.wtbUsername.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wtbUsername_PreviewKeyDown);
             // 
             // FrmLogin
             // 
@@ -213,6 +216,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.plHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmLogin";

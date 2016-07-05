@@ -31,6 +31,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>bitbug_favicon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="CNS">
       <HintPath>DLL\CNS.dll</HintPath>
@@ -212,6 +215,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bitbug_favicon.ico" />
     <Content Include="log4net_config.xml" />
     <Content Include="Resources\close_select.png" />
     <None Include="Resources\音频资料.png" />

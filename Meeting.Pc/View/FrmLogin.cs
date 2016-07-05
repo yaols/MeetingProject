@@ -106,7 +106,7 @@ namespace Meeting.Pc.View
             string userName = wtbUsername.Text.Trim();
             string userPass = wtbPassword.Text.Trim();
             int roleId = 1;
-
+            SetMessageShow(true);
             mUser umodel  = ilogin.LoginUserInfo(userName, userPass,1);
             if (umodel.PassWord == userPass && umodel.UserName == userName)
             {
@@ -125,7 +125,7 @@ namespace Meeting.Pc.View
             }
             else 
             {
-                lblMessage.Text = "用户名或者密码错误!";
+                lblMessage.Text = "用户名或者密码错误!";                
             }
         }
 
@@ -167,6 +167,21 @@ namespace Meeting.Pc.View
         {
             this.pbxPass.Visible = isShow;
             this.lblMessage.Visible = isShow;
+        }
+
+        private void wtbUsername_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
+        {
+            SetMessageShow(false);
+        }
+
+        private void FrmLogin_KeyDown(object sender, KeyEventArgs e)
+        {
+            
+            if (e.KeyCode == Keys.Enter)//如果输入的是回车键
+            {
+                this.pbxLogin_Click(sender, e);//触发button事件
+            }
+        
         }
     }
 }
