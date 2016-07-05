@@ -35,15 +35,24 @@ namespace Meeting.Web.Api.Controllers
             {
                 model.UserName = HttpUtility.UrlDecode(model.UserName);
                 model.UserPass = HttpUtility.UrlDecode(model.UserPass);
+                int roleId = 2;
+                umodel = ilogin.LoginUserInfo(model.UserName, model.UserPass,roleId);
 
-                umodel = ilogin.LoginUserInfo(model.UserName, model.UserPass);
 
 
                 if (umodel.PassWord == model.UserPass && umodel.UserName == model.UserName)
                 {
-                    HttpContext.Session["LoginUser"] = umodel;
-                    result.Msg = "登陆成功";
-                    result.Result = ResultCode.Ok;
+                    if (umodel.UserRoleId == 2)
+                    {
+                        HttpContext.Session["LoginUser"] = umodel;
+                        result.Msg = "登陆成功";
+                        result.Result = ResultCode.Ok;
+                    }
+                    else 
+                    {
+                        result.Msg = "此账号没有权限登录议员版本";
+                        result.Result = ResultCode.ClientError;
+                    }
                 }
                 else
                 {
@@ -59,6 +68,13 @@ namespace Meeting.Web.Api.Controllers
             }
 
             return Json(result);
+        }
+
+
+        public ActionResult Signout() 
+        {
+            HttpContext.Session["LoginUser"] = null;
+            return RedirectToAction("Index");
         }
     }
 }

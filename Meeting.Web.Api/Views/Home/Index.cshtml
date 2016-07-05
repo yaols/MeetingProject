@@ -23,10 +23,10 @@
             <div class="home-top-lan">
                 <ul>
                     <li class="home-li-font">
-                        检委会会议系统  (终端版)
+                        检委会会议系统  (文书终端版)
                     </li>
                     <li class="home-ul-li">
-                        <div class="home-li-button">退出登录</div>
+                        <div class="home-li-button" onclick="Signout()">退出登录</div>
                     </li>
                     <li class="home-ul-li" style="color:#ffffff">
                         你好，@if (User!=null)
@@ -56,6 +56,10 @@
         $(document).ready(function () {
             mouseoverMeeting(1);
         })
+
+        function Signout() {
+            location.href = "/Login/Signout";
+        }
     </script>
 
 </body>

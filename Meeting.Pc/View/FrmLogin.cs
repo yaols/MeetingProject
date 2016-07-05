@@ -105,14 +105,23 @@ namespace Meeting.Pc.View
 
             string userName = wtbUsername.Text.Trim();
             string userPass = wtbPassword.Text.Trim();
+            int roleId = 1;
 
-            mUser umodel  = ilogin.LoginUserInfo(userName, userPass);
+            mUser umodel  = ilogin.LoginUserInfo(userName, userPass,1);
             if (umodel.PassWord == userPass && umodel.UserName == userName)
             {
-                UserInfo.RoleId = umodel.UserRoleId;
-                FrmMain frmmain = new FrmMain(umodel.UserName);
-                frmmain.Show();
-                Hide();
+                if (roleId == 1)
+                {
+                    UserInfo.RoleId = umodel.UserRoleId;
+                    FrmMain frmmain = new FrmMain(umodel.UserName);
+                    frmmain.Show();
+                    Hide();
+                }
+                else 
+                {
+                    lblMessage.Text = "此账号没有权限登录审批版本";
+                }
+
             }
             else 
             {

@@ -4,13 +4,13 @@ function Login() {
     var userpass = $("#userpass");
 
     if (username.val() == '') {
-        $("#errorTitle").html("亲，用户名不能为空！");
+        $("#errorTitle").html("用户名不能为空！");
         username.focus();
         return;
     }
 
     if (userpass.val() == '') {
-        $("#errorTitle").html("亲，密码不能为空！");
+        $("#errorTitle").html("密码不能为空！");
         userpass.focus();
         return;
     }
@@ -23,7 +23,7 @@ function Login() {
         function (data) {
             if (data.Result == 0)
                 location.href = "/Home/Index?pageindex=" + 1;
-            $("#errorTitle").html("亲，" + data.Msg);
+            $("#errorTitle").html(data.Msg);
         });
 }
 

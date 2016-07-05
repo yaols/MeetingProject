@@ -10,9 +10,9 @@ namespace Meeting.BLL
 {
     public class LoginService : ILoginInterface
     {
-        public mUser LoginUserInfo(string username, string password)
+        public mUser LoginUserInfo(string username, string password,int roleId)
         {
-           return LoginDao.LoginUserInfo(username,password);
+            return LoginDao.LoginUserInfo(username, password, roleId);
         }
     }
 }

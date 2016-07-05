@@ -12,7 +12,7 @@ namespace Meeting.Dao
     {
 
 
-        public static mUser LoginUserInfo(string username, string password)
+        public static mUser LoginUserInfo(string username, string password,int roleId)
         {
             mUser model = new mUser();
 
@@ -20,7 +20,7 @@ namespace Meeting.Dao
                                     Passwrod,CreateDate,d.DepartName  from m_User u
                                     left join m_UserRole  ur on u.UserRoleId=ur.Id 
                                      left join m_Depart d  on u.UserDepartId=d.Id
-                                    where  UserName=@userName and Passwrod=@passwrod ";
+                                    where  UserName=@userName and Passwrod=@passwrod";
 
             SqlParameter[] paras = new SqlParameter[]
            {

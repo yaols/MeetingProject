@@ -157,7 +157,7 @@ namespace Meeting.Dao
 
         public static int GetMeetingMaxId()
         {
-            string sql = "select max(MeetingId) from m_Meeting";
+            string sql = "select ISNULL(max(MeetingId),1) from m_Meeting";
 
             return SQLHelper.ExcuteScalarSQL(sql);
         }

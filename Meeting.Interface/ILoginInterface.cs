@@ -8,6 +8,6 @@ namespace Meeting.Interface
 {
     public interface ILoginInterface
     {
-        mUser LoginUserInfo(string username,string password);
+        mUser LoginUserInfo(string username,string password,int roleId);
     }
 }

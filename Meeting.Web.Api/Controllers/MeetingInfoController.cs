@@ -81,8 +81,8 @@ namespace Meeting.Web.Api.Controllers
         public ActionResult MaterialVide(MeetingSearch search)
         {
             TitleViewModel model = new TitleViewModel();
-            model.Title = "材料: " + search.ResourceName + search.ResourcesType;
-            model.TopTitle = "材料: " + search.ResourceName + search.ResourcesType;
+            model.Title = "材料: " + search.ResourceName;
+            model.TopTitle = "材料: " + search.ResourceName;
             model.RerurnButton = "/MeetingInfo/MaterialInfo?MeetingId=" + search.MeetingId;
             model.RerurnHomeButton = "/Home/Index?pageindex=" + 1;
             model.Type = 1;
