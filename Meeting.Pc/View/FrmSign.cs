@@ -39,6 +39,7 @@ namespace Meeting.Pc.View
         }
 
 
+
         void timer1_Tick(object sender, EventArgs e)
         {
             FrmLoad load = new FrmLoad();
