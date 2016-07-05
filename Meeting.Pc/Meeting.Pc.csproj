@@ -105,6 +105,12 @@
     <Compile Include="View\FrmImage.Designer.cs">
       <DependentUpon>FrmImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\FrmLoad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\FrmLoad.Designer.cs">
+      <DependentUpon>FrmLoad.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\FrmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     <EmbeddedResource Include="View\FrmImage.resx">
       <DependentUpon>FrmImage.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\FrmLoad.resx">
+      <DependentUpon>FrmLoad.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -223,6 +232,7 @@
     <None Include="Resources\图片资料.png" />
     <None Include="Resources\head.png" />
     <None Include="Resources\rbtn.png" />
+    <None Include="Resources\progress.gif" />
     <Content Include="Resources\多媒体素材.png" />
     <None Include="Resources\视频资料.png" />
     <None Include="Resources\提交审批.png" />

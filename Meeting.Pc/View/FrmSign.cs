@@ -29,10 +29,20 @@ namespace Meeting.Pc.View
         }
 
 
-
+        Timer timer = new Timer();
         public CtrlWinWord word = new CtrlWinWord();
         private void FrmSign_Load(object sender, EventArgs e)
         {
+            timer.Enabled = true;
+            timer.Interval = 300;
+            timer.Tick += new EventHandler(timer1_Tick);
+        }
+
+
+        void timer1_Tick(object sender, EventArgs e)
+        {
+            FrmLoad load = new FrmLoad();
+            load.Show();
 
             string phath = System.Environment.CurrentDirectory;
             // var word = new CtrlWinWord()
@@ -46,6 +56,9 @@ namespace Meeting.Pc.View
             word.LoadDocument(_url);
             word.Show();
             plMain.Controls.Add(word);
+
+            load.Hide();
+            timer.Enabled = false;
         }
 
 
