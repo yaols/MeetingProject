@@ -89,7 +89,7 @@ namespace Meeting.Web.Api.Controllers
             ViewBag.TitleViewModel = model;
 
 
-            string url = string.Format("{0}{1}/{2}", Consts.DwonUrlPath,search.Directory,search.ResourceName+search.ResourcesType);
+            string url = string.Format("{0}{1}/{2}", Consts.DwonUrlPath,search.Directory,search.ResourceName);
             Tuple<int, string> tuple=GetTypeUrl(search.ResourcesType,url);
 
             return View(tuple);
