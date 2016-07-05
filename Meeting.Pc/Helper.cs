@@ -169,5 +169,7 @@ namespace Meeting.Pc
                 Directory.CreateDirectory(url);
             }
         }
+
+        public static string NickName { get; set; }
     }
 }

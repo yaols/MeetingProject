@@ -129,7 +129,7 @@ namespace Meeting.Pc.View
             }
             else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".gif")
             {
-                string url = Helper.DownloadFile(_meetingId, Consts.PcUrlPath, filename);
+                string url = string.Format("{0}{1}/{2}", Consts.DwonUrlPath, _meetingId, filename);
                 if (!string.IsNullOrEmpty(url))
                 {
                     FrmImage image = new FrmImage(url, _meetingId, filename);

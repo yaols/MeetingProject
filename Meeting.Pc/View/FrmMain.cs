@@ -197,7 +197,7 @@ namespace Meeting.Pc.View
         {
             PanelEx pxBtn = (PanelEx)sender;
             FrmMeetingInfo meeting = new FrmMeetingInfo(pxBtn.Tag.ToString());
-            meeting.NickName = _nickname;
+            Helper.NickName = _nickname;
             meeting.Show();
             Hide();
         }

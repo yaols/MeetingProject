@@ -21,20 +21,17 @@ namespace Meeting.Pc.View
     {
 
         IMeetingInterface imeeting = new MeetingService();
-
-        public string NickName = "";
         private string _meetingId = "";
         public FrmMeetingInfo(string meetingId)
         {
             InitializeComponent();
             _meetingId = meetingId;
             Initial(meetingId);
-
         }
 
         private void pxHome_Click(object sender, EventArgs e)
         {
-            FrmMain main = new FrmMain(NickName);
+            FrmMain main = new FrmMain(Helper.NickName);
             main.Show();
             Hide();
         }
