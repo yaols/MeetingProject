@@ -183,5 +183,12 @@ namespace Meeting.Pc.View
             }
         
         }
+
+        private void notifyIcon1_Click(object sender, EventArgs e)
+        {
+            Show();
+            notifyIcon1.Visible = false;
+            Text = "检委会会议系统";
+        }
     }
 }
