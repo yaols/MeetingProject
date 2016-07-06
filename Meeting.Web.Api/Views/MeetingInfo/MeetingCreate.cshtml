@@ -91,7 +91,7 @@
         <ul class="create-meeting-ul">
             <li class="create-meeting-li">
                 参会委员:
-                <select data-placeholder="请选择..." class="chosen-select" multiple style="width:865px; height:30px;" tabindex="4">
+                <select data-placeholder="请选择..." class="chosen-select" multiple style="width:850px; height:30px;" tabindex="4">
                     @foreach (var item in Model.UserList)
                     {
                         <option value="@item.Id">@item.NickName</option>
@@ -233,6 +233,17 @@
             model.numcount = $("#numcount").val();
             model.datetimepicker1 = $("#datetimepicker1").val();
             model.datetimepicker2 = $("#datetimepicker2").val();
+
+
+            var begin = new Date(model.datetimepicker1.replace(/-/g, "/"));
+            var end = new Date(model.datetimepicker2.replace(/-/g, "/"));
+            //js判断日期
+            if (begin - end > 0) {
+                alert("开始日期不能大于结束日期!");
+                return false;
+            }
+
+
             model.address = $("#address").val();
             model.hoseUser = $("#hoseUser").find("option:selected").attr("id");
             model.wenshu = $("#wenshu").find("option:selected").attr("id");

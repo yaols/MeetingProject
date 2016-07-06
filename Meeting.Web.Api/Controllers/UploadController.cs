@@ -31,17 +31,18 @@ namespace Meeting.Web.Api.Controllers
             var files = Request.Files[0];
             if (files != null) 
             {
-                string saveUrl = string.Format("{0}\\{1}",Consts.SaveUrlPath, model.Directory);
-                model.ResourcesType = Path.GetExtension(files.FileName);  
-                model.ResourcesName=DateTime.Now.ToString("yyyyMMddHHmmsss");
+                string saveUrl = string.Format("{0}{1}",Consts.SaveUrlPath, model.Directory);
+                model.ResourcesType = Path.GetExtension(files.FileName);
+                model.ResourcesName = Path.GetFileNameWithoutExtension(files.FileName);
 
                 if (!Directory.Exists(saveUrl))
                 {
                     Directory.CreateDirectory(saveUrl);
                 }
 
-                files.SaveAs(saveUrl + "\\" + model.ResourcesName + model.ResourcesType);
-                
+                //files.SaveAs(saveUrl + "\\" + model.ResourcesName + model.ResourcesType);
+                files.SaveAs(saveUrl + "\\" + files.FileName);
+
                 if (iResources.InsertModel(model) > 0)
                 {
                     msg = "上传成功";

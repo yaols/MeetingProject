@@ -567,7 +567,7 @@ input {
     width: 140px;
     height: 30px;
     border: 1px solid #DADDDF;
-     background: url(/Images/icon.png) no-repeat;
+     /*background: url(/Images/icon.png) no-repeat;*/
      background-position:120px 8px;
 }
 
