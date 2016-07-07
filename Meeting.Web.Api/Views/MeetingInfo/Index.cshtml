@@ -27,6 +27,10 @@
                     <div class="home-li-button" onclick="returnTop()">返回</div>
                 </li>
                 <li class="ulbtn-btn">
+                    @{var DelBtn = "DelBtn('" + Model.MeetingId + "')";}
+                    <div class="home-li-button1" onclick="@DelBtn">删除会议</div>
+                </li>
+                <li class="ulbtn-btn">
                     @{var btn = "EndMeeting('" + Model.MeetingId + "')";}
                     <div class="home-li-button1" onclick="@btn">结束会议</div>
                 </li>
