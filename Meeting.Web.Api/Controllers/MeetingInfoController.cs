@@ -134,14 +134,17 @@ namespace Meeting.Web.Api.Controllers
         {
             TitleViewModel model = new TitleViewModel();
             //mMeeting meetingModel = imeeting.GetMeetingModel(search.MeetingId);
+            string message = "";
             mMeeting meetingModel = new mMeeting();
             meetingModel.MeetingId = search.MeetingId;
             model.Title = "材料: 会议记录";
             model.TopTitle = "材料: 会议记录";
             model.RerurnButton = "/MeetingInfo/Index?MeetingId=" + search.MeetingId;
             ViewBag.TitleViewModel = model;
-            model.RerurnHomeButton = Consts.UrlPath+"/Upload/SaveWord?directory="+search.MeetingId;
+            //model.RerurnHomeButton = Consts.UrlPath+"/Upload/SaveWord?directory="+search.MeetingId;
             meetingModel.Directory = string.Format("{0}{1}/{2}", Consts.DwonUrlPath,search.MeetingId, search.MeetingId + ".docx");
+            WordHelper.Word2HtmlFromFileSaveFileHtml(meetingModel.Directory,Consts.SaveUrlPath+"1.html", out message);
+            meetingModel.Directory = string.Format("{0}{1}", Consts.DwonUrlPath, "1.html");
 
             return View(meetingModel);
         }

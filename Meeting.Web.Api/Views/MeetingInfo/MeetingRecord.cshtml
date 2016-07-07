@@ -17,6 +17,8 @@
 
     <link href="~/Scripts/uploadify/uploadify.css" rel="stylesheet" />
     <script src="~/Scripts/uploadify/jquery.uploadify.js"></script>
+    <script src="~/Scripts/lhgdialog/lhgdialog.min.js"></script>
+    <script src="~/Scripts/lhgdialog/jquery.dialog.plugin.js"></script>
 </head>
 <body>
     <div class="home">
@@ -72,44 +74,30 @@
             <param name="TitlebarTextColor" value="0">
             <param name="Menubar" value="1">
         </object>*@
+        <iframe style="width:100%;height:500px;border-width: 0px;margin:0 auto;" src="@(Model.Directory)" id="iframe"></iframe>
     </div>
 
     <script type="text/javascript">
-        $(document).ready(function () {
-            @*document.all.DSOFramer.Open(encodeURI("@Model.Directory"),false, "Word.Document");*@  
+    $(document).ready(function () {
+        @*document.all.DSOFramer.Open(encodeURI("@Model.Directory"),false, "Word.Document");*@
 
-            $('#file_upload').uploadify({
-                'swf': '/Scripts/uploadify/uploadify.swf',
-                'uploader': '/Upload/Index',
-                'buttonText':'上传',
-                'onUploadStart': function (file) {
-                    var htmlString = '<li class="create-ul-li"><div class="create-li-img">';
-                    if (file.type == '.txt' || file.type == '.doc' || file.type == '.docx') {
-                        htmlString += '<img src="/Images/文本资料.png" /></div>';
-                    } else if (file.type == '.png' || file.type == '.jpg' || file.type == '.gif' || file.type == '.gif') {
-                        htmlString += '<img src="/Images/图片资料.png" /></div>';
-                    } else if (file.type == '.mp4' || file.type == '.wmv' || file.type == '.amv') {
-                        htmlString += '<img src="/Images/视频资料.png" /></div>';
-                    } else if (file.type == '.mp3') {
-                        htmlString += '<img src="/Images/音频资料.png" /></div>';
-                    } else {
-                        htmlString += '<img src="/Images/文本资料.png" /></div>';
-                    }
-                    
-                    //<div class="create-li-btnDel" onclick="CreateDel("'+file.name+'")">删除</div>
-                    htmlString += file.name + '</li>';
-      
-                    $("#imgul").append(htmlString);
-                    lhgdialog.masklayer();
-                }
-            });
-            
-            $('#file_upload-button').removeClass("uploadify-button");
-            $("#file_upload-button").removeAttr("style");
-            $("#file_upload").attr("style","height: 30px;");
-            $('#file_upload-button').addClass("home-button-right");
-            $(".swfupload").attr("style","position: absolute; z-index: 1;right:0px;");
+        $('#file_upload').uploadify({
+            'swf': '/Scripts/uploadify/uploadify.swf',
+            'uploader': '/Upload/SaveWord?directory='+@Model.MeetingId,
+            'buttonText':'上传',
+            'onUploadStart': function (file) {
+                $("#iframe").attr("src", "@(Model.Directory)");
+
+                lhgdialog.masklayer();
+            }
         });
+
+        $('#file_upload-button').removeClass("uploadify-button");
+        $("#file_upload-button").removeAttr("style");
+        $("#file_upload").attr("style","height: 2px;");
+        $('#file_upload-button').addClass("home-button-right");
+        $(".swfupload").attr("style","position: absolute; z-index: 1;right:0px;");
+    });
 
 
     function retrunBtn(url) {
@@ -124,9 +112,9 @@
     }
 
 
-        function ExportWord() {
-            location.href = "/MeetingInfo/ExportWord?fileName="+@Model.MeetingId;
-        }
+    function ExportWord() {
+        location.href = "/MeetingInfo/ExportWord?fileName="+@Model.MeetingId;
+    }
 </script>
 </body>
 </html>

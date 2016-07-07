@@ -79,15 +79,19 @@ namespace Meeting.Web.Api.Controllers
         [HttpPost]
         public JsonResult SaveWord(string directory)
         {
+            //mMeetingResources model = new mMeetingResources();
+
             var files = Request.Files[0];
             if (files != null) 
             {
-                string saveUrl = string.Format(@"{0}\{1}\{2}", Consts.SaveUrlPath,directory);
+                string saveUrl = string.Format(@"{0}{1}", Consts.SaveUrlPath,directory);
 
                 if (!Directory.Exists(saveUrl))
                 {
                     Directory.CreateDirectory(saveUrl);
                 }
+
+                //model.ResourcesUrl = Consts.DwonUrlPath + directory+".html";
 
                 files.SaveAs(saveUrl + "\\" +directory+".docx");
             }
