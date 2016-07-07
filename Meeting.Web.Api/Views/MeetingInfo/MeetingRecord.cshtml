@@ -5,6 +5,7 @@
     TitleViewModel viewmodel = ViewBag.TitleViewModel;
     Tuple<int, string> tuple = ViewBag.tuple;
 }
+<meta http-equiv="X-UA-Compatible" content="IE=9" />  
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -14,6 +15,8 @@
     <link href="~/css/main.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 
+    <link href="~/Scripts/uploadify/uploadify.css" rel="stylesheet" />
+    <script src="~/Scripts/uploadify/jquery.uploadify.js"></script>
 </head>
 <body>
     <div class="home">
@@ -30,10 +33,11 @@
                     <div class="home-li-button" onclick="retrunBtn('@viewmodel.RerurnButton')">返回</div>
                 </li>
                 <li class="ulbtn-btn">
-                    <div class="home-li-button" onclick="SaveWord()">保存</div>
+                    <div class="home-li-button" onclick="ExportWord()">导出到桌面</div>
                 </li>
                 <li class="ulbtn-btn">
-                    <div class="home-li-button" onclick="ExportWord()">导出到桌面</div>
+                    @*<div class="home-button-right">上传</div>*@
+                    <input type="file" name="file_upload" id="file_upload" />
                 </li>
             </ul>
 
@@ -62,17 +66,49 @@
         @*<div class="layou-div-word">
 
         </div>*@
-        <object id="DSOFramer" style="left: 0px; width: 100%;height: 500px" classid="clsid:00460182-9E5E-11D5-B7C8-B8269041DD57" codebase="DSOFramer.ocx#Version=2,3,0,1">
+        @*<object id="DSOFramer" style="left: 0px; width: 100%;height: 500px" classid="clsid:00460182-9E5E-11D5-B7C8-B8269041DD57" codebase="DSOFramer.ocx#Version=2,3,0,1">
             <param name="BorderStyle" value="1">
             <param name="TitlebarColor" value="52479">
             <param name="TitlebarTextColor" value="0">
             <param name="Menubar" value="1">
-        </object>
+        </object>*@
     </div>
 
     <script type="text/javascript">
         $(document).ready(function () {
-            document.all.DSOFramer.Open(encodeURI("@Model.Directory"),false, "Word.Document");     
+            @*document.all.DSOFramer.Open(encodeURI("@Model.Directory"),false, "Word.Document");*@  
+
+            $('#file_upload').uploadify({
+                'swf': '/Scripts/uploadify/uploadify.swf',
+                'uploader': '/Upload/Index',
+                'buttonText':'上传',
+                'onUploadStart': function (file) {
+                    var htmlString = '<li class="create-ul-li"><div class="create-li-img">';
+                    if (file.type == '.txt' || file.type == '.doc' || file.type == '.docx') {
+                        htmlString += '<img src="/Images/文本资料.png" /></div>';
+                    } else if (file.type == '.png' || file.type == '.jpg' || file.type == '.gif' || file.type == '.gif') {
+                        htmlString += '<img src="/Images/图片资料.png" /></div>';
+                    } else if (file.type == '.mp4' || file.type == '.wmv' || file.type == '.amv') {
+                        htmlString += '<img src="/Images/视频资料.png" /></div>';
+                    } else if (file.type == '.mp3') {
+                        htmlString += '<img src="/Images/音频资料.png" /></div>';
+                    } else {
+                        htmlString += '<img src="/Images/文本资料.png" /></div>';
+                    }
+                    
+                    //<div class="create-li-btnDel" onclick="CreateDel("'+file.name+'")">删除</div>
+                    htmlString += file.name + '</li>';
+      
+                    $("#imgul").append(htmlString);
+                    lhgdialog.masklayer();
+                }
+            });
+            
+            $('#file_upload-button').removeClass("uploadify-button");
+            $("#file_upload-button").removeAttr("style");
+            $("#file_upload").attr("style","height: 30px;");
+            $('#file_upload-button').addClass("home-button-right");
+            $(".swfupload").attr("style","position: absolute; z-index: 1;right:0px;");
         });
 
 

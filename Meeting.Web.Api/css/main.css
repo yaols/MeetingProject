@@ -167,7 +167,7 @@ input {
     line-height: 20px;
     float: left;
     margin: 0 5px 0 5px;
-     cursor: pointer;
+    cursor: pointer;
 }
 
 .home-li-btnDel {
@@ -780,4 +780,20 @@ input {
     float: left;
     margin-left:25px;
     cursor: pointer;
+}
+
+
+    .home-button-right {
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 60px;
+    height: 20px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 20px;
+    float: right;
+    margin: 0 5px 0 5px;
+    cursor: pointer;
+        position: relative;
+    margin-bottom: 1em;
 }
