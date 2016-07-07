@@ -50,7 +50,6 @@
             // plHead
             // 
             this.plHead.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
             this.plHead.Controls.Add(this.pxSave);
             this.plHead.Controls.Add(this.panelEx1);
             this.plHead.Controls.Add(this.peRerurn);
@@ -68,7 +67,6 @@
             // pxSave
             // 
             this.pxSave.BackColor = System.Drawing.Color.Transparent;
-            this.pxSave.BackgroundImage = global::Meeting.Pc.Properties.Resources.save;
             this.pxSave.BorderColor = System.Drawing.Color.Empty;
             this.pxSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pxSave.Location = new System.Drawing.Point(119, 54);
@@ -79,20 +77,18 @@
             // 
             // panelEx1
             // 
-            this.panelEx1.BackColor = System.Drawing.Color.Transparent;
-            this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.表决;
+            this.panelEx1.BackColor = System.Drawing.Color.White;
             this.panelEx1.BorderColor = System.Drawing.Color.Empty;
             this.panelEx1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.panelEx1.Location = new System.Drawing.Point(234, 50);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(65, 25);
+            this.panelEx1.Size = new System.Drawing.Size(88, 25);
             this.panelEx1.TabIndex = 7;
             this.panelEx1.Click += new System.EventHandler(this.panelEx1_Click);
             // 
             // peRerurn
             // 
             this.peRerurn.BackColor = System.Drawing.Color.Transparent;
-            this.peRerurn.BackgroundImage = global::Meeting.Pc.Properties.Resources.rbtn;
             this.peRerurn.BorderColor = System.Drawing.Color.Empty;
             this.peRerurn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.peRerurn.Location = new System.Drawing.Point(16, 54);

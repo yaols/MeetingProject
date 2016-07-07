@@ -47,9 +47,9 @@
             // 
             // btnLast
             // 
-            this.btnLast.Location = new System.Drawing.Point(681, 8);
+            this.btnLast.Location = new System.Drawing.Point(681, 3);
             this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(75, 23);
+            this.btnLast.Size = new System.Drawing.Size(75, 34);
             this.btnLast.TabIndex = 8;
             this.btnLast.Text = "尾页";
             this.btnLast.UseVisualStyleBackColor = true;
@@ -57,9 +57,9 @@
             // 
             // btnDown
             // 
-            this.btnDown.Location = new System.Drawing.Point(584, 8);
+            this.btnDown.Location = new System.Drawing.Point(584, 3);
             this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(75, 23);
+            this.btnDown.Size = new System.Drawing.Size(75, 34);
             this.btnDown.TabIndex = 7;
             this.btnDown.Text = "下一页";
             this.btnDown.UseVisualStyleBackColor = true;
@@ -67,9 +67,9 @@
             // 
             // btnUp
             // 
-            this.btnUp.Location = new System.Drawing.Point(234, 8);
+            this.btnUp.Location = new System.Drawing.Point(234, 3);
             this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(75, 23);
+            this.btnUp.Size = new System.Drawing.Size(75, 34);
             this.btnUp.TabIndex = 6;
             this.btnUp.Text = "上一页";
             this.btnUp.UseVisualStyleBackColor = true;
@@ -77,9 +77,9 @@
             // 
             // btnHome
             // 
-            this.btnHome.Location = new System.Drawing.Point(139, 8);
+            this.btnHome.Location = new System.Drawing.Point(139, 3);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(75, 23);
+            this.btnHome.Size = new System.Drawing.Size(75, 34);
             this.btnHome.TabIndex = 5;
             this.btnHome.Text = "首页";
             this.btnHome.UseVisualStyleBackColor = true;
