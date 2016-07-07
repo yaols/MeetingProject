@@ -32,6 +32,10 @@ namespace Meeting.Web.Api.Controllers
             if (files != null) 
             {
                 string saveUrl = string.Format("{0}{1}",Consts.SaveUrlPath, model.Directory);
+
+                //model.ResourcesType = Path.GetExtension(files.FileName);
+                //model.ResourcesName = DateTime.Now.ToString("yyyyMMddHHmmsss");
+
                 model.ResourcesType = Path.GetExtension(files.FileName);
                 model.ResourcesName = Path.GetFileNameWithoutExtension(files.FileName);
 
