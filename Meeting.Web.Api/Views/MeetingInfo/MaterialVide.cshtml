@@ -16,7 +16,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            document.all.DSOFramer.Open("@Model.Item2", false, "Word.Document");
+            document.all.DSOFramer.Open(encodeURI("@Model.Item2"), false, "Word.Document");
         });
     </script>
 }

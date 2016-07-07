@@ -72,7 +72,7 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
-            document.all.DSOFramer.Open("@Model.Directory",false, "Word.Document");     
+            document.all.DSOFramer.Open(encodeURI("@Model.Directory"),false, "Word.Document");     
         });
 
 
