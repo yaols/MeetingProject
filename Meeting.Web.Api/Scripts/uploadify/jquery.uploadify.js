@@ -431,7 +431,9 @@ Released under the MIT License <http://www.opensource.org/licenses/mit-license.p
 					returnValue =  settings[name];
 				} else {
 					switch (name) {
-						case 'uploader':
+					    case 'uploader':
+					        /*上传开始*/
+					        lhgdialog.masklayer('loading.gif');
 							swfuploadify.setUploadURL(value);
 							break;
 						case 'formData':

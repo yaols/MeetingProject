@@ -298,5 +298,29 @@ namespace Meeting.Web.Api.Controllers
 
             return Json(result);
         }
+
+
+        public JsonResult DelCeate(string filename)
+        {
+            ResultBase result = new ResultBase();
+            //string directory=(imeeting.GetMeetingMaxId() + 1).ToString();
+
+            //if (iresources.DelResource(Id) > 0)
+            //{
+            //    string url = string.Format("{0}{1}\\{2}", Consts.SaveUrlPath, Directory, filename);
+            //    if (Helper.DelFileUrl(url) > 0)
+            //    {
+            //        result.Result = ResultCode.Ok;
+            //        result.Msg = "删除文件" + filename + "成功";
+            //    }
+            //    else
+            //    {
+            //        result.Result = ResultCode.Ok;
+            //        result.Msg = "删除文件" + filename + "失败";
+            //    }
+            //}
+
+            return Json(result);
+        }
     }
 }

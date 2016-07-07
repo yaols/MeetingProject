@@ -20,7 +20,7 @@
                 <div class="material-li-img" onclick="clickUrl('@texturl')">
                     <img src="@Helper.GetImageUrl(item.ResourcesType)" />
                 </div>
-                材料: @(item.ResourcesName)
+                @(item.ResourcesName)
                 <div class="home-li-btnDel" onclick="btnDel('@item.Id','@item.Directory','@item.ResourcesName')">删除</div>
             </li>
         }
@@ -41,7 +41,7 @@
                 <div class="material-li-img">
                     <img src="@Helper.GetImageUrl(item.ResourcesType)" />
                 </div>
-                材料: @(item.ResourcesName)
+                @(item.ResourcesName)
                 <div class="home-li-btnDel" onclick="btnDel('@item.Id','@item.Directory','@item.ResourcesName')">删除</div>
             </li>           
         }

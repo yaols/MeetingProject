@@ -147,6 +147,7 @@
             </ul>
             <div class="create-div">
                 <ul class="layou-div-ul" id="imgul" style="overflow: scroll; overflow-x: hidden; height: 150px;width:1000px;">
+                    
 
                 </ul>
             </div>
@@ -161,6 +162,10 @@
     <script src="~/Scripts/prism.js"></script>
 
     <script src="~/Scripts/uploadify/jquery.uploadify.js"></script>
+
+
+    <script src="~/Scripts/lhgdialog/lhgdialog.min.js"></script>
+    <script src="~/Scripts/lhgdialog/jquery.dialog.plugin.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             var myDate = new Date();
@@ -186,7 +191,6 @@
                 'swf': '/Scripts/uploadify/uploadify.swf',
                 'uploader': '/Upload/Index',
                 'onUploadStart': function (file) {
-             
                     var htmlString = '<li class="create-ul-li"><div class="create-li-img">';
                     if (file.type == '.txt' || file.type == '.doc' || file.type == '.docx') {
                         htmlString += '<img src="/Images/文本资料.png" /></div>';
@@ -200,9 +204,11 @@
                         htmlString += '<img src="/Images/文本资料.png" /></div>';
                     }
                     
-                    htmlString += '材料:' + file.name + '</li>';
+                    //<div class="create-li-btnDel" onclick="CreateDel("'+file.name+'")">删除</div>
+                    htmlString += file.name + '</li>';
       
                     $("#imgul").append(htmlString);
+                    lhgdialog.masklayer();
              }
             });
 
@@ -225,6 +231,21 @@
         function returnTop() {
             location.href = "/Home/Index?pageindex=" + 1;
         }
+
+        
+        function CreateDel(name) {
+            $.post('/MeetingInfo/DelResource',
+{
+    Id: id,
+    Directory: directory,
+    filename: filename
+}, function (data) {
+    if (data.Result == 0)
+        location.href = "/MeetingInfo/MaterialInfo?MeetingId=" + directory;
+    mh_dialogShow('mh_success', data.Msg, 1, true);
+});
+        }
+
 
         function PostCreateMeeting() {
             var model = new Object();
