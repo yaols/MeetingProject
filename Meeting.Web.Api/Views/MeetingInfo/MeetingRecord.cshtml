@@ -19,6 +19,7 @@
     <script src="~/Scripts/uploadify/jquery.uploadify.js"></script>
     <script src="~/Scripts/lhgdialog/lhgdialog.min.js"></script>
     <script src="~/Scripts/lhgdialog/jquery.dialog.plugin.js"></script>
+    <script src="~/mh_dialog/mh_dialog.js"></script>
 </head>
 <body>
     <div class="home">
@@ -86,8 +87,8 @@
             'uploader': '/Upload/SaveWord?directory='+@Model.MeetingId,
             'buttonText':'上传',
             'onUploadStart': function (file) {
-                $("#iframe").attr("src", "@(Model.Directory)");
-
+                mh_dialogShow('mh_success',"上传成功",1, true);
+                location.href = "/MeetingInfo/MeetingRecord?MeetingId="+@Model.MeetingId+ "&Directory=" + @Model.MeetingId;
                 lhgdialog.masklayer();
             }
         });

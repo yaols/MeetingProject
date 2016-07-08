@@ -83,7 +83,7 @@
             this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.审批;
             this.panelEx1.BorderColor = System.Drawing.Color.Empty;
             this.panelEx1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx1.Location = new System.Drawing.Point(234, 50);
+            this.panelEx1.Location = new System.Drawing.Point(234, 52);
             this.panelEx1.Name = "panelEx1";
             this.panelEx1.Size = new System.Drawing.Size(88, 25);
             this.panelEx1.TabIndex = 7;

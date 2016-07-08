@@ -282,6 +282,7 @@
 
             var s = console.log(JSON.stringify(model));
 
+            lhgdialog.masklayer('loading.gif');
             $.post('/MeetingInfo/MeetingCreate',
                 {
                 json: JSON.stringify(model)
@@ -289,6 +290,7 @@
                     if(data.Result==0)
                         location.href = "/Home/Index?pageindex=" + 1;
                     mh_dialogShow('mh_success', data.Msg, 1, true);
+                    lhgdialog.masklayer();
             });
         }
     </script>
