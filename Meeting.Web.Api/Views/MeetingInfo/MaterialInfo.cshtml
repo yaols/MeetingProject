@@ -5,6 +5,8 @@
         Layout = "~/Views/Shared/_Layout.cshtml";      
     }
 <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+<script src="~/Scripts/lhgdialog/lhgdialog.min.js"></script>
+<script src="~/Scripts/lhgdialog/jquery.dialog.plugin.js"></script>
 
     <div class="layou-info-top">
         <font class="layou-info-font">文本材料</font>
@@ -49,7 +51,9 @@
 
 <script type="text/javascript">
     function clickUrl(url) {
+        lhgdialog.masklayer('loading.gif');
         location.href = url;
+        lhgdialog.masklayer();
     }
 
     function btnDel(id,directory,filename) {

@@ -87,22 +87,24 @@ namespace Meeting.Web.Api.Controllers
             model.RerurnHomeButton = "/Home/Index?pageindex=" + 1;
             model.Type = 1;
             ViewBag.TitleViewModel = model;
-
-
+            string message = "";
             string url = string.Format("{0}{1}/{2}", Consts.DwonUrlPath,search.Directory,search.ResourceName);
-            Tuple<int, string> tuple=GetTypeUrl(search.ResourcesType,url);
+            WordHelper.Word2HtmlFromFileSaveFileHtml(url,Consts.SaveUrlPath + "1.html", out message);
 
+
+            //Tuple<int, string> tuple=GetTypeUrl(search.ResourcesType,url);
+            Tuple<int, string> tuple = GetTypeUrl(search.ResourcesType,Consts.DwonUrlPath + "1.html",url);
             return View(tuple);
         }
 
 
-        private Tuple<int, string> GetTypeUrl(string type,string url) 
+        private Tuple<int, string> GetTypeUrl(string type,string filename,string url) 
         {
             Tuple<int, string> tuple = new Tuple<int, string>(0,"");
 
             if (type == ".txt" || type == ".doc" || type == ".docx")
             {
-                tuple = new Tuple<int, string>(1,url);
+                tuple = new Tuple<int, string>(1, filename);
             }
             else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".gif")
             {
