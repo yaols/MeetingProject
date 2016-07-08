@@ -147,11 +147,11 @@ namespace Meeting.Pc
                 //receivePath = ConfigurationManager.AppSettings["pcurl"].ToString();
                 saveurl = string.Format("{0}{1}", path, directory);
                 filesaveurl = saveurl +"\\"+ filename;
-                if (!File.Exists(filesaveurl)) 
-                {
+                //if (!File.Exists(filesaveurl)) 
+                //{
                     CreateDirectory(saveurl);
                     webclient.DownloadFile(urladdress + directory + "//" + filename, filesaveurl);
-                }
+                //}
 
                 return filesaveurl;
             }
