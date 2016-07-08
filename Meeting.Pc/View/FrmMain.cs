@@ -261,7 +261,10 @@ namespace Meeting.Pc.View
             //关闭单击事件
             if (MessageBox.Show("确实要退出系统吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk) == DialogResult.OK)
             {
-                Application.Exit();
+                //Application.Exit();
+                FrmLogin login = new FrmLogin();
+                login.Show();
+                Hide();
             }
         }
     }
