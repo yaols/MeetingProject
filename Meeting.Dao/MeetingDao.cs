@@ -22,8 +22,8 @@ namespace Meeting.Dao
             string sql = @"select RowId,MeetingId,MeetingName,StartDate,EendDate,MeetingType
                                   from ( select ROW_NUMBER() OVER (ORDER BY MeetingCreateDate desc) RowId,MeetingId,
                                   MeetingName,StartDate,EendDate,MeetingType from m_Meeting 
-                                  where MeetingType=@meetingType ) a where a.RowId between @index and @size;
-                                  select count(1) from m_Meeting where MeetingType=@meetingType";
+                                  where MeetingType=@meetingType and Type=0) a where a.RowId between @index and @size;
+                                  select count(1) from m_Meeting where MeetingType=@meetingType and Type=0";
 
 
 
