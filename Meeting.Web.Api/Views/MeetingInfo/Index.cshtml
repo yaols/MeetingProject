@@ -108,7 +108,7 @@
         function DelBtn(meetingId) {
             $.post('/MeetingInfo/DelMeeting', { meetingId: meetingId }, function (data) {
                 if (data.Result == 0)
-                    location.href = "/MeetingInfo/Index?meetingId=" + meetingId;
+                    location.href = "/Home/Index?pageindex=" + 1;
                 mh_dialogShow('mh_success', data.Msg, 500, true);
             });
         }

@@ -211,7 +211,12 @@ namespace Meeting.Dao
 
         public static int UpdateMeeting(string meetingId)
         {
-            return SQLHelper.ExcuteProc("pro_Meeting");
+            SqlParameter[] paras = new SqlParameter[]
+           {
+               new SqlParameter("@meetingId",meetingId),
+           };
+
+            return SQLHelper.ExcuteProc("pro_Meeting",paras);
         }
     }
 }
