@@ -264,17 +264,18 @@ namespace Meeting.Web.Api.Controllers
 
 
         public JsonResult DelMeeting(string meetingId) 
-        {
+        {    
             ResultBase result = new ResultBase();
             if (imeeting.UpdateMeeting(meetingId) > 0)
             {
                 result.Result = ResultCode.Ok;
-                result.Msg = "隐藏会议成功";
+                result.Msg = "删除会议成功";
+                Helper.DeleteFolder(Consts.SaveUrlPath + meetingId);
             }
             else
             {
                 result.Result = ResultCode.ServerError;
-                result.Msg = "隐藏会议失败";
+                result.Msg = "删除会议失败";
             }
 
             return Json(result);
