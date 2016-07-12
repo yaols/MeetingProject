@@ -49,7 +49,7 @@
             this.plHead.Location = new System.Drawing.Point(0, 0);
             this.plHead.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.plHead.Name = "plHead";
-            this.plHead.Size = new System.Drawing.Size(900, 90);
+            this.plHead.Size = new System.Drawing.Size(1240, 90);
             this.plHead.TabIndex = 5;
             this.plHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseDown);
             this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
@@ -86,23 +86,23 @@
             this.plMain.Location = new System.Drawing.Point(1, 90);
             this.plMain.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.plMain.Name = "plMain";
-            this.plMain.Size = new System.Drawing.Size(898, 569);
+            this.plMain.Size = new System.Drawing.Size(1238, 569);
             this.plMain.TabIndex = 6;
             // 
             // axWindowsMediaPlayer1
             // 
             this.axWindowsMediaPlayer1.Enabled = true;
-            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(1, 1);
+            this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 1);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(896, 568);
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(1235, 568);
             this.axWindowsMediaPlayer1.TabIndex = 0;
             // 
             // FrmVide
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 660);
+            this.ClientSize = new System.Drawing.Size(1240, 660);
             this.Controls.Add(this.plMain);
             this.Controls.Add(this.plHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

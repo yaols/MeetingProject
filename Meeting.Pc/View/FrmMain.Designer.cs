@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.plMain = new System.Windows.Forms.Panel();
             this.plPager = new System.Windows.Forms.Panel();
             this.plHead = new System.Windows.Forms.Panel();
+            this.pbxMin = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.peSignout = new Meeting.Pc.Control.PanelEx();
             this.pelCreatemeeting = new Meeting.Pc.Control.PanelEx();
@@ -41,7 +43,9 @@
             this.pelStartmeeting = new Meeting.Pc.Control.PanelEx();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.plHead.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxMin)).BeginInit();
             this.pelCreatemeeting.SuspendLayout();
             this.pelEndmeeting.SuspendLayout();
             this.pelStartmeeting.SuspendLayout();
@@ -53,7 +57,7 @@
             this.plMain.Location = new System.Drawing.Point(1, 90);
             this.plMain.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.plMain.Name = "plMain";
-            this.plMain.Size = new System.Drawing.Size(898, 530);
+            this.plMain.Size = new System.Drawing.Size(1238, 530);
             this.plMain.TabIndex = 1;
             // 
             // plPager
@@ -61,12 +65,13 @@
             this.plPager.BackColor = System.Drawing.Color.White;
             this.plPager.Location = new System.Drawing.Point(1, 619);
             this.plPager.Name = "plPager";
-            this.plPager.Size = new System.Drawing.Size(898, 40);
+            this.plPager.Size = new System.Drawing.Size(1238, 50);
             this.plPager.TabIndex = 2;
             // 
             // plHead
             // 
             this.plHead.BackgroundImage = global::Meeting.Pc.Properties.Resources.head;
+            this.plHead.Controls.Add(this.pbxMin);
             this.plHead.Controls.Add(this.label5);
             this.plHead.Controls.Add(this.peSignout);
             this.plHead.Controls.Add(this.pelCreatemeeting);
@@ -77,21 +82,36 @@
             this.plHead.Location = new System.Drawing.Point(0, 0);
             this.plHead.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.plHead.Name = "plHead";
-            this.plHead.Size = new System.Drawing.Size(900, 90);
+            this.plHead.Size = new System.Drawing.Size(1240, 90);
             this.plHead.TabIndex = 0;
             this.plHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseDown);
             this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
             this.plHead.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseUp);
             // 
+            // pbxMin
+            // 
+            this.pbxMin.BackColor = System.Drawing.Color.Transparent;
+            this.pbxMin.Cursor = System.Windows.Forms.Cursors.Default;
+            this.pbxMin.Image = global::Meeting.Pc.Properties.Resources.minimality;
+            this.pbxMin.Location = new System.Drawing.Point(1207, 0);
+            this.pbxMin.Name = "pbxMin";
+            this.pbxMin.Size = new System.Drawing.Size(31, 23);
+            this.pbxMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pbxMin.TabIndex = 13;
+            this.pbxMin.TabStop = false;
+            this.pbxMin.Click += new System.EventHandler(this.pbxMin_Click);
+            this.pbxMin.MouseEnter += new System.EventHandler(this.pbxMin_MouseEnter);
+            this.pbxMin.MouseLeave += new System.EventHandler(this.pbxMin_MouseLeave);
+            // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.BackColor = System.Drawing.Color.Transparent;
-            this.label5.Font = new System.Drawing.Font("宋体", 10F);
+            this.label5.Font = new System.Drawing.Font("宋体", 16F);
             this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(696, 18);
+            this.label5.Location = new System.Drawing.Point(949, 5);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 14);
+            this.label5.Size = new System.Drawing.Size(54, 22);
             this.label5.TabIndex = 7;
             this.label5.Text = "你好";
             // 
@@ -101,9 +121,9 @@
             this.peSignout.BackgroundImage = global::Meeting.Pc.Properties.Resources.signout;
             this.peSignout.BorderColor = System.Drawing.Color.Empty;
             this.peSignout.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.peSignout.Location = new System.Drawing.Point(789, 13);
+            this.peSignout.Location = new System.Drawing.Point(1081, 3);
             this.peSignout.Name = "peSignout";
-            this.peSignout.Size = new System.Drawing.Size(81, 24);
+            this.peSignout.Size = new System.Drawing.Size(97, 29);
             this.peSignout.TabIndex = 6;
             this.peSignout.Click += new System.EventHandler(this.peSignout_Click);
             // 
@@ -113,7 +133,7 @@
             this.pelCreatemeeting.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(225)))), ((int)(((byte)(226)))));
             this.pelCreatemeeting.Controls.Add(this.label4);
             this.pelCreatemeeting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pelCreatemeeting.Location = new System.Drawing.Point(160, 61);
+            this.pelCreatemeeting.Location = new System.Drawing.Point(181, 61);
             this.pelCreatemeeting.Name = "pelCreatemeeting";
             this.pelCreatemeeting.Size = new System.Drawing.Size(81, 29);
             this.pelCreatemeeting.TabIndex = 4;
@@ -139,7 +159,7 @@
             this.pelEndmeeting.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(225)))), ((int)(((byte)(226)))));
             this.pelEndmeeting.Controls.Add(this.label2);
             this.pelEndmeeting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pelEndmeeting.Location = new System.Drawing.Point(80, 61);
+            this.pelEndmeeting.Location = new System.Drawing.Point(95, 61);
             this.pelEndmeeting.Name = "pelEndmeeting";
             this.pelEndmeeting.Size = new System.Drawing.Size(81, 29);
             this.pelEndmeeting.TabIndex = 3;
@@ -165,9 +185,9 @@
             this.pelStartmeeting.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(225)))), ((int)(((byte)(226)))));
             this.pelStartmeeting.Controls.Add(this.label3);
             this.pelStartmeeting.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pelStartmeeting.Location = new System.Drawing.Point(0, 61);
+            this.pelStartmeeting.Location = new System.Drawing.Point(0, 52);
             this.pelStartmeeting.Name = "pelStartmeeting";
-            this.pelStartmeeting.Size = new System.Drawing.Size(81, 29);
+            this.pelStartmeeting.Size = new System.Drawing.Size(95, 38);
             this.pelStartmeeting.TabIndex = 2;
             this.pelStartmeeting.Click += new System.EventHandler(this.pelStartmeeting_Click);
             // 
@@ -176,7 +196,7 @@
             this.label3.AutoSize = true;
             this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label3.Location = new System.Drawing.Point(6, 6);
+            this.label3.Location = new System.Drawing.Point(12, 11);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 1;
@@ -195,12 +215,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "检委会会议系统";
             // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "检委会会议系统";
+            this.notifyIcon1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDown);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.ClientSize = new System.Drawing.Size(900, 660);
+            this.ClientSize = new System.Drawing.Size(1240, 670);
             this.Controls.Add(this.plPager);
             this.Controls.Add(this.plMain);
             this.Controls.Add(this.plHead);
@@ -211,6 +237,7 @@
             this.Text = "FrmMain";
             this.plHead.ResumeLayout(false);
             this.plHead.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbxMin)).EndInit();
             this.pelCreatemeeting.ResumeLayout(false);
             this.pelCreatemeeting.PerformLayout();
             this.pelEndmeeting.ResumeLayout(false);
@@ -235,5 +262,7 @@
         private System.Windows.Forms.Panel plPager;
         private Control.PanelEx peSignout;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pbxMin;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }

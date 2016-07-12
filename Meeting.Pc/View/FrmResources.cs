@@ -118,7 +118,7 @@ namespace Meeting.Pc.View
                 string url = Helper.DownloadFile(_meetingId, Consts.PcUrlPath,filename);
                 if (!string.IsNullOrEmpty(url))
                 {
-                    FrmSign sign = new FrmSign(_meetingId, url);
+                    FrmSign sign = new FrmSign(_meetingId, url,1);
                     sign.Show();
                     Hide();
                 }
@@ -167,7 +167,7 @@ namespace Meeting.Pc.View
                 string url = Helper.DownloadFile(_meetingId, Consts.PcUrlPath, filename);
                 if (!string.IsNullOrEmpty(url))
                 {
-                    FrmSign sign = new FrmSign(_meetingId, url);
+                    FrmSign sign = new FrmSign(_meetingId, url,1);
                     sign.Show();
                     Hide();
                 }

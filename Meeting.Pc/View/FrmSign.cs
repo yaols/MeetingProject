@@ -22,11 +22,12 @@ namespace Meeting.Pc.View
         private string _meetingId = "";
         private string _url = "";
 
-        public FrmSign(string meetingId, string url)
+        public FrmSign(string meetingId, string url,int type)
         {
             InitializeComponent();
             _meetingId = meetingId;
             _url = url;
+            if (type == 1) panelEx1.Visible = false;
         }
 
 

@@ -97,7 +97,7 @@ namespace Meeting.Pc.Control
         {
             label1.Text = "(当前页数 " + PageIndex + "/"+(PageCount + PageSize -1) / PageSize+")";
 
-            label1.Location = new Point(404, 13);
+            label1.Location = new Point(550, 13);
         }
     }
 }

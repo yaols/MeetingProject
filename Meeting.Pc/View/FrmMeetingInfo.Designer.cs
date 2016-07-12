@@ -100,7 +100,7 @@
             this.plMain.Location = new System.Drawing.Point(1, 91);
             this.plMain.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.plMain.Name = "plMain";
-            this.plMain.Size = new System.Drawing.Size(898, 569);
+            this.plMain.Size = new System.Drawing.Size(1238, 574);
             this.plMain.TabIndex = 3;
             // 
             // label21
@@ -181,7 +181,7 @@
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(701, 297);
+            this.label20.Location = new System.Drawing.Point(1039, 297);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(31, 12);
             this.label20.TabIndex = 30;
@@ -193,7 +193,7 @@
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(506, 297);
+            this.label19.Location = new System.Drawing.Point(768, 297);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(57, 12);
             this.label19.TabIndex = 29;
@@ -205,7 +205,7 @@
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(408, 297);
+            this.label18.Location = new System.Drawing.Point(611, 297);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(44, 12);
             this.label18.TabIndex = 28;
@@ -217,7 +217,7 @@
             this.label17.BackColor = System.Drawing.Color.Transparent;
             this.label17.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(175, 297);
+            this.label17.Location = new System.Drawing.Point(335, 297);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(57, 12);
             this.label17.TabIndex = 27;
@@ -241,7 +241,7 @@
             this.panelEx4.Controls.Add(this.panelEx5);
             this.panelEx4.Location = new System.Drawing.Point(12, 316);
             this.panelEx4.Name = "panelEx4";
-            this.panelEx4.Size = new System.Drawing.Size(875, 241);
+            this.panelEx4.Size = new System.Drawing.Size(1215, 241);
             this.panelEx4.TabIndex = 25;
             // 
             // panelEx5
@@ -255,13 +255,13 @@
             this.panelEx5.Controls.Add(this.label23);
             this.panelEx5.Location = new System.Drawing.Point(3, 6);
             this.panelEx5.Name = "panelEx5";
-            this.panelEx5.Size = new System.Drawing.Size(869, 52);
+            this.panelEx5.Size = new System.Drawing.Size(1201, 78);
             this.panelEx5.TabIndex = 1;
             // 
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(507, 18);
+            this.label26.Location = new System.Drawing.Point(769, 29);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(41, 12);
             this.label26.TabIndex = 33;
@@ -270,7 +270,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(393, 18);
+            this.label25.Location = new System.Drawing.Point(596, 29);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(41, 12);
             this.label25.TabIndex = 32;
@@ -279,7 +279,7 @@
             // label24
             // 
             this.label24.AutoSize = true;
-            this.label24.Location = new System.Drawing.Point(77, 18);
+            this.label24.Location = new System.Drawing.Point(106, 29);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(125, 12);
             this.label24.TabIndex = 29;
@@ -292,7 +292,7 @@
             this.panelEx7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelEx7.BorderColor = System.Drawing.Color.Empty;
             this.panelEx7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx7.Location = new System.Drawing.Point(603, 14);
+            this.panelEx7.Location = new System.Drawing.Point(944, 25);
             this.panelEx7.Name = "panelEx7";
             this.panelEx7.Size = new System.Drawing.Size(81, 24);
             this.panelEx7.TabIndex = 31;
@@ -305,7 +305,7 @@
             this.panelEx3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelEx3.BorderColor = System.Drawing.Color.Empty;
             this.panelEx3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx3.Location = new System.Drawing.Point(720, 14);
+            this.panelEx3.Location = new System.Drawing.Point(1102, 25);
             this.panelEx3.Name = "panelEx3";
             this.panelEx3.Size = new System.Drawing.Size(81, 24);
             this.panelEx3.TabIndex = 29;
@@ -314,7 +314,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(13, 18);
+            this.label23.Location = new System.Drawing.Point(13, 29);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(11, 12);
             this.label23.TabIndex = 28;
@@ -327,7 +327,7 @@
             this.panelEx2.Controls.Add(this.label15);
             this.panelEx2.Location = new System.Drawing.Point(12, 260);
             this.panelEx2.Name = "panelEx2";
-            this.panelEx2.Size = new System.Drawing.Size(875, 30);
+            this.panelEx2.Size = new System.Drawing.Size(1215, 30);
             this.panelEx2.TabIndex = 24;
             // 
             // label15
@@ -445,7 +445,7 @@
             this.panelEx1.Controls.Add(this.label2);
             this.panelEx1.Location = new System.Drawing.Point(12, 10);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(875, 30);
+            this.panelEx1.Size = new System.Drawing.Size(1215, 30);
             this.panelEx1.TabIndex = 0;
             // 
             // label2
@@ -470,7 +470,7 @@
             this.plHead.Location = new System.Drawing.Point(0, 0);
             this.plHead.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.plHead.Name = "plHead";
-            this.plHead.Size = new System.Drawing.Size(900, 90);
+            this.plHead.Size = new System.Drawing.Size(1240, 90);
             this.plHead.TabIndex = 2;
             this.plHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseDown);
             this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
@@ -504,7 +504,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 660);
+            this.ClientSize = new System.Drawing.Size(1240, 670);
             this.Controls.Add(this.plMain);
             this.Controls.Add(this.plHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

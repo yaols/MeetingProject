@@ -123,9 +123,9 @@ namespace Meeting.Pc.View
             //数据查询
             var dataSet = imeeting.GetMeetingList(meetingType, pageIndex, _pageSize);
             if (dataSet != null)
-            {
+            { 
                 pager.PageIndex = pageIndex;
-                pager.PageCount = GetDataSetCount(dataSet.Tables[1]);
+                pager.PageCount = (GetDataSetCount(dataSet.Tables[1])+_pageSize)/_pageSize;
                 pager.PageSize = _pageSize;
                 pager.SetControlsPage();
                 GetDataSetList(dataSet.Tables[0]);
@@ -165,7 +165,7 @@ namespace Meeting.Pc.View
         {
             //画控件
             PanelEx pxMain = new PanelEx();
-            pxMain.Width = 898;
+            pxMain.Width = 1238;
             pxMain.Height = 55;
             pxMain.BorderColor = Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             pxMain.BackColor = Color.White;
@@ -173,20 +173,21 @@ namespace Meeting.Pc.View
             plMain.Controls.Add(pxMain);
 
             Label label = new Label();
-            label.Font = new System.Drawing.Font("宋体", 10F);
+            label.Font = new System.Drawing.Font("宋体", 12F);
             label.ForeColor = System.Drawing.Color.Black;
             label.Location = new System.Drawing.Point(14, 18);
             label.AutoSize = true;
-            label.Text = (index+1)+". "+model.MeetingName+"  计划开始时间:"+model.StartDate+" 计划结束时间:"+model.EendDate;
+            label.Text = (index+1)+". "+model.MeetingName+"       计划开始时间: "+model.StartDate+"      计划结束时间: "+model.EendDate;
             pxMain.Controls.Add(label);
 
             PanelEx pxBtn = new PanelEx();
             pxBtn.BackgroundImage = Resources.join;
             pxBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             pxBtn.Click += new System.EventHandler(this.pbBtn_Click);
-            pxBtn.Location = new System.Drawing.Point(811, 14);
-            pxBtn.Size = new System.Drawing.Size(65, 25);
+            pxBtn.Location = new System.Drawing.Point(1130, 12);
+            pxBtn.Size = new System.Drawing.Size(78, 30);
             pxBtn.Tag = model.MeetingId;
+            pxBtn.AutoSize = false;
             pxMain.Controls.Add(pxBtn);
 
         }
@@ -259,13 +260,41 @@ namespace Meeting.Pc.View
         private void peSignout_Click(object sender, EventArgs e)
         {
             //关闭单击事件
-            if (MessageBox.Show("确实要退出系统吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk) == DialogResult.OK)
+            if (MessageBox.Show("确实要退出登录吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Asterisk) == DialogResult.OK)
             {
                 //Application.Exit();
                 FrmLogin login = new FrmLogin();
                 login.Show();
                 Hide();
             }
+        }
+
+        private void pbxMin_Click(object sender, EventArgs e)
+        {
+            //最小化事件
+            notifyIcon1.Visible = true;
+            Hide();
+            Text = "";
+        }
+
+        private void notifyIcon1_MouseDown(object sender, MouseEventArgs e)
+        {
+            //图标上按下鼠标事件
+            Show();
+            notifyIcon1.Visible = false;
+            Text = "检委会会议系统";
+        }
+
+        private void pbxMin_MouseEnter(object sender, EventArgs e)
+        {
+            //最小化进入可见部分
+            pbxMin.Image = Resources.minimality_press;
+        }
+
+        private void pbxMin_MouseLeave(object sender, EventArgs e)
+        {
+            //最小化离开可见部分
+            pbxMin.Image = Resources.minimality;
         }
     }
 }

@@ -39,7 +39,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(404, 13);
+            this.label1.Location = new System.Drawing.Point(591, 20);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(89, 12);
             this.label1.TabIndex = 9;
@@ -47,9 +47,9 @@
             // 
             // btnLast
             // 
-            this.btnLast.Location = new System.Drawing.Point(681, 3);
+            this.btnLast.Location = new System.Drawing.Point(852, 3);
             this.btnLast.Name = "btnLast";
-            this.btnLast.Size = new System.Drawing.Size(75, 34);
+            this.btnLast.Size = new System.Drawing.Size(75, 44);
             this.btnLast.TabIndex = 8;
             this.btnLast.Text = "尾页";
             this.btnLast.UseVisualStyleBackColor = true;
@@ -57,9 +57,9 @@
             // 
             // btnDown
             // 
-            this.btnDown.Location = new System.Drawing.Point(584, 3);
+            this.btnDown.Location = new System.Drawing.Point(755, 3);
             this.btnDown.Name = "btnDown";
-            this.btnDown.Size = new System.Drawing.Size(75, 34);
+            this.btnDown.Size = new System.Drawing.Size(75, 44);
             this.btnDown.TabIndex = 7;
             this.btnDown.Text = "下一页";
             this.btnDown.UseVisualStyleBackColor = true;
@@ -67,9 +67,9 @@
             // 
             // btnUp
             // 
-            this.btnUp.Location = new System.Drawing.Point(234, 3);
+            this.btnUp.Location = new System.Drawing.Point(405, 3);
             this.btnUp.Name = "btnUp";
-            this.btnUp.Size = new System.Drawing.Size(75, 34);
+            this.btnUp.Size = new System.Drawing.Size(75, 44);
             this.btnUp.TabIndex = 6;
             this.btnUp.Text = "上一页";
             this.btnUp.UseVisualStyleBackColor = true;
@@ -77,9 +77,9 @@
             // 
             // btnHome
             // 
-            this.btnHome.Location = new System.Drawing.Point(139, 3);
+            this.btnHome.Location = new System.Drawing.Point(310, 3);
             this.btnHome.Name = "btnHome";
-            this.btnHome.Size = new System.Drawing.Size(75, 34);
+            this.btnHome.Size = new System.Drawing.Size(75, 44);
             this.btnHome.TabIndex = 5;
             this.btnHome.Text = "首页";
             this.btnHome.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             this.Controls.Add(this.btnHome);
             this.ForeColor = System.Drawing.Color.Black;
             this.Name = "PageControl";
-            this.Size = new System.Drawing.Size(898, 40);
+            this.Size = new System.Drawing.Size(1238, 50);
             this.ResumeLayout(false);
             this.PerformLayout();
 

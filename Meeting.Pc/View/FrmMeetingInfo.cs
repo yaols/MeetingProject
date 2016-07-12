@@ -74,7 +74,7 @@ namespace Meeting.Pc.View
             //会议记录
             string url = Helper.DownloadFile(_meetingId, Consts.PcUrlPath,_meetingId+".docx");
 
-            FrmSign sign = new FrmSign(_meetingId,url);
+            FrmSign sign = new FrmSign(_meetingId,url,2);
             sign.Show();
             Hide();
 
