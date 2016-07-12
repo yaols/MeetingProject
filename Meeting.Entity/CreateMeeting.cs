@@ -32,5 +32,7 @@ namespace Meeting.Entity
         public string depart { get; set; }
 
         public string report { get; set; }
+
+        public string filearray { get; set; }
     }
 }

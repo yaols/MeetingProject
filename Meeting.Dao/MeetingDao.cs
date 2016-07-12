@@ -52,7 +52,7 @@ namespace Meeting.Dao
                                    peopleName=(select [dbo].[GetMeetingPeople](@meetingId)),m.IssueName,
                                    RepostUser=(select UserName from m_User u where u.UserId=m.RepostUser),
                                    Directory=(select top 1 Directory from m_MeetingResources mr where mr.MeetingIssueId=m.MeetingId),
-                                   d.DepartName,m.type  from m_Meeting m 
+                                   d.DepartName,m.type,m.MeetingType  from m_Meeting m 
                                    left join m_Depart d on m.DepartId=d.Id
                                    where m.MeetingId=@meetingId and Type=0";
 
@@ -81,6 +81,7 @@ namespace Meeting.Dao
                 model.PeopleName = reader["PeopleName"].ToString();
                 model.Directory = reader["Directory"].ToString();
                 model.Type = Tool.ToInt(reader["Type"].ToString());
+                model.MeetingType = Tool.ToInt(reader["MeetingType"].ToString());
             }
 
             return model;
@@ -162,6 +163,47 @@ namespace Meeting.Dao
             return SQLHelper.ExcuteScalarSQL(sql);
         }
 
+//        public static int InsertCreateMeeting(CreateMeeting model, int userId)
+//        {
+
+//            int result = 0;
+//            string sql = string.Format(@"insert into m_Meeting (MeetingName,StartDate,EendDate,AddressName,MeetingHost,
+//            MeetingDocument,MeetingCreateUser,MeetingCreateDate,MeetingType,MeetingSecretary,IssueName,RepostUser,DepartId,Type) values (
+//            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}');select @@identity", model.year, model.datetimepicker1, model.datetimepicker2, model.address,
+//             model.hoseUser, model.wenshu, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, model.depart,0);
+
+//            result = SQLHelper.ExcuteScalarSQL(sql);
+//            if (result > 0)
+//            {
+//                string saveUrl = string.Format("{0}{1}", Consts.SaveUrlPath, result);
+
+//                if (!Directory.Exists(saveUrl))
+//                    Directory.CreateDirectory(saveUrl);
+
+//                File.Copy(Consts.SaveUrlPath + "会议记录.docx", saveUrl + "\\" + result + ".docx");
+
+
+
+//                DataTable dt = SQLHelper.GetTableSchema();
+//                model.people = model.people.Substring(0, model.people.Length - 1);
+//                string[] arrayString = model.people.Split(',');
+//                if (arrayString != null)
+//                {
+//                    for (int i = 0; i < arrayString.Length; i++)
+//                    {
+//                        DataRow row = dt.NewRow();
+//                        row[1] = result;
+//                        row[2] = arrayString[i];
+//                        dt.Rows.Add(row);
+//                    }
+//                    result = SQLHelper.BulkToDB(dt, "m_MeetingPeople");
+//                }
+//            }
+
+//            return result;
+//        }
+
+
         public static int InsertCreateMeeting(CreateMeeting model, int userId)
         {
 
@@ -169,7 +211,7 @@ namespace Meeting.Dao
             string sql = string.Format(@"insert into m_Meeting (MeetingName,StartDate,EendDate,AddressName,MeetingHost,
             MeetingDocument,MeetingCreateUser,MeetingCreateDate,MeetingType,MeetingSecretary,IssueName,RepostUser,DepartId,Type) values (
             '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}');select @@identity", model.year, model.datetimepicker1, model.datetimepicker2, model.address,
-             model.hoseUser, model.wenshu, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, model.depart,0);
+             model.hoseUser, model.wenshu, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, model.depart, 0);
 
             result = SQLHelper.ExcuteScalarSQL(sql);
             if (result > 0)
@@ -181,6 +223,27 @@ namespace Meeting.Dao
 
                 File.Copy(Consts.SaveUrlPath + "会议记录.docx", saveUrl + "\\" + result + ".docx");
 
+
+                DataTable resources = SQLHelper.GetTableResources();
+                model.filearray = model.filearray.Substring(0,model.filearray.Length-1);
+                string[] fileArray = model.filearray.Split(',');
+                if (fileArray != null) 
+                {
+                    for (int i = 0; i < fileArray.Length; i++)
+                    {
+                        DataRow row = resources.NewRow();
+                        row[1] = Path.GetFileNameWithoutExtension(fileArray[i]);
+                        row[2] = Path.GetExtension(fileArray[i]);
+                        row[3] = result;
+                        row[4] = result;
+                        resources.Rows.Add(row);
+
+                        File.Copy(Consts.TemporaryPath + fileArray[i], saveUrl + "\\" + fileArray[i]);
+                        File.Delete(Consts.TemporaryPath + fileArray[i]);
+                    }
+
+                    result = SQLHelper.BulkToDB(resources,"m_MeetingResources");
+                }
 
 
                 DataTable dt = SQLHelper.GetTableSchema();
@@ -201,6 +264,7 @@ namespace Meeting.Dao
 
             return result;
         }
+
 
         public static int EndMeeting(string meetingId)
         {

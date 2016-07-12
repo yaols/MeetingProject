@@ -306,24 +306,29 @@ namespace Meeting.Web.Api.Controllers
         }
 
 
-        public JsonResult DelCeate(string filename)
+        [HttpPost]
+        public JsonResult DelCreate(string filename)
         {
             ResultBase result = new ResultBase();
             //string directory=(imeeting.GetMeetingMaxId() + 1).ToString();
 
+            string url = string.Format("{0}{1}", Consts.TemporaryPath, filename);
+
             //if (iresources.DelResource(Id) > 0)
             //{
             //    string url = string.Format("{0}{1}\\{2}", Consts.SaveUrlPath, Directory, filename);
-            //    if (Helper.DelFileUrl(url) > 0)
-            //    {
-            //        result.Result = ResultCode.Ok;
-            //        result.Msg = "删除文件" + filename + "成功";
-            //    }
-            //    else
-            //    {
-            //        result.Result = ResultCode.Ok;
-            //        result.Msg = "删除文件" + filename + "失败";
-            //    }
+            if (Helper.DelFileUrl(url) > 0)
+            {
+                result.Result = ResultCode.Ok;
+                //result.Msg = "删除文件" + filename + "成功";
+                result.Msg = "删除文件成功";
+            }
+            else
+            {
+                result.Result = ResultCode.Ok;
+                //result.Msg = "删除文件" + filename + "失败";
+                result.Msg = "删除文件失败";
+            }
             //}
 
             return Json(result);

@@ -24,20 +24,23 @@ namespace Meeting.Web.Api.Controllers
         public JsonResult Index()
         {
             mMeetingResources model = new mMeetingResources();
-            model.Directory = (iMeeting.GetMeetingMaxId()+1).ToString();
+            //model.Directory = (iMeeting.GetMeetingMaxId()+1).ToString();
 
             string msg = "";
 
             var files = Request.Files[0];
             if (files != null) 
             {
-                string saveUrl = string.Format("{0}{1}",Consts.SaveUrlPath, model.Directory);
+                //string saveUrl = string.Format("{0}{1}",Consts.SaveUrlPath, model.Directory);
 
                 //model.ResourcesType = Path.GetExtension(files.FileName);
                 //model.ResourcesName = DateTime.Now.ToString("yyyyMMddHHmmsss");
 
-                model.ResourcesType = Path.GetExtension(files.FileName);
-                model.ResourcesName = Path.GetFileNameWithoutExtension(files.FileName);
+
+                string saveUrl = string.Format("{0}", Consts.TemporaryPath);
+
+                //model.ResourcesType = Path.GetExtension(files.FileName);
+                //model.ResourcesName = Path.GetFileNameWithoutExtension(files.FileName);
 
                 if (!Directory.Exists(saveUrl))
                 {
@@ -47,14 +50,16 @@ namespace Meeting.Web.Api.Controllers
                 //files.SaveAs(saveUrl + "\\" + model.ResourcesName + model.ResourcesType);
                 files.SaveAs(saveUrl + "\\" + files.FileName);
 
-                if (iResources.InsertModel(model) > 0)
-                {
-                    msg = "上传成功";
-                }
-                else 
-                {
-                    msg = "上传失败";
-                }
+                msg = "上传成功";
+
+                //if (iResources.InsertModel(model) > 0)
+                //{
+                //    msg = "上传成功";
+                //}
+                //else 
+                //{
+                //    msg = "上传失败";
+                //}
             }
             return Json(msg);
         }

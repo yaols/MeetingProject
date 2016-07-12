@@ -21,8 +21,9 @@
             <li class="material-ul-li">
                 <div class="material-li-img" onclick="clickUrl('@texturl')">
                     <img src="@Helper.GetImageUrl(item.ResourcesType)" />
+                  
                 </div>
-                @(item.ResourcesName)
+                <span style="display:block">@(item.ResourcesName)</span>
                 <div class="home-li-btnDel" onclick="btnDel('@item.Id','@item.Directory','@item.ResourcesName')">删除</div>
             </li>
         }
@@ -39,11 +40,11 @@
             item.ResourcesName = item.ResourcesName + item.ResourcesType;
             string videurl = "/MeetingInfo/MaterialVide?ResourcesType=" + item.ResourcesType +
                 "&Directory=" + item.Directory + "&ResourceName=" + item.ResourcesName + "&MeetingId=" + item.MeetingIssueId;
-            <li class="material-ul-li" onclick="clickUrl('@videurl')">
-                <div class="material-li-img">
+            <li class="material-ul-li">
+                <div class="material-li-img" onclick="clickUrl('@videurl')">
                     <img src="@Helper.GetImageUrl(item.ResourcesType)" />
                 </div>
-                @(item.ResourcesName)
+                <span style="display:block">@(item.ResourcesName)</span>
                 <div class="home-li-btnDel" onclick="btnDel('@item.Id','@item.Directory','@item.ResourcesName')">删除</div>
             </li>           
         }

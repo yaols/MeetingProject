@@ -415,5 +415,18 @@ namespace Meeting.Common
         new DataColumn("UserId",typeof(int))});
             return dt;
         }
+
+        public static DataTable GetTableResources()
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[]{  
+                new DataColumn("Id",typeof(int)),  
+        new DataColumn("ResourcesName",typeof(string)),  
+        new DataColumn("ResourcesType",typeof(string)),
+            new DataColumn("MeetingIssueId",typeof(int)),
+            new DataColumn("Directory",typeof(string))
+            });
+            return dt;
+        }
     }
 }

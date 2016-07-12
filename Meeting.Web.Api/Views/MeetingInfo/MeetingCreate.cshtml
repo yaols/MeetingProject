@@ -2,7 +2,7 @@
 @{
 
 }
-<meta http-equiv="X-UA-Compatible" content="IE=9" />  
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -13,7 +13,7 @@
     <link href="~/Scripts/datetimepicker/jquery.datetimepicker.css" rel="stylesheet" />
 
     <link href="~/css/chosen.css" rel="stylesheet" />
-    <link href="~/Scripts/uploadify/uploadify.css" rel="stylesheet" />
+
     <script src="~/mh_dialog/mh_dialog.js"></script>
 </head>
 <body>
@@ -47,9 +47,9 @@
         <ul class="create-meeting-ul">
             <li class="create-meeting-li">
                 会议名称:
-                检委会<input type="text" class="create-meeting-text" id="year"/>年
+                检委会<input type="text" class="create-meeting-text" id="year" />年
                 第<input type="text" class="create-meeting-text" id="count" />次
-                总第<input type="text" class="create-meeting-text"  id="numcount"/>次会议
+                总第<input type="text" class="create-meeting-text" id="numcount" />次会议
             </li>
             <li class="create-meeting-li">
                 计划开始时间  <input type="text" class="create-meeting-date" id="datetimepicker1" />
@@ -60,7 +60,7 @@
         <ul class="create-meeting-ul">
             <li class="create-meeting-li">
                 会议地点:
-                <input type="text" class="create-meeting-address" id="address"/>
+                <input type="text" class="create-meeting-address" id="address" />
             </li>
             <li class="create-meeting-li">
                 主持人
@@ -68,7 +68,7 @@
                     @foreach (var item in Model.UserList)
                     {
                         <option id="@item.Id">@item.NickName</option>
-                    }                 
+                    }
                 </select>
                 <span style="margin-left:20px;"></span>
                 文书
@@ -76,7 +76,7 @@
                     @foreach (var item in Model.UserList)
                     {
                         <option id="@item.Id">@item.NickName</option>
-                    }  
+                    }
                 </select>
                 <span style="margin-left:20px;"></span>
                 秘书
@@ -95,7 +95,7 @@
                     @foreach (var item in Model.UserList)
                     {
                         <option value="@item.Id">@item.NickName</option>
-                    }  
+                    }
                 </select>
             </li>
         </ul>
@@ -123,14 +123,14 @@
 
                 </li>
                 <li class="create-ul-li2">
-                    <input class="create-li-text2" value="" id="issue"/>
+                    <input class="create-li-text2" value="" id="issue" />
                 </li>
                 <li class="layou-ul-li3">
                     <select class="create-li-text3" id="depart">
                         @foreach (var item in Model.DepartList)
                         {
                             <option id="@item.Id">@item.DepartName</option>
-                        }  
+                        }
                     </select>
                 </li>
                 <li class="layou-ul-li4">
@@ -138,18 +138,15 @@
                         @foreach (var item in Model.UserList)
                         {
                             <option id="@item.Id">@item.NickName</option>
-                        }  
+                        }
                     </select>
                 </li>
                 <li class="create-ul-li5">
-                    <input type="file" name="file_upload" id="file_upload"/>
+                    <input type="file" name="file_upload" id="file_upload" />
                 </li>
             </ul>
             <div class="create-div">
-                <ul class="layou-div-ul" id="imgul" style="overflow: scroll; overflow-x: hidden; height: 150px;width:1000px;">
-                    
-
-                </ul>
+                <ul class="layou-div-ul" id="imgul" style="overflow: scroll; overflow-x: hidden; height: 150px;width:1000px;"></ul>
             </div>
         </div>
 
@@ -203,13 +200,13 @@
                     } else {
                         htmlString += '<img src="/Images/文本资料.png" /></div>';
                     }
-                    
-                    //<div class="create-li-btnDel" onclick="CreateDel("'+file.name+'")">删除</div>
+
+                    htmlString += '<div class="create-li-btnDel" onclick="CreateDel(this,\''+ file.name +'\')">删除</div>';
                     htmlString += file.name + '</li>';
-      
+
                     $("#imgul").append(htmlString);
                     lhgdialog.masklayer();
-             }
+                }
             });
 
             $('#file_upload-button').removeClass("uploadify-button");
@@ -232,18 +229,19 @@
             location.href = "/Home/Index?pageindex=" + 1;
         }
 
-        
-        function CreateDel(name) {
-            $.post('/MeetingInfo/DelResource',
-{
-    Id: id,
-    Directory: directory,
-    filename: filename
-}, function (data) {
-    if (data.Result == 0)
-        location.href = "/MeetingInfo/MaterialInfo?MeetingId=" + directory;
-    mh_dialogShow('mh_success', data.Msg, 1, true);
-});
+
+        function CreateDel(Id, name) {
+            lhgdialog.masklayer('loading.gif');
+            $.post('/MeetingInfo/DelCreate',
+               {
+                   filename: name
+               }, function (data) {
+                   if (data.Result == 0) {
+                       $(Id).parent().remove();
+                   }
+                   mh_dialogShow('mh_success', data.Msg, 1, true);
+                   lhgdialog.masklayer();
+               });
         }
 
 
@@ -273,25 +271,29 @@
             model.people = "";
             $('.search-choice').each(function (i, data) {
                 model.people = model.people + $(this).attr("data-value") + ",";
+            });
 
+            model.filearray = "";
+            $('.create-ul-li').each(function (i, data) {
+                model.filearray = model.filearray + $(this).text().replace('删除','') + ",";
             });
 
             model.issue = $("#issue").val();
             model.depart = $("#depart").find("option:selected").attr("id");
             model.report = $("#report").find("option:selected").attr("id");
 
-            var s = console.log(JSON.stringify(model));
+            //var s = console.log(JSON.stringify(model));
 
             lhgdialog.masklayer('loading.gif');
             $.post('/MeetingInfo/MeetingCreate',
                 {
-                json: JSON.stringify(model)
+                    json: JSON.stringify(model)
                 }, function (data) {
-                    if(data.Result==0)
+                    if (data.Result == 0)
                         location.href = "/Home/Index?pageindex=" + 1;
                     mh_dialogShow('mh_success', data.Msg, 1, true);
                     lhgdialog.masklayer();
-            });
+                });
         }
     </script>
 </body>

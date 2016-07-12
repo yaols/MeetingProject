@@ -26,14 +26,20 @@
                 <li class="ulbtn-btn">
                     <div class="home-li-button" onclick="returnTop()">返回</div>
                 </li>
-                <li class="ulbtn-btn">
-                    @{var DelBtn = "DelBtn('" + Model.MeetingId + "')";}
-                    <div class="home-li-button1" onclick="@DelBtn">删除会议</div>
-                </li>
-                <li class="ulbtn-btn">
-                    @{var btn = "EndMeeting('" + Model.MeetingId + "')";}
-                    <div class="home-li-button1" onclick="@btn">结束会议</div>
-                </li>
+                @if (Model.MeetingType == 1)
+                {
+                    <li class="ulbtn-btn">
+                        @{var DelBtn = "DelBtn('" + Model.MeetingId + "')";}
+                        <div class="home-li-button1" onclick="@DelBtn">删除会议</div>
+                    </li>
+                }
+                else
+                {
+                    <li class="ulbtn-btn">
+                        @{var btn = "EndMeeting('" + Model.MeetingId + "')";}
+                        <div class="home-li-button1" onclick="@btn">结束会议</div>
+                    </li>
+                }
             </ul>
 
         </div>
@@ -106,10 +112,12 @@
         }
 
         function DelBtn(meetingId) {
+            lhgdialog.masklayer('loading.gif');
             $.post('/MeetingInfo/DelMeeting', { meetingId: meetingId }, function (data) {
                 if (data.Result == 0)
                     location.href = "/Home/Index?pageindex=" + 1;
                 mh_dialogShow('mh_success', data.Msg, 500, true);
+                lhgdialog.masklayer();
             });
         }
     </script>

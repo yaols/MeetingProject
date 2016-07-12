@@ -15,5 +15,7 @@ namespace Meeting.Common
         public static readonly string UrlPath = ConfigurationManager.AppSettings["url"];
 
         public static readonly string PcUrlPath = ConfigurationManager.AppSettings["pcurl"];
+
+        public static readonly string TemporaryPath = ConfigurationManager.AppSettings["temporary"];
     }
 }

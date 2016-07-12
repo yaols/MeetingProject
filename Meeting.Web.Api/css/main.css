@@ -492,7 +492,8 @@ input {
     margin: 0;
     list-style-type: none;
     height: 180px;
-        overflow-y: auto; 
+    text-align:center;
+    overflow-y: auto; 
    overflow-x:hidden;
 }
 
