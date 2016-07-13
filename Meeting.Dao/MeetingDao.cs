@@ -238,8 +238,16 @@ namespace Meeting.Dao
                         row[4] = result;
                         resources.Rows.Add(row);
 
-                        File.Copy(Consts.TemporaryPath + fileArray[i], saveUrl + "\\" + fileArray[i]);
-                        File.Delete(Consts.TemporaryPath + fileArray[i]);
+                        try
+                        {
+                            File.Copy(Consts.TemporaryPath + fileArray[i], saveUrl + "\\" + fileArray[i]);
+                            File.Delete(Consts.TemporaryPath + fileArray[i]);
+                        }
+                        catch (Exception)
+                        {
+                            
+                            throw;
+                        }
                     }
 
                     result = SQLHelper.BulkToDB(resources,"m_MeetingResources");
