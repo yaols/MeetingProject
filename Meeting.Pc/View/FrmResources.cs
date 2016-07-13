@@ -57,7 +57,7 @@ namespace Meeting.Pc.View
             foreach (var item in model)
             {
                 PanelEx pxMain = new PanelEx();
-                pxMain.Width = 876;
+                pxMain.Width = 1216;
                 pxMain.Height = 55;
                 pxMain.BorderColor = Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
                 pxMain.BackColor = Color.White;
@@ -76,7 +76,7 @@ namespace Meeting.Pc.View
                 label = new Label();
                 label.Font = new System.Drawing.Font("宋体", 10F);
                 label.ForeColor = System.Drawing.Color.Black;
-                label.Location = new System.Drawing.Point(161, 15);
+                label.Location = new System.Drawing.Point(220, 15);
                 label.AutoSize = true;
                 label.Text = item.ResourcesName;
                 pxMain.Controls.Add(label);
@@ -85,7 +85,7 @@ namespace Meeting.Pc.View
                 label = new Label();
                 label.Font = new System.Drawing.Font("宋体", 10F);
                 label.ForeColor = System.Drawing.Color.Black;
-                label.Location = new System.Drawing.Point(492, 15);
+                label.Location = new System.Drawing.Point(820, 15);
                 label.AutoSize = true;
                 label.Text = item.ResourcesType;
                 pxMain.Controls.Add(label);
@@ -95,8 +95,8 @@ namespace Meeting.Pc.View
                 pxBtn.BackgroundImage = Resources.join;
                 pxBtn.Cursor = System.Windows.Forms.Cursors.Hand;
                 pxBtn.Click += new System.EventHandler(this.pbBtn_Click);
-                pxBtn.Location = new System.Drawing.Point(690, 15);
-                pxBtn.Size = new System.Drawing.Size(65, 25);
+                pxBtn.Location = new System.Drawing.Point(1060, 15);
+                pxBtn.Size = new System.Drawing.Size(78, 30);
                 pxBtn.Tag = item;
                 pxMain.Controls.Add(pxBtn);
                 index++;

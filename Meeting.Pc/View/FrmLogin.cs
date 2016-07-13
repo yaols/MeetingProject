@@ -3,6 +3,7 @@ using Meeting.BLL;
 using Meeting.Common;
 using Meeting.Entity;
 using Meeting.Interface;
+using Meeting.Pc.Control;
 using Meeting.Pc.Properties;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace Meeting.Pc.View
@@ -20,10 +22,24 @@ namespace Meeting.Pc.View
         public FrmLogin()
         {
             InitializeComponent();
+            timer.Enabled = true;
+            timer.Interval = 300;
+            timer.Tick += new EventHandler(timer1_Tick);
+        }
+
+        void timer1_Tick(object sender, EventArgs e) 
+        {
+
+            if (Helper.DeleteFolder(Consts.PcUrlPath) > 0) 
+            {
+                panelEx1.Visible = false;
+                timer.Enabled = false;
+            }       
         }
 
         ILoginInterface ilogin = new LoginService();
         ILog log = LogHelper.GetLog("LoginController");
+        System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
 
         private void pbxClose_MouseEnter(object sender, EventArgs e)
         {

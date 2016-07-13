@@ -44,7 +44,7 @@
             this.plMain.Location = new System.Drawing.Point(1, 91);
             this.plMain.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.plMain.Name = "plMain";
-            this.plMain.Size = new System.Drawing.Size(898, 569);
+            this.plMain.Size = new System.Drawing.Size(1238, 578);
             this.plMain.TabIndex = 5;
             // 
             // plHead
@@ -59,7 +59,7 @@
             this.plHead.Location = new System.Drawing.Point(0, 0);
             this.plHead.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.plHead.Name = "plHead";
-            this.plHead.Size = new System.Drawing.Size(900, 90);
+            this.plHead.Size = new System.Drawing.Size(1240, 90);
             this.plHead.TabIndex = 4;
             this.plHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseDown);
             this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
@@ -71,9 +71,9 @@
             this.pxSave.BackgroundImage = global::Meeting.Pc.Properties.Resources.save;
             this.pxSave.BorderColor = System.Drawing.Color.Empty;
             this.pxSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pxSave.Location = new System.Drawing.Point(119, 54);
+            this.pxSave.Location = new System.Drawing.Point(140, 54);
             this.pxSave.Name = "pxSave";
-            this.pxSave.Size = new System.Drawing.Size(63, 21);
+            this.pxSave.Size = new System.Drawing.Size(106, 32);
             this.pxSave.TabIndex = 8;
             this.pxSave.Click += new System.EventHandler(this.pxSave_Click);
             // 
@@ -83,9 +83,9 @@
             this.panelEx1.BackgroundImage = global::Meeting.Pc.Properties.Resources.审批;
             this.panelEx1.BorderColor = System.Drawing.Color.Empty;
             this.panelEx1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx1.Location = new System.Drawing.Point(234, 52);
+            this.panelEx1.Location = new System.Drawing.Point(263, 55);
             this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(88, 25);
+            this.panelEx1.Size = new System.Drawing.Size(106, 32);
             this.panelEx1.TabIndex = 7;
             this.panelEx1.Click += new System.EventHandler(this.panelEx1_Click);
             // 
@@ -97,7 +97,7 @@
             this.peRerurn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.peRerurn.Location = new System.Drawing.Point(16, 54);
             this.peRerurn.Name = "peRerurn";
-            this.peRerurn.Size = new System.Drawing.Size(63, 21);
+            this.peRerurn.Size = new System.Drawing.Size(106, 32);
             this.peRerurn.TabIndex = 6;
             this.peRerurn.Click += new System.EventHandler(this.peRerurn_Click);
             // 
@@ -117,7 +117,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 660);
+            this.ClientSize = new System.Drawing.Size(1240, 670);
             this.Controls.Add(this.plMain);
             this.Controls.Add(this.plHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -63,7 +63,7 @@
             this.peRerurn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.peRerurn.Location = new System.Drawing.Point(16, 54);
             this.peRerurn.Name = "peRerurn";
-            this.peRerurn.Size = new System.Drawing.Size(63, 21);
+            this.peRerurn.Size = new System.Drawing.Size(106, 32);
             this.peRerurn.TabIndex = 6;
             this.peRerurn.Click += new System.EventHandler(this.peRerurn_Click);
             // 
@@ -86,7 +86,7 @@
             this.plMain.Location = new System.Drawing.Point(1, 90);
             this.plMain.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.plMain.Name = "plMain";
-            this.plMain.Size = new System.Drawing.Size(1238, 569);
+            this.plMain.Size = new System.Drawing.Size(1238, 578);
             this.plMain.TabIndex = 6;
             // 
             // axWindowsMediaPlayer1
@@ -95,7 +95,7 @@
             this.axWindowsMediaPlayer1.Location = new System.Drawing.Point(0, 1);
             this.axWindowsMediaPlayer1.Name = "axWindowsMediaPlayer1";
             this.axWindowsMediaPlayer1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axWindowsMediaPlayer1.OcxState")));
-            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(1235, 568);
+            this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(1235, 570);
             this.axWindowsMediaPlayer1.TabIndex = 0;
             // 
             // FrmVide

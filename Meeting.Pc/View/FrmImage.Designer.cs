@@ -49,7 +49,7 @@
             this.plHead.Location = new System.Drawing.Point(0, 0);
             this.plHead.Margin = new System.Windows.Forms.Padding(0, 0, 0, 1);
             this.plHead.Name = "plHead";
-            this.plHead.Size = new System.Drawing.Size(900, 90);
+            this.plHead.Size = new System.Drawing.Size(1240, 90);
             this.plHead.TabIndex = 6;
             this.plHead.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseDown);
             this.plHead.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMain_MouseMove);
@@ -63,7 +63,7 @@
             this.peRerurn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.peRerurn.Location = new System.Drawing.Point(16, 54);
             this.peRerurn.Name = "peRerurn";
-            this.peRerurn.Size = new System.Drawing.Size(63, 21);
+            this.peRerurn.Size = new System.Drawing.Size(106, 32);
             this.peRerurn.TabIndex = 6;
             this.peRerurn.Click += new System.EventHandler(this.peRerurn_Click);
             // 
@@ -86,14 +86,14 @@
             this.plMain.Location = new System.Drawing.Point(1, 90);
             this.plMain.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.plMain.Name = "plMain";
-            this.plMain.Size = new System.Drawing.Size(898, 569);
+            this.plMain.Size = new System.Drawing.Size(1238, 578);
             this.plMain.TabIndex = 7;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Location = new System.Drawing.Point(15, 14);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(872, 544);
+            this.pictureBox1.Size = new System.Drawing.Size(1212, 554);
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
@@ -101,7 +101,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 660);
+            this.ClientSize = new System.Drawing.Size(1240, 670);
             this.Controls.Add(this.plMain);
             this.Controls.Add(this.plHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

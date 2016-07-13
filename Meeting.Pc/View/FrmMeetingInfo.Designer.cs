@@ -100,7 +100,7 @@
             this.plMain.Location = new System.Drawing.Point(1, 91);
             this.plMain.Margin = new System.Windows.Forms.Padding(1, 0, 1, 1);
             this.plMain.Name = "plMain";
-            this.plMain.Size = new System.Drawing.Size(1238, 574);
+            this.plMain.Size = new System.Drawing.Size(1238, 578);
             this.plMain.TabIndex = 3;
             // 
             // label21
@@ -181,7 +181,7 @@
             this.label20.BackColor = System.Drawing.Color.Transparent;
             this.label20.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label20.ForeColor = System.Drawing.Color.Black;
-            this.label20.Location = new System.Drawing.Point(1039, 297);
+            this.label20.Location = new System.Drawing.Point(1050, 297);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(31, 12);
             this.label20.TabIndex = 30;
@@ -193,7 +193,7 @@
             this.label19.BackColor = System.Drawing.Color.Transparent;
             this.label19.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(768, 297);
+            this.label19.Location = new System.Drawing.Point(797, 297);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(57, 12);
             this.label19.TabIndex = 29;
@@ -205,7 +205,7 @@
             this.label18.BackColor = System.Drawing.Color.Transparent;
             this.label18.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
             this.label18.ForeColor = System.Drawing.Color.Black;
-            this.label18.Location = new System.Drawing.Point(611, 297);
+            this.label18.Location = new System.Drawing.Point(631, 297);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(44, 12);
             this.label18.TabIndex = 28;
@@ -261,7 +261,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(769, 29);
+            this.label26.Location = new System.Drawing.Point(789, 29);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(41, 12);
             this.label26.TabIndex = 33;
@@ -270,7 +270,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(596, 29);
+            this.label25.Location = new System.Drawing.Point(616, 29);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(41, 12);
             this.label25.TabIndex = 32;
@@ -292,9 +292,9 @@
             this.panelEx7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelEx7.BorderColor = System.Drawing.Color.Empty;
             this.panelEx7.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx7.Location = new System.Drawing.Point(944, 25);
+            this.panelEx7.Location = new System.Drawing.Point(935, 25);
             this.panelEx7.Name = "panelEx7";
-            this.panelEx7.Size = new System.Drawing.Size(81, 24);
+            this.panelEx7.Size = new System.Drawing.Size(97, 29);
             this.panelEx7.TabIndex = 31;
             this.panelEx7.Click += new System.EventHandler(this.panelEx7_Click);
             // 
@@ -305,9 +305,9 @@
             this.panelEx3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.panelEx3.BorderColor = System.Drawing.Color.Empty;
             this.panelEx3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.panelEx3.Location = new System.Drawing.Point(1102, 25);
+            this.panelEx3.Location = new System.Drawing.Point(1079, 25);
             this.panelEx3.Name = "panelEx3";
-            this.panelEx3.Size = new System.Drawing.Size(81, 24);
+            this.panelEx3.Size = new System.Drawing.Size(97, 29);
             this.panelEx3.TabIndex = 29;
             this.panelEx3.Click += new System.EventHandler(this.panelEx3_Click);
             // 
@@ -484,7 +484,7 @@
             this.peRerurn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.peRerurn.Location = new System.Drawing.Point(16, 54);
             this.peRerurn.Name = "peRerurn";
-            this.peRerurn.Size = new System.Drawing.Size(63, 21);
+            this.peRerurn.Size = new System.Drawing.Size(106, 32);
             this.peRerurn.TabIndex = 6;
             this.peRerurn.Click += new System.EventHandler(this.pxHome_Click);
             // 

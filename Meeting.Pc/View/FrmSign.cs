@@ -27,7 +27,11 @@ namespace Meeting.Pc.View
             InitializeComponent();
             _meetingId = meetingId;
             _url = url;
-            if (type == 1) panelEx1.Visible = false;
+            if (type == 1) 
+            {
+                panelEx1.Visible = false;
+                pxSave.Visible = false;
+            } 
         }
 
 
@@ -66,9 +70,13 @@ namespace Meeting.Pc.View
             word.TabIndex = 1;
             // };
             //加载word的完整路径  修改此处
-            word.LoadDocument(_url);
-            word.Show();
-            plMain.Controls.Add(word);
+            if (File.Exists(_url)) 
+            {
+                word.LoadDocument(_url);
+                word.Show();
+                plMain.Controls.Add(word);
+            }
+
 
             timer.Enabled = false;
             WaitFormService.Close();

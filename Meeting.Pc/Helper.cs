@@ -171,5 +171,29 @@ namespace Meeting.Pc
         }
 
         public static string NickName { get; set; }
+
+        public static int DeleteFolder(string dir)
+        {
+            try
+            {
+                if (Directory.Exists(dir)) //如果存在这个文件夹删除之 
+                {
+                    foreach (string d in Directory.GetFileSystemEntries(dir))
+                    {
+                        if (File.Exists(d))
+                            File.Delete(d); //直接删除其中的文件 
+                        else
+                          DeleteFolder(d); //递归删除子文件夹 
+                    }
+                    Directory.Delete(dir); //删除已空文件夹 
+                }
+
+                return 1;
+            }
+            catch (Exception)
+            {
+                return 0;
+            }
+        }
     }
 }

@@ -42,11 +42,14 @@
             this.pbxClose = new System.Windows.Forms.PictureBox();
             this.wtbPassword = new Meeting.Pc.WatermarkTextBox();
             this.wtbUsername = new Meeting.Pc.WatermarkTextBox();
+            this.panelEx1 = new Meeting.Pc.Control.PanelEx();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass)).BeginInit();
             this.plHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxMin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClose)).BeginInit();
+            this.panelEx1.SuspendLayout();
             this.SuspendLayout();
             // 
             // notifyIcon1
@@ -202,12 +205,32 @@
             this.wtbUsername.WatermarkTitle = " 请输入用户名";
             this.wtbUsername.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wtbUsername_PreviewKeyDown);
             // 
+            // panelEx1
+            // 
+            this.panelEx1.BorderColor = System.Drawing.Color.Empty;
+            this.panelEx1.Controls.Add(this.label4);
+            this.panelEx1.Location = new System.Drawing.Point(3, 88);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(578, 292);
+            this.panelEx1.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(209, 102);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(173, 22);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "正在加载中请稍候.......";
+            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(584, 381);
+            this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.wtbPassword);
             this.Controls.Add(this.wtbUsername);
             this.Controls.Add(this.pbxLogin);
@@ -230,6 +253,8 @@
             this.plHead.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbxMin)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxClose)).EndInit();
+            this.panelEx1.ResumeLayout(false);
+            this.panelEx1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,6 +274,8 @@
         private System.Windows.Forms.PictureBox pbxLogin;
         private WatermarkTextBox wtbUsername;
         private WatermarkTextBox wtbPassword;
+        private Control.PanelEx panelEx1;
+        private System.Windows.Forms.Label label4;
     }
 }
 
