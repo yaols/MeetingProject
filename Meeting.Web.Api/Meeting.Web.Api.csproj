@@ -285,6 +285,8 @@
     <Content Include="Scripts\datetimepicker\jquery.datetimepicker.full.min.js" />
     <Content Include="Scripts\datetimepicker\jquery.datetimepicker.min.js" />
     <Content Include="Scripts\datetimepicker\jquery.js" />
+    <Content Include="Scripts\jQuery-video\css\video-js.min.css" />
+    <Content Include="Scripts\jQuery-video\js\video.min.js" />
     <Content Include="Scripts\lhgdialog\favicon.ico" />
     <Content Include="Scripts\lhgdialog\index.html" />
     <Content Include="Scripts\lhgdialog\jquery.dialog.plugin.js" />

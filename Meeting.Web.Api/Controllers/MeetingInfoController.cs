@@ -55,21 +55,29 @@ namespace Meeting.Web.Api.Controllers
         {
             ResourcesView view = new ResourcesView();
 
-            view.TitleModel = new TitleViewModel();
-            view.TitleModel.Title = "材料详情";
-            view.TitleModel.TopTitle = "材料详情";
-            view.TitleModel.RerurnButton = "/MeetingInfo/Index?MeetingId=" + search.MeetingId;
-            view.TitleModel.RerurnHomeButton = "/Home/Index?pageindex=" + 1;
-
-            List<mMeetingResources> listModel = iresources.GetResourcesList(search.MeetingId, UserSession.UserId);
-            view.Text = listModel.Where(m => m.ResourcesType == ".txt" || m.ResourcesType == ".doc" || m.ResourcesType == ".docx").ToList();
-            view.Vide = listModel;
-            foreach (var item in view.Text)
+            try
             {
-                view.Vide.Remove(item);
-            }
+                view.TitleModel = new TitleViewModel();
+                view.TitleModel.Title = "材料详情";
+                view.TitleModel.TopTitle = "材料详情";
+                view.TitleModel.RerurnButton = "/MeetingInfo/Index?MeetingId=" + search.MeetingId;
+                view.TitleModel.RerurnHomeButton = "/Home/Index?pageindex=" + 1;
 
-            ViewBag.TitleViewModel = view.TitleModel;
+                List<mMeetingResources> listModel = iresources.GetResourcesList(search.MeetingId, UserSession.UserId);
+                view.Text = listModel.Where(m => m.ResourcesType == ".txt" || m.ResourcesType == ".doc" || m.ResourcesType == ".docx").ToList();
+                view.Vide = listModel;
+                foreach (var item in view.Text)
+                {
+                    view.Vide.Remove(item);
+                }
+
+                ViewBag.TitleViewModel = view.TitleModel;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
 
             return View(view);
         }
@@ -204,16 +212,24 @@ namespace Meeting.Web.Api.Controllers
         public JsonResult MeetingCreate(string json)
         {
             ResultBase result = new ResultBase();
-            CreateMeeting model = JsonConvert.DeserializeObject<CreateMeeting>(json);
-            if (imeeting.InsertCreateMeeting(model, UserSession.UserId) > 0)
+            try
             {
-                result.Result = ResultCode.Ok;
-                result.Msg = "保存会议成功";
+                CreateMeeting model = JsonConvert.DeserializeObject<CreateMeeting>(json);
+                if (imeeting.InsertCreateMeeting(model, UserSession.UserId) > 0)
+                {
+                    result.Result = ResultCode.Ok;
+                    result.Msg = "保存会议成功";
+                }
+                else
+                {
+                    result.Result = ResultCode.ServerError;
+                    result.Msg = "保存会议失败";
+                }
             }
-            else
+            catch (Exception)
             {
-                result.Result = ResultCode.ServerError;
-                result.Msg = "保存会议失败";
+                
+                throw;
             }
 
             return Json(result);
