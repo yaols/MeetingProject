@@ -1,0 +1,63 @@
+﻿@using Meeting.Entity.Pager
+@{
+
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>数据录入界面</title>
+
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/lhgdialog/lhgdialog.min.js"></script>
+    <script src="~/Scripts/lhgdialog/jquery.dialog.plugin.js"></script>
+    <script src="~/mh_dialog/mh_dialog.js"></script>
+</head>
+
+<body>
+
+
+    <div>用户名:<input id="username" style="width:200px;height:25px;" type="text" /></div>
+    <div>密     码:<input id="password" style="width:200px;height:25px;" type="text" /></div>
+    <div><input id="chkmishu" type="checkbox" />是否秘书</div>
+    <button type="button" style="width:200px;height:20px;" onclick="SaveUser()">保存用户</button>
+    <hr />
+
+    <div>部门名称:<input id="departname" style="width:200px;height:25px;" type="text" /></div>
+    <button type="button" style="width:200px;height:20px;" onclick="SaveDepar()">保存部门</button>
+    <script type="text/javascript">
+        function SaveUser() {
+            var model = new Object();
+            model.username = $("#username").val();
+            model.password = $("#password").val();
+            model.chkmishu = $("#chkmishu").attr("checked");
+
+            $.post('/User/User',
+        {
+            username: model.username,
+            password: model.password,
+            chkmishu: model.chkmishu
+        }, function (data) {
+            if (data.Result == 0)
+                location.href = "/User/Index";
+            mh_dialogShow('mh_success', data.Msg, 1, true);
+            lhgdialog.masklayer();
+        });
+        }
+
+        function SaveDepar() {
+            var model = new Object();
+            model.departname = $("#departname").val();
+
+            $.post('/User/Depart',
+        {
+            departname: model.departname
+        }, function (data) {
+            if (data.Result == 0)
+                location.href = "/User/Index";
+            mh_dialogShow('mh_success', data.Msg, 1, true);
+            lhgdialog.masklayer();
+        });
+        }
+    </script>
+</body>
+</html>

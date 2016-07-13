@@ -176,6 +176,7 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MeetingInfoController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Filters\MyAuthorization.cs" />
     <Compile Include="Global.asax.cs">
@@ -701,6 +702,7 @@
     <Content Include="Scripts\lhgdialog\skins\igreen\ie6\Thumbs.db" />
     <Content Include="Scripts\lhgdialog\skins\igreen\Thumbs.db" />
     <Content Include="Scripts\lhgdialog\_doc\commercial_license.doc" />
+    <Content Include="Views\User\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

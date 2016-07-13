@@ -43,6 +43,7 @@
     <Compile Include="IMeetingInterface.cs" />
     <Compile Include="IMeetingIssue.cs" />
     <Compile Include="IMeetingResources.cs" />
+    <Compile Include="IMuserInterface.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

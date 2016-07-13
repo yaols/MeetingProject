@@ -34,9 +34,9 @@ namespace Meeting.Web.Api.Controllers
             try
             {
                 model.UserName = HttpUtility.UrlDecode(model.UserName);
-                model.UserPass = HttpUtility.UrlDecode(model.UserPass);
+                model.UserPass =Tool.MD5(HttpUtility.UrlDecode(model.UserPass));
                 int roleId = 2;
-                umodel = ilogin.LoginUserInfo(model.UserName, model.UserPass,roleId);
+                umodel = ilogin.LoginUserInfo(model.UserName,model.UserPass,roleId);
 
 
 
