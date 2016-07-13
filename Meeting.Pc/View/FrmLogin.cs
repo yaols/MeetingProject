@@ -120,7 +120,7 @@ namespace Meeting.Pc.View
             }
 
             string userName = wtbUsername.Text.Trim();
-            string userPass = wtbPassword.Text.Trim();
+            string userPass =Tool.MD5(wtbPassword.Text.Trim());
             int roleId = 1;
             SetMessageShow(true);
             mUser umodel  = ilogin.LoginUserInfo(userName, userPass,1);
