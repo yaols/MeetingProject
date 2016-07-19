@@ -202,7 +202,7 @@
                     }
 
                     htmlString += '<div class="create-li-btnDel" onclick="CreateDel(this,\''+ file.name +'\')">删除</div>';
-                    htmlString += file.name + '</li>';
+                    htmlString += '<span style="display: inline-block;">' + file.name + '</span></li>';
 
                     $("#imgul").append(htmlString);
                     lhgdialog.masklayer();
