@@ -47,11 +47,19 @@ namespace Meeting.Pc.View
         void timer1_Tick(object sender, EventArgs e)
         {
             Thread th = new Thread(new ThreadStart(this.ExecWaitForm));
-            th.Start();  
-            Image image = Image.FromStream(WebRequest.Create(_url).GetResponse().GetResponseStream());
-            pictureBox1.BackgroundImage = image;
-            pictureBox1.Width = image.Width;
-            pictureBox1.Height = image.Height;
+            th.Start();
+            try
+            {
+                Image image = Image.FromStream(WebRequest.Create(_url).GetResponse().GetResponseStream());
+                pictureBox1.BackgroundImage = image;
+                pictureBox1.Width = image.Width;
+                pictureBox1.Height = image.Height;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("无法下载该资源，请检查服务器连接是否正常!", "系统消息提示");
+            }
+
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             label1.Text = "材料:" + _filename;
             timer.Enabled = false;
