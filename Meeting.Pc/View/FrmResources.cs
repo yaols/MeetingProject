@@ -127,7 +127,7 @@ namespace Meeting.Pc.View
                     MessageBox.Show("下载资源不存在!","系统消息提示");
                 }
             }
-            else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".gif")
+            else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".jpeg"||type==".bmp")
             {
                 string url = string.Format("{0}{1}/{2}", Consts.DwonUrlPath, _meetingId, filename);
                 if (!string.IsNullOrEmpty(url))
@@ -141,7 +141,7 @@ namespace Meeting.Pc.View
                     MessageBox.Show("下载资源不存在!", "系统消息提示");
                 }
             }
-            else if (type == ".mp4" || type == ".wmv" || type == ".amv")
+            else if (type == ".mp4" || type == ".wmv" || type == ".amv"||type==".mp3")
             {
                 string url = string.Format("{0}{1}/{2}",Consts.DwonUrlPath,_meetingId,filename);
                 if (!string.IsNullOrEmpty(url)) 

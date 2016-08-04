@@ -163,45 +163,45 @@ namespace Meeting.Dao
             return SQLHelper.ExcuteScalarSQL(sql);
         }
 
-//        public static int InsertCreateMeeting(CreateMeeting model, int userId)
-//        {
+        //        public static int InsertCreateMeeting(CreateMeeting model, int userId)
+        //        {
 
-//            int result = 0;
-//            string sql = string.Format(@"insert into m_Meeting (MeetingName,StartDate,EendDate,AddressName,MeetingHost,
-//            MeetingDocument,MeetingCreateUser,MeetingCreateDate,MeetingType,MeetingSecretary,IssueName,RepostUser,DepartId,Type) values (
-//            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}');select @@identity", model.year, model.datetimepicker1, model.datetimepicker2, model.address,
-//             model.hoseUser, model.wenshu, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, model.depart,0);
+        //            int result = 0;
+        //            string sql = string.Format(@"insert into m_Meeting (MeetingName,StartDate,EendDate,AddressName,MeetingHost,
+        //            MeetingDocument,MeetingCreateUser,MeetingCreateDate,MeetingType,MeetingSecretary,IssueName,RepostUser,DepartId,Type) values (
+        //            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}');select @@identity", model.year, model.datetimepicker1, model.datetimepicker2, model.address,
+        //             model.hoseUser, model.wenshu, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, model.depart,0);
 
-//            result = SQLHelper.ExcuteScalarSQL(sql);
-//            if (result > 0)
-//            {
-//                string saveUrl = string.Format("{0}{1}", Consts.SaveUrlPath, result);
+        //            result = SQLHelper.ExcuteScalarSQL(sql);
+        //            if (result > 0)
+        //            {
+        //                string saveUrl = string.Format("{0}{1}", Consts.SaveUrlPath, result);
 
-//                if (!Directory.Exists(saveUrl))
-//                    Directory.CreateDirectory(saveUrl);
+        //                if (!Directory.Exists(saveUrl))
+        //                    Directory.CreateDirectory(saveUrl);
 
-//                File.Copy(Consts.SaveUrlPath + "会议记录.docx", saveUrl + "\\" + result + ".docx");
+        //                File.Copy(Consts.SaveUrlPath + "会议记录.docx", saveUrl + "\\" + result + ".docx");
 
 
 
-//                DataTable dt = SQLHelper.GetTableSchema();
-//                model.people = model.people.Substring(0, model.people.Length - 1);
-//                string[] arrayString = model.people.Split(',');
-//                if (arrayString != null)
-//                {
-//                    for (int i = 0; i < arrayString.Length; i++)
-//                    {
-//                        DataRow row = dt.NewRow();
-//                        row[1] = result;
-//                        row[2] = arrayString[i];
-//                        dt.Rows.Add(row);
-//                    }
-//                    result = SQLHelper.BulkToDB(dt, "m_MeetingPeople");
-//                }
-//            }
+        //                DataTable dt = SQLHelper.GetTableSchema();
+        //                model.people = model.people.Substring(0, model.people.Length - 1);
+        //                string[] arrayString = model.people.Split(',');
+        //                if (arrayString != null)
+        //                {
+        //                    for (int i = 0; i < arrayString.Length; i++)
+        //                    {
+        //                        DataRow row = dt.NewRow();
+        //                        row[1] = result;
+        //                        row[2] = arrayString[i];
+        //                        dt.Rows.Add(row);
+        //                    }
+        //                    result = SQLHelper.BulkToDB(dt, "m_MeetingPeople");
+        //                }
+        //            }
 
-//            return result;
-//        }
+        //            return result;
+        //        }
 
 
         public static int InsertCreateMeeting(CreateMeeting model, int userId)
@@ -225,49 +225,57 @@ namespace Meeting.Dao
 
 
                 DataTable resources = SQLHelper.GetTableResources();
-                model.filearray = model.filearray.Substring(0,model.filearray.Length-1);
-                string[] fileArray = model.filearray.Split(',');
-                if (fileArray != null) 
+
+                if (!string.IsNullOrEmpty(model.filearray))
                 {
-                    for (int i = 0; i < fileArray.Length; i++)
+                    model.filearray = model.filearray.Substring(0, model.filearray.Length - 1);
+                    string[] fileArray = model.filearray.Split(',');
+                    if (fileArray != null)
                     {
-                        DataRow row = resources.NewRow();
-                        row[1] = Path.GetFileNameWithoutExtension(fileArray[i]);
-                        row[2] = Path.GetExtension(fileArray[i]);
-                        row[3] = result;
-                        row[4] = result;
-                        resources.Rows.Add(row);
+                        for (int i = 0; i < fileArray.Length; i++)
+                        {
+                            DataRow row = resources.NewRow();
+                            row[1] = Path.GetFileNameWithoutExtension(fileArray[i]);
+                            row[2] = Path.GetExtension(fileArray[i]);
+                            row[3] = result;
+                            row[4] = result;
+                            resources.Rows.Add(row);
 
-                        try
-                        {
-                            File.Copy(Consts.TemporaryPath + fileArray[i], saveUrl + "\\" + fileArray[i]);
-                            File.Delete(Consts.TemporaryPath + fileArray[i]);
+                            try
+                            {
+                                File.Copy(Consts.TemporaryPath + fileArray[i], saveUrl + "\\" + fileArray[i]);
+                                File.Delete(Consts.TemporaryPath + fileArray[i]);
+                            }
+                            catch (Exception)
+                            {
+
+                                throw;
+                            }
                         }
-                        catch (Exception)
-                        {
-                            
-                            throw;
-                        }
+
+                        SQLHelper.BulkToDB(resources, "m_MeetingResources");
                     }
-
-                    result = SQLHelper.BulkToDB(resources,"m_MeetingResources");
                 }
 
 
                 DataTable dt = SQLHelper.GetTableSchema();
-                model.people = model.people.Substring(0, model.people.Length - 1);
-                string[] arrayString = model.people.Split(',');
-                if (arrayString != null)
+                if (!string.IsNullOrEmpty(model.people))
                 {
-                    for (int i = 0; i < arrayString.Length; i++)
+                    model.people = model.people.Substring(0, model.people.Length - 1);
+                    string[] arrayString = model.people.Split(',');
+                    if (arrayString != null)
                     {
-                        DataRow row = dt.NewRow();
-                        row[1] = result;
-                        row[2] = arrayString[i];
-                        dt.Rows.Add(row);
+                        for (int i = 0; i < arrayString.Length; i++)
+                        {
+                            DataRow row = dt.NewRow();
+                            row[1] = result;
+                            row[2] = arrayString[i];
+                            dt.Rows.Add(row);
+                        }
+                        SQLHelper.BulkToDB(dt, "m_MeetingPeople");
                     }
-                    result = SQLHelper.BulkToDB(dt, "m_MeetingPeople");
                 }
+
             }
 
             return result;
@@ -288,7 +296,7 @@ namespace Meeting.Dao
                new SqlParameter("@meetingId",meetingId),
            };
 
-            return SQLHelper.ExcuteProc("pro_Meeting",paras);
+            return SQLHelper.ExcuteProc("pro_Meeting", paras);
         }
     }
 }

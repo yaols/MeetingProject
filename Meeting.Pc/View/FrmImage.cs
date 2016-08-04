@@ -50,6 +50,8 @@ namespace Meeting.Pc.View
             th.Start();  
             Image image = Image.FromStream(WebRequest.Create(_url).GetResponse().GetResponseStream());
             pictureBox1.BackgroundImage = image;
+            pictureBox1.Width = image.Width;
+            pictureBox1.Height = image.Height;
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             label1.Text = "材料:" + _filename;
             timer.Enabled = false;

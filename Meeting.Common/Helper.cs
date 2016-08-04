@@ -14,7 +14,7 @@ namespace Meeting.Common
             {
                 return "/Images/文本资料.png";
             }
-            else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".gif")
+            else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".bmp"||type==".jpeg")
             {
                 return "/Images/图片资料.png";
             }

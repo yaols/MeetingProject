@@ -42,7 +42,7 @@
                 "&Directory=" + item.Directory + "&ResourceName=" + item.ResourcesName + "&MeetingId=" + item.MeetingIssueId;
             <li class="material-ul-li">
                 <div class="material-li-img" onclick="clickUrl('@videurl')">
-                    <img src="@Helper.GetImageUrl(item.ResourcesType)" />
+                    <img src="@Helper.GetImageUrl(item.ResourcesType.ToLower())" />
                 </div>
                 <span style="display:block">@(item.ResourcesName)</span>
                 <div class="home-li-btnDel" onclick="btnDel('@item.Id','@item.Directory','@item.ResourcesName')">删除</div>

@@ -101,7 +101,7 @@ namespace Meeting.Web.Api.Controllers
 
 
             //Tuple<int, string> tuple=GetTypeUrl(search.ResourcesType,url);
-            Tuple<int, string> tuple = GetTypeUrl(search.ResourcesType,Consts.DwonUrlPath + "1.html",url);
+            Tuple<int, string> tuple = GetTypeUrl(search.ResourcesType.ToLower(),Consts.DwonUrlPath + "1.html",url);
             return View(tuple);
         }
 
@@ -114,11 +114,11 @@ namespace Meeting.Web.Api.Controllers
             {
                 tuple = new Tuple<int, string>(1, filename);
             }
-            else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".gif")
+            else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".bmp"||type==".jpeg")
             {
                 tuple = new Tuple<int, string>(2, url);
             }
-            else if (type == ".mp4" || type == ".wmv" || type == ".amv")
+            else if (type == ".mp4" || type == ".wmv" || type == ".amv"||type==".mp3")
             {
                 tuple = new Tuple<int, string>(3, url);
             }
