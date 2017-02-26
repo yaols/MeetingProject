@@ -1,11 +1,10 @@
 ﻿@using Meeting.Entity
 @using Meeting.Web.Api.Models
-@model mMeeting
+@model MeetingRecord
 @{
     TitleViewModel viewmodel = ViewBag.TitleViewModel;
-    Tuple<int, string> tuple = ViewBag.tuple;
 }
-<meta http-equiv="X-UA-Compatible" content="IE=9" />  
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -13,13 +12,17 @@
     <style type="text/css">
     </style>
     <link href="~/css/main.css" rel="stylesheet" />
+
+    <link href="~/Scripts/datetimepicker/jquery.datetimepicker.css" rel="stylesheet" />
+    <link href="~/css/chosen.css" rel="stylesheet" />
     <script src="~/Scripts/jquery-1.8.2.min.js"></script>
 
-    <link href="~/Scripts/uploadify/uploadify.css" rel="stylesheet" />
-    <script src="~/Scripts/uploadify/jquery.uploadify.js"></script>
     <script src="~/Scripts/lhgdialog/lhgdialog.min.js"></script>
     <script src="~/Scripts/lhgdialog/jquery.dialog.plugin.js"></script>
     <script src="~/mh_dialog/mh_dialog.js"></script>
+
+    <link href="~/Scripts/wangEditor/dist/css/wangEditor.min.css" rel="stylesheet" />
+
 </head>
 <body>
     <div class="home">
@@ -36,86 +39,235 @@
                     <div class="home-li-button" onclick="retrunBtn('@viewmodel.RerurnButton')">返回</div>
                 </li>
                 <li class="ulbtn-btn">
-                    <div class="home-li-button" onclick="ExportWord()">导出</div>
+                    <div class="home-li-button2" id="recordSave">保存</div>
                 </li>
                 <li class="ulbtn-btn">
-                    @*<div class="home-button-right">上传</div>*@
-                    <input type="file" name="file_upload" id="file_upload" />
+                    <div class="home-li-button2" id="preview">打印预览</div>
                 </li>
             </ul>
 
         </div>
         <!--/layout-top-->
 
-        @*<div class="layou-info-top">
+        <div class="layou-info-top">
             <font class="layou-info-font">会议信息</font>
         </div>
 
-        <ul class="layou-info-ul">
-            <li class="layou-info-li">会议名称:@Model.MeetingName</li>
-            <li class="layou-info-li">计划开始时间: @Model.StartDate   <span style="margin-left:40px"></span>   计划结束时间: @Model.EendDate</li>
-            <li class="layou-info-li">会议地点: @Model.MeetingAddress</li>
-            <li class="layou-info-li">
-                参会委员: @Model.PeopleName
+        <ul class="create-meeting-ul">
+            <li class="create-meeting-li">
+                会议名称:
+                检委会<input type="text" class="create-meeting-text" id="year" value="@Model.Year" />年
+                第<input type="text" class="create-meeting-text" id="count" value="@Model.Num" />次
+                总第<input type="text" class="create-meeting-text" id="numcount" value="@Model.TotalNum" />次会议
             </li>
-            <li class="layou-info-li">主持人:@Model.MeetingHost</li>
-            <li class="layou-info-li">秘书:@Model.SecretaryName</li>
+            <li class="create-meeting-li">
+                计划开始时间  <input type="text" class="create-meeting-date" id="datetimepicker1" value="@Model.StartDate" />
+                <span style="margin-left:62px;"></span>
+                计划结束时间  <input type="text" class="create-meeting-date" id="datetimepicker2" value="@Model.EendDate" />
+            </li>
         </ul>
+        <ul class="create-meeting-ul">
+            <li class="create-meeting-li">
+                会议地点:
+                <input type="text" class="create-meeting-address" id="address" value="@Model.MeetingAddress" />
+            </li>
+            <li class="create-meeting-li">
+                主持人
+                <select class="create-meeting-com" id="hoseUser">
+                    @foreach (var item in Model.UserList)
+                    {
+                        if (item.Id == Model.MeetingHost)
+                        {
+                            <option id="@item.Id" selected="selected">@item.NickName</option>
+                        }
+                        else
+                        {
+                            <option id="@item.Id">@item.NickName</option>
+                        }
+                    }
+                </select>
+                <span style="margin-left:20px;"></span>
+                记录员
+                <select class="create-meeting-com" id="recorder">
+                    @foreach (var item in Model.UserList)
+                    {
+                        if (item.Id == Model.MeetingDocument)
+                        {
+                            <option id="@item.Id" selected="selected">@item.NickName</option>
+                        }
+                        else
+                        {
+                            <option id="@item.Id">@item.NickName</option>
+                        }
+                    }
+                </select>
+                <span style="margin-left:20px;"></span>
+                秘书
+                <select class="create-meeting-com" id="secretary">
+                    @foreach (var item in Model.UserList)
+                    {
+                        if (item.Id == Model.MeetingSecretary)
+                        {
+                            <option id="@item.Id" selected="selected">@item.NickName</option>
+                        }
+                        else
+                        {
+                            <option id="@item.Id">@item.NickName</option>
+                        }
+                    }
+                </select>
+            </li>
+        </ul>
+        <ul class="create-meeting-ul">
+            <li class="create-meeting-li">
+                参会委员:
+                <select data-placeholder="请选择..." class="chosen-select" multiple style="width:850px; height:30px;" tabindex="4" id="meetingPeople">
+                    @foreach (var item in Model.UserList)
+                    {
+                        <option value="@item.Id">@item.NickName</option>
+                    }
+                </select>
+            </li>
+        </ul>
+        <ul class="create-meeting-ul">
+            <li class="create-meeting-li">
+                请假人员:
+                <select data-placeholder="请选择..." class="chosen-select" multiple style="width:850px; height:30px;" tabindex="4" id="leavePeople">
+                    @foreach (var item in Model.UserList)
+                    {
+                        <option value="@item.Id">@item.NickName</option>
+                    }
+                </select>
+            </li>
+        </ul>
+        <ul class="create-meeting-ul">
+            <li class="create-meeting-li">
+                列席人员:
+                <select data-placeholder="请选择..." class="chosen-select" multiple style="width:850px; height:30px;" tabindex="4" id="attendPeople">
+                    @foreach (var item in Model.UserList)
+                    {
+                        <option value="@item.Id">@item.NickName</option>
+                    }
+                </select>
+            </li>
+        </ul>
+        <input type="hidden" name="committee" value="@Model.PeopleName" />
+        <input type="hidden" name="leave" value="@Model.LeavePeople" />
+        <input type="hidden" name="attend" value="@Model.AttendPeople" />
+        <input type="hidden" name="meetingId" value="@Model.MeetingId" />
+
 
         <div class="layou-info-top">
             <font class="layou-info-font">会议议题</font>
-        </div>*@
+        </div>
 
-        @*<div class="layou-div-word">
+        <div class="layou-div-title">
+            <ul class="layou-div-ul">
+                <li class="layou-ul-li1">序号</li>
+                <li class="create-ul-li2">议题名称</li>
+                <li class="layou-ul-li3">申请部门</li>
+                <li class="layou-ul-li4">汇报人</li>
+            </ul>
+        </div>
 
-        </div>*@
-        @*<object id="DSOFramer" style="left: 0px; width: 100%;height: 500px" classid="clsid:00460182-9E5E-11D5-B7C8-B8269041DD57" codebase="DSOFramer.ocx#Version=2,3,0,1">
-            <param name="BorderStyle" value="1">
-            <param name="TitlebarColor" value="52479">
-            <param name="TitlebarTextColor" value="0">
-            <param name="Menubar" value="1">
-        </object>*@
-        <iframe style="width:100%;height:500px;border-width: 0px;margin:0 auto;" src="@(Model.Directory)" id="iframe"></iframe>
+
+        <div class="create-div-content1">
+            <ul class="layou-div-ul">
+                <li class="layou-ul-li1">
+                    <input class="create-li-text1" value="1" />
+
+                </li>
+                <li class="create-ul-li2">
+                    <input class="create-li-text2" value="@Model.IssueName" id="issue" />
+                </li>
+                <li class="layou-ul-li3">
+                    <select class="create-li-text3" id="depart">
+                        @foreach (var item in Model.DepartList)
+                        {
+                            if (item.Id == Model.DepartId)
+                            {
+                                <option id="@item.Id" selected="selected">@item.DepartName</option>
+                            }
+                            else
+                            {
+                                <option id="@item.Id">@item.DepartName</option>
+                            }
+
+                        }
+                    </select>
+                </li>
+                <li class="layou-ul-li4">
+                    <select class="create-li-text3" id="report">
+                        @foreach (var item in Model.UserList)
+                        {
+                            if (item.Id == Model.RepostUser)
+                            {
+                                <option id="@item.Id" selected="selected">@item.NickName</option>
+                            }
+                            else
+                            {
+                                <option id="@item.Id">@item.NickName</option>
+                            }
+                        }
+                    </select>
+                </li>
+            </ul>
+        </div>
+
+        <div style="width: 1004px; margin: 5px 10px 0 10px;">
+            <!--用当前元素来控制高度-->
+            <div id="editor" style="min-height: 200px;">
+                @if (Model.MeetingRecordInfo != null)
+                {
+                    @Html.Raw(Model.MeetingRecordInfo.MeetingRecorder);
+                }
+                else
+                {
+                    <p>请输入内容...</p>
+                }
+
+            </div>
+        </div>
+
+        <div class="layou-info-top">
+            <font class="layou-info-font">审批内容</font>
+        </div>
+
+        <div style="margin-bottom:10px;">
+            @if (Model.MeetingOpinion != null)
+            {
+                foreach (var item in Model.MeetingOpinion)
+                {
+                    string msg = "";
+                    if (item.OpinionAction == 0)
+                    {
+                        msg = "未处理";
+                    }
+                    else if (item.OpinionAction == 1)
+                    {
+                        msg = "同意";
+                    }
+                    else
+                    {
+                        msg = "不同意";
+                    }
+
+                    <div style="margin: 5px 10px 0 10px;">
+                        <div style="display: inline-block; width:100px;">委员：@item.UserName</div>
+                        <div style="display: inline-block; padding-left:15px;">审批意见：@msg</div>
+                        <textarea style="width:980px;height:120px;" disabled="disabled">@item.OpinionMsg</textarea>
+                    </div>
+                }
+            }
+        </div>
+
     </div>
 
-    <script type="text/javascript">
-    $(document).ready(function () {
-        @*document.all.DSOFramer.Open(encodeURI("@Model.Directory"),false, "Word.Document");*@
 
-        $('#file_upload').uploadify({
-            'swf': '/Scripts/uploadify/uploadify.swf',
-            'uploader': '/Upload/SaveWord?directory='+@Model.MeetingId,
-            'buttonText':'上传',
-            'onUploadStart': function (file) {
-                mh_dialogShow('mh_success',"上传成功",1, true);
-                location.href = "/MeetingInfo/MeetingRecord?MeetingId="+@Model.MeetingId+ "&Directory=" + @Model.MeetingId;
-                lhgdialog.masklayer();
-            }
-        });
-
-        $('#file_upload-button').removeClass("uploadify-button");
-        $("#file_upload-button").removeAttr("style");
-        $("#file_upload").attr("style","height: 2px;");
-        $('#file_upload-button').addClass("home-button-right");
-        $(".swfupload").attr("style","position: absolute; z-index: 1;right:0px;");
-    });
-
-
-    function retrunBtn(url) {
-        location.href = url;
-    }
-
-
-    function SaveWord() {
-        document.all.DSOFramer.HttpInit();
-        document.all.DSOFramer.HttpAddPostCurrFile("FileData", "会议记录.docx");
-        document.all.DSOFramer.HttpPost('@viewmodel.RerurnHomeButton');
-    }
-
-
-    function ExportWord() {
-        location.href = "/MeetingInfo/ExportWord?fileName="+@Model.MeetingId;
-    }
-</script>
+    <script src="~/Scripts/datetimepicker/jquery.js"></script>
+    <script src="~/Scripts/datetimepicker/jquery.datetimepicker.full.min.js"></script>
+    <script src="~/Scripts/chosen.jquery.js"></script>
+    <script src="~/Scripts/MeetingRecord.js"></script>
+    <script src="~/Scripts/wangEditor/dist/js/wangEditor.js"></script>
 </body>
 </html>

@@ -26,5 +26,20 @@ namespace Meeting.Interface
         int EndMeeting(string meetingId);
 
         int UpdateMeeting(string meetingId);
+
+        /// <summary>
+        /// 获取会议记录详细信息
+        /// </summary>
+        /// <param name="meetingId"></param>
+        /// <returns></returns>
+        DataSet GetMeetingRecord(int meetingId);
+
+
+        /// <summary>
+        /// 修改会议记录详细信息
+        /// </summary>
+        /// <returns></returns>
+        int UpdateMeetingRecord(int loginUserId,CreateMeeting model);
+
     }
 }

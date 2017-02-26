@@ -12,11 +12,9 @@ namespace Meeting.Web.Api.Filters
         {
             if (filterContext.HttpContext.Session["LoginUser"]==null)
             {
-                //filterContext.Result = new RedirectResult(UrlHelper.GenerateUrl("", "login", "Account", null, null, null, false));
                 filterContext.HttpContext.Response.Write("<script>parent.window.location = '/login';</script>");
                 filterContext.HttpContext.Response.End();
             }
-            // base.OnAuthorization(filterContext);
         }
     }
 }

@@ -44,8 +44,11 @@
   <ItemGroup>
     <Compile Include="CreateMeeting.cs" />
     <Compile Include="CreateMeetingModel.cs" />
+    <Compile Include="MeetingRecord.cs" />
+    <Compile Include="MeetingRecordInfo.cs" />
     <Compile Include="mMeeting.cs" />
     <Compile Include="mMeetingIssue.cs" />
+    <Compile Include="mMeetingOpinion.cs" />
     <Compile Include="mMeetingPeople.cs" />
     <Compile Include="mMeetingResources.cs" />
     <Compile Include="mUser.cs" />

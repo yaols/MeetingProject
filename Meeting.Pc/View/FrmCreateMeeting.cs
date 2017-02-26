@@ -40,7 +40,7 @@ namespace Meeting.Pc.View
             model.MeetingName = "检委会" + text1.Text.Trim() + "年  第" + text2.Text.Trim() + "次  总第" + text3.Text.Trim() + "次会议";
             model.StartDate = dateStart.Value.ToString("yyyy-MM-dd HH:mm");
             model.EendDate = dateEnd.Value.ToString("yyyy-MM-dd HH:mm");
-            model.MeetingAddress = watermarkTextBox1.Text.Trim();
+            model.AddressName = watermarkTextBox1.Text.Trim();
             model.MeetingHost = comboBox2.SelectedValue.ToString();
 
             foreach (var item in panelEx12.Controls)

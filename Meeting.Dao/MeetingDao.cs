@@ -49,7 +49,10 @@ namespace Meeting.Dao
             string sql = @"select m.MeetingId,MeetingName,StartDate,EendDate,AddressName,
                                    HostName=(select UserName from m_User u where u.UserId=m.MeetingHost),
                                    SecretaryName=(select UserName from m_User u where u.UserId=m.MeetingSecretary),
+                                   MeetingDocument=(select UserName from m_User u where u.UserId=m.MeetingDocument),
                                    peopleName=(select [dbo].[GetMeetingPeople](@meetingId)),m.IssueName,
+								   LeavePeople=(select [dbo].[GetMeetingPeopleOther](@meetingId,1)),
+								   AttendPeople=(select [dbo].[GetMeetingPeopleOther](@meetingId,2)),
                                    RepostUser=(select UserName from m_User u where u.UserId=m.RepostUser),
                                    Directory=(select top 1 Directory from m_MeetingResources mr where mr.MeetingIssueId=m.MeetingId),
                                    d.DepartName,m.type,m.MeetingType  from m_Meeting m 
@@ -75,10 +78,13 @@ namespace Meeting.Dao
                 model.MeetingName = reader["MeetingName"].ToString();
                 model.StartDate = Convert.ToDateTime(reader["StartDate"]).ToString("yyyy-MM-dd HH:mm");
                 model.EendDate = Convert.ToDateTime(reader["EendDate"]).ToString("yyyy-MM-dd HH:mm");
-                model.MeetingAddress = reader["AddressName"].ToString();
+                model.AddressName = reader["AddressName"].ToString();
                 model.MeetingHost = reader["HostName"].ToString();
                 model.SecretaryName = reader["SecretaryName"].ToString();
+                model.MeetingDocument = reader["MeetingDocument"].ToString();
                 model.PeopleName = reader["PeopleName"].ToString();
+                model.LeavePeople = reader["LeavePeople"].ToString();
+                model.AttendPeople = reader["AttendPeople"].ToString();
                 model.Directory = reader["Directory"].ToString();
                 model.Type = Tool.ToInt(reader["Type"].ToString());
                 model.MeetingType = Tool.ToInt(reader["MeetingType"].ToString());
@@ -92,14 +98,11 @@ namespace Meeting.Dao
         {
             DataSet dataSet = new DataSet();
 
-            string usersql = "select UserId,UserName from [dbo].[m_User];";
-            string addresssql = "select Id,MeetingAddress from [dbo].[m_Address];";
-            string departsql = "select Id,DepartName from [dbo].[m_Depart];";
+            string sql = @"select UserId,UserName from [dbo].[m_User];
+            select Id,MeetingAddress from [dbo].[m_Address];
+            select Id,DepartName from [dbo].[m_Depart];";
 
-            usersql = usersql + addresssql + departsql;
-
-            dataSet = SQLHelper.GetDataSet(usersql);
-            return dataSet;
+            return SQLHelper.GetDataSet(sql);
         }
 
 
@@ -111,7 +114,7 @@ namespace Meeting.Dao
                                    MeetingHost,MeetingDocument,MeetingCreateDate,MeetingType,
                                    MeetingSecretary) values('{0}','{1}',
                                    '{2}','{3}','{4}','{5}','{6}','{7}','{8}');select @@identity", meeting.MeetingName, meeting.StartDate,
-                                    meeting.EendDate, meeting.MeetingAddress, meeting.MeetingHost, meeting.MeetingDocument,
+                                    meeting.EendDate, meeting.AddressName, meeting.MeetingHost, meeting.MeetingDocument,
                                     DateTime.Now.ToString(),
                                     0, meeting.MeetingSecretary);
 
@@ -211,21 +214,19 @@ namespace Meeting.Dao
             string sql = string.Format(@"insert into m_Meeting (MeetingName,StartDate,EendDate,AddressName,MeetingHost,
             MeetingDocument,MeetingCreateUser,MeetingCreateDate,MeetingType,MeetingSecretary,IssueName,RepostUser,DepartId,Type) values (
             '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}');select @@identity", model.year, model.datetimepicker1, model.datetimepicker2, model.address,
-             model.hoseUser, model.wenshu, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, model.depart, 0);
+             model.hoseUser, model.record, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, model.depart, 0);
 
             result = SQLHelper.ExcuteScalarSQL(sql);
             if (result > 0)
             {
-                string saveUrl = string.Format("{0}{1}", Consts.SaveUrlPath, result);
+                //20170224 yaols会议记录不采用word
+                //string saveUrl = string.Format("{0}{1}", Consts.SaveUrlPath, result);
+                //if (!Directory.Exists(saveUrl))
+                //    Directory.CreateDirectory(saveUrl);
+                //File.Copy(Consts.SaveUrlPath + "会议记录.docx", saveUrl + "\\" + result + ".docx");
 
-                if (!Directory.Exists(saveUrl))
-                    Directory.CreateDirectory(saveUrl);
-
-                File.Copy(Consts.SaveUrlPath + "会议记录.docx", saveUrl + "\\" + result + ".docx");
-
-
+                //多媒体资料
                 DataTable resources = SQLHelper.GetTableResources();
-
                 if (!string.IsNullOrEmpty(model.filearray))
                 {
                     model.filearray = model.filearray.Substring(0, model.filearray.Length - 1);
@@ -241,45 +242,70 @@ namespace Meeting.Dao
                             row[4] = result;
                             resources.Rows.Add(row);
 
-                            try
-                            {
-                                File.Copy(Consts.TemporaryPath + fileArray[i], saveUrl + "\\" + fileArray[i]);
-                                File.Delete(Consts.TemporaryPath + fileArray[i]);
-                            }
-                            catch (Exception)
-                            {
 
-                                throw;
-                            }
+                            //try 20170224 yaols会议记录不采用word
+                            //{
+                            //    File.Copy(Consts.TemporaryPath + fileArray[i], saveUrl + "\\" + fileArray[i]);
+                            //    File.Delete(Consts.TemporaryPath + fileArray[i]);
+                            //}
+                            //catch (Exception)
+                            //{
+
+                            //    throw;
+                            //}
                         }
 
                         SQLHelper.BulkToDB(resources, "m_MeetingResources");
                     }
                 }
 
-
+                //参会委员
                 DataTable dt = SQLHelper.GetTableSchema();
-                if (!string.IsNullOrEmpty(model.people))
+                string[] arrayString = Helper.GetStringToArray(model.people);
+                if (arrayString != null)
                 {
-                    model.people = model.people.Substring(0, model.people.Length - 1);
-                    string[] arrayString = model.people.Split(',');
-                    if (arrayString != null)
+                    for (int i = 0; i < arrayString.Length; i++)
                     {
-                        for (int i = 0; i < arrayString.Length; i++)
-                        {
-                            DataRow row = dt.NewRow();
-                            row[1] = result;
-                            row[2] = arrayString[i];
-                            dt.Rows.Add(row);
-                        }
-                        SQLHelper.BulkToDB(dt, "m_MeetingPeople");
+                        DataRow row = dt.NewRow();
+                        row[1] = result;
+                        row[2] = arrayString[i];
+                        dt.Rows.Add(row);
                     }
+                    SQLHelper.BulkToDB(dt, "m_MeetingPeople");
                 }
 
+                //议会其他人员
+                GetMeetingPeopleOther(model.leavePeople, result, 1);
+                GetMeetingPeopleOther(model.attendPeople, result, 2);
             }
 
             return result;
         }
+
+        /// <summary>
+        /// 议会其他人员
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="meetingId"></param>
+        /// <param name="userType">1请假者  2列席者</param>
+        private static void GetMeetingPeopleOther(string str, int meetingId, int userType)
+        {
+            DataTable other = SQLHelper.GetTableMeetingPeopleOther();
+            string[] otherArray = Helper.GetStringToArray(str);
+            if (otherArray != null)
+            {
+                for (int i = 0; i < otherArray.Length; i++)
+                {
+                    DataRow row = other.NewRow();
+                    row[1] = meetingId;
+                    row[2] = otherArray[i];
+                    row[3] = userType;
+                    other.Rows.Add(row);
+                }
+                SQLHelper.BulkToDB(other, "m_MeetingPeopleOther");
+            }
+        }
+
 
 
         public static int EndMeeting(string meetingId)
@@ -298,5 +324,154 @@ namespace Meeting.Dao
 
             return SQLHelper.ExcuteProc("pro_Meeting", paras);
         }
+
+        /// <summary>
+        /// 会议记录
+        /// </summary>
+        /// <param name="meetingId"></param>
+        /// <returns></returns>
+        public static DataSet GetMeetingRecord(int meetingId)
+        {
+            string sql = @"select *, 
+            MeetingHostName=(select UserName from m_User u where m.MeetingHost=u.UserId), 
+            MeetingDocumentName=(select UserName from m_User u where m.MeetingDocument=u.UserId), 
+            MeetingSecretaryName=(select UserName from m_User u where m.MeetingSecretary=u.UserId), 
+            RepostUserName=(select UserName from m_User u where m.RepostUser=u.UserId), 
+            DepartName=(select DepartName from m_Depart d where m.DepartId=d.Id)
+            from m_Meeting m
+            where meetingId=@meetingId and Type=0;
+            select * from m_MeetingPeople p
+            join m_User u on p.UserId=u.UserId
+            where meetingId=@meetingId;
+            select * from m_MeetingPeopleOther p
+            join m_User u on p.UserId=u.UserId
+            where meetingId=@meetingId;
+            select p.Id,p.MeetingId,p.UserId,u.UserName,u.Autograph,
+            Isnull(m.OpinionAction,0) OpinionAction,m.OpinionMsg from m_MeetingPeople p    
+            left join m_MeetingOpinion  m on p.MeetingId=m.MeetingId and p.UserId=m.UserId
+            join m_User u on p.UserId=u.UserId where p.MeetingId=@meetingId;
+            select * from m_MeetingRecord where MeetingId=@meetingId;";
+
+            SqlParameter[] paras = new SqlParameter[]
+           {
+               new SqlParameter("@meetingId",meetingId),
+           };
+
+            return SQLHelper.GetDataSet(sql, paras);
+        }
+
+
+        /// <summary>
+        /// 会议记录修改数据
+        /// </summary>
+        /// <param name="loginUserId"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public static int UpdateMeetingRecord(int loginUserId, CreateMeeting model)
+        {
+            using (SqlConnection conn = new SqlConnection(SQLHelper.strConn))
+            {
+                conn.Open();
+                SqlTransaction trans = conn.BeginTransaction(); //开启事务
+                try
+                {
+                    //修改会议基本数据
+                    string sql = @"update m_Meeting set MeetingName=@MeetingName,StartDate=@StartDate,
+                EendDate=@EendDate,AddressName=@address,MeetingHost=@hoseUser,MeetingDocument=@record,
+                MeetingCreateUser=@loginUserId,MeetingCreateDate=@MeetingCreateDate,
+                MeetingSecretary=@secretary,
+                DepartId=@depart,IssueName=@issue,
+                RepostUser=@report  where MeetingId=@meetingId";
+
+
+                    SqlParameter[] paras = new SqlParameter[]
+                    {
+                        new SqlParameter("@MeetingName",model.year), //会议名称year+count+numcount拼接
+                        new SqlParameter("@StartDate",model.datetimepicker1),
+                        new SqlParameter("@EendDate",model.datetimepicker2),
+                        new SqlParameter("@address",model.address),
+                        new SqlParameter("@hoseUser",model.hoseUser),
+                        new SqlParameter("@record",model.record),
+                        new SqlParameter("@loginUserId",loginUserId),
+                        new SqlParameter("@MeetingCreateDate",DateTime.Now.ToString()),
+                        new SqlParameter("@secretary",model.secretary),
+                        new SqlParameter("@depart",model.depart),
+                        new SqlParameter("@issue",model.issue),
+                        new SqlParameter("@report",model.report),
+                        new SqlParameter("@meetingId",model.meetingId),
+
+                    };
+
+                    SQLHelper.ExcuteSQL(sql, paras);
+
+
+                    //参会委员
+                    sql = "delete from m_MeetingPeople where meetingId=@meetingId";
+                    paras = new SqlParameter[]
+                    {
+                        new SqlParameter("@meetingId",model.meetingId)
+
+                    };
+                    SQLHelper.ExcuteSQL(sql, paras);
+                    DataTable dt = SQLHelper.GetTableSchema();
+                    string[] arrayString = Helper.GetStringToArray(model.people);
+                    if (arrayString != null)
+                    {
+                        for (int i = 0; i < arrayString.Length; i++)
+                        {
+                            DataRow row = dt.NewRow();
+                            row[1] = model.meetingId;
+                            row[2] = arrayString[i];
+                            dt.Rows.Add(row);
+                        }
+                        SQLHelper.BulkToDB(dt, "m_MeetingPeople");
+                    }
+
+
+                    //议会其他人员
+                    sql = "delete from m_MeetingPeopleOther where meetingId=@meetingId";
+                    paras = new SqlParameter[]
+                    {
+                        new SqlParameter("@meetingId",model.meetingId)
+
+                    };
+                    SQLHelper.ExcuteSQL(sql, paras);
+                    GetMeetingPeopleOther(model.leavePeople, Convert.ToInt32(model.meetingId), 1);
+                    GetMeetingPeopleOther(model.attendPeople, Convert.ToInt32(model.meetingId), 2);
+
+
+                    //会议记录表新增数据
+                    sql = @"if(select count(1) from m_MeetingRecord where MeetingId=@meetingId)>0
+                    begin
+                    update m_MeetingRecord set MeetingRecorder=@MeetingRecorder,LoginUserId=@LoginUserId,
+                    uctime=@uctime where MeetingId=@meetingId
+                    end
+                    else
+                    begin
+                    insert into m_MeetingRecord values(@meetingId,@MeetingRecorder,
+                    @ctime,@LoginUserId,@uctime)
+                    end";
+                    paras = new SqlParameter[]
+                    {
+                        new SqlParameter("@meetingId",model.meetingId),
+                        new SqlParameter("@MeetingRecorder",model.editor),
+                        new SqlParameter("@LoginUserId",loginUserId),
+                        new SqlParameter("@uctime",DateTime.Now.ToString()),
+                        new SqlParameter("@ctime",DateTime.Now.ToString()),
+                    };
+                    SQLHelper.ExcuteSQL(sql, paras);
+
+
+                    trans.Commit();
+                }
+                catch (Exception)
+                {
+                    trans.Rollback();
+                    return 0;
+                }
+            }
+            return 1;
+        }
+
     }
 }

@@ -47,6 +47,10 @@
       <HintPath>..\packages\log4net.2.0.5\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -72,9 +76,6 @@
     <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
       <Private>True</Private>
@@ -190,6 +191,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\HelpPage\HelpPage.css" />
+    <Content Include="autograph\王明军.png" />
+    <Content Include="autograph\张建生.png" />
     <Content Include="bootstrap\css\bootstrap-responsive.css" />
     <Content Include="bootstrap\css\bootstrap-responsive.min.css" />
     <Content Include="bootstrap\css\bootstrap.css" />
@@ -256,6 +259,7 @@
     <Content Include="css\chosen-sprite.png" />
     <Content Include="css\chosen.css" />
     <Content Include="css\main.css" />
+    <Content Include="css\MeetingPreview.css" />
     <Content Include="css\prism.css" />
     <Content Include="css\style.css" />
     <Content Include="db\MeetingProject.mdf" />
@@ -287,6 +291,7 @@
     <Content Include="Scripts\datetimepicker\jquery.js" />
     <Content Include="Scripts\jQuery-video\css\video-js.min.css" />
     <Content Include="Scripts\jQuery-video\js\video.min.js" />
+    <Content Include="Scripts\jquery.jqprint-0.3.js" />
     <Content Include="Scripts\lhgdialog\favicon.ico" />
     <Content Include="Scripts\lhgdialog\index.html" />
     <Content Include="Scripts\lhgdialog\jquery.dialog.plugin.js" />
@@ -615,6 +620,8 @@
     <Content Include="Scripts\lhgdialog\_doc\皮肤共用.css" />
     <Content Include="Scripts\lhgdialog\文件目录结构说明.txt" />
     <Content Include="Scripts\main.js" />
+    <Content Include="Scripts\MeetingCreate.js" />
+    <Content Include="Scripts\MeetingRecord.js" />
     <Content Include="Scripts\pager.js" />
     <Content Include="Scripts\prism.js" />
     <Content Include="Scripts\uploadify\Change Log.txt" />
@@ -626,6 +633,13 @@
     <Content Include="Scripts\uploadify\uploadify.swf" />
     <Content Include="Scripts\uploadify\__MACOSX\._Change Log.txt" />
     <Content Include="Scripts\uploadify\__MACOSX\._uploadify.swf" />
+    <Content Include="Scripts\wangEditor\dist\css\wangEditor.css" />
+    <Content Include="Scripts\wangEditor\dist\css\wangEditor.min.css" />
+    <Content Include="Scripts\wangEditor\dist\fonts\icomoon.svg" />
+    <Content Include="Scripts\wangEditor\dist\js\lib\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\wangEditor\dist\js\lib\jquery-2.2.1.js" />
+    <Content Include="Scripts\wangEditor\dist\js\wangEditor.js" />
+    <Content Include="Scripts\wangEditor\dist\js\wangEditor.min.js" />
     <Content Include="界面链接.txt" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\1-imge.jpg" />
@@ -680,7 +694,7 @@
     <Content Include="Views\Shared\_Top.cshtml" />
     <Content Include="Views\MeetingInfo\MaterialInfo.cshtml" />
     <Content Include="Views\MeetingInfo\MaterialVide.cshtml" />
-    <Content Include="Views\MeetingInfo\MeetingRecord.cshtml" />
+    <Content Include="Views\MeetingInfo\MeetingRecord1.cshtml" />
     <Content Include="Views\MeetingInfo\MeetingSign.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\MeetingInfo\MeetingCreate.cshtml" />
@@ -705,6 +719,12 @@
     <Content Include="Scripts\lhgdialog\skins\igreen\Thumbs.db" />
     <Content Include="Scripts\lhgdialog\_doc\commercial_license.doc" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\MeetingInfo\MeetingRecord.cshtml" />
+    <Content Include="Scripts\wangEditor\dist\css\wangEditor.less" />
+    <Content Include="Scripts\wangEditor\dist\fonts\icomoon.eot" />
+    <Content Include="Scripts\wangEditor\dist\fonts\icomoon.ttf" />
+    <Content Include="Scripts\wangEditor\dist\fonts\icomoon.woff" />
+    <Content Include="Views\MeetingInfo\MeetingPreview.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,74 @@
+﻿
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.h3 {
+    text-align: center;
+    font-family: 'PingFangSC-Regular', 'PingFang SC';
+    font-weight: 400;
+    font-style: normal;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-bottom: 40px;
+}
+
+.fl {
+    float: left;
+    font-family: 'Arial-BoldMT', 'Arial Bold', 'Arial';
+    font-weight: 700;
+    font-size: 16px;
+}
+
+.f2 {
+    float: left;
+    font-family: 'ArialMT', 'Arial';
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.fr {
+    float: right;
+}
+
+.General li {
+    margin-top: 10px;
+    overflow: hidden;
+    line-height: 30px;
+}
+
+.mr-20 {
+    margin-right: 20px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.clearfix {
+    overflow: hidden;
+}
+
+.approval {
+    height: 100px;
+    line-height: 100px;
+    border-bottom: 1px solid #000;
+    margin-bottom: 20px;
+}
+
+.u375 {
+    width: 65px;
+    white-space: nowrap;
+    font-family: 'Arial-BoldMT', 'Arial Bold', 'Arial';
+    font-weight: 700;
+    font-size: 16px;
+    margin-top: 40px;
+}
+
+.fontStyle {
+    font-family: 'ArialMT', 'Arial';
+    font-weight: 400;
+    font-size: 15px;
+}

@@ -18,12 +18,6 @@ namespace Meeting.Web.Api.Controllers
         {
             PageSize = Tool.ToInt(ConfigurationManager.AppSettings["pagesize"].ToString());
 
-            //if (UserSession == null) 
-            //{
-            //    HttpContext.Response.Write("<script>parent.window.location = '/login';</script>");
-            //    HttpContext.Response.End();
-            //}
-
         }
 
         public int PageSize { get; set; }

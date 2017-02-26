@@ -1,6 +1,7 @@
 ﻿using log4net;
 using Meeting.BLL;
 using Meeting.Common;
+using Meeting.Common.BLL;
 using Meeting.Entity;
 using Meeting.Entity.ResultModel;
 using Meeting.Interface;
@@ -8,6 +9,7 @@ using Meeting.Web.Api.Models;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -75,7 +77,7 @@ namespace Meeting.Web.Api.Controllers
             }
             catch (Exception)
             {
-                
+
                 throw;
             }
 
@@ -96,29 +98,29 @@ namespace Meeting.Web.Api.Controllers
             model.Type = 1;
             ViewBag.TitleViewModel = model;
             string message = "";
-            string url = string.Format("{0}{1}/{2}", Consts.DwonUrlPath,search.Directory,search.ResourceName);
-            WordHelper.Word2HtmlFromFileSaveFileHtml(url,Consts.SaveUrlPath + "1.html", out message);
+            string url = string.Format("{0}{1}/{2}", Consts.DwonUrlPath, search.Directory, search.ResourceName);
+            WordHelper.Word2HtmlFromFileSaveFileHtml(url, Consts.SaveUrlPath + "1.html", out message);
 
 
             //Tuple<int, string> tuple=GetTypeUrl(search.ResourcesType,url);
-            Tuple<int, string> tuple = GetTypeUrl(search.ResourcesType.ToLower(),Consts.DwonUrlPath + "1.html",url);
+            Tuple<int, string> tuple = GetTypeUrl(search.ResourcesType.ToLower(), Consts.DwonUrlPath + "1.html", url);
             return View(tuple);
         }
 
 
-        private Tuple<int, string> GetTypeUrl(string type,string filename,string url) 
+        private Tuple<int, string> GetTypeUrl(string type, string filename, string url)
         {
-            Tuple<int, string> tuple = new Tuple<int, string>(0,"");
+            Tuple<int, string> tuple = new Tuple<int, string>(0, "");
 
             if (type == ".txt" || type == ".doc" || type == ".docx")
             {
                 tuple = new Tuple<int, string>(1, filename);
             }
-            else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".bmp"||type==".jpeg")
+            else if (type == ".png" || type == ".jpg" || type == ".gif" || type == ".bmp" || type == ".jpeg")
             {
                 tuple = new Tuple<int, string>(2, url);
             }
-            else if (type == ".mp4" || type == ".wmv" || type == ".amv"||type==".mp3")
+            else if (type == ".mp4" || type == ".wmv" || type == ".amv" || type == ".mp3")
             {
                 tuple = new Tuple<int, string>(3, url);
             }
@@ -137,27 +139,77 @@ namespace Meeting.Web.Api.Controllers
 
 
         /// <summary>
-        /// 获取会议记录
+        /// 获取会议记录 yaols20170224  
+        ///  string meetingRecord = "JumpButton('" + "/MeetingInfo/MeetingRecord?MeetingId=" + Model.MeetingId + "&Directory=" + Model.Directory + "')";
         /// </summary>
+        /// <returns></returns>
+        //public ActionResult MeetingRecord(MeetingSearch search)
+        //{
+        //    TitleViewModel model = new TitleViewModel();
+        //    //mMeeting meetingModel = imeeting.GetMeetingModel(search.MeetingId);
+        //    string message = "";
+        //    mMeeting meetingModel = new mMeeting();
+        //    meetingModel.MeetingId = search.MeetingId;
+        //    model.Title = "材料: 会议记录";
+        //    model.TopTitle = "材料: 会议记录";
+        //    model.RerurnButton = "/MeetingInfo/Index?MeetingId=" + search.MeetingId;
+        //    ViewBag.TitleViewModel = model;
+        //    //model.RerurnHomeButton = Consts.UrlPath+"/Upload/SaveWord?directory="+search.MeetingId;
+        //    meetingModel.Directory = string.Format("{0}{1}/{2}", Consts.DwonUrlPath,search.MeetingId, search.MeetingId + ".docx");
+        //    WordHelper.Word2HtmlFromFileSaveFileHtml(meetingModel.Directory,Consts.SaveUrlPath+"1.html", out message);
+        //    meetingModel.Directory = string.Format("{0}{1}", Consts.DwonUrlPath, "1.html");
+
+        //    return View(meetingModel);
+        //}
+
+        /// <summary>
+        /// 会议记录 改版20170224
+        /// </summary>
+        /// <param name="search"></param>
         /// <returns></returns>
         public ActionResult MeetingRecord(MeetingSearch search)
         {
             TitleViewModel model = new TitleViewModel();
-            //mMeeting meetingModel = imeeting.GetMeetingModel(search.MeetingId);
-            string message = "";
-            mMeeting meetingModel = new mMeeting();
-            meetingModel.MeetingId = search.MeetingId;
-            model.Title = "材料: 会议记录";
-            model.TopTitle = "材料: 会议记录";
+            model.Title = "会议记录";
+            model.TopTitle = "会议记录";
             model.RerurnButton = "/MeetingInfo/Index?MeetingId=" + search.MeetingId;
             ViewBag.TitleViewModel = model;
-            //model.RerurnHomeButton = Consts.UrlPath+"/Upload/SaveWord?directory="+search.MeetingId;
-            meetingModel.Directory = string.Format("{0}{1}/{2}", Consts.DwonUrlPath,search.MeetingId, search.MeetingId + ".docx");
-            WordHelper.Word2HtmlFromFileSaveFileHtml(meetingModel.Directory,Consts.SaveUrlPath+"1.html", out message);
-            meetingModel.Directory = string.Format("{0}{1}", Consts.DwonUrlPath, "1.html");
 
-            return View(meetingModel);
+            CreateMeetingModel meetingUser = imeeting.GetCreteMeetingModel("0");
+            DataSet dataSet = imeeting.GetMeetingRecord(search.MeetingId);
+            MeetingRecordBLL recordBLL = new MeetingRecordBLL();
+            MeetingRecord meetingRecord = recordBLL.GetMeetingRecord(dataSet);
+            meetingRecord.UserList = meetingUser.UserList;
+            meetingRecord.DepartList = meetingUser.DepartList;
+
+            return View(meetingRecord);
         }
+
+        /// <summary>
+        /// 会议记录保存数据
+        /// </summary>
+        [HttpPost]
+        [ValidateInput(false)]
+        public ActionResult MeetingRecord(string json)
+        {
+            ResultBase result = new ResultBase();
+
+            CreateMeeting model = JsonConvert.DeserializeObject<CreateMeeting>(json);
+
+            if (imeeting.UpdateMeetingRecord(UserSession.UserId, model) > 0)
+            {
+                result.Result = ResultCode.Ok;
+                result.Msg = "保存会议记录成功";
+            }
+            else
+            {
+                result.Result = ResultCode.ServerError;
+                result.Msg = "保存会议记录失败";
+            }
+
+            return Json(result);
+        }
+
 
         /// <summary>
         /// 检委会决定  签字
@@ -177,8 +229,7 @@ namespace Meeting.Web.Api.Controllers
         /// <returns></returns>
         public ActionResult MeetingCreate()
         {
-            CreateMeetingModel model = new CreateMeetingModel();
-            model = imeeting.GetCreteMeetingModel("0");
+            CreateMeetingModel model = imeeting.GetCreteMeetingModel("0");
             return View(model);
         }
 
@@ -212,25 +263,19 @@ namespace Meeting.Web.Api.Controllers
         public JsonResult MeetingCreate(string json)
         {
             ResultBase result = new ResultBase();
-            try
+
+            CreateMeeting model = JsonConvert.DeserializeObject<CreateMeeting>(json);
+            if (imeeting.InsertCreateMeeting(model, UserSession.UserId) > 0)
             {
-                CreateMeeting model = JsonConvert.DeserializeObject<CreateMeeting>(json);
-                if (imeeting.InsertCreateMeeting(model, UserSession.UserId) > 0)
-                {
-                    result.Result = ResultCode.Ok;
-                    result.Msg = "保存会议成功";
-                }
-                else
-                {
-                    result.Result = ResultCode.ServerError;
-                    result.Msg = "保存会议失败";
-                }
+                result.Result = ResultCode.Ok;
+                result.Msg = "保存会议成功";
             }
-            catch (Exception)
+            else
             {
-                
-                throw;
+                result.Result = ResultCode.ServerError;
+                result.Msg = "保存会议失败";
             }
+
 
             return Json(result);
         }
@@ -255,9 +300,9 @@ namespace Meeting.Web.Api.Controllers
         }
 
 
-        public void ExportWord(string fileName) 
+        public void ExportWord(string fileName)
         {
-            string url = string.Format(@"{0}{1}\{2}", Consts.SaveUrlPath,fileName, fileName+".docx");
+            string url = string.Format(@"{0}{1}\{2}", Consts.SaveUrlPath, fileName, fileName + ".docx");
             //输出word
             System.IO.FileInfo file = new System.IO.FileInfo(url);
             System.Web.HttpContext.Current.Response.Clear();
@@ -279,8 +324,8 @@ namespace Meeting.Web.Api.Controllers
         }
 
 
-        public JsonResult DelMeeting(string meetingId) 
-        {    
+        public JsonResult DelMeeting(string meetingId)
+        {
             ResultBase result = new ResultBase();
             if (imeeting.UpdateMeeting(meetingId) > 0)
             {
@@ -303,15 +348,15 @@ namespace Meeting.Web.Api.Controllers
         {
             ResultBase result = new ResultBase();
 
-            if (iresources.DelResource(Id) > 0) 
+            if (iresources.DelResource(Id) > 0)
             {
-                string url = string.Format("{0}{1}\\{2}",Consts.SaveUrlPath,Directory,filename);
+                string url = string.Format("{0}{1}\\{2}", Consts.SaveUrlPath, Directory, filename);
                 if (Helper.DelFileUrl(url) > 0)
                 {
                     result.Result = ResultCode.Ok;
                     result.Msg = "删除文件" + filename + "成功";
                 }
-                else 
+                else
                 {
                     result.Result = ResultCode.Ok;
                     result.Msg = "删除文件" + filename + "失败";
@@ -348,6 +393,29 @@ namespace Meeting.Web.Api.Controllers
             //}
 
             return Json(result);
+        }
+
+
+        /// <summary>
+        /// 会议预览
+        /// </summary>
+        /// <param name="meetingId"></param>
+        /// <returns></returns>
+        public ActionResult MeetingPreview(string meetingId)
+        {
+            TitleViewModel model = new TitleViewModel();
+            model.Title = "会议预览";
+            model.TopTitle = "会议预览";
+            model.RerurnButton = "/MeetingInfo/MeetingRecord?MeetingId=" + meetingId;
+            ViewBag.TitleViewModel = model;
+
+            DataSet dataSet = new DataSet();
+            if (!string.IsNullOrEmpty(meetingId))
+                dataSet = imeeting.GetMeetingRecord(Convert.ToInt32(meetingId));
+            MeetingRecordBLL recordBLL = new MeetingRecordBLL();
+            MeetingRecord meetingRecord = recordBLL.GetMeetingRecord(dataSet);
+
+            return View(meetingRecord);
         }
     }
 }

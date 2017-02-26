@@ -64,5 +64,20 @@ namespace Meeting.Common
 
             }
         }
+
+        /// <summary>
+        /// 字符串分割,转换数组
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public static string[] GetStringToArray(string str) 
+        {
+            if (!string.IsNullOrEmpty(str)) 
+            {
+                string strSubstring = str.Substring(0, str.Length - 1);
+                return strSubstring.Split(',');
+            }
+            return new string[0];
+        }
     }
 }

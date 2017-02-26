@@ -1,0 +1,169 @@
+﻿@using Meeting.Entity
+@using Meeting.Web.Api.Models
+@model MeetingRecord
+@{
+    TitleViewModel viewmodel = ViewBag.TitleViewModel;
+}
+
+<meta http-equiv="X-UA-Compatible" content="IE=9" />
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>会议记录</title>
+    <link href="~/css/main.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+    <script src="~/Scripts/jquery.jqprint-0.3.js"></script>
+</head>
+<body>
+    <div class="home">
+
+        <!--layout-top-->
+        <div class="layout-top">
+
+            <ul class="layout-top-ul">
+                <li class="home-li-font">@viewmodel.TopTitle</li>
+            </ul>
+
+            <ul class="home-top-ulbtn">
+                <li class="ulbtn-btn">
+                    <div class="home-li-button" onclick="retrunBtn('@viewmodel.RerurnButton')">返回</div>
+                </li>
+                <li class="ulbtn-btn">
+                    <div class="home-li-button2" onclick="Print()">打印</div>
+                </li>
+            </ul>
+
+        </div>
+        <!--/layout-top-->
+
+        <div style="width:800px; margin:0 auto; border:1px solid #000;margin-top:40px;margin-bottom:40px;">
+            <div id="printContainer">
+                <link href="~/css/MeetingPreview.css" rel="stylesheet" />
+                <div class="h3">
+                    <span>邯山区人民检察院检委会会议记录</span>
+                </div>
+                <div style="margin-left:120px;">
+
+                    <ul class="General">
+                        <li>
+                            <p class="fl">会议名称：</p>
+                            <p class="f2">@Model.MeetingName</p>
+                        </li>
+                        <li>
+                            <p class="fl">会议地点：</p>
+                            <p class="f2">@Model.MeetingAddress</p>
+                        </li>
+                        <li>
+                            <p class="fl">会议时间：</p>
+                            <p class="f2">@Model.StartDate 至 @Model.EendDate</p>
+                        </li>
+                        <li>
+                            <p class="fl">参会委员：</p>
+                            <p class="f2">@Model.PeopleNickName</p>
+                        </li>
+                        <li>
+                            <p class="fl">主 持 人：</p>
+                            <p class="f2">@Model.MeetingHostName</p>
+                        </li>
+                        <li>
+                            <p class="fl">记 录 人：</p>
+                            <p class="f2">@Model.MeetingDocumentName</p>
+                        </li>
+                        <li>
+                            <p class="fl">请 假 者：</p>
+                            <p class="f2">@Model.LeaveNickName</p>
+                        </li>
+                        <li>
+                            <p class="fl">列 席 者：</p>
+                            <p class="f2">@Model.AttendNickName</p>
+                        </li>
+                    </ul>
+
+                    <div class="u375">
+                        <p><span>会议议题</span></p>
+                    </div>
+
+
+
+                    <p>1. @Model.IssueName</p>
+                    <div class="clearfix" style="margin-top:10px;">
+                        <p class="fl mr-20">申请部门：<span class="fontStyle">@Model.DepartName</span></p>
+                        <p class="fl">汇报人：<span class="fontStyle">@Model.RepostUserName</span></p>
+                    </div>
+                    <div class="u375">
+                        <p><span>会议纪要</span></p>
+                    </div>
+                    <div style="margin-top:10px;">
+                        @Html.Raw(Model.MeetingRecordInfo.MeetingRecorder)
+                    </div>
+
+                    <div class="u375">
+                        <p><span>审批内容</span></p>
+                    </div>
+                    <ul>
+                        @if (Model.MeetingOpinion != null)
+                        {
+                            foreach (var item in Model.MeetingOpinion)
+                            {
+                                string msg = "";
+                                if (item.OpinionAction == 0)
+                                {
+                                    msg = "未处理";
+                                }
+                                else if (item.OpinionAction == 1)
+                                {
+                                    msg = "同意";
+                                }
+                                else
+                                {
+                                    msg = "不同意";
+                                }
+                                item.Autograph = "/autograph/" + item.Autograph;
+
+                                <li class="approval clearfix">
+                                    <p class="fl mr-20">委员：<span class="fontStyle">@item.UserName</span></p>
+                                    <p class="fl">审批意见： <span class="fontStyle">@msg</span></p>
+                                    @if (item.OpinionAction != 0)
+                                    {
+                                        <p class="fr">
+                                            <span style="display: inline-block; height: 100px;">
+
+
+                                                <img style="height: 50px; margin-top:16px;" src="@item.Autograph" />
+
+
+                                            </span>
+                                        </p>
+                                        <p class="fr" style="height:100px;"><span style="display: inline-block; font-weight: 700; font-size: 16px;">签字：</span></p>
+                                    }
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+
+
+        })
+
+        //打印
+        function Print() {
+            $("#printContainer").jqprint();
+        }
+
+        //链接跳转
+        function retrunBtn(url) {
+            location.href = url;
+        }
+
+    </script>
+
+</body>
+</html>

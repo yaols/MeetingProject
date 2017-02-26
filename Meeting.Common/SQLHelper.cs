@@ -12,7 +12,7 @@ namespace Meeting.Common
     {
 
         //连接字符串
-        static string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
+       public static string strConn = ConfigurationManager.ConnectionStrings["DefaultConnection"].ToString();
 
 
 
@@ -406,6 +406,10 @@ namespace Meeting.Common
 
         #endregion
 
+        /// <summary>
+        /// 参会委员表
+        /// </summary>
+        /// <returns></returns>
         public static DataTable GetTableSchema()
         {
             DataTable dt = new DataTable();
@@ -413,6 +417,21 @@ namespace Meeting.Common
                 new DataColumn("Id",typeof(int)),  
         new DataColumn("MeetingId",typeof(int)),  
         new DataColumn("UserId",typeof(int))});
+            return dt;
+        }
+
+        /// <summary>
+        /// 议会人员其他标示
+        /// </summary>
+        /// <returns></returns>
+        public static DataTable GetTableMeetingPeopleOther() 
+        {
+            DataTable dt = new DataTable();
+            dt.Columns.AddRange(new DataColumn[]{  
+                new DataColumn("Id",typeof(int)),  
+                new DataColumn("MeetingId",typeof(int)),  
+                new DataColumn("UserId",typeof(int)),
+                new DataColumn("UserType",typeof(int)), });
             return dt;
         }
 
@@ -428,5 +447,6 @@ namespace Meeting.Common
             });
             return dt;
         }
+
     }
 }

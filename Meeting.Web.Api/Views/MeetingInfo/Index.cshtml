@@ -52,12 +52,19 @@
         <ul class="layou-info-ul">
             <li class="layou-info-li">会议名称: @Model.MeetingName</li>
             <li class="layou-info-li">计划开始时间: @Model.StartDate   <span style="margin-left:40px"></span>   计划结束时间: @Model.EendDate</li>
-            <li class="layou-info-li">会议地点:@Model.MeetingAddress</li>
+            <li class="layou-info-li">会议地点:@Model.AddressName</li>
+            <li class="layou-info-li">主持人:@Model.MeetingHost</li>
+            <li class="layou-info-li">记录员:@Model.MeetingDocument</li>
+            <li class="layou-info-li">秘书:@Model.SecretaryName</li>
             <li class="layou-info-li">
                 参会委员:@Model.PeopleName
             </li>
-            <li class="layou-info-li">主持人:@Model.MeetingHost</li>
-            <li class="layou-info-li">秘书:@Model.SecretaryName</li>
+            <li class="layou-info-li">
+                请假人员:@Model.LeavePeople
+            </li>
+            <li class="layou-info-li">
+                列席人员:@Model.AttendPeople
+            </li>
         </ul>
 
         <div class="layou-info-top">
@@ -76,7 +83,7 @@
 
         @{
             string materialinfo = "JumpButton('" + "/MeetingInfo/MaterialInfo?MeetingId=" + Model.MeetingId + "&Directory=" + Model.Directory + "')";
-            string meetingRecord = "JumpButton('" + "/MeetingInfo/MeetingRecord?MeetingId=" + Model.MeetingId + "&Directory=" + Model.Directory + "')";
+            string meetingRecord = "JumpButton('" + "/MeetingInfo/MeetingRecord?MeetingId=" + Model.MeetingId+"')";
         }
         <div class="layou-div-content">
             <ul class="layou-div-ul">

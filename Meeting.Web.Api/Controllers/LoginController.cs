@@ -35,10 +35,7 @@ namespace Meeting.Web.Api.Controllers
             {
                 model.UserName = HttpUtility.UrlDecode(model.UserName);
                 model.UserPass =Tool.MD5(HttpUtility.UrlDecode(model.UserPass));
-                int roleId = 2;
-                umodel = ilogin.LoginUserInfo(model.UserName,model.UserPass,roleId);
-
-
+                umodel = ilogin.LoginUserInfo(model.UserName, model.UserPass,Consts.SecretaryType);
 
                 if (umodel.PassWord == model.UserPass && umodel.UserName == model.UserName)
                 {

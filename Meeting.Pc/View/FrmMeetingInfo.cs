@@ -88,7 +88,7 @@ namespace Meeting.Pc.View
             label4.Text = model.MeetingName;
             label5.Text = model.StartDate;
             label6.Text = model.EendDate;
-            label11.Text = model.MeetingAddress;
+            label11.Text = model.AddressName;
             label14.Text = model.MeetingHost;
             label22.Text = model.SecretaryName;
             label12.Text = model.PeopleName;

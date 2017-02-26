@@ -102,5 +102,28 @@ namespace Meeting.BLL
         {
             return MeetingDao.UpdateMeeting(meetingId);
         }
+
+        /// <summary>
+        /// 获取会议记录详细信息
+        /// </summary>
+        /// <param name="meetingId"></param>
+        /// <returns></returns>
+        public DataSet GetMeetingRecord(int meetingId) 
+        {
+            return MeetingDao.GetMeetingRecord(meetingId);
+        }
+
+        /// <summary>
+        /// 会议记录修改数据
+        /// </summary>
+        /// <param name="loginUserId"></param>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        public int UpdateMeetingRecord(int loginUserId, CreateMeeting model) 
+        {
+            model.year = "检委会" + model.year + "年  第" + model.count + "次  总" + model.numcount + "次会议";
+            return MeetingDao.UpdateMeetingRecord(loginUserId,model);
+        }
+
     }
 }

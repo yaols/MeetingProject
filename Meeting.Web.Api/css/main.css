@@ -112,10 +112,10 @@ input {
 
 /*主界面*/
 .home {
-    border: 1px solid #e5e5e5;
+    border: 1px solid #ccc;
     width: 1024px;
-    height: 600px;
     margin: 30px auto;
+    min-height:600px;
 }
 
 .home-top {
@@ -190,6 +190,19 @@ input {
 .home-li-button1 {
     border-radius: 10px;
     background-color: #ff0000;
+    width: 60px;
+    height: 20px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 20px;
+    float: right;
+    margin: 0 5px 0 5px;
+    cursor: pointer;
+}
+
+.home-li-button2 {
+    border-radius: 10px;
+    background-color: #ffffff;
     width: 60px;
     height: 20px;
     font-size: 10px;
@@ -551,7 +564,7 @@ input {
 /*创建会议*/
 .create-meeting-ul {
     list-style-type: none;
-    height: 40px;
+    height: 20px;
 }
 
 .create-meeting-li {
@@ -581,7 +594,7 @@ input {
 }
 
 .create-meeting-com {
-    width: 120px;
+    width: 116px;
     height: 30px;
 }
 
@@ -655,6 +668,12 @@ input {
     border: 1px solid #8396ef;
     margin: 5px 10px 0 10px;
     height: 200px;
+}
+
+.create-div-content1 {
+    border: 1px solid #8396ef;
+    margin: 5px 10px 0 10px;
+    height: 40px;
 }
 
 .create-ul-li {
