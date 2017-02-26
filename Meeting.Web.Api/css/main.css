@@ -419,28 +419,31 @@ input {
 .layou-ul-li2 {
     font-size: 12px;
     font-weight: bold;
-    width: 450px;
+    width: 370px;
     text-align: center;
     float: left;
     line-height: 35px;
+    height:35px;
 }
 
 .layou-ul-li3 {
+    font-size: 12px;
+    font-weight: bold;
+    width: 180px;
+    text-align: center;
+    float: left;
+    line-height: 35px;
+    height:35px;
+}
+
+.layou-ul-li4 {
     font-size: 12px;
     font-weight: bold;
     width: 120px;
     text-align: center;
     float: left;
     line-height: 35px;
-}
-
-.layou-ul-li4 {
-    font-size: 12px;
-    font-weight: bold;
-    width: 100px;
-    text-align: center;
-    float: left;
-    line-height: 35px;
+     height:35px;
 }
 
 .layou-ul-li5 {
@@ -620,7 +623,7 @@ input {
 .create-ul-li2 {
     font-size: 12px;
     font-weight: bold;
-    width: 600px;
+    width: 500px;
     text-align: center;
     float: left;
     line-height: 35px;
@@ -707,7 +710,14 @@ input {
 
 
 .create-li-text2 {
-    width: 600px;
+    width: 500px;
+    height: 30px;
+    border: 1px solid #DADDDF;
+    margin-top: 4px;
+}
+
+.create-li-text4 {
+    width: 160px;
     height: 30px;
     border: 1px solid #DADDDF;
     margin-top: 4px;

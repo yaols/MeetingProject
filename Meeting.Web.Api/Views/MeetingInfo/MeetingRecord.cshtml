@@ -39,6 +39,9 @@
                     <div class="home-li-button" onclick="retrunBtn('@viewmodel.RerurnButton')">返回</div>
                 </li>
                 <li class="ulbtn-btn">
+                    <div class="home-li-button" id="refresh">刷新</div>
+                </li>
+                <li class="ulbtn-btn">
                     <div class="home-li-button2" id="recordSave">保存</div>
                 </li>
                 <li class="ulbtn-btn">
@@ -181,7 +184,7 @@
                     <input class="create-li-text2" value="@Model.IssueName" id="issue" />
                 </li>
                 <li class="layou-ul-li3">
-                    <select class="create-li-text3" id="depart">
+                    @*<select class="create-li-text3" id="depart">
                         @foreach (var item in Model.DepartList)
                         {
                             if (item.Id == Model.DepartId)
@@ -194,7 +197,8 @@
                             }
 
                         }
-                    </select>
+                    </select>*@
+                    <input class="create-li-text4" value="@Model.DepartName" id="newDepartName" />
                 </li>
                 <li class="layou-ul-li4">
                     <select class="create-li-text3" id="report">
@@ -233,7 +237,7 @@
             <font class="layou-info-font">审批内容</font>
         </div>
 
-        <div style="margin-bottom:10px;">
+        <div style="margin-bottom:10px;" id="operation">
             @if (Model.MeetingOpinion != null)
             {
                 foreach (var item in Model.MeetingOpinion)

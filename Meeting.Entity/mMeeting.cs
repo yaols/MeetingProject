@@ -82,5 +82,7 @@ namespace Meeting.Entity
         public string RepostUserName { get; set; }
 
         public string DepartName { get; set; }
+
+        public string newDepartName { get; set; }
     }
 }

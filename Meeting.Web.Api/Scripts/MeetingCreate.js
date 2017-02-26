@@ -126,9 +126,9 @@ function PostCreateMeeting() {
     });
 
     model.issue = $("#issue").val();
-    model.depart = $("#depart").find("option:selected").attr("id");
+    //model.depart = $("#depart").find("option:selected").attr("id");
     model.report = $("#report").find("option:selected").attr("id");
-
+    model.newDepartName = $("#newDepartName").val();
 
     lhgdialog.masklayer('loading.gif');
     $.post('/MeetingInfo/MeetingCreate',

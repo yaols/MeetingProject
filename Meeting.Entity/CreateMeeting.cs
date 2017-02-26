@@ -63,5 +63,10 @@ namespace Meeting.Entity
         /// 会议记录富文本框
         /// </summary>
         public string editor { get; set; }
+
+        /// <summary>
+        /// 手动输入部门名称 20170226
+        /// </summary>
+        public string newDepartName { get; set; }
     }
 }

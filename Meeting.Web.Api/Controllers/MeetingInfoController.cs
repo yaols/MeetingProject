@@ -417,5 +417,20 @@ namespace Meeting.Web.Api.Controllers
 
             return View(meetingRecord);
         }
+
+        /// <summary>
+        /// 根据会议ID 获取委员评审意见  用于刷新
+        /// </summary>
+        /// <param name="meetingId"></param>
+        /// <returns></returns>
+        public ActionResult GetMeetingOpinion(string meetingId) 
+        {
+            var list = imeeting.GetMeetingOpinion(meetingId);
+
+            return Json(list,JsonRequestBehavior.AllowGet);
+        }
+
+
+
     }
 }

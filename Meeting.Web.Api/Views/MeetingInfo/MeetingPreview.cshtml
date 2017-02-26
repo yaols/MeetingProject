@@ -42,104 +42,102 @@
                 <div class="h3">
                     <span>邯山区人民检察院检委会会议记录</span>
                 </div>
-                <div style="margin-left:120px;">
+                <div style="padding:0 50px">
+                    <div style="height:860px;">
+                        <ul class="General">
+                            <li>
+                                <p class="fl">会议名称：</p>
+                                <p class="f2">@Model.MeetingName</p>
+                            </li>
+                            <li>
+                                <p class="fl">会议地点：</p>
+                                <p class="f2">@Model.MeetingAddress</p>
+                            </li>
+                            <li>
+                                <p class="fl">会议时间：</p>
+                                <p class="f2">@Model.StartDate 至 @Model.EendDate</p>
+                            </li>
+                            <li>
+                                <p class="fl">参会委员：</p>
+                                <p class="f2">@Model.PeopleNickName</p>
+                            </li>
+                            <li>
+                                <p class="fl">主 持 人：</p>
+                                <p class="f2">@Model.MeetingHostName</p>
+                            </li>
+                            <li>
+                                <p class="fl">记 录 人：</p>
+                                <p class="f2">@Model.MeetingDocumentName</p>
+                            </li>
+                            <li>
+                                <p class="fl">请 假 者：</p>
+                                <p class="f2">@Model.LeaveNickName</p>
+                            </li>
+                            <li>
+                                <p class="fl">列 席 者：</p>
+                                <p class="f2">@Model.AttendNickName</p>
+                            </li>
+                        </ul>
 
-                    <ul class="General">
-                        <li>
-                            <p class="fl">会议名称：</p>
-                            <p class="f2">@Model.MeetingName</p>
-                        </li>
-                        <li>
-                            <p class="fl">会议地点：</p>
-                            <p class="f2">@Model.MeetingAddress</p>
-                        </li>
-                        <li>
-                            <p class="fl">会议时间：</p>
-                            <p class="f2">@Model.StartDate 至 @Model.EendDate</p>
-                        </li>
-                        <li>
-                            <p class="fl">参会委员：</p>
-                            <p class="f2">@Model.PeopleNickName</p>
-                        </li>
-                        <li>
-                            <p class="fl">主 持 人：</p>
-                            <p class="f2">@Model.MeetingHostName</p>
-                        </li>
-                        <li>
-                            <p class="fl">记 录 人：</p>
-                            <p class="f2">@Model.MeetingDocumentName</p>
-                        </li>
-                        <li>
-                            <p class="fl">请 假 者：</p>
-                            <p class="f2">@Model.LeaveNickName</p>
-                        </li>
-                        <li>
-                            <p class="fl">列 席 者：</p>
-                            <p class="f2">@Model.AttendNickName</p>
-                        </li>
-                    </ul>
-
-                    <div class="u375">
-                        <p><span>会议议题</span></p>
-                    </div>
+                        <div class="u375">
+                            <p><span>会议议题</span></p>
+                        </div>
 
 
 
-                    <p>1. @Model.IssueName</p>
-                    <div class="clearfix" style="margin-top:10px;">
-                        <p class="fl mr-20">申请部门：<span class="fontStyle">@Model.DepartName</span></p>
-                        <p class="fl">汇报人：<span class="fontStyle">@Model.RepostUserName</span></p>
-                    </div>
-                    <div class="u375">
-                        <p><span>会议纪要</span></p>
-                    </div>
-                    <div style="margin-top:10px;">
-                        @Html.Raw(Model.MeetingRecordInfo.MeetingRecorder)
-                    </div>
-
-                    <div class="u375">
-                        <p><span>审批内容</span></p>
-                    </div>
-                    <ul>
-                        @if (Model.MeetingOpinion != null)
-                        {
-                            foreach (var item in Model.MeetingOpinion)
+                        <p>1. @Model.IssueName</p>
+                        <div class="clearfix" style="margin-top:10px;">
+                            <p class="fl mr-20">申请部门：<span class="fontStyle">@Model.DepartName</span></p>
+                            <p class="fl">汇报人：<span class="fontStyle">@Model.RepostUserName</span></p>
+                        </div>
+                        <div class="u375">
+                            <p><span>会议纪要</span></p>
+                        </div>
+                        <div style="margin-top:10px;">
+                            @if (Model.MeetingRecordInfo != null)
                             {
-                                string msg = "";
-                                if (item.OpinionAction == 0)
-                                {
-                                    msg = "未处理";
-                                }
-                                else if (item.OpinionAction == 1)
-                                {
-                                    msg = "同意";
-                                }
-                                else
-                                {
-                                    msg = "不同意";
-                                }
-                                item.Autograph = "/autograph/" + item.Autograph;
-
-                                <li class="approval clearfix">
-                                    <p class="fl mr-20">委员：<span class="fontStyle">@item.UserName</span></p>
-                                    <p class="fl">审批意见： <span class="fontStyle">@msg</span></p>
-                                    @if (item.OpinionAction != 0)
-                                    {
-                                        <p class="fr">
-                                            <span style="display: inline-block; height: 100px;">
-
-
-                                                <img style="height: 50px; margin-top:16px;" src="@item.Autograph" />
-
-
-                                            </span>
-                                        </p>
-                                        <p class="fr" style="height:100px;"><span style="display: inline-block; font-weight: 700; font-size: 16px;">签字：</span></p>
-                                    }
-                                </li>
+                                @Html.Raw(Model.MeetingRecordInfo.MeetingRecorder)
                             }
-                        }
-                    </ul>
+                        </div>
+                    </div>
+
+
+                    @if (Model.MeetingOpinion != null)
+                    {
+                        var num=Model.MeetingOpinion.Where(m=>m.OpinionAction==0).Count();
+                        if (Model.MeetingOpinion.Count() != num) 
+                        {
+                                                    <div style="margin-top:40px;height:860px;">
+                            <div class="u375">
+                                <p><span>审批内容</span></p>
+                            </div>
+
+                            <ul>
+                                @foreach (var item in Model.MeetingOpinion)
+                                {
+                                    item.Autograph = "/autograph/" + item.Autograph;
+                                    if (item.OpinionAction != 0)
+                                    {
+                                        <li class="approval clearfix">
+                                            <p class="fl mr-20">委员：<span class="fontStyle">@item.UserName</span></p>
+                                            <p class="fl">审批意见： <span class="fontStyle">@(item.OpinionAction == 1 ? "同意" : "不同意")</span></p>
+                                            @if (item.OpinionAction != 0)
+                                            {
+                                                <p class="fr">
+                                                    <span style="display: inline-block; height: 100px;">
+                                                        <img style="height: 50px; margin-top:16px;" src="@item.Autograph" />
+                                                    </span>
+                                                </p>
+                                                <p class="fr" style="height:100px;"><span style="display: inline-block; font-weight: 700; font-size: 16px;">签字：</span></p>
+                                            }
+                                        </li>
+                                    }
+                                }
+
+                            </ul>
+                        </div>
+                        }                                               
+                    }
                 </div>
             </div>
         </div>

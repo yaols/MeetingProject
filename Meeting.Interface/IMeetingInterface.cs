@@ -43,5 +43,12 @@ namespace Meeting.Interface
 
 
         mMeeting GetMeetingModel(string meetingId);
+
+        /// <summary>
+        /// 获取评审意见
+        /// </summary>
+        /// <param name="meetingId"></param>
+        /// <returns></returns>
+        List<mMeetingOpinion> GetMeetingOpinion(string meetingId); 
     }
 }

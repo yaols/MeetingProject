@@ -55,7 +55,7 @@ namespace Meeting.Dao
 								   AttendPeople=(select [dbo].[GetMeetingPeopleOther](@meetingId,2)),
                                    RepostUser=(select UserName from m_User u where u.UserId=m.RepostUser),
                                    Directory=(select top 1 Directory from m_MeetingResources mr where mr.MeetingIssueId=m.MeetingId),
-                                   d.DepartName,m.type,m.MeetingType  from m_Meeting m 
+                                   d.DepartName,m.type,m.MeetingType,newDepartName  from m_Meeting m 
                                    left join m_Depart d on m.DepartId=d.Id
                                    where m.MeetingId=@meetingId and Type=0";
 
@@ -70,7 +70,8 @@ namespace Meeting.Dao
 
                 model.IssueList.IssueName = reader["IssueName"].ToString();
                 model.IssueList.RepostUser = reader["RepostUser"].ToString();
-                model.IssueList.DepartName = reader["DepartName"].ToString();
+                //model.IssueList.DepartName = reader["DepartName"].ToString();
+                model.IssueList.DepartName = reader["newDepartName"].ToString();
                 //model.IssueList.Id = Tool.ToInt(reader["Id"].ToString());
 
 
@@ -212,9 +213,9 @@ namespace Meeting.Dao
 
             int result = 0;
             string sql = string.Format(@"insert into m_Meeting (MeetingName,StartDate,EendDate,AddressName,MeetingHost,
-            MeetingDocument,MeetingCreateUser,MeetingCreateDate,MeetingType,MeetingSecretary,IssueName,RepostUser,DepartId,Type) values (
-            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}');select @@identity", model.year, model.datetimepicker1, model.datetimepicker2, model.address,
-             model.hoseUser, model.record, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, model.depart, 0);
+            MeetingDocument,MeetingCreateUser,MeetingCreateDate,MeetingType,MeetingSecretary,IssueName,RepostUser,DepartId,Type,newDepartName) values (
+            '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}','{13}','{14}');select @@identity", model.year, model.datetimepicker1, model.datetimepicker2, model.address,
+             model.hoseUser, model.record, userId, DateTime.Now, 0, model.secretary, model.issue, model.report, "999", 0,model.newDepartName);
 
             result = SQLHelper.ExcuteScalarSQL(sql);
             if (result > 0)
@@ -360,6 +361,43 @@ namespace Meeting.Dao
             return SQLHelper.GetDataSet(sql, paras);
         }
 
+        /// <summary>
+        /// 获取评审意见
+        /// </summary>
+        /// <param name="meetingId"></param>
+        /// <returns></returns>
+        public static List<mMeetingOpinion> GetMeetingOpinion(string meetingId) 
+        {
+            List<mMeetingOpinion> list = new List<mMeetingOpinion>();
+           
+
+            string sql = @"select p.Id,p.MeetingId,p.UserId,u.UserName,u.Autograph,
+            Isnull(m.OpinionAction,0) OpinionAction,m.OpinionMsg from m_MeetingPeople p    
+            left join m_MeetingOpinion  m on p.MeetingId=m.MeetingId and p.UserId=m.UserId
+            join m_User u on p.UserId=u.UserId where p.MeetingId=@meetingId;";
+
+            SqlParameter[] paras = new SqlParameter[]
+           {
+               new SqlParameter("@meetingId",meetingId),
+           };
+
+            using (SqlDataReader reader = SQLHelper.GetReader(sql, paras)) 
+            {
+                 mMeetingOpinion model = null;
+                while (reader.Read()) 
+                {
+                    model = new mMeetingOpinion();
+                    model.Id =Convert.ToInt32(reader["Id"]);
+                    model.OpinionAction = Convert.ToInt32(reader["OpinionAction"]);
+                    model.OpinionMsg = reader["OpinionMsg"].ToString();
+                    model.Autograph = reader["Autograph"].ToString();
+                    model.UserName = reader["UserName"].ToString();
+                    list.Add(model);
+                }
+            }
+            return list;
+        }
+
 
         /// <summary>
         /// 会议记录修改数据
@@ -380,7 +418,7 @@ namespace Meeting.Dao
                 EendDate=@EendDate,AddressName=@address,MeetingHost=@hoseUser,MeetingDocument=@record,
                 MeetingCreateUser=@loginUserId,MeetingCreateDate=@MeetingCreateDate,
                 MeetingSecretary=@secretary,
-                DepartId=@depart,IssueName=@issue,
+                DepartId=@depart,IssueName=@issue,newDepartName=@newDepartName,
                 RepostUser=@report  where MeetingId=@meetingId";
 
 
@@ -395,10 +433,12 @@ namespace Meeting.Dao
                         new SqlParameter("@loginUserId",loginUserId),
                         new SqlParameter("@MeetingCreateDate",DateTime.Now.ToString()),
                         new SqlParameter("@secretary",model.secretary),
-                        new SqlParameter("@depart",model.depart),
+                        //new SqlParameter("@depart",model.depart),
+                        new SqlParameter("@depart","998"),
                         new SqlParameter("@issue",model.issue),
                         new SqlParameter("@report",model.report),
                         new SqlParameter("@meetingId",model.meetingId),
+                        new SqlParameter("@newDepartName",model.newDepartName)
 
                     };
 
@@ -493,7 +533,7 @@ namespace Meeting.Dao
 								   AttendPeople=(select [dbo].[GetMeetingPeopleOther](@meetingId,2)),
                                    RepostUser=(select UserName from m_User u where u.UserId=m.RepostUser),
                                    Directory=(select top 1 Directory from m_MeetingResources mr where mr.MeetingIssueId=m.MeetingId),                                 
-                                   d.DepartName,m.type,m.MeetingType  from m_Meeting m 
+                                   d.DepartName,m.type,m.MeetingType,newDepartName  from m_Meeting m 
                                    left join m_Depart d on m.DepartId=d.Id
                                    where m.MeetingId=@meetingId and Type=0";
 
@@ -508,7 +548,8 @@ namespace Meeting.Dao
 
                 model.IssueList.IssueName = reader["IssueName"].ToString();
                 model.IssueList.RepostUser = reader["RepostUser"].ToString();
-                model.IssueList.DepartName = reader["DepartName"].ToString();
+                //model.IssueList.DepartName = reader["DepartName"].ToString();
+                model.IssueList.DepartName = reader["newDepartName"].ToString();
                 //model.IssueList.Id = Tool.ToInt(reader["Id"].ToString());
 
 

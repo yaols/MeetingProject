@@ -43,6 +43,37 @@
         location.href = "/MeetingInfo/MeetingPreview?MeetingId=" + meetingId;
     })
     
+    $("#refresh").click(function () {
+        lhgdialog.masklayer('loading.gif');
+        $.get("/MeetingInfo/GetMeetingOpinion", { meetingId: meetingId }, function (data) {
+            if (data != null) {
+                var str = '';
+                var msg = "";
+                for (var i = 0; i < data.length; i++) {
+                    if (data[i].OpinionAction == 0) {
+                        msg = "未处理";
+                    }
+                    else if (data[i].OpinionAction == 1) {
+                        msg = "同意";
+                    }
+                    else {
+                        msg = "不同意";
+                    }
+                    str += '<div style="margin: 5px 10px 0 10px;">';
+                    str += '<div style="display: inline-block; width:100px;">委员：' + data[i].UserName + '</div>';
+                    str += '<div style="display: inline-block; padding-left:15px;">审批意见：' + msg + '</div>';
+                    str += '<textarea style="width:980px;height:120px;" disabled="disabled">' + data[i].OpinionMsg + '</textarea>';
+                    str += '</div>';
+                }
+                $("#operation").empty();
+                $("#operation").append(str);
+                mh_dialogShow('mh_success',"刷新成功", 1, true);
+                lhgdialog.masklayer();
+            }
+        });
+
+    
+    })
 
 });
 
@@ -113,8 +144,10 @@ function PostCreateMeeting(htmlContent, meetingId) {
     });
 
     model.issue = $("#issue").val();
-    model.depart = $("#depart").find("option:selected").attr("id");
+    //model.depart = $("#depart").find("option:selected").attr("id");
     model.report = $("#report").find("option:selected").attr("id");
+    model.newDepartName = $("#newDepartName").val();
+
     model.editor = htmlContent;
 
     console.log(JSON.stringify(model));

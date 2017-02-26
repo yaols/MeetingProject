@@ -131,5 +131,11 @@ namespace Meeting.BLL
             return MeetingDao.GetMeetingModel(meetingId);
         }
 
+
+        public  List<mMeetingOpinion> GetMeetingOpinion(string meetingId) 
+        {
+            return MeetingDao.GetMeetingOpinion(meetingId);
+        } 
+
     }
 }
