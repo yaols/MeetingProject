@@ -34,9 +34,17 @@ namespace Meeting.Pc.View
             {
                 panelEx1.Visible = false;
                 timer.Enabled = false;
-            }       
+            }
+
+            List<mUser> userList = iuser.GetUserList(Consts.CommitteeMember);          
+            comboBox1.DisplayMember = "UserName";
+            comboBox1.ValueMember = "UserId";
+            comboBox1.DataSource = userList;
+
         }
 
+
+        IMuserInterface iuser = new mUserService();
         ILoginInterface ilogin = new LoginService();
         ILog log = LogHelper.GetLog("LoginController");
         System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer();
@@ -119,16 +127,17 @@ namespace Meeting.Pc.View
                 return;
             }
 
-            string userName = wtbUsername.Text.Trim();
+            string userName = comboBox1.Text;
             string userPass =Tool.MD5(wtbPassword.Text.Trim());
-            int roleId = 1;
             SetMessageShow(true);
-            mUser umodel  = ilogin.LoginUserInfo(userName, userPass,1);
+            mUser umodel = ilogin.LoginUserInfo(userName,userPass,Consts.CommitteeMember);
             if (umodel.PassWord == userPass && umodel.UserName == userName)
             {
-                if (umodel.UserRoleId == roleId)
+                if (umodel.UserRoleId ==Consts.CommitteeMember)
                 {
                     UserInfo.RoleId = umodel.UserRoleId;
+                    UserInfo.UserId = umodel.UserId;
+                    UserInfo.UserName = umodel.UserName;
                     FrmMain frmmain = new FrmMain(umodel.UserName);
                     frmmain.Show();
                     Hide();
@@ -161,13 +170,13 @@ namespace Meeting.Pc.View
         private bool IsNullJudge()
         {
             //非空验证
-            if (string.IsNullOrEmpty(wtbUsername.Text.Trim()))
-            {
-                wtbUsername.Focus();
-                lblMessage.Text = "请输入用户名";
-                SetMessageShow(true);
-                return false;
-            }
+            //if (string.IsNullOrEmpty(wtbUsername.Text.Trim()))
+            //{
+            //    wtbUsername.Focus();
+            //    lblMessage.Text = "请输入用户名";
+            //    SetMessageShow(true);
+            //    return false;
+            //}
 
             if (string.IsNullOrEmpty(wtbPassword.Text.Trim()))
             {

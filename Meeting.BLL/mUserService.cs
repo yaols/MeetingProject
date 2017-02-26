@@ -1,4 +1,5 @@
 ﻿using Meeting.Dao;
+using Meeting.Entity;
 using Meeting.Interface;
 using System;
 using System.Collections.Generic;
@@ -19,6 +20,12 @@ namespace Meeting.BLL
         public int AddDepart(string departname)
         {
             return mUserDao.AddDepart(departname);
+        }
+
+
+        public List<mUser> GetUserList(int roleId) 
+        {
+            return mUserDao.GetUserList(roleId);
         }
     }
 }

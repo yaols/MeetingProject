@@ -125,5 +125,11 @@ namespace Meeting.BLL
             return MeetingDao.UpdateMeetingRecord(loginUserId,model);
         }
 
+
+        public mMeeting GetMeetingModel(string meetingId) 
+        {
+            return MeetingDao.GetMeetingModel(meetingId);
+        }
+
     }
 }

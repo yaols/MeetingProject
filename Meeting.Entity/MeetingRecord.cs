@@ -14,7 +14,7 @@ namespace Meeting.Entity
         public int MeetingId { get; set; }
 
 
-        public string MeetingName { get; set; }
+        public string MeetingName { get; set;}
 
         /// <summary>
         /// 检委会xxxx年
@@ -100,7 +100,6 @@ namespace Meeting.Entity
         /// 会议记录信息表
         /// </summary>
         public MeetingRecordInfo MeetingRecordInfo { get; set; }
-
 
 
         /// <summary>

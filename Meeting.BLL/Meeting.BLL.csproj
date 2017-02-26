@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="LoginService.cs" />
     <Compile Include="MeetingIssue.cs" />
+    <Compile Include="MeetingPeopleService.cs" />
     <Compile Include="MeetingResourcesService.cs" />
     <Compile Include="MeetingService.cs" />
     <Compile Include="mUserService.cs" />

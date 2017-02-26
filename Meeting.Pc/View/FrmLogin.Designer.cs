@@ -40,10 +40,10 @@
             this.label1 = new System.Windows.Forms.Label();
             this.pbxMin = new System.Windows.Forms.PictureBox();
             this.pbxClose = new System.Windows.Forms.PictureBox();
-            this.wtbPassword = new Meeting.Pc.WatermarkTextBox();
-            this.wtbUsername = new Meeting.Pc.WatermarkTextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.panelEx1 = new Meeting.Pc.Control.PanelEx();
             this.label4 = new System.Windows.Forms.Label();
+            this.wtbPassword = new Meeting.Pc.WatermarkTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxLogin)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxPass)).BeginInit();
             this.plHead.SuspendLayout();
@@ -175,6 +175,37 @@
             this.pbxClose.MouseEnter += new System.EventHandler(this.pbxClose_MouseEnter);
             this.pbxClose.MouseLeave += new System.EventHandler(this.pbxClose_MouseLeave);
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownHeight = 98;
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.Font = new System.Drawing.Font("宋体", 14F);
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.IntegralHeight = false;
+            this.comboBox1.Location = new System.Drawing.Point(203, 156);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(219, 27);
+            this.comboBox1.TabIndex = 17;
+            // 
+            // panelEx1
+            // 
+            this.panelEx1.BorderColor = System.Drawing.Color.Empty;
+            this.panelEx1.Controls.Add(this.label4);
+            this.panelEx1.Location = new System.Drawing.Point(3, 86);
+            this.panelEx1.Name = "panelEx1";
+            this.panelEx1.Size = new System.Drawing.Size(578, 292);
+            this.panelEx1.TabIndex = 16;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label4.Location = new System.Drawing.Point(209, 102);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(173, 22);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "正在加载中请稍候.......";
+            // 
             // wtbPassword
             // 
             this.wtbPassword.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(173)))), ((int)(((byte)(175)))));
@@ -191,39 +222,6 @@
             this.wtbPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmLogin_KeyDown);
             this.wtbPassword.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wtbUsername_PreviewKeyDown);
             // 
-            // wtbUsername
-            // 
-            this.wtbUsername.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(171)))), ((int)(((byte)(173)))), ((int)(((byte)(175)))));
-            this.wtbUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.wtbUsername.Font = new System.Drawing.Font("宋体", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(1)), true);
-            this.wtbUsername.Location = new System.Drawing.Point(203, 157);
-            this.wtbUsername.Multiline = true;
-            this.wtbUsername.Name = "wtbUsername";
-            this.wtbUsername.Size = new System.Drawing.Size(219, 30);
-            this.wtbUsername.TabIndex = 14;
-            this.wtbUsername.WatermarkColor = System.Drawing.Color.DarkGray;
-            this.wtbUsername.WatermarkTitle = " 请输入用户名";
-            this.wtbUsername.PreviewKeyDown += new System.Windows.Forms.PreviewKeyDownEventHandler(this.wtbUsername_PreviewKeyDown);
-            // 
-            // panelEx1
-            // 
-            this.panelEx1.BorderColor = System.Drawing.Color.Empty;
-            this.panelEx1.Controls.Add(this.label4);
-            this.panelEx1.Location = new System.Drawing.Point(3, 88);
-            this.panelEx1.Name = "panelEx1";
-            this.panelEx1.Size = new System.Drawing.Size(578, 292);
-            this.panelEx1.TabIndex = 16;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label4.Location = new System.Drawing.Point(209, 102);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(173, 22);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "正在加载中请稍候.......";
-            // 
             // FrmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -232,13 +230,13 @@
             this.ClientSize = new System.Drawing.Size(584, 381);
             this.Controls.Add(this.panelEx1);
             this.Controls.Add(this.wtbPassword);
-            this.Controls.Add(this.wtbUsername);
             this.Controls.Add(this.pbxLogin);
             this.Controls.Add(this.lblMessage);
             this.Controls.Add(this.pbxPass);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.plHead);
+            this.Controls.Add(this.comboBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmLogin";
@@ -272,10 +270,10 @@
         private System.Windows.Forms.PictureBox pbxPass;
         private System.Windows.Forms.Label lblMessage;
         private System.Windows.Forms.PictureBox pbxLogin;
-        private WatermarkTextBox wtbUsername;
         private WatermarkTextBox wtbPassword;
         private Control.PanelEx panelEx1;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
 

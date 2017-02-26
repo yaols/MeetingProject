@@ -41,5 +41,7 @@ namespace Meeting.Interface
         /// <returns></returns>
         int UpdateMeetingRecord(int loginUserId,CreateMeeting model);
 
+
+        mMeeting GetMeetingModel(string meetingId);
     }
 }

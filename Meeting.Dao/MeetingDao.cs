@@ -473,5 +473,65 @@ namespace Meeting.Dao
             return 1;
         }
 
+        /// <summary>
+        /// 重载方法
+        /// </summary>
+        /// <param name="meetingId"></param>
+        /// <returns></returns>
+        public static mMeeting GetMeetingModel(string meetingId)
+        {
+            mMeeting model = new mMeeting();
+            model.IssueList = new mMeetingIssue();
+            //mMeetingIssue issue = null;
+
+            string sql = @"select m.MeetingId,MeetingName,StartDate,EendDate,AddressName,IssueName,
+                                   HostName=(select UserName from m_User u where u.UserId=m.MeetingHost),
+                                   SecretaryName=(select UserName from m_User u where u.UserId=m.MeetingSecretary),
+                                   MeetingDocument=(select UserName from m_User u where u.UserId=m.MeetingDocument),                                                                   
+                                   peopleName=(select [dbo].[GetMeetingPeople](@meetingId)),m.IssueName,
+								   LeavePeople=(select [dbo].[GetMeetingPeopleOther](@meetingId,1)),
+								   AttendPeople=(select [dbo].[GetMeetingPeopleOther](@meetingId,2)),
+                                   RepostUser=(select UserName from m_User u where u.UserId=m.RepostUser),
+                                   Directory=(select top 1 Directory from m_MeetingResources mr where mr.MeetingIssueId=m.MeetingId),                                 
+                                   d.DepartName,m.type,m.MeetingType  from m_Meeting m 
+                                   left join m_Depart d on m.DepartId=d.Id
+                                   where m.MeetingId=@meetingId and Type=0";
+
+            SqlParameter[] paras = new SqlParameter[]
+           {
+               new SqlParameter("@meetingId",meetingId),
+           };
+
+            SqlDataReader reader = SQLHelper.GetReader(sql, paras);
+            while (reader.Read())
+            {
+
+                model.IssueList.IssueName = reader["IssueName"].ToString();
+                model.IssueList.RepostUser = reader["RepostUser"].ToString();
+                model.IssueList.DepartName = reader["DepartName"].ToString();
+                //model.IssueList.Id = Tool.ToInt(reader["Id"].ToString());
+
+
+                model.MeetingId = Tool.ToInt(reader["MeetingId"].ToString());
+                model.MeetingName = reader["MeetingName"].ToString();
+                model.StartDate = Convert.ToDateTime(reader["StartDate"]).ToString("yyyy-MM-dd HH:mm");
+                model.EendDate = Convert.ToDateTime(reader["EendDate"]).ToString("yyyy-MM-dd HH:mm");
+                model.AddressName = reader["AddressName"].ToString();
+
+                model.MeetingHost = reader["HostName"].ToString();
+                model.SecretaryName = reader["SecretaryName"].ToString();
+                model.MeetingDocument = reader["MeetingDocument"].ToString();
+
+
+                model.PeopleName = reader["PeopleName"].ToString();
+                model.LeavePeople = reader["LeavePeople"].ToString();
+                model.AttendPeople = reader["AttendPeople"].ToString();
+                model.Directory = reader["Directory"].ToString();
+                model.Type = Tool.ToInt(reader["Type"].ToString());
+                model.MeetingType = Tool.ToInt(reader["MeetingType"].ToString());
+            }
+
+            return model;
+        }
     }
 }
