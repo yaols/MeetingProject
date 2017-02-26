@@ -192,15 +192,22 @@ namespace Meeting.Pc.View
 
         }
 
-
+        IMeetingPeople people = new MeetingPeopleService();
 
         private void pbBtn_Click(object sender, EventArgs e)
         {
             PanelEx pxBtn = (PanelEx)sender;
-            FrmMeetingInfo meeting = new FrmMeetingInfo(pxBtn.Tag.ToString());
-            Helper.NickName = _nickname;
-            meeting.Show();
-            Hide();
+            if (people.GetMeetingPeopleUserId(UserInfo.UserId,pxBtn.Tag.ToString()) > 0) 
+            {
+                FrmMeetingInfo meeting = new FrmMeetingInfo(pxBtn.Tag.ToString());
+                Helper.NickName = _nickname;
+                meeting.Show();
+                Hide();
+            }
+            else
+            {
+                MessageBox.Show("对不起你不是本次会议委员，无法进行审批!", "系统消息提示");
+            }
         }
 
         private void pelStartmeeting_Click(object sender, EventArgs e)

@@ -104,7 +104,7 @@ namespace Meeting.Pc.View
         private void button1_Click(object sender, EventArgs e)
         {
 
-            ipeople.InserMeetingOpinion(_recordId,_meetingId,UserInfo.UserId,1,"");
+            ipeople.InserMeetingOpinion(_recordId, _meetingId, UserInfo.UserId, 1, textBox2.Text.Trim());
             MessageBox.Show("审批操作成功!", "系统消息提示");
             FrmShow();
         }

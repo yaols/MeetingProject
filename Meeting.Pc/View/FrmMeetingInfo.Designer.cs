@@ -30,6 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMeetingInfo));
             this.plMain = new System.Windows.Forms.Panel();
+            this.label31 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.label27 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -64,12 +70,6 @@
             this.plHead = new System.Windows.Forms.Panel();
             this.peRerurn = new Meeting.Pc.Control.PanelEx();
             this.label1 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
-            this.label31 = new System.Windows.Forms.Label();
-            this.label32 = new System.Windows.Forms.Label();
             this.plMain.SuspendLayout();
             this.panelEx4.SuspendLayout();
             this.panelEx5.SuspendLayout();
@@ -114,6 +114,78 @@
             this.plMain.Name = "plMain";
             this.plMain.Size = new System.Drawing.Size(1238, 578);
             this.plMain.TabIndex = 3;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.Transparent;
+            this.label31.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label31.ForeColor = System.Drawing.Color.Black;
+            this.label31.Location = new System.Drawing.Point(253, 131);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(65, 12);
+            this.label31.TabIndex = 42;
+            this.label31.Text = "记 录 人:";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.Transparent;
+            this.label32.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label32.ForeColor = System.Drawing.Color.Black;
+            this.label32.Location = new System.Drawing.Point(316, 131);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(44, 12);
+            this.label32.TabIndex = 41;
+            this.label32.Text = "王小宁";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.BackColor = System.Drawing.Color.Transparent;
+            this.label30.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label30.ForeColor = System.Drawing.Color.Black;
+            this.label30.Location = new System.Drawing.Point(76, 210);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(44, 12);
+            this.label30.TabIndex = 40;
+            this.label30.Text = "王小宁";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.Transparent;
+            this.label29.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label29.ForeColor = System.Drawing.Color.Black;
+            this.label29.Location = new System.Drawing.Point(76, 185);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(44, 12);
+            this.label29.TabIndex = 39;
+            this.label29.Text = "王小宁";
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.Transparent;
+            this.label28.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label28.ForeColor = System.Drawing.Color.Black;
+            this.label28.Location = new System.Drawing.Point(12, 210);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(65, 12);
+            this.label28.TabIndex = 38;
+            this.label28.Text = "列 席 者:";
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.BackColor = System.Drawing.Color.Transparent;
+            this.label27.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
+            this.label27.ForeColor = System.Drawing.Color.Black;
+            this.label27.Location = new System.Drawing.Point(13, 185);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(65, 12);
+            this.label27.TabIndex = 37;
+            this.label27.Text = "请 假 者:";
             // 
             // label21
             // 
@@ -273,7 +345,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(789, 29);
+            this.label26.Location = new System.Drawing.Point(777, 29);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(41, 12);
             this.label26.TabIndex = 33;
@@ -282,7 +354,7 @@
             // label25
             // 
             this.label25.AutoSize = true;
-            this.label25.Location = new System.Drawing.Point(616, 29);
+            this.label25.Location = new System.Drawing.Point(621, 29);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(41, 12);
             this.label25.TabIndex = 32;
@@ -511,78 +583,6 @@
             this.label1.Size = new System.Drawing.Size(98, 21);
             this.label1.TabIndex = 0;
             this.label1.Text = "会议详情";
-            // 
-            // label27
-            // 
-            this.label27.AutoSize = true;
-            this.label27.BackColor = System.Drawing.Color.Transparent;
-            this.label27.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label27.ForeColor = System.Drawing.Color.Black;
-            this.label27.Location = new System.Drawing.Point(13, 185);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(65, 12);
-            this.label27.TabIndex = 37;
-            this.label27.Text = "请 假 者:";
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.Transparent;
-            this.label28.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label28.ForeColor = System.Drawing.Color.Black;
-            this.label28.Location = new System.Drawing.Point(12, 210);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(65, 12);
-            this.label28.TabIndex = 38;
-            this.label28.Text = "列 席 者:";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.BackColor = System.Drawing.Color.Transparent;
-            this.label29.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label29.ForeColor = System.Drawing.Color.Black;
-            this.label29.Location = new System.Drawing.Point(76, 185);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(44, 12);
-            this.label29.TabIndex = 39;
-            this.label29.Text = "王小宁";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.BackColor = System.Drawing.Color.Transparent;
-            this.label30.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label30.ForeColor = System.Drawing.Color.Black;
-            this.label30.Location = new System.Drawing.Point(76, 210);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(44, 12);
-            this.label30.TabIndex = 40;
-            this.label30.Text = "王小宁";
-            // 
-            // label31
-            // 
-            this.label31.AutoSize = true;
-            this.label31.BackColor = System.Drawing.Color.Transparent;
-            this.label31.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label31.ForeColor = System.Drawing.Color.Black;
-            this.label31.Location = new System.Drawing.Point(253, 131);
-            this.label31.Name = "label31";
-            this.label31.Size = new System.Drawing.Size(65, 12);
-            this.label31.TabIndex = 42;
-            this.label31.Text = "记 录 人:";
-            // 
-            // label32
-            // 
-            this.label32.AutoSize = true;
-            this.label32.BackColor = System.Drawing.Color.Transparent;
-            this.label32.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Bold);
-            this.label32.ForeColor = System.Drawing.Color.Black;
-            this.label32.Location = new System.Drawing.Point(316, 131);
-            this.label32.Name = "label32";
-            this.label32.Size = new System.Drawing.Size(44, 12);
-            this.label32.TabIndex = 41;
-            this.label32.Text = "王小宁";
             // 
             // FrmMeetingInfo
             // 

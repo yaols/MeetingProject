@@ -22,7 +22,7 @@ namespace Meeting.Pc.View
     {
 
         IMeetingInterface imeeting = new MeetingService();
-        IMeetingPeople people = new MeetingPeopleService();
+        //IMeetingPeople people = new MeetingPeopleService();
 
         private string _meetingId = "";
         public FrmMeetingInfo(string meetingId)
@@ -80,16 +80,16 @@ namespace Meeting.Pc.View
             //sign.Show();
             //Hide();
 
-            if (people.GetMeetingPeopleUserId(UserInfo.UserId, _meetingId) > 0)
-            {
+            //if (people.GetMeetingPeopleUserId(UserInfo.UserId, _meetingId) > 0)
+            //{
                 FrmRecord record = new FrmRecord(_meetingId);
                 record.Show();
                 Hide();
-            }
-            else 
-            {
-                MessageBox.Show("对不起你不是本次会议委员，无法进行审批!", "系统消息提示");
-            }
+            //}
+            //else 
+            //{
+            //    MessageBox.Show("对不起你不是本次会议委员，无法进行审批!", "系统消息提示");
+            //}
         }
 
         private int _issueid = 0;
@@ -107,7 +107,14 @@ namespace Meeting.Pc.View
             label12.Text = model.PeopleName;
             label24.Text = model.IssueList.IssueName;
             label25.Text = model.IssueList.RepostUser;
-            label26.Text = model.IssueList.DepartName;
+
+            if (!string.IsNullOrEmpty(model.IssueList.DepartName)) 
+            {
+                model.IssueList.DepartName = model.IssueList.DepartName.Length > 6 ? model.IssueList.DepartName.Substring(0, 6) + "......" : model.IssueList.DepartName;
+                label26.Text = model.IssueList.DepartName;
+            }
+
+           
 
             label29.Text = model.LeavePeople;
             label30.Text = model.AttendPeople;
