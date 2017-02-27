@@ -121,7 +121,7 @@ namespace Meeting.Pc.View
         {
             ClearControl();
             //数据查询
-            var dataSet = imeeting.GetMeetingList(meetingType, pageIndex, _pageSize);
+            var dataSet = imeeting.GetMeetingList(meetingType, UserInfo.UserId,pageIndex, _pageSize);
             if (dataSet != null)
             { 
                 pager.PageIndex = pageIndex;

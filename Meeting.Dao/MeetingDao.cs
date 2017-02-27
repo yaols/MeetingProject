@@ -40,6 +40,39 @@ namespace Meeting.Dao
         }
 
 
+        public static DataSet GetMeetingList(int meetingType,int userId,int pageindex, int pagesize)
+        {
+            int index = (pageindex - 1) * pagesize + 1;
+            int size = pageindex * pagesize;
+
+            DataSet dataSet = new DataSet();
+
+            string sql = @"select RowId,MeetingId,MeetingName,StartDate,EendDate,MeetingType
+                                  from ( select ROW_NUMBER() OVER (ORDER BY MeetingCreateDate desc) RowId,m.MeetingId,
+                                  MeetingName,StartDate,EendDate,MeetingType from m_Meeting m
+                                  join m_MeetingPeople p on m.MeetingId=p.MeetingId
+                                  where MeetingType=@meetingType and Type=0 and p.UserId=@userId) a where a.RowId between @index and @size;
+                                  select count(1) from m_Meeting m
+                                  join m_MeetingPeople p on m.MeetingId=p.MeetingId
+                                  where MeetingType=@meetingType and Type=0  and p.UserId=@userId";
+
+
+
+            SqlParameter[] paras = new SqlParameter[]
+           {
+               new SqlParameter("@index",index),
+               new SqlParameter("@size",size),
+               new SqlParameter("@meetingType",meetingType),
+               new SqlParameter("@userId",userId)
+           };
+
+            dataSet = SQLHelper.GetDataSet(sql, paras);
+
+            return dataSet;
+        }
+
+
+
         public static mMeeting GetMeetingModel(int meetingId)
         {
             mMeeting model = new mMeeting();
@@ -221,9 +254,9 @@ namespace Meeting.Dao
             if (result > 0)
             {
                 //20170224 yaols会议记录不采用word
-                //string saveUrl = string.Format("{0}{1}", Consts.SaveUrlPath, result);
-                //if (!Directory.Exists(saveUrl))
-                //    Directory.CreateDirectory(saveUrl);
+                string saveUrl = string.Format("{0}{1}", Consts.SaveUrlPath, result);
+                if (!Directory.Exists(saveUrl))
+                    Directory.CreateDirectory(saveUrl);
                 //File.Copy(Consts.SaveUrlPath + "会议记录.docx", saveUrl + "\\" + result + ".docx");
 
                 //多媒体资料
@@ -244,16 +277,16 @@ namespace Meeting.Dao
                             resources.Rows.Add(row);
 
 
-                            //try 20170224 yaols会议记录不采用word
-                            //{
-                            //    File.Copy(Consts.TemporaryPath + fileArray[i], saveUrl + "\\" + fileArray[i]);
-                            //    File.Delete(Consts.TemporaryPath + fileArray[i]);
-                            //}
-                            //catch (Exception)
-                            //{
+                            try //20170224 yaols会议记录不采用word
+                            {
+                                File.Copy(Consts.TemporaryPath + fileArray[i], saveUrl + "\\" + fileArray[i]);
+                                File.Delete(Consts.TemporaryPath + fileArray[i]);
+                            }
+                            catch (Exception)
+                            {
 
-                            //    throw;
-                            //}
+                                throw;
+                            }
                         }
 
                         SQLHelper.BulkToDB(resources, "m_MeetingResources");

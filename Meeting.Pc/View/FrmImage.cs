@@ -57,6 +57,8 @@ namespace Meeting.Pc.View
             }
             catch (Exception)
             {
+                timer.Enabled = false;
+                WaitFormService.Close();
                 MessageBox.Show("无法下载该资源，请检查服务器连接是否正常!", "系统消息提示");
             }
 
