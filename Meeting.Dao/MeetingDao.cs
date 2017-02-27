@@ -413,10 +413,11 @@ namespace Meeting.Dao
                 SqlTransaction trans = conn.BeginTransaction(); //开启事务
                 try
                 {
+                    // MeetingCreateUser=@loginUserId,MeetingCreateDate=@MeetingCreateDate,
                     //修改会议基本数据
                     string sql = @"update m_Meeting set MeetingName=@MeetingName,StartDate=@StartDate,
                 EendDate=@EendDate,AddressName=@address,MeetingHost=@hoseUser,MeetingDocument=@record,
-                MeetingCreateUser=@loginUserId,MeetingCreateDate=@MeetingCreateDate,
+                MeetingCreateUser=@loginUserId,
                 MeetingSecretary=@secretary,
                 DepartId=@depart,IssueName=@issue,newDepartName=@newDepartName,
                 RepostUser=@report  where MeetingId=@meetingId";
@@ -431,7 +432,7 @@ namespace Meeting.Dao
                         new SqlParameter("@hoseUser",model.hoseUser),
                         new SqlParameter("@record",model.record),
                         new SqlParameter("@loginUserId",loginUserId),
-                        new SqlParameter("@MeetingCreateDate",DateTime.Now.ToString()),
+                        //new SqlParameter("@MeetingCreateDate",DateTime.Now.ToString()),
                         new SqlParameter("@secretary",model.secretary),
                         //new SqlParameter("@depart",model.depart),
                         new SqlParameter("@depart","998"),
