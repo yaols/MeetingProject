@@ -1,0 +1,74 @@
+2017-08-13 14:42:49,934  ERROR - UserLogin-2017/8/13 14:42:49
+System.Data.SqlClient.SqlException (0x80131904): 用户 'sa' 登录失败。
+   在 System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   在 System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 Meeting.Common.SQLHelper.GetReader(String strSQL, SqlParameter[] paras, CommandType cmdtype) 位置 G:\重要文件\Project\Meeting.Common\SQLHelper.cs:行号 356
+   在 Meeting.Dao.LoginDao.LoginUserInfo(String username, String password, Int32 roleId) 位置 G:\重要文件\Project\Meeting.Dao\LoginDao.cs:行号 25
+   在 Meeting.BLL.LoginService.LoginUserInfo(String username, String password, Int32 roleId) 位置 G:\重要文件\Project\Meeting.BLL\LoginService.cs:行号 15
+   在 Meeting.Web.Api.Controllers.LoginController.UserLogin(UserViewModel model) 位置 G:\重要文件\Project\Meeting.Web.Api\Controllers\LoginController.cs:行号 38
+ClientConnectionId:d8679026-2ae9-4ddf-826f-6bbc4a797a61
+Error Number:18456,State:1,Class:14
+2017-08-13 14:42:54,406  ERROR - UserLogin-2017/8/13 14:42:54
+System.Data.SqlClient.SqlException (0x80131904): 用户 'sa' 登录失败。
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 Meeting.Common.SQLHelper.GetReader(String strSQL, SqlParameter[] paras, CommandType cmdtype) 位置 G:\重要文件\Project\Meeting.Common\SQLHelper.cs:行号 356
+   在 Meeting.Dao.LoginDao.LoginUserInfo(String username, String password, Int32 roleId) 位置 G:\重要文件\Project\Meeting.Dao\LoginDao.cs:行号 25
+   在 Meeting.BLL.LoginService.LoginUserInfo(String username, String password, Int32 roleId) 位置 G:\重要文件\Project\Meeting.BLL\LoginService.cs:行号 15
+   在 Meeting.Web.Api.Controllers.LoginController.UserLogin(UserViewModel model) 位置 G:\重要文件\Project\Meeting.Web.Api\Controllers\LoginController.cs:行号 38
+ClientConnectionId:d8679026-2ae9-4ddf-826f-6bbc4a797a61
+Error Number:18456,State:1,Class:14
+2017-08-13 14:43:39,020  ERROR - UserLogin-2017/8/13 14:43:39
+System.Data.SqlClient.SqlException (0x80131904): 用户 'sa' 登录失败。
+   在 System.Data.SqlClient.SqlInternalConnectionTds..ctor(DbConnectionPoolIdentity identity, SqlConnectionString connectionOptions, SqlCredential credential, Object providerInfo, String newPassword, SecureString newSecurePassword, Boolean redirectedUserInstance, SqlConnectionString userConnectionOptions, SessionData reconnectSessionData, DbConnectionPool pool, String accessToken, Boolean applyTransientFaultHandling)
+   在 System.Data.SqlClient.SqlConnectionFactory.CreateConnection(DbConnectionOptions options, DbConnectionPoolKey poolKey, Object poolGroupProviderInfo, DbConnectionPool pool, DbConnection owningConnection, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionFactory.CreatePooledConnection(DbConnectionPool pool, DbConnection owningObject, DbConnectionOptions options, DbConnectionPoolKey poolKey, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionPool.CreateObject(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.UserCreateRequest(DbConnection owningObject, DbConnectionOptions userOptions, DbConnectionInternal oldConnection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 Meeting.Common.SQLHelper.GetReader(String strSQL, SqlParameter[] paras, CommandType cmdtype) 位置 G:\重要文件\Project\Meeting.Common\SQLHelper.cs:行号 356
+   在 Meeting.Dao.LoginDao.LoginUserInfo(String username, String password, Int32 roleId) 位置 G:\重要文件\Project\Meeting.Dao\LoginDao.cs:行号 25
+   在 Meeting.BLL.LoginService.LoginUserInfo(String username, String password, Int32 roleId) 位置 G:\重要文件\Project\Meeting.BLL\LoginService.cs:行号 15
+   在 Meeting.Web.Api.Controllers.LoginController.UserLogin(UserViewModel model) 位置 G:\重要文件\Project\Meeting.Web.Api\Controllers\LoginController.cs:行号 38
+ClientConnectionId:76bd209c-8eb4-4bf4-8727-6345a885fc14
+Error Number:18456,State:1,Class:14
+2017-08-13 14:43:43,166  ERROR - UserLogin-2017/8/13 14:43:43
+System.Data.SqlClient.SqlException (0x80131904): 用户 'sa' 登录失败。
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, UInt32 waitForMultipleObjectsTimeout, Boolean allowCreate, Boolean onlyOneCheckConnection, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionPool.TryGetConnection(DbConnection owningObject, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionFactory.TryGetConnection(DbConnection owningConnection, TaskCompletionSource`1 retry, DbConnectionOptions userOptions, DbConnectionInternal oldConnection, DbConnectionInternal& connection)
+   在 System.Data.ProviderBase.DbConnectionInternal.TryOpenConnectionInternal(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.ProviderBase.DbConnectionClosed.TryOpenConnection(DbConnection outerConnection, DbConnectionFactory connectionFactory, TaskCompletionSource`1 retry, DbConnectionOptions userOptions)
+   在 System.Data.SqlClient.SqlConnection.TryOpenInner(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.TryOpen(TaskCompletionSource`1 retry)
+   在 System.Data.SqlClient.SqlConnection.Open()
+   在 Meeting.Common.SQLHelper.GetReader(String strSQL, SqlParameter[] paras, CommandType cmdtype) 位置 G:\重要文件\Project\Meeting.Common\SQLHelper.cs:行号 356
+   在 Meeting.Dao.LoginDao.LoginUserInfo(String username, String password, Int32 roleId) 位置 G:\重要文件\Project\Meeting.Dao\LoginDao.cs:行号 25
+   在 Meeting.BLL.LoginService.LoginUserInfo(String username, String password, Int32 roleId) 位置 G:\重要文件\Project\Meeting.BLL\LoginService.cs:行号 15
+   在 Meeting.Web.Api.Controllers.LoginController.UserLogin(UserViewModel model) 位置 G:\重要文件\Project\Meeting.Web.Api\Controllers\LoginController.cs:行号 38
+ClientConnectionId:76bd209c-8eb4-4bf4-8727-6345a885fc14
+Error Number:18456,State:1,Class:14

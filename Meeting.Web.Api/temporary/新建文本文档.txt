@@ -1,0 +1,634 @@
+//菜单项  循环
+http://www.runoob.com/try/demo_source/bootstrap-modal.htm#
+
+<ul>
+for(int i=0;i<modle.count;i++){
+ </li>   <a href="@model.name"></a></li>
+
+
+}
+
+384:470
+
+C:\Users\yaols\Documents\Tencent Files\465212602\FileRecv
+
+账号：d674936577
+密码：hujian1996
+所在区服：1439
+
+612:662
+
+523414741     
+472805
+472806
+
+sg168714lno
+sg364792zqm
+
+
+7E74FDB2DE4B8582A686FA433DE1B03A
+
+
+宿命在纠结   634:655
+
+
+1322726135
+
+
+UNL006
+12345678a
+
+GZYX0008
+12345678a
+
+HUANGJIANa
+12345678
+
+
+
+3310808953@qq.com  8832135
+38315168@qq.com 306618057
+1305232470@qq.com  8832135
+e62297517@sina.com a332211
+
+
+
+R1209074772 815816
+gzyx0001   12345678a
+12090747721 815816
+liouhe5201314 123789
+
+
+
+
+审核版（领导用） http://adobe.ly/24b3w93
+书记员版  http://adobe.ly/1sexKMz
+
+d267340964
+8832135
+
+
+132 132 44 764 100
+147 100
+
+羊驼 2059
+毛 2191
+姚 1427
+何 1577
+
+moumouzhuan@163.com
+liuzhuan1
+
+13318034552
+Xiao103639
+
+
+15227292554密码：hh614331
+
+
+</ul>
+菜单
+   菜单一
+   菜单二  这个超链连接  我要传入ID进去，其他超连接不用传入
+   菜单三
+二级菜单
+   二级菜单1
+   二级菜单2
+
+
+http://bbs.itheima.com/thread-152557-1-1.html
+
+
+
+UserTrain
+id    userId  TrainId  GroupId
+1001  14848   null     null
+1002  14848   242      null
+
+
+UserGroup
+id UserTrainId    GroupId
+1  1001           805
+
+
+Group
+Id   name
+805  质检总局
+
+
+with Temp AS(select a.Id,CoursewareId,VisitTime,
+Delay,b.LessonType from dbo.CoursewareAct a 
+left join dbo.V_Lesson2 b on a.LessonId=b.Id
+where UserId=14372 and TrainId=242 and (LessonId is not null)
+)
+select *from (select Row_Number() over(order by t.VisitTime desc) as RowId,
+t.Id,t.CoursewareId,ClassId,
+			Title,
+			t.VisitTime,
+			VisitIp,
+			UserId,
+			UserName,
+			Token,
+			t.Delay,
+			(select Hour from dbo.CoursewareDetail where Id=t.CoursewareId) as Hour,
+			(select SUM(Delay) from Temp where CoursewareId=t.CoursewareId) as TotalDelay,
+			(select count(Id) from Temp where CoursewareId=t.CoursewareId) as Total,
+			LessonId,
+			t.LessonType
+		from Temp t join dbo.CoursewareAct a on t.Id=a.Id
+		where not exists(select 1 from Temp tt where tt.CoursewareId=t.CoursewareId and tt.VisitTime>t.VisitTime)
+	)as aaa
+	where RowId between 1 and 10 order by RowId
+
+
+
+
+USE [aqsiq]
+GO
+/****** Object:  StoredProcedure [dbo].[w_LearningPointCompanyByCount]    Script Date: 05/27/2015 16:36:05 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:姚龙生
+-- Create date: 20150527
+-- Description:	学习点管理员  区分必修和选修单位统计表
+-- =============================================
+ALTER PROCEDURE [dbo].[w_LearningPointCompanyByCount] 
+(
+  	@StartRowIndex int,		--起始行索引
+	@EndRowIndex int,		--结束行索引
+	@GroupId int,
+	@Depth int,
+	@UserName nvarchar(50),
+	@Name nvarchar(50),
+	@Year int,
+	@OrderExp nvarchar(100)='',
+	@LessonType int, --课程类型
+	@IsCount tinyint
+)
+AS
+BEGIN
+declare 
+		@SQLWhere nvarchar(1024),
+		@SQL nvarchar(2014)
+    set @SQL='';
+	set @SQLWhere=' CreateYear='+CAST(@Year as varchar(4));
+
+
+if(@GroupId is null)
+	set @GroupId=0;
+if(@Depth is null)
+	set @Depth=1;
+	
+if(@Name<>'')
+begin 
+	set @SQLWhere=@SQLWhere +' and Name like ''%''+@Name+''%''';
+end
+
+if(@UserName<>'')
+begin 
+	set @SQLWhere=@SQLWhere +' and UserName like ''%''+@UserName+''%''';
+end
+
+create table #bt(GroupName nvarchar(100),Hours int,UserId int,
+UserName nvarchar(100),RowId int,Name nvarchar(100),GroupId int,
+Delay int,CreateYear int);
+
+
+--0 查询总数   1查详细数据
+with t1 
+as
+(
+select ClassId,OrderId,Depth from GroupSort(21) where Depth<=3
+)
+,t2 as 
+(
+select RowId,a.UserId,UserName,Name,a.GroupId,b.CreateYear from (
+select Row_Number() over(order by  d.OrderId) as RowId,a.UserId,a.UserName,a.Name,c.GroupId
+from [User] a 
+join UserGroupMap c on c.UserId=a.UserId
+join t1 d on d.ClassId=c.GroupId) as a
+inner join(select ut.UserId,Train.CreateYear 
+from UserTrain ut join Train on ut.TrainId=Train.Id) as b
+on a.UserId=b.UserId   
+where a.RowId between 1 and 10
+),
+bHours as
+(
+--根据学生 划分专题  统计必修课学时
+select ut.UserId,ld.LessonType,sum(cwd.Hour) as bhour
+from UserTrain ut
+inner join LessonClass lc on ut.TrainId=lc.TrainId
+left join LessonDetail ld on lc.ClassId=ld.ClassId
+left join LessonCourseware lcw on ld.Id=lcw.LessonId
+left join CoursewareDetail cwd on lcw.CoursewareId=cwd.Id
+where LessonType=0
+group by ut.UserId,ld.LessonType
+),
+bComplete as
+(
+--必修课完成学时
+select ut.UserId,sum(ca.Delay) as Delay from UserTrain ut
+left join CoursewareAct ca on ut.UserId=ca.UserId
+left join LessonDetail ld on ca.LessonId=ld.Id
+left join LessonClass lc on ld.ClassId=lc.ClassId
+where ld.LessonType=0
+group by ut.UserId
+)
+insert into #bt 
+select (select ClassName from [Group] aa where aa.ClassId=t2.GroupId ) as GroupName,
+bHours.bhour,t2.UserId,t2.UserName,t2.RowId,t2.Name,t2.GroupId,
+bComplete.Delay bDelay,t2.CreateYear
+from t2
+left join bHours on bHours.UserId=t2.UserId
+left join bComplete on bComplete.UserId=t2.UserId;
+
+set @SQL='select RowId,GroupName,Hours,
+          UserId,UserName,Name,GroupId,Delay,CreateYear from #bt                                                      
+              '
+    if(@SQLWhere<>'')
+    begin
+     set @SQL=@SQL+' where '+@SQLWhere;
+    end
+
+
+end
+exec(@SQL)
+
+
+USE [aqsiq]
+GO
+/****** Object:  StoredProcedure [dbo].[w_CompanyLessonByPeople]    Script Date: 06/03/2015 18:46:10 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:姚龙生
+-- Create date:20150603
+-- Description:学习点管理员 单位统计
+-- =============================================
+ALTER PROCEDURE [dbo].[w_CompanyLessonByPeople]
+(
+  	@StartRowIndex int,		--起始行索引
+	@EndRowIndex int,		--结束行索引
+	@GroupId int,
+	@Depth int,
+	@Name nvarchar(50)='',
+	@LessonType int, --课程类型
+	@IsCount tinyint
+)
+AS
+declare 
+		@SQLWhere nvarchar(max),
+		@SQL nvarchar(max)
+	set @SQLWhere='';
+
+if(@GroupId is null)
+	set @GroupId=0;
+if(@Depth is null)
+	set @Depth=1;
+	
+if(@Name<>'')
+begin 
+	set @SQLWhere=@SQLWhere +' and Name like '''+@Name+'%''';
+end
+if(@LessonType<>3)
+     set @SQLWhere=@SQLWhere+' and LessonType='+cast(@LessonType as varchar(10))
+
+ set @SQL=';
+with t1 
+as
+(
+select ClassId,OrderId,Depth from GroupSort('+CAST(@GroupId as varchar(10))+') where Depth<=3
+)
+,t2 as 
+(
+select a.UserId,UserName,Name,a.GroupId,b.CreateYear,b.TrainId,trainName from (
+select a.UserId,a.UserName,a.Name,c.GroupId
+from [User] a 
+join UserGroupMap c on c.UserId=a.UserId
+join t1 d on d.ClassId=c.GroupId) as a
+left join(select ut.UserId,Train.CreateYear,ut.TrainId,Train.Name trainName 
+from UserTrain ut join Train on ut.TrainId=Train.Id) as b
+on a.UserId=b.UserId
+),
+bHours as
+(
+--根据学生 划分专题  统计必修课学时
+select ut.UserId,ld.LessonType,sum(cwd.Hour) as bhour,lc.TrainId
+from UserTrain ut
+inner join LessonClass lc on ut.TrainId=lc.TrainId
+left join LessonDetail ld on lc.ClassId=ld.ClassId
+left join LessonCourseware lcw on ld.Id=lcw.LessonId
+left join CoursewareDetail cwd on lcw.CoursewareId=cwd.Id
+where LessonType=0
+group by ut.UserId,ld.LessonType,lc.TrainId
+),
+bComplete as
+(
+--必修课完成学时
+select ut.UserId,sum(ca.Delay) as Delay,lc.TrainId from UserTrain ut
+left join CoursewareAct ca on ut.UserId=ca.UserId
+left join LessonDetail ld on ca.LessonId=ld.Id
+left join LessonClass lc on ld.ClassId=lc.ClassId
+where ld.LessonType=0
+group by ut.UserId,lc.TrainId
+),
+bt as
+(
+select (select ClassName from [Group] aa where aa.ClassId=t2.GroupId) as GroupName,
+bHours.bhour hour,t2.UserId,t2.UserName,t2.Name,
+bComplete.Delay Delay,t2.CreateYear,0 as LessonType
+from t2
+left join bHours on bHours.UserId=t2.UserId and bHours.TrainId=t2.TrainId
+left join bComplete on bComplete.UserId=t2.UserId and bComplete.TrainId=t2.TrainId
+)
+,xHours as
+(
+--根据学生 划分专题  统计选修课学时
+select ut.UserId,sum(cwd.Hour) as xhour,lc.TrainId
+from UserTrain ut
+inner join LessonOptional lo on ut.Id=lo.UserTrainId
+left join LessonDetail ld on ld.Id=lo.LessonId
+left join LessonClass lc on lc.ClassId=ld.ClassId
+left join LessonCourseware lcw on ld.Id=lcw.LessonId
+left join CoursewareDetail cwd on lcw.CoursewareId=cwd.Id
+where LessonType=1
+group by ut.UserId,ld.LessonType,lc.TrainId
+), 
+ xComplete as
+(
+--选修课完成学时
+select ut.UserId,sum(ca.Delay) as Delay,ut.TrainId from UserTrain ut
+inner join LessonOptional lo on ut.Id=lo.UserTrainId
+inner join CoursewareAct ca on ut.UserId=ca.UserId
+group by ut.UserId,ut.TrainId
+),
+ xt as 
+(
+select (select ClassName from [Group] aa where aa.ClassId=t2.GroupId) as GroupName,
+xHours.xhour hour,t2.UserId,t2.UserName,t2.Name,
+xComplete.Delay Delay,CreateYear,1 as LessonType
+from t2
+left join xHours on xHours.UserId=t2.UserId and t2.TrainId=xHours.TrainId
+left join xComplete on xComplete.UserId=t2.UserId and t2.TrainId=xComplete.TrainId
+),
+ bTatol as
+(
+select UserId,Name,UserName,sum(Delay) delay,sum(hour) hour,LessonType,GroupName from  bt
+group by UserId,Name,LessonType,UserName,GroupName
+),
+ xTatol as
+(
+select UserId,Name,UserName,sum(Delay) delay,sum(hour) hour,LessonType,GroupName from  xt
+group by UserId,Name,LessonType,UserName,GroupName
+),
+ Total as
+(
+select UserId,Name,UserName,delay,hour,LessonType,GroupName from bTatol
+union
+select UserId,Name,UserName,delay,hour,LessonType,GroupName from xTatol
+),
+ t as
+(
+select Row_Number() over(order by  UserId) as RowId,
+UserId,Name,UserName,delay,hour,LessonType,GroupName from Total'
+
+if(@SQLWhere<>'')
+   set @SQL=@SQL+' where 1=1'+@SQLWhere
+
+if(@IsCount=0)
+  begin
+    set @SQL=@SQL+' ) select COUNT(1) from t'
+  end
+else
+  begin
+   set @SQL=@SQL+' ) select RowId,UserId,Name,UserName,
+       delay,hour,LessonType,
+       GroupName from t where RowId between '+CAST(@StartRowIndex as varchar(20))+' and '+CAST(@EndRowIndex as varchar(20))
+  end
+exec(@sql)
+
+
+
+
+
+
+USE [aqsiq2]
+GO
+/****** Object:  StoredProcedure [dbo].[w_GetTrainByStudentLessonHourList]    Script Date: 06/24/2015 13:45:54 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+-- =============================================
+-- Author:		<Author,,Name>
+-- Create date: <Create Date,,>
+-- Description:	<Description,,>
+-- =============================================
+ALTER PROCEDURE [dbo].[w_GetTrainByStudentLessonHourList] 
+(
+	@UserId int,-- 当前访问用户编号
+	@TrainId nvarchar(1024),
+	@RowCount int, --显示条数
+	@Role int, --角色  0：非学员  1学员 
+	@IsCount tinyint
+)
+AS
+if @Role=0
+begin
+
+with bt as
+(
+select v.LessonId,ld.Title,lc.TrainId,v.Id as CoursewareId,
+v.[Hour],ld.OrderId,ld.AddTime from LessonDetail ld 
+left join dbo.V_Courseware v on ld.Id=v.LessonId
+left join dbo.LessonClass lc on ld.ClassId=lc.ClassId
+where lc.TrainId=@TrainId
+),
+btemp as 
+(
+select bt.LessonId,bt.CoursewareId,MAX(a.VisitTime) as VisitTime,
+(case when bt.[Hour]>SUM(ISNull([Delay],0)) then SUM(ISNull([Delay],0)) 
+else bt.[Hour] end) as [Delay],bt.[Hour],MIN(bt.Title) as Title,
+bt.orderId,bt.addtime
+from (select * from CoursewareAct a  where a.LessonId is not null and a.UserId=@UserId) a
+right join bt on a.LessonId=bt.LessonId and a.CoursewareId=bt.CoursewareId
+group by bt.LessonId,bt.CoursewareId,bt.[Hour],bt.orderId,bt.addtime
+)
+select top(@RowCount) MIN(btemp.Title) as Title,MAX(VisitTime) as LastTime,
+ISNULL(SUM(ISNULL([Delay],0)),0) as TotalDelay,Isnull(SUM(ISNULL(btemp.[Hour],0)),0) as TotalHour,
+btemp.LessonId,0 as LessonType from btemp 
+group by LessonId,orderId,addtime 
+end
+
+else
+
+begin
+with xt as
+(
+select lo.LessonId,ld.Title,ut.TrainId,
+v.Id as CoursewareId,v.[Hour],lo.Id as loId,ld.Teacher  
+from LessonOptional lo
+left join UserTrain ut on lo.UserTrainId=ut.Id
+left join LessonDetail ld on ld.Id=lo.LessonId
+join dbo.V_Courseware v on lo.LessonId=v.LessonId
+where ut.UserId=@UserId and ut.TrainId=@TrainId and ld.LessonType=1
+),
+xtemp as 
+(
+select xt.LessonId,xt.CoursewareId,MAX(a.VisitTime) as VisitTime,
+(case when xt.[Hour]>SUM(ISNull([Delay],0)) then SUM(ISNull([Delay],0)) 
+else xt.[Hour] end) as [Delay],xt.[Hour],MIN(xt.Title) as Title,xt.loId,xt.Teacher  
+from (select LessonId,UserId,Delay,VisitTime,CoursewareId from CoursewareAct a  where a.LessonId is not null and a.UserId=73981) a
+right join  xt on a.LessonId=xt.LessonId and a.CoursewareId=xt.CoursewareId
+group by xt.LessonId,xt.CoursewareId,xt.[Hour],xt.loId,xt.Teacher  
+),
+--选修课
+x as
+(
+select MIN(xtemp.Title) as Title,Teacher,  
+MAX(VisitTime) as LastTime,ISNULL(SUM(ISNULL([Delay],0)),0) as TotalDelay,
+Isnull(SUM(ISNULL(xtemp.[Hour],0)),0) as TotalHour,
+xtemp.LessonId,1 as LessonType,xtemp.loId from xtemp 
+group by LessonId,xtemp.loId,Teacher
+),
+bt as
+(
+select v.LessonId,ld.Title,lc.TrainId,v.Id as CoursewareId,
+v.[Hour],ld.OrderId,ld.AddTime,ld.Teacher from LessonDetail ld 
+left join dbo.V_Courseware v on ld.Id=v.LessonId
+left join dbo.LessonClass lc on ld.ClassId=lc.ClassId
+where lc.TrainId=@TrainId and ld.LessonType=0
+),
+btemp as 
+(
+select bt.LessonId,bt.CoursewareId,MAX(a.VisitTime) as VisitTime,
+(case when bt.[Hour]>SUM(ISNull([Delay],0)) then SUM(ISNull([Delay],0)) 
+else bt.[Hour] end) as [Delay],bt.[Hour],MIN(bt.Title) as Title,
+bt.orderId,bt.addtime,bt.Teacher
+from (select LessonId,CoursewareId,[Delay],VisitTime from CoursewareAct a  where a.LessonId is not null and a.UserId=@UserId) a
+right join bt on a.LessonId=bt.LessonId and a.CoursewareId=bt.CoursewareId
+group by bt.LessonId,bt.CoursewareId,bt.[Hour],bt.orderId,bt.addtime,bt.Teacher
+),
+b as(
+select MIN(btemp.Title) as Title,Teacher,MAX(VisitTime) as LastTime,
+ISNULL(SUM(ISNULL([Delay],0)),0) as TotalDelay,Isnull(SUM(ISNULL(btemp.[Hour],0)),0) as TotalHour,
+btemp.LessonId,0 as LessonType,0 as loId from btemp 
+group by LessonId,orderId,addtime,Teacher 
+),
+temp as 
+(
+select top (@RowCount) Title,Teacher,LastTime,TotalDelay,TotalHour,LessonId,LessonType,loId from b
+union 
+select top(@RowCount) Title,Teacher,LastTime,TotalDelay,TotalHour,LessonId,LessonType,loId from x
+)
+select Title,Teacher,LastTime,TotalDelay,TotalHour,LessonId,LessonType,loId from temp;
+end
+
+
+
+
+function getAPIHandle()
+{
+	return apiHandle==null&&getAPI(),apiHandle
+}
+function findAPI(n)
+{
+	while(n.API==null&&n.parent!=null&&n.parent!=n)
+	{
+		if(findAPITries++,findAPITries>7)
+			return null;
+		n=n.parent
+	}
+	return n.API
+}
+function getAPI()
+{
+	var n=findAPI(window);
+	n==null&&window.opener!=null&&typeof opener!="undefined"&&(n=findAPI(window.opener));
+	n==null&&top.window.opener!=null&&typeof top.window.opener!="undefined"&&(n=findAPI(top.window.opener));
+	apiHandle=n
+}
+function doLMSInitialize()
+{
+	var n=getAPIHandle();
+	n.LMSInitialize("")
+}
+function doLMSFinish()
+{
+	var n=getAPIHandle(),t;
+	if(n==null)
+		return"false";
+	t=n.LMSFinish("");
+	t="true"
+}
+function doLMSCommit()
+{
+	var n=getAPIHandle();
+	if(n==null)
+		return"false";
+	n.LMSCommit("")
+}
+function doLMSGetValue(n)
+{
+	var t=getAPIHandle(),i,r,u;
+	return t==null?"":(i=t.LMSGetValue(n),r=t.LMSGetLastError().toString(),r!=0?(u=t.LMSGetErrorString(r),alert("LMSGetValue("+n+") failed. \n"+u),""):typeof i=="undefined"||i==null?"":i.toString())
+}
+function doLMSSetValue(n,t)
+{
+	var i=getAPIHandle();
+	if(i!=null)
+	{
+		i.LMSSetValue(n,t);
+		return
+	}
+}
+
+var apiHandle=null,findAPITries=0,includeScormApi=!0;
+doLMSInitialize()
+
+
+
+18023716953
+
+
+TFS账号  192.168.1.10   yaols  yaols123
+SVN账号  192.168.1.9    yaols  yaols123
+\\192.168.1.6\YunCompanyAPI
+
+
+水费205
+订餐108
+44
+78
+200
+71
+106
+87
+
+
+
+899
+132
+30
+506
+1276
+
+
+
+
+
+
+
+355+355+320+223-150-544=559
+
+327209824
+13145207758
+
+
+
+

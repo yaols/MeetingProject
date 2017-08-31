@@ -1,0 +1,40 @@
+2016-06-09 16:28:10,961  ERROR - UserLogin-2016/6/9 16:28:10
+System.Data.SqlClient.SqlException (0x80131904): “-”附近有语法错误。
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 Meeting.Common.SQLHelper.GetReader(String strSQL, SqlParameter[] paras, CommandType cmdtype) 位置 f:\开发项目\Project\Meeting.Common\SQLHelper.cs:行号 358
+   在 Meeting.Common.SQLHelper.GetReader(String strSQL, SqlParameter[] paras) 位置 f:\开发项目\Project\Meeting.Common\SQLHelper.cs:行号 338
+   在 Meeting.Dao.LoginDao.LoginUserInfo(String username, String password) 位置 f:\开发项目\Project\Meeting.Dao\LoginDao.cs:行号 31
+   在 Meeting.BLL.LoginService.LoginUserInfo(String username, String password) 位置 f:\开发项目\Project\Meeting.BLL\LoginService.cs:行号 15
+   在 Meeting.Web.Api.Controllers.LoginController.UserLogin(UserViewModel model) 位置 f:\开发项目\Project\Meeting.Web.Api\Controllers\LoginController.cs:行号 38
+ClientConnectionId:6cd9363a-bb22-41ca-8311-c412a4c1a62d
+2016-06-09 16:52:07,818  ERROR - UserLogin-2016/6/9 16:52:07
+System.Data.SqlClient.SqlException (0x80131904): 参数化查询 '(@userName nvarchar(4000),@passwrod nvarchar(4000))select UserId' 需要参数 '@userName'，但未提供该参数。
+   在 System.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   在 System.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, Boolean callerHasConnectionLock, Boolean asyncClose)
+   在 System.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   在 System.Data.SqlClient.SqlDataReader.TryConsumeMetaData()
+   在 System.Data.SqlClient.SqlDataReader.get_MetaData()
+   在 System.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean async, Int32 timeout, Task& task, Boolean asyncWrite, SqlDataReader ds)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean asyncWrite)
+   在 System.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior, String method)
+   在 System.Data.SqlClient.SqlCommand.ExecuteReader(CommandBehavior behavior)
+   在 Meeting.Common.SQLHelper.GetReader(String strSQL, SqlParameter[] paras, CommandType cmdtype) 位置 f:\开发项目\Project\Meeting.Common\SQLHelper.cs:行号 358
+   在 Meeting.Common.SQLHelper.GetReader(String strSQL, SqlParameter[] paras) 位置 f:\开发项目\Project\Meeting.Common\SQLHelper.cs:行号 338
+   在 Meeting.Dao.LoginDao.LoginUserInfo(String username, String password) 位置 f:\开发项目\Project\Meeting.Dao\LoginDao.cs:行号 31
+   在 Meeting.BLL.LoginService.LoginUserInfo(String username, String password) 位置 f:\开发项目\Project\Meeting.BLL\LoginService.cs:行号 15
+   在 Meeting.Web.Api.Controllers.LoginController.UserLogin(UserViewModel model) 位置 f:\开发项目\Project\Meeting.Web.Api\Controllers\LoginController.cs:行号 38
+ClientConnectionId:f3384ced-27eb-435f-8b15-4e17acae9e9e

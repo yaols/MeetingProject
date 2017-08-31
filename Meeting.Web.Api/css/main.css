@@ -567,7 +567,7 @@ input {
 /*创建会议*/
 .create-meeting-ul {
     list-style-type: none;
-    height: 20px;
+    height: 25px;
 }
 
 .create-meeting-li {

@@ -107,7 +107,7 @@
                         var num=Model.MeetingOpinion.Where(m=>m.OpinionAction==0).Count();
                         if (Model.MeetingOpinion.Count() != num) 
                         {
-                                                    <div style="margin-top:40px;height:860px;">
+                           <div style="margin-top:20px;">
                             <div class="u375">
                                 <p><span>审批内容</span></p>
                             </div>
@@ -118,7 +118,7 @@
                                     item.Autograph = "/autograph/" + item.Autograph;
                                     if (item.OpinionAction != 0)
                                     {
-                                        <li class="approval clearfix">
+                                        <li class="approval clearfix" style="margin-top:25px;">
                                             <p class="fl mr-20">委员：<span class="fontStyle">@item.UserName</span></p>
                                             <p class="fl">审批意见： <span class="fontStyle">@(item.OpinionAction == 1 ? "同意" : "不同意")</span></p>
                                             @if (item.OpinionAction != 0)
