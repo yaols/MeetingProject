@@ -52,22 +52,22 @@
         water: true,
         filetypes: "",
         uploadSuccess: function (file) {
-            console.log(file);
+     
             var htmlString = '<li class="create-ul-li"><div class="create-li-img">';
-            if (file.type == '.txt' || file.type == '.doc' || file.type == '.docx') {
+            if (file.ResourcesType == '.txt' || file.ResourcesType == '.doc' || file.ResourcesType == '.docx') {
                 htmlString += '<img src="/Images/文本资料.png" /></div>';
-            } else if (file.type == '.png' || file.type == '.jpg' || file.type == '.gif' || file.type == '.bmp' || file.type == '.jpeg') {
+            } else if (file.ResourcesType == '.png' || file.ResourcesType == '.jpg' || file.ResourcesType == '.gif' || file.ResourcesType == '.bmp' || file.ResourcesType == '.jpeg') {
                 htmlString += '<img src="/Images/图片资料.png" /></div>';
-            } else if (file.type == '.mp4' || file.type == '.wmv' || file.type == '.amv' || file.type == '.mp3') {
+            } else if (file.ResourcesType == '.mp4' || file.ResourcesType == '.wmv' || file.ResourcesType == '.amv' || file.ResourcesType == '.mp3') {
                 htmlString += '<img src="/Images/视频资料.png" /></div>';
-            } else if (file.type == '.mp3') {
+            } else if (file.ResourcesType == '.mp3') {
                 htmlString += '<img src="/Images/音频资料.png" /></div>';
             } else {
                 htmlString += '<img src="/Images/文本资料.png" /></div>';
             }
 
-            htmlString += '<div class="create-li-btnDel" onclick="CreateDel(this,\'' + file.name + '\')">删除</div>';
-            htmlString += '<span style="display: inline-block;">' + file.name + '</span></li>';
+            htmlString += '<div class="create-li-btnDel" onclick="CreateDel(this,\'' + file.ResourcesName + '\')">删除</div>';
+            htmlString += '<span style="display: inline-block;">' + file.ResourcesName + '</span></li>';
 
             $("#imgul").append(htmlString);
             lhgdialog.masklayer();

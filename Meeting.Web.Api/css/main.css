@@ -829,3 +829,73 @@ input {
         position: relative;
     margin-bottom: 1em;
 }
+
+
+        .create-li-btnDel {
+    border-radius: 10px;
+    background-color: #0073e5;
+    width: 60px;
+    height: 20px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 20px;
+    color:#fff;
+    float: left;
+    margin-left:25px;
+    cursor: pointer;
+}
+
+
+    .home-button-right {
+    border-radius: 10px;
+    background-color: #ffffff;
+    width: 60px;
+    height: 20px;
+    font-size: 10px;
+    text-align: center;
+    line-height: 20px;
+    float: right;
+    margin: 0 5px 0 5px;
+    cursor: pointer;
+        position: relative;
+    margin-bottom: 1em;
+}
+
+
+    /*上传图片*/
+.upload-img1 {
+    margin-top:4px;
+
+}
+
+    .webuploader-container {
+    position: relative;
+}
+
+    .upload-box .upload-btn {
+    display: inline-block;
+    height: 32px;
+    zoom: 1;
+}
+
+    .webuploader-element-invisible {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px);
+    clip: rect(1px,1px,1px,1px);
+}
+
+
+    .webuploader-pick {
+    position: relative;
+    display: inline-block;
+    width: 65px;
+    line-height: 30px;
+    height: 30px;
+    border: 1px solid #e1e1e1;
+    cursor: pointer;
+    background: #fff;
+    color: #333;
+    text-align: center;
+    overflow: hidden;
+    zoom: 1;
+}
