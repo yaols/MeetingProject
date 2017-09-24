@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -640,6 +641,9 @@
     <Content Include="Scripts\wangEditor\dist\js\lib\jquery-2.2.1.js" />
     <Content Include="Scripts\wangEditor\dist\js\wangEditor.js" />
     <Content Include="Scripts\wangEditor\dist\js\wangEditor.min.js" />
+    <Content Include="Scripts\webuploader\newuploader.js" />
+    <Content Include="Scripts\webuploader\uploader.swf" />
+    <Content Include="Scripts\webuploader\webuploader.min.js" />
     <Content Include="界面链接.txt" />
     <None Include="Properties\PublishProfiles\Meeting.pubxml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
