@@ -1,0 +1,219 @@
+https://maxleap.cn/s/web/zh_cn/index.html
+http://www.cunchina.cn/
+http://www.daocloud.io/
+http://www.scway.com.cn/
+
+
+486a1c74-57c3-4594-945b-853483917833
+
+
+0TiwJT4ZKzaE4djB61S5YzIMGNKNCEAd
+
+3496067968@qq.com
+0.22
+
+
+2091303707----wy771381
+2958539807----x2332144
+
+
+编写高质量代码：改善C#程序的157个建议
+
+http://mo004_1124.mo4.line1.uemo.net/
+http://mo004_1836.mo4.line1.uemo.net/
+http://demo.uemo.net/itemid/39719/
+http://mo004_1824.mo4.line1.uemo.net/
+http://demo.uemo.net/itemid/62608/
+http://www.polytouch.cn/
+http://www.uemo.net/list/id/17190/
+http://www.qifeiye.com/%E7%BD%91%E7%AB%99%E6%A8%A1%E6%9D%BF/
+
+
+47.92.111.202
+administrator
+liaowa!@qw12
+
+
+
+2XZ8BTX0IOBK
+
+
+
+http://www.cnblogs.com/xiyin/p/6561652.html
+http://www.cnblogs.com/landeanfen/archive/2016/03/24/5287064.html
+http://www.cnblogs.com/zhuwenjun/p/5633739.html
+
+
+多线程处理队列
+http://www.cnblogs.com/Mainz/archive/2011/10/13/2209924.html
+http://blog.csdn.net/s_nuclear/article/details/12802223
+http://www.cnblogs.com/wangqiideal/p/5585352.html
+http://www.2cto.com/kf/201410/342794.html
+http://blog.csdn.net/column/details/killthreadseries.html  //秒杀活动专栏
+
+
+haima5120958
+
+
+太阳系微信号
+2155859660@qq.com
+hyyd6688
+
+
+太阳系阿里云账号
+北京红裕云鼎
+hyyd6688
+
+http://blog.csdn.net/qq_33556185/article/details/52839369
+
+
+22893142
+
+
+47.94.45.196
+administrator
+yujing123$
+
+http://www.weixinpintuan.com/base
+
+
+dt_tips
+dt_timeline_tips
+
+
+
+
+
+59.110.240.65
+administrator
+~!@#1qaz2wsx
+
+
+https://help.aliyun.com/document_detail/52016.html?spm=5176.doc51082.2.6.TOPypU
+
+
+!@#$1qaz2wsx
+
+
+
+select * from dt_usertask_details
+
+select * from dt_config
+
+select * from dt_configscore
+
+select * from dt_articles
+
+select * from dt_articles_category
+
+select * from dt_articles_timeline
+
+select * from dt_task_options
+
+select * from dt_task_timeline
+
+select * from dt_task_title
+
+select * from dt_timeline_tips
+
+
+select * from dt_tips
+
+
+
+select fp.usercode,fp.fc_id,fp.fc_createTime,
+b.avatar,b.nick_name,
+a.fc_ImageUrl,a.fc_ContentType,a.fc_Content 
+from fc_FriendPraise fp
+join (select fc_Id,fc_UserId,fc_ContentType,fc_ImageUrl,fc_Content 
+from fc_FriendCircle fc where fc_status=0 and fc.fc_UserId='9975a086-8f33-43f8-99da-0e37efc49127') a
+on a.fc_id=fp.fc_id
+join(select nick_name,avatar,usercode from dt_users u) b on fp.usercode=b.usercode
+
+
+
+ select f.usercode,f.followtime,f.followcode,
+ b.nick_name,b.avatar,r.operationMsg,
+ afollow=(select dbo.GetFollowState(f.followcode,f.usercode)),
+ bfollow=(select dbo.GetFollowState(f.usercode,f.followcode))
+ from fc_FriendCirclRecord r
+ join Focus f on r.usercode=f.usercode
+ join(select nick_name,avatar,usercode from
+ dt_users u) b on f.usercode=b.usercode
+ where  f.followcode=@usercode 
+ and r.operationType=4 and r.isread=0
+ and r.Status=0
+
+
+121.42.249.71
+Xinyida2015!@# 
+
+
+
+with t as
+(
+ SELECT   dbo.dt_config.configName, dbo.dt_configscore.score, dbo.dt_config.id AS config_id, 
+ dbo.dt_configscore.tid AS timuid, 
+                dbo.dt_task_title.title,dbo.dt_config.category,dt_task_title.tType,
+				op.id optionId,op.tid,op.title optionTitle,op.orderby,op.scoreLv
+FROM      dbo.dt_task_timeline INNER JOIN
+                dbo.dt_config ON dbo.dt_task_timeline.tid = dbo.dt_config.id INNER JOIN
+                dbo.dt_configscore ON dbo.dt_config.id = dbo.dt_configscore.cid INNER JOIN
+                dbo.dt_task_title ON dbo.dt_configscore.tid = dbo.dt_task_title.id INNER JOIN
+				dbo.dt_task_options op on dbo.dt_configscore.tid=op.tid
+				where dt_task_timeline.timeid=10005  and dt_task_timeline.failure=0
+)
+,b as
+(
+select details.oid,details.score from dt_usertask_details details
+INNER JOIN dt_user_baby baby on details.baby_id=baby.id
+where baby.defaultShow=1 and baby.usercode='1f3cb5f6-ec73-4bf1-ab2a-d0b722fc533b'
+and timeid=10005
+)
+select * from t
+left join b on t.optionId=b.oid
+
+
+mmkj702!
+mmkj23456
+
+CLR via C#
+c#并发编程经典实例
+.NET框架设计:模式配置工具
+
+
+http://www.cnblogs.com/xishuai/p/asp-net-sync-over-async.html
+
+
+15101194702
+1992yaoshujun
+
+postmaster@jssgmmq.com
+a5320818
+
+
+
+
+
+select a.id,a.title,a.category,a.intro,a.content,
+a.imgurl,b.title categorytitle 
+from dt_articles_collection c
+join dt_articles a on c.ArticleId=a.id
+join dt_articles_category b on a.category=b.id
+where c.UserId='41b41969-2e6f-4882-96ab-e8e6f6016ca1' and a.status=3;
+
+
+
+select a.Id,a.Tilte,a.category,a.describe,a.Content, 
+a.Cover,b.Name
+from wx_articlecollection c
+join wx_article a on c.ArticleId=a.Id
+join wx_article_category b on a.category=b.id
+where c.UserCode='' and a.State<>1
+
+
+C:\Users\yaols\Documents\Tencent Files\2912166657\FileRecv
+
+
+ <add name="ConnectionString" connectionString="Data Source=.;Initial Catalog=liaowa;User ID=sa;Password=!@#$qwer1234;Max Pool Size=600;" providerName="System.Data.SqlClient" />
+ <add name="ConnectionString" connectionString="Data Source=47.93.37.53;Initial Catalog=Testliaowa;User ID=sa;Password=Amigo123;Max Pool Size=600;" providerName="System.Data.SqlClient" />

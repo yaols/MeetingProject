@@ -39,7 +39,8 @@ namespace Meeting.Web.Api.Controllers
 
                 string saveUrl = string.Format("{0}", Consts.TemporaryPath);
 
-                //model.ResourcesType = Path.GetExtension(files.FileName);
+                model.ResourcesType = Path.GetExtension(files.FileName);
+                model.ResourcesName = files.FileName;
                 //model.ResourcesName = Path.GetFileNameWithoutExtension(files.FileName);
 
                 if (!Directory.Exists(saveUrl))
@@ -50,7 +51,7 @@ namespace Meeting.Web.Api.Controllers
                 //files.SaveAs(saveUrl + "\\" + model.ResourcesName + model.ResourcesType);
                 files.SaveAs(saveUrl + "\\" + files.FileName);
 
-                msg = "上传成功";
+                //msg = "上传成功";
 
                 //if (iResources.InsertModel(model) > 0)
                 //{
@@ -61,7 +62,9 @@ namespace Meeting.Web.Api.Controllers
                 //    msg = "上传失败";
                 //}
             }
-            return Json(msg);
+
+            return Json(model);
+
         }
 
         [HttpPost]

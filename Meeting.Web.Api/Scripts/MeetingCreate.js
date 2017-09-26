@@ -18,30 +18,61 @@
     $('#datetimepicker1').datetimepicker({ value: myDate.toLocaleTimeString(), step: 10 });
     $('#datetimepicker2').datetimepicker({ value: myDate.toLocaleTimeString(), step: 10 });
 
-    $('#file_upload').uploadify({
-        'swf': '/Scripts/uploadify/uploadify.swf',
-        'uploader': '/Upload/Index',
-        'onUploadStart': function (file) {
+    //$('#file_upload').uploadify({
+    //    'swf': '/Scripts/uploadify/uploadify.swf',
+    //    'uploader': '/Upload/Index',
+    //    'onUploadStart': function (file) {
+    //        var htmlString = '<li class="create-ul-li"><div class="create-li-img">';
+    //        if (file.type == '.txt' || file.type == '.doc' || file.type == '.docx') {
+    //            htmlString += '<img src="/Images/文本资料.png" /></div>';
+    //        } else if (file.type == '.png' || file.type == '.jpg' || file.type == '.gif' || file.type == '.bmp' || file.type == '.jpeg') {
+    //            htmlString += '<img src="/Images/图片资料.png" /></div>';
+    //        } else if (file.type == '.mp4' || file.type == '.wmv' || file.type == '.amv' || file.type == '.mp3') {
+    //            htmlString += '<img src="/Images/视频资料.png" /></div>';
+    //        } else if (file.type == '.mp3') {
+    //            htmlString += '<img src="/Images/音频资料.png" /></div>';
+    //        } else {
+    //            htmlString += '<img src="/Images/文本资料.png" /></div>';
+    //        }
+
+    //        htmlString += '<div class="create-li-btnDel" onclick="CreateDel(this,\'' + file.name + '\')">删除</div>';
+    //        htmlString += '<span style="display: inline-block;">' + file.name + '</span></li>';
+
+    //        $("#imgul").append(htmlString);
+    //        lhgdialog.masklayer();
+    //    }
+    //});
+
+
+    $(".upload-img1").InitUploader({
+        filesize: "10240",
+        sendurl: "/Upload/Index",
+        swf: "/scripts/webuploader/uploader.swf",
+        water: true,
+        filetypes: "",
+        uploadSuccess: function (file) {
+            //console.log(file);
             var htmlString = '<li class="create-ul-li"><div class="create-li-img">';
-            if (file.type == '.txt' || file.type == '.doc' || file.type == '.docx') {
+            if (file.ResourcesType == '.txt' || file.ResourcesType == '.doc' || file.ResourcesType == '.docx') {
                 htmlString += '<img src="/Images/文本资料.png" /></div>';
-            } else if (file.type == '.png' || file.type == '.jpg' || file.type == '.gif' || file.type == '.bmp' || file.type == '.jpeg') {
+            } else if (file.ResourcesType == '.png' || file.ResourcesType == '.jpg' || file.ResourcesType == '.gif' || file.ResourcesType == '.bmp' || file.ResourcesType == '.jpeg') {
                 htmlString += '<img src="/Images/图片资料.png" /></div>';
-            } else if (file.type == '.mp4' || file.type == '.wmv' || file.type == '.amv' || file.type == '.mp3') {
+            } else if (file.ResourcesType == '.mp4' || file.ResourcesType == '.wmv' || file.ResourcesType == '.amv' || file.ResourcesType == '.mp3') {
                 htmlString += '<img src="/Images/视频资料.png" /></div>';
-            } else if (file.type == '.mp3') {
+            } else if (file.ResourcesType == '.mp3') {
                 htmlString += '<img src="/Images/音频资料.png" /></div>';
             } else {
                 htmlString += '<img src="/Images/文本资料.png" /></div>';
             }
 
-            htmlString += '<div class="create-li-btnDel" onclick="CreateDel(this,\'' + file.name + '\')">删除</div>';
-            htmlString += '<span style="display: inline-block;">' + file.name + '</span></li>';
+            htmlString += '<div class="create-li-btnDel" onclick="CreateDel(this,\'' + file.ResourcesName + '\')">删除</div>';
+            htmlString += '<span style="display: inline-block;word-break:break-all;word-wrap:break-word;" class="upload-path">' + file.ResourcesName + '</span></li>';
 
             $("#imgul").append(htmlString);
             lhgdialog.masklayer();
         }
     });
+
 
     $('#file_upload-button').removeClass("uploadify-button");
     $("#file_upload-button").removeAttr("style");
@@ -58,6 +89,76 @@ var config = {
 for (var selector in config) {
     $(selector).chosen(config[selector]);
 }
+
+//$("#meetingPeople").chosen().close(function (evt, params) {
+//    console.log(params);
+//});
+
+
+//参会委员 
+$("#meetingPeople").chosen().change(function (evt, params) {
+
+    var selected = params.selected;
+    var deselected = params.deselected
+
+    if (selected != undefined) {
+        $("#leavePeople option[value='" + selected + "']").remove();
+        $("#attendPeople option[value='" + selected + "']").remove();
+    }
+
+    if (deselected != undefined) {        
+        var deselectedText=$("#meetingPeople option[value='" + deselected + "']").text();
+        $("#leavePeople").prepend("<option value='" + deselected + "'>" + deselectedText + "</option>");
+        $("#attendPeople").prepend("<option value='" + deselected + "'>" + deselectedText + "</option>");
+    }
+
+    $("#leavePeople").trigger("chosen:updated");
+    $("#attendPeople").trigger("chosen:updated");
+});
+
+//请假人员
+$("#leavePeople").chosen().change(function (evt, params) {
+
+    var selected = params.selected;
+    var deselected = params.deselected
+
+    if (selected != undefined) {
+        $("#meetingPeople option[value='" + selected + "']").remove();
+        $("#attendPeople option[value='" + selected + "']").remove();
+    }
+
+    if (deselected != undefined) {
+        var deselectedText = $("#leavePeople option[value='" + deselected + "']").text();
+        $("#meetingPeople").prepend("<option value='" + deselected + "'>" + deselectedText + "</option>");
+        $("#attendPeople").prepend("<option value='" + deselected + "'>" + deselectedText + "</option>");
+    }
+
+    $("#meetingPeople").trigger("chosen:updated");
+    $("#attendPeople").trigger("chosen:updated");
+});
+
+
+//列席人员
+$("#attendPeople").chosen().change(function (evt, params) {
+
+    var selected = params.selected;
+    var deselected = params.deselected
+
+    if (selected != undefined) {
+        $("#meetingPeople option[value='" + selected + "']").remove();
+        $("#leavePeople option[value='" + selected + "']").remove();
+    }
+
+    if (deselected != undefined) {
+        var deselectedText = $("#attendPeople option[value='" + deselected + "']").text();
+        $("#meetingPeople").prepend("<option value='" + deselected + "'>" + deselectedText + "</option>");
+        $("#leavePeople").prepend("<option value='" + deselected + "'>" + deselectedText + "</option>");
+    }
+
+    $("#meetingPeople").trigger("chosen:updated");
+    $("#leavePeople").trigger("chosen:updated");
+});
+
 
 function returnTop() {
     location.href = "/Home/Index?pageindex=" + 1;
